@@ -34,11 +34,12 @@
         .btn { display: inline-block; background-color: #e5989b; color: #fff; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: background 0.3s; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .btn:hover { background-color: #d68b8e; }
         
-        /* Hero секция с фоном и затемнением */
+        /* Hero секция – теперь изображение помещается целиком, пустые области залиты цветом */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('logo2.png') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('logo2.png') center/contain no-repeat;
+            background-color: #b5838d; /* цвет на случай, если картинка не покрывает весь фон */
             color: #fff;
-            padding: 6rem 0;
+            padding: 8rem 0; /* увеличили высоту, чтобы картинка лучше вписалась */
             text-align: center;
         }
         .hero h1 { font-size: 3rem; margin-bottom: 1rem; color: #fff; }
