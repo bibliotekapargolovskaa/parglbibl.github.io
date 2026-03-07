@@ -2,14 +2,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Тест Lightbox</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <title>Тест Fancybox</title>
+    <!-- Подключаем Fancybox CSS и JS (через CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
 </head>
 <body>
     <h2>Кликни на фото</h2>
-    <a href="s_ylici.jpg" data-lightbox="gallery" data-title="Тест">
-        <img src="s_ylici.jpg" width="200">
+    <a href="s_ylici.jpg" data-fancybox="gallery" data-caption="Тестовое фото">
+        <img src="s_ylici.jpg" width="300">
     </a>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+    <!-- Подключаем JS Fancybox -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        // Инициализируем Fancybox
+        Fancybox.bind("[data-fancybox]");
+    </script>
 </body>
 </html>
