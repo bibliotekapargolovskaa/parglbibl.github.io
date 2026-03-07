@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Парголовская библиотека - О нас</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Lightbox2 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        
+        header { background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: #2c3e50; text-decoration: none; }
+        .logo span { color: #e67e22; }
+        .nav ul { display: flex; list-style: none; gap: 2rem; }
+        .nav a { text-decoration: none; color: #2c3e50; font-weight: 600; transition: color 0.3s; }
+        .nav a:hover, .nav a.active { color: #e67e22; border-bottom: 2px solid #e67e22; }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #2c3e50; }
+        
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav { display: none; width: 100%; margin-top: 1rem; }
+            .nav.active { display: block; }
+            .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
+            .header-inner { flex-wrap: wrap; }
+        }
+        
+        .btn { display: inline-block; background-color: #e67e22; color: #fff; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: background 0.3s; }
+        .btn:hover { background-color: #cf711f; }
+        
+        .section { padding: 4rem 0; }
+        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.2rem; color: #2c3e50; }
+        .section-title:after { content: ''; display: block; width: 60px; height: 3px; background: #e67e22; margin: 0.5rem auto 0; }
+        
+        .history-block { background: #f8f9fa; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; }
+        .history-block p { margin-bottom: 1rem; }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .photo-gallery a {
+            display: block;
+            text-decoration: none;
+        }
+        
+        .photo-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .photo-gallery img:hover {
+            transform: scale(1.02);
+        }
+        
+        footer { background: #2c3e50; color: #fff; padding: 2rem 0; text-align: center; }
+        .social-links { margin: 1rem 0; }
+        .social-links a { color: #fff; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s; }
+        .social-links a:hover { color: #e67e22; }
+        
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e67e22; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">Парголовская<span> библиотека</span></a>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html" class="active">О нас</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="events.html">События</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">История библиотеки</h2>
+            <div class="history-block">
+                <p><strong>1938 год</strong> – библиотека открылась как библиотека имени Максима Горького. За долгие годы она сменила не один адрес, прежде чем обосноваться в здании школы № 475 посёлка Парголово на Торфяной улице.</p>
+                <p><strong>2016 год</strong> – в рамках городского проекта «Имя библиотеки» учреждение переименовано по территориальному признаку и получило новое имя – «Парголовская».</p>
+            </div>
+
+            <h2 class="section-title">Сегодня</h2>
+            <div class="history-block">
+                <p>Несмотря на небольшую площадь, библиотека живёт в активном ритме – здесь проходят тематические встречи и масштабные праздники. Важной частью работы «Парголовской» являются выездные конференции, посвящённые вопросам сохранения и развития библиотечного дела.</p>
+                <p>Мы заботимся о комфорте каждого посетителя. Специально подготовленные видеоролики с сурдопереводом наглядно показывают, как легко ориентироваться внутри помещения, пользоваться услугами и находить нужные ресурсы.</p>
+            </div>
+
+            <h2 class="section-title">Фотографии</h2>
+            <div class="photo-gallery">
+                <a href="s_ylici.jpg" data-lightbox="library-gallery" data-title="Библиотека Парголовская">
+                    <img src="s_ylici.jpg" alt="Библиотека Парголовская">
+                </a>
+                <a href="ya.jpg" data-lightbox="library-gallery" data-title="Библиотекарь">
+                    <img src="ya.jpg" alt="Библиотекарь">
+                </a>
+                <a href="chitalnii_zal.jpg" data-lightbox="library-gallery" data-title="Читальный зал">
+                    <img src="chitalnii_zal.jpg" alt="Читальный зал">
+                </a>
+                <a href="vzroslay_literatura.jpg" data-lightbox="library-gallery" data-title="Взрослый абонемент">
+                    <img src="vzroslay_literatura.jpg" alt="Взрослый абонемент">
+                </a>
+                <a href="detskie_knigi.jpg" data-lightbox="library-gallery" data-title="Детский абонемент">
+                    <img src="detskie_knigi.jpg" alt="Детский абонемент">
+                </a>
+                <a href="dlya_chitatelya.jpg" data-lightbox="library-gallery" data-title="Компьютерное место для читателя">
+                    <img src="dlya_chitatelya.jpg" alt="Компьютерное место для читателя">
+                </a>
+                <a href="knigi_vystavka.jpg" data-lightbox="library-gallery" data-title="Книжная выставка">
+                    <img src="knigi_vystavka.jpg" alt="Книжная выставка">
+                </a>
+                <a href="vystavka_kartin.jpg" data-lightbox="library-gallery" data-title="Интерьер">
+                    <img src="vystavka_kartin.jpg" alt="Интерьер">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Парголовская библиотека © 2026 | ЦБС Выборгского района</p>
+            <div class="social-links">
+                <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
+                <a href="https://cbsvib.ru/" target="_blank">🌐</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTop.classList.add('show');
+            else backToTop.classList.remove('show');
+        });
+    </script>
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+</body>
+</html>
