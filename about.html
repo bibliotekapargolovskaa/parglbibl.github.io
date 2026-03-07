@@ -18,43 +18,18 @@
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         
-        /* Стили для версии для слабовидящих */
         body.special-mode {
             background-color: #fff !important;
             color: #000 !important;
             font-size: 1.2em !important;
         }
-        body.special-mode h1, 
-        body.special-mode h2, 
-        body.special-mode h3, 
-        body.special-mode h4 {
-            color: #000 !important;
-        }
-        body.special-mode a {
-            color: #0000ee !important;
-            text-decoration: underline !important;
-        }
-        body.special-mode header {
-            background-color: #000 !important;
-            box-shadow: none !important;
-        }
-        body.special-mode .nav a {
-            color: #fff !important;
-        }
-        body.special-mode .nav a:hover {
-            color: #ffff00 !important;
-            border-bottom-color: #ffff00 !important;
-        }
-        body.special-mode .btn {
-            background-color: #000 !important;
-            color: #fff !important;
-            border: 2px solid #fff !important;
-            box-shadow: none !important;
-        }
-        body.special-mode .btn:hover {
-            background-color: #333 !important;
-        }
-        body.special-mode .card,
+        body.special-mode h1, body.special-mode h2, body.special-mode h3, body.special-mode h4 { color: #000 !important; }
+        body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
+        body.special-mode header { background-color: #000 !important; }
+        body.special-mode .nav a { color: #fff !important; }
+        body.special-mode .nav a:hover { color: #ffff00 !important; border-bottom-color: #ffff00 !important; }
+        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
+        body.special-mode .btn:hover { background-color: #333 !important; }
         body.special-mode .history-block,
         body.special-mode .photo-gallery a {
             background-color: #fff !important;
@@ -65,39 +40,19 @@
         body.special-mode .photo-gallery img {
             filter: grayscale(100%) contrast(150%);
         }
-        body.special-mode footer {
-            background-color: #000 !important;
-        }
+        body.special-mode footer { background-color: #000 !important; }
         .special-toggle {
-            background: transparent;
-            border: 2px solid #fff;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s;
+            background: transparent; border: 2px solid #fff; color: #fff; padding: 5px 10px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; transition: 0.3s;
         }
-        .special-toggle:hover {
-            background: rgba(255,255,255,0.2);
-        }
-        body.special-mode .special-toggle {
-            border-color: #000;
-            color: #000;
-            background: #fff;
-        }
-        body.special-mode .special-toggle:hover {
-            background: #ddd;
-        }
+        .special-toggle:hover { background: rgba(255,255,255,0.2); }
+        body.special-mode .special-toggle { border-color: #000; color: #000; background: #fff; }
+        body.special-mode .special-toggle:hover { background: #ddd; }
         
         header { background-color: #b5838d; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0; }
         .logo { display: flex; align-items: center; text-decoration: none; }
         .logo img { height: 80px; width: auto; }
-        .nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; flex-wrap: wrap; }
         .nav a { text-decoration: none; color: #fff; font-weight: 600; transition: color 0.3s; }
         .nav a:hover, .nav a.active { color: #f4e3d7; border-bottom: 2px solid #f4e3d7; }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; }
@@ -155,6 +110,7 @@
                     <li><a href="services.html">Услуги</a></li>
                     <li><a href="events.html">События</a></li>
                     <li><a href="speedcubing.html">Спидкубинг</a></li>
+                    <li><a href="newbooks.html">Новинки</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
                     <li><button class="special-toggle" id="specialToggle"><i class="fas fa-eye"></i> Версия для слабовидящих</button></li>
                 </ul>
