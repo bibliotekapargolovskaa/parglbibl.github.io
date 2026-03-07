@@ -39,8 +39,21 @@
         .section-title:after { content: ''; display: block; width: 60px; height: 3px; background: #e5989b; margin: 0.5rem auto 0; }
         
         .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .no-events { grid-column: 1 / -1; text-align: center; padding: 3rem; background: #fff; border-radius: 16px; color: #666; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-        .no-events i { font-size: 3rem; color: #e5989b; margin-bottom: 1rem; }
+        .event-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .event-date { background: #b5838d; color: #fff; padding: 1rem; text-align: center; font-weight: 700; }
+        .event-date .day { font-size: 1.8rem; line-height: 1; }
+        .event-date .month { font-size: 1rem; text-transform: uppercase; }
+        .event-info { padding: 1.5rem; }
+        .event-info h3 { margin-bottom: 0.5rem; color: #5e4b3c; }
+        .event-info p { color: #4a4a4a; }
+        
+        .schedule-section { margin-top: 3rem; }
+        .schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .schedule-item { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .schedule-item h3 { margin-bottom: 1rem; color: #b5838d; }
+        .schedule-list { list-style: none; }
+        .schedule-list li { padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+        .schedule-list li:last-child { border-bottom: none; }
         
         footer { background: #b5838d; color: #fff; padding: 2rem 0; text-align: center; }
         .social-links { margin: 1rem 0; }
@@ -49,6 +62,8 @@
         
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .back-to-top.show { opacity: 1; visibility: visible; }
+        
+        @media (max-width: 768px) { .schedule-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -74,13 +89,43 @@
     <section class="section">
         <div class="container">
             <h2 class="section-title">Ближайшие события</h2>
-            <div class="events-grid">
-                <div class="no-events">
-                    <i class="fas fa-calendar-times"></i>
-                    <p>В настоящее время мероприятия не запланированы.</p>
-                    <p>Следите за анонсами в нашей группе ВКонтакте!</p>
-                    <a href="https://vk.com/pargolovskaya_library" target="_blank" class="btn" style="margin-top: 1rem;">Перейти в группу</a>
+            
+            <!-- Здесь можно добавлять отдельные мероприятия в формате event-card -->
+            <!-- <div class="events-grid"> ... </div> -->
+
+            <!-- Расписание спидкубинга -->
+            <div class="schedule-section">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Регулярные занятия по спидкубингу</h3>
+                <p style="text-align: center; margin-bottom: 2rem;">Подробнее о спидкубинге читайте на <a href="speedcubing.html">отдельной странице</a>.</p>
+                
+                <div class="schedule-grid">
+                    <div class="schedule-item">
+                        <h3><i class="fas fa-calendar-alt" style="color: #e5989b;"></i> Центральная районная библиотека «В Озерках»</h3>
+                        <p>Адрес: пр. Энгельса, 111</p>
+                        <p><strong>Расписание на март 2026:</strong></p>
+                        <ul class="schedule-list">
+                            <li>4 марта (среда) 17:00 – 18:00</li>
+                            <li>6 марта (пятница) 16:00 – 17:00</li>
+                            <li>11 марта (среда) 16:00 – 17:00</li>
+                            <li>20 марта (пятница) 17:00 – 18:00</li>
+                            <li>25 марта (среда) 17:00 – 18:00</li>
+                            <li>27 марта (пятница) 17:00 – 18:00</li>
+                        </ul>
+                    </div>
+                    <div class="schedule-item">
+                        <h3><i class="fas fa-calendar-alt" style="color: #e5989b;"></i> Библиотека «Авеню»</h3>
+                        <p>Адрес: пр. Просвещения, 87</p>
+                        <p><strong>Расписание на март 2026:</strong></p>
+                        <ul class="schedule-list">
+                            <li>13 марта (пятница) 18:00 – 19:00</li>
+                            <li>18 марта (среда) 18:00 – 19:00</li>
+                            <li>20 марта (пятница) 15:00 – 16:00</li>
+                            <li>25 марта (среда) 15:00 – 16:00</li>
+                            <li>27 марта (пятница) 15:00 – 16:00</li>
+                        </ul>
+                    </div>
                 </div>
+                <p style="text-align: center; margin-top: 2rem;">Вход свободный, по предварительной записи. Запись по телефону <strong>+7 (812) 246-93-05</strong> или в <a href="https://vk.com/pargolovskaya_library" target="_blank">группе ВКонтакте</a>.</p>
             </div>
         </div>
     </section>
