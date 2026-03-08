@@ -95,7 +95,7 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
-        /* Стили для нового виджета стены */
+        /* Принудительная ширина для виджета */
         #vk_wall,
         #vk_wall iframe {
             width: 100% !important;
@@ -228,7 +228,7 @@
         </div>
     </section>
 
-    <!-- Новый блок с лентой новостей ВК (виджет Wall) -->
+    <!-- Блок с лентой новостей ВК (исправленный owner с минусом) -->
     <section class="section">
         <div class="container">
             <h2 class="section-title">Новости из нашей группы</h2>
@@ -237,11 +237,11 @@
                 <div id="vk_wall"></div>
                 <script type="text/javascript">
                     VK.Widgets.Wall("vk_wall", {
-                        owner: "176521452", // ID вашей группы
-                        count: 5,            // количество отображаемых записей
-                        width: "100%",       // ширина виджета
-                        height: 500,          // высота
-                        extended: 1           // показывать полный текст записей
+                        owner: "-176521452",   // минус для групп
+                        count: 5,
+                        width: "100%",
+                        height: 500,
+                        extended: 1
                     });
                 </script>
             </div>
