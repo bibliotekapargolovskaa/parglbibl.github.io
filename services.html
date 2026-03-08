@@ -36,6 +36,12 @@
             box-shadow: none !important;
             border: 1px solid #000 !important;
         }
+        body.special-mode .share-buttons a,
+        body.special-mode .print-button a {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
         body.special-mode footer { background-color: #000 !important; }
         .special-toggle {
             background: transparent; border: 2px solid #fff; color: #fff; padding: 5px 10px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; transition: 0.3s;
@@ -74,6 +80,59 @@
         .service-card:hover { transform: translateY(-5px); }
         .service-icon { font-size: 2.5rem; color: #b5838d; margin-bottom: 1rem; }
         .access-block { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-top: 3rem; text-align: center; }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .footer-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .share-buttons a, .print-button a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            color: #b5838d;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        .share-buttons a:hover {
+            background-color: #f4e3d7;
+            color: #5e4b3c;
+            transform: translateY(-3px);
+        }
+        .print-button a {
+            background-color: #fff;
+            color: #b5838d;
+            width: auto;
+            padding: 0 1.2rem;
+            border-radius: 40px;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .print-button a:hover {
+            background-color: #f4e3d7;
+            color: #5e4b3c;
+        }
+        .print-button a i {
+            font-size: 1.2rem;
+        }
         
         footer { background: #b5838d; color: #fff; padding: 2rem 0; text-align: center; }
         .social-links { margin: 1rem 0; }
@@ -151,8 +210,18 @@
     </section>
 
     <footer>
-        <div class="container">
+        <div class="container footer-content">
             <p>Парголовская библиотека © 2026 | ЦБС Выборгского района</p>
+            <div class="footer-actions">
+                <div class="share-buttons">
+                    <a href="https://vk.com/share.php?url=https://parglbibl.github.io/services.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                    <a href="https://t.me/share/url?url=https://parglbibl.github.io/services.html" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://api.whatsapp.com/send?text=https://parglbibl.github.io/services.html" target="_blank" title="Поделиться в WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <div class="print-button">
+                    <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
+                </div>
+            </div>
             <div class="social-links">
                 <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
                 <a href="https://cbsvib.ru/" target="_blank">🌐</a>
