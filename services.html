@@ -16,7 +16,13 @@
         body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #4a4a4a; background-color: #fefaf5; transition: background-color 0.3s, color 0.3s, font-size 0.3s; }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-        
+        @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
         body.special-mode {
             background-color: #fff !important;
             color: #000 !important;
@@ -49,7 +55,6 @@
         .special-toggle:hover { background: rgba(255,255,255,0.2); }
         body.special-mode .special-toggle { border-color: #000; color: #000; background: #fff; }
         body.special-mode .special-toggle:hover { background: #ddd; }
-        
         header { background-color: #b5838d; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0; }
         .logo { display: flex; align-items: center; text-decoration: none; }
@@ -58,7 +63,6 @@
         .nav a { text-decoration: none; color: #fff; font-weight: 600; transition: color 0.3s; }
         .nav a:hover, .nav a.active { color: #f4e3d7; border-bottom: 2px solid #f4e3d7; }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; }
-        
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav { display: none; width: 100%; margin-top: 1rem; }
@@ -67,20 +71,16 @@
             .header-inner { flex-wrap: wrap; }
             .special-toggle { margin: 10px 0; }
         }
-        
         .btn { display: inline-block; background-color: #e5989b; color: #fff; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: background 0.3s; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .btn:hover { background-color: #d68b8e; }
-        
         .section { padding: 4rem 0; }
         .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.2rem; color: #5e4b3c; }
         .section-title:after { content: ''; display: block; width: 60px; height: 3px; background: #e5989b; margin: 0.5rem auto 0; }
-        
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .service-card { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s; }
         .service-card:hover { transform: translateY(-5px); }
         .service-icon { font-size: 2.5rem; color: #b5838d; margin-bottom: 1rem; }
         .access-block { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-top: 3rem; text-align: center; }
-        
         .footer-content {
             display: flex;
             flex-direction: column;
@@ -130,15 +130,11 @@
             background-color: #f4e3d7;
             color: #5e4b3c;
         }
-        .print-button a i {
-            font-size: 1.2rem;
-        }
-        
+        .print-button a i { font-size: 1.2rem; }
         footer { background: #b5838d; color: #fff; padding: 2rem 0; text-align: center; }
         .social-links { margin: 1rem 0; }
         .social-links a { color: #fff; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s; }
         .social-links a:hover { color: #f4e3d7; }
-        
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .back-to-top.show { opacity: 1; visibility: visible; }
     </style>
@@ -158,6 +154,7 @@
                     <li><a href="events.html">События</a></li>
                     <li><a href="speedcubing.html">Спидкубинг</a></li>
                     <li><a href="newbooks.html">Новинки</a></li>
+                    <li><a href="faq.html">Вопросы</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
                     <li><button class="special-toggle" id="specialToggle"><i class="fas fa-eye"></i> Версия для слабовидящих</button></li>
                 </ul>
@@ -169,39 +166,39 @@
         <div class="container">
             <h2 class="section-title">Что мы предлагаем</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-book-open"></i></div>
                     <h3>Абонемент</h3>
                     <p>Выдача книг на дом на 30 дней. Широкий выбор художественной и научной литературы.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-laptop"></i></div>
                     <h3>Электронные ресурсы</h3>
                     <p>Доступ к Национальной электронной библиотеке, онлайн-базам данных и бесплатный Wi-Fi.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
                     <h3>Мероприятия</h3>
                     <p>Тематические встречи, праздники, лекции, мастер-классы для всех возрастов.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-child"></i></div>
                     <h3>Детский отдел</h3>
                     <p>Книжки для малышей и подростков, интерактивные занятия и игровые программы.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-hands"></i></div>
                     <h3>Доступная среда</h3>
                     <p>Видеоролики с сурдопереводом помогут легко ориентироваться в библиотеке.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-puzzle-piece"></i></div>
                     <h3>Спидкубинг</h3>
                     <p>Занятия по сборке кубика Рубика для детей и взрослых (6+).</p>
                 </div>
             </div>
 
-            <div class="access-block">
+            <div class="access-block fade-in">
                 <h3>ДОСТУПНАЯ НАВИГАЦИЯ: БИБЛИОТЕКА ДЛЯ ВСЕХ</h3>
                 <p>Мы заботимся о комфорте каждого посетителя. Специально подготовленные видеоролики наглядно показывают, как легко ориентироваться внутри помещения, пользоваться услугами и находить нужные ресурсы.</p>
                 <p>Видео с сурдопереводом доступно в разделе <a href="contacts.html">Контакты</a>.</p>
@@ -246,6 +243,18 @@
         specialToggle.addEventListener('click', () => {
             document.body.classList.toggle('special-mode');
         });
+
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
     </script>
 </body>
 </html>
