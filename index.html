@@ -91,16 +91,13 @@
         
         .vk-block {
             background: #fff;
-            padding: 0;  /* убрал внутренние отступы, чтобы виджет занимал всю ширину */
+            padding: 1.5rem;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            overflow: hidden; /* чтобы скругление углов работало */
         }
-        /* Принудительно задаём ширину 100% для всех внутренних элементов виджета */
-        #vk_groups,
-        #vk_groups > div,
-        #vk_groups iframe,
-        #vk_groups > div > iframe {
+        /* Стили для нового виджета стены */
+        #vk_wall,
+        #vk_wall iframe {
             width: 100% !important;
         }
         
@@ -231,24 +228,21 @@
         </div>
     </section>
 
-    <!-- Блок с новостями ВК (исправленный ID и усиленные стили для ширины) -->
+    <!-- Новый блок с лентой новостей ВК (виджет Wall) -->
     <section class="section">
         <div class="container">
             <h2 class="section-title">Новости из нашей группы</h2>
             <div class="vk-block">
                 <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
-                <div id="vk_groups"></div>
+                <div id="vk_wall"></div>
                 <script type="text/javascript">
-                    VK.Widgets.Group("vk_groups", {
-                        mode: 4,
-                        wide: 1,
-                        width: "100%",
-                        height: "500",
-                        color1: 'fefaf5',
-                        color2: '4a4a4a',
-                        color3: 'b5838d',
-                        no_sidebar: 1 // скрываем боковую панель
-                    }, 176521452);
+                    VK.Widgets.Wall("vk_wall", {
+                        owner: "176521452", // ID вашей группы
+                        count: 5,            // количество отображаемых записей
+                        width: "100%",       // ширина виджета
+                        height: 500,          // высота
+                        extended: 1           // показывать полный текст записей
+                    });
                 </script>
             </div>
         </div>
