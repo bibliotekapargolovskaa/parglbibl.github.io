@@ -31,7 +31,8 @@
         body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
         body.special-mode .btn:hover { background-color: #333 !important; }
         body.special-mode .history-block,
-        body.special-mode .photo-gallery a {
+        body.special-mode .photo-gallery a,
+        body.special-mode .photo-gallery .download-icon {
             background-color: #fff !important;
             color: #000 !important;
             box-shadow: none !important;
@@ -39,6 +40,12 @@
         }
         body.special-mode .photo-gallery img {
             filter: grayscale(100%) contrast(150%);
+        }
+        body.special-mode .share-buttons a,
+        body.special-mode .print-button a {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
         }
         body.special-mode footer { background-color: #000 !important; }
         .special-toggle {
@@ -83,9 +90,89 @@
             margin-left: auto;
             margin-right: auto;
         }
-        .photo-gallery a { display: block; text-decoration: none; }
-        .photo-gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .photo-gallery a {
+            display: block;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .photo-gallery img { width: 100%; height: 200px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; }
         .photo-gallery img:hover { transform: scale(1.02); }
+        .download-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(255,255,255,0.8);
+            color: #b5838d;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .photo-gallery a:hover .download-icon {
+            opacity: 1;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .footer-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .share-buttons a, .print-button a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            color: #b5838d;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        .share-buttons a:hover {
+            background-color: #f4e3d7;
+            color: #5e4b3c;
+            transform: translateY(-3px);
+        }
+        .print-button a {
+            background-color: #fff;
+            color: #b5838d;
+            width: auto;
+            padding: 0 1.2rem;
+            border-radius: 40px;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .print-button a:hover {
+            background-color: #f4e3d7;
+            color: #5e4b3c;
+        }
+        .print-button a i {
+            font-size: 1.2rem;
+        }
         
         footer { background: #b5838d; color: #fff; padding: 2rem 0; text-align: center; }
         .social-links { margin: 1rem 0; }
@@ -134,37 +221,55 @@
 
             <h2 class="section-title">Фотографии</h2>
             <div class="photo-gallery">
-                <a href="s_ylici.jpg" data-fancybox="gallery" data-caption="Библиотека Парголовская">
+                <a href="s_ylici.jpg" data-fancybox="gallery" data-caption="Библиотека Парголовская" download>
                     <img src="s_ylici.jpg" alt="Библиотека Парголовская">
+                    <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
-                <a href="ya.jpg" data-fancybox="gallery" data-caption="Библиотекарь">
+                <a href="ya.jpg" data-fancybox="gallery" data-caption="Библиотекарь" download>
                     <img src="ya.jpg" alt="Библиотекарь">
+                    <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
-                <a href="chitalnii_zal.jpg" data-fancybox="gallery" data-caption="Читальный зал">
+                <a href="chitalnii_zal.jpg" data-fancybox="gallery" data-caption="Читальный зал" download>
                     <img src="chitalnii_zal.jpg" alt="Читальный зал">
+                    <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
-                <a href="vzroslay_literatura.jpg" data-fancybox="gallery" data-caption="Взрослый абонемент">
+                <a href="vzroslay_literatura.jpg" data-fancybox="gallery" data-caption="Взрослый абонемент" download>
                     <img src="vzroslay_literatura.jpg" alt="Взрослый абонемент">
+                    <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
-                <a href="detskie_knigi.jpg" data-fancybox="gallery" data-caption="Детский абонемент">
+                <a href="detskie_knigi.jpg" data-fancybox="gallery" data-caption="Детский абонемент" download>
                     <img src="detskie_knigi.jpg" alt="Детский абонемент">
+                    <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
-                <a href="dlya_chitatelya.jpg" data-fancybox="gallery" data-caption="Компьютерное место для читателя">
+                <a href="dlya_chitatelya.jpg" data-fancybox="gallery" data-caption="Компьютерное место для читателя" download>
                     <img src="dlya_chitatelya.jpg" alt="Компьютерное место для читателя">
+                    <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
-                <a href="knigi_vystavka.jpg" data-fancybox="gallery" data-caption="Книжная выставка">
+                <a href="knigi_vystavka.jpg" data-fancybox="gallery" data-caption="Книжная выставка" download>
                     <img src="knigi_vystavka.jpg" alt="Книжная выставка">
+                    <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
-                <a href="vystavka_kartin.jpg" data-fancybox="gallery" data-caption="Интерьер">
+                <a href="vystavka_kartin.jpg" data-fancybox="gallery" data-caption="Интерьер" download>
                     <img src="vystavka_kartin.jpg" alt="Интерьер">
+                    <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
+        <div class="container footer-content">
             <p>Парголовская библиотека © 2026 | ЦБС Выборгского района</p>
+            <div class="footer-actions">
+                <div class="share-buttons">
+                    <a href="https://vk.com/share.php?url=https://parglbibl.github.io/about.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                    <a href="https://t.me/share/url?url=https://parglbibl.github.io/about.html" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://api.whatsapp.com/send?text=https://parglbibl.github.io/about.html" target="_blank" title="Поделиться в WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <div class="print-button">
+                    <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
+                </div>
+            </div>
             <div class="social-links">
                 <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
                 <a href="https://cbsvib.ru/" target="_blank">🌐</a>
