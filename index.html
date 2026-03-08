@@ -29,7 +29,13 @@
         body.special-mode .nav a:hover { color: #ffff00 !important; border-bottom-color: #ffff00 !important; }
         body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
         body.special-mode .btn:hover { background-color: #333 !important; }
-        body.special-mode .card { background-color: #fff !important; color: #000 !important; box-shadow: none !important; border: 1px solid #000 !important; }
+        body.special-mode .card,
+        body.special-mode .vk-block {
+            background-color: #fff !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            border: 1px solid #000 !important;
+        }
         body.special-mode .share-buttons a,
         body.special-mode .print-button a {
             background-color: #000 !important;
@@ -82,6 +88,13 @@
         .card { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s; }
         .card:hover { transform: translateY(-5px); }
         .card i { font-size: 2.5rem; color: #b5838d; margin-bottom: 1rem; }
+        
+        .vk-block {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
         
         .footer-content {
             display: flex;
@@ -206,6 +219,28 @@
                     <p>Самые свежие книги уже в нашей библиотеке. Заходите посмотреть!</p>
                     <a href="newbooks.html" class="btn" style="margin-top: 1rem;">Все новинки</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Новый блок с новостями ВК -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Новости из нашей группы</h2>
+            <div class="vk-block">
+                <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+                <div id="vk_groups"></div>
+                <script type="text/javascript">
+                    VK.Widgets.Group("vk_groups", {
+                        mode: 4,
+                        wide: 1,
+                        width: "100%",
+                        height: "500",
+                        color1: 'fefaf5',
+                        color2: '4a4a4a',
+                        color3: 'b5838d'
+                    }, 'pargolovskaya_library');
+                </script>
             </div>
         </div>
     </section>
