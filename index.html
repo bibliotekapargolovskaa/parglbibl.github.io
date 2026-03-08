@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ... все предыдущие стили остаются без изменений ... */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #4a4a4a; background-color: #fefaf5; transition: background-color 0.3s, color 0.3s, font-size 0.3s; }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
@@ -46,7 +47,8 @@
         body.special-mode .btn:hover { background-color: #333 !important; }
         body.special-mode .card,
         body.special-mode .posts-grid .vk-post,
-        body.special-mode .slider-container {
+        body.special-mode .slider-container,
+        body.special-mode .quote-block {
             background-color: #fff !important;
             color: #000 !important;
             box-shadow: none !important;
@@ -140,6 +142,29 @@
         }
         .slider-dot.active {
             background-color: #b5838d;
+        }
+        
+        /* Стили для блока цитаты */
+        .quote-block {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .quote-text {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #5e4b3c;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .quote-author {
+            font-size: 1.1rem;
+            color: #b5838d;
+            font-weight: 600;
         }
         
         .posts-grid {
@@ -313,6 +338,17 @@
         </div>
     </section>
 
+    <!-- Книжная цитата дня -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Книжная цитата дня</h2>
+            <div class="quote-block fade-in" id="quoteBlock">
+                <div class="quote-text"></div>
+                <div class="quote-author"></div>
+            </div>
+        </div>
+    </section>
+
     <section class="section">
         <div class="container">
             <h2 class="section-title">О нас в двух словах</h2>
@@ -362,6 +398,7 @@
     </section>
 
     <script>
+        // Функция для получения постов ВК (оставлена как есть)
         async function fetchVKPosts() {
             try {
                 const proxyUrl = 'http://paglbibl.infinityfreeapp.com/vk-proxy.php';
@@ -421,6 +458,28 @@
         }
 
         window.addEventListener('load', fetchVKPosts);
+
+        // Массив цитат
+        const quotes = [
+            { text: "Чтение — это окно в мир, через которое дети познают себя и жизнь.", author: "В.А. Сухомлинский" },
+            { text: "Книга — это сосуд, который нас наполняет, но сам не пустеет.", author: "А. Декурсель" },
+            { text: "Читая авторов, которые хорошо пишут, привыкаешь хорошо говорить.", author: "Вольтер" },
+            { text: "Любить чтение — это обменивать часы скуки на часы наслаждения.", author: "Шарль Луи Монтескьё" },
+            { text: "Книги — это корабли мысли, странствующие по волнам времени.", author: "Фрэнсис Бэкон" },
+            { text: "В книгах мы жадно читаем о том, на что не обращаем внимания в жизни.", author: "Эмиль Кроткий" },
+            { text: "Чтение хороших книг — это разговор с самыми лучшими людьми прошедших времен.", author: "Рене Декарт" },
+        ];
+
+        // Функция для отображения случайной цитаты
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quote = quotes[randomIndex];
+            document.querySelector('.quote-text').textContent = `«${quote.text}»`;
+            document.querySelector('.quote-author').textContent = quote.author;
+        }
+
+        // Вызываем функцию при загрузке
+        displayRandomQuote();
     </script>
 
     <footer>
@@ -512,7 +571,7 @@
         }
 
         function startAutoSlide() {
-            autoSlideInterval = setInterval(nextSlide, 5000); // 5 секунд
+            autoSlideInterval = setInterval(nextSlide, 5000);
         }
 
         function resetAutoSlide() {
