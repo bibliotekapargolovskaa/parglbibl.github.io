@@ -119,13 +119,14 @@
         .vk-post-text {
             margin-bottom: 1rem;
             color: #4a4a4a;
+            overflow-wrap: break-word;
         }
         .vk-post-image {
             width: 100%;
             max-height: 300px;
             object-fit: cover;
             border-radius: 8px;
-            margin-bottom: 1rem;
+            margin: 1rem 0;
         }
         .vk-post-link {
             display: inline-block;
@@ -280,7 +281,7 @@
         </div>
     </section>
 
-    <!-- Блок с постами ВК -->
+    <!-- Блок с постами ВК (реальные посты через API) -->
     <section class="section">
         <div class="container">
             <h2 class="section-title">Последние новости из нашей группы</h2>
@@ -296,50 +297,56 @@
     <script>
         async function fetchVKPosts() {
             try {
-                const groupId = '176521452'; // ID вашей группы
-                // Используем прокси-сервер для обхода CORS
-                const proxy = 'https://api.allorigins.win/raw?url=';
-                const vkApiUrl = `https://api.vk.com/method/wall.get?owner_id=-${groupId}&count=3&v=5.131&access_token=ваш_токен`;
+                const groupId = '176521452';
+                const token = 'vk1.a.u8vnI7geP084oJDCSW1XFV57SJI0DPcq1qZTZZ4gvAvmnWM4muptrCkqoUmTwVcSvYv6BwJKYm3NoRSj6-KCn1HFd9hZb5aplEJp2hRjqtkMGv9R7kyRKFliDUEEl9Pw_gywV4ut-IW4AeIRKE4z0GFvkIa8MOyn0cCWPB6GlurGkLriShMAW9psub6RosQzfyUTdb05jB1grSFbrV93OA';
+                const response = await fetch(`https://api.vk.com/method/wall.get?owner_id=-${groupId}&count=3&v=5.131&access_token=${token}`);
+                const data = await response.json();
                 
-                // Для простоты демонстрации показываем заглушку
-                document.getElementById('vk-posts').innerHTML = `
-                    <div style="grid-column:1/-1; text-align:center; padding:2rem; background:#f8f8f8; border-radius:16px;">
-                        <p>Для работы с API ВК нужен токен. Пока показываем примеры постов:</p>
-                    </div>
-                `;
+                if (data.error) {
+                    console.error('Ошибка VK API:', data.error);
+                    document.getElementById('vk-posts').innerHTML = '<p style="text-align:center;">Не удалось загрузить новости. Перейдите в нашу группу ВК, чтобы быть в курсе событий.</p>';
+                    return;
+                }
                 
-                // Примеры постов (заменится реальными, когда получите токен)
-                const samplePosts = [
-                    {
-                        date: '8 марта 2026',
-                        text: 'Милые дамы, сердечно поздравляем вас с Международным женским днём! 🥰 С первым весенним лучом, с капелью за окном и с этим чудесным праздником — с 8 Марта!',
-                        image: '',
-                        link: 'https://vk.com/pargolovskaya_library'
-                    },
-                    {
-                        date: '5 марта 2026',
-                        text: 'Приглашаем на бесплатные занятия по спидкубингу в эту среду! В программе: новые алгоритмы, интересные головоломки и отличное настроение.',
-                        image: '',
-                        link: 'https://vk.com/pargolovskaya_library'
-                    },
-                    {
-                        date: '1 марта 2026',
-                        text: 'В нашей библиотеке новые поступления книг! Ждём вас познакомиться с новинками художественной и научно-популярной литературы.',
-                        image: '',
-                        link: 'https://vk.com/pargolovskaya_library'
-                    }
-                ];
-                
+                const posts = data.response.items;
                 let html = '';
-                samplePosts.forEach(post => {
+                
+                posts.forEach(post => {
+                    // Пропускаем закреплённый пост, если он есть
+                    if (post.is_pinned) return;
+                    
+                    const date = new Date(post.date * 1000).toLocaleDateString('ru-RU', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    
+                    let text = post.text || '';
+                    if (text.length > 200) {
+                        text = text.substr(0, 200) + '...';
+                    }
+                    
+                    let imageHtml = '';
+                    if (post.attachments && post.attachments[0] && post.attachments[0].type === 'photo') {
+                        const photo = post.attachments[0].photo;
+                        const photoUrl = photo.sizes[photo.sizes.length - 1].url;
+                        imageHtml = `<img src="${photoUrl}" alt="Фото поста" class="vk-post-image">`;
+                    }
+                    
                     html += `
                         <div class="vk-post">
-                            <div class="vk-post-date">${post.date}</div>
-                            <div class="vk-post-text">${post.text}</div>
-                            <a href="${post.link}" target="_blank" class="vk-post-link">Читать в источнике →</a>
+                            <div class="vk-post-date">${date}</div>
+                            ${imageHtml}
+                            <div class="vk-post-text">${text}</div>
+                            <a href="https://vk.com/wall-${groupId}_${post.id}" target="_blank" class="vk-post-link">Читать в источнике →</a>
                         </div>
                     `;
                 });
+                
+                if (html === '') {
+                    html = '<p style="text-align:center;">Нет свежих новостей. Загляните в нашу группу ВК!</p>';
+                }
+                
                 document.getElementById('vk-posts').innerHTML = html;
                 
             } catch (error) {
@@ -348,7 +355,6 @@
             }
         }
         
-        // Запускаем загрузку после загрузки страницы
         window.addEventListener('load', fetchVKPosts);
     </script>
 
