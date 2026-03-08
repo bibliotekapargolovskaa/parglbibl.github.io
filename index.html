@@ -108,6 +108,16 @@
             display: block;
         }
         
+        /* Растягиваем блок с виджетом на всю ширину на мобильных */
+        @media (max-width: 768px) {
+            .vk-block {
+                margin-left: -15px;
+                margin-right: -15px;
+                width: calc(100% + 30px);
+                border-radius: 0;
+            }
+        }
+        
         .footer-content {
             display: flex;
             flex-direction: column;
