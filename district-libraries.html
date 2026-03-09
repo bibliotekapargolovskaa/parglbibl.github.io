@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Парголовская библиотека - Библиотеки Выборгского района</title>
+    <meta name="description" content="Список библиотек Централизованной библиотечной системы Выборгского района Санкт-Петербурга с адресами и контактами.">
+    <meta name="keywords" content="библиотеки Выборгского района, ЦБС Выборгского района, адреса библиотек">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #4a4a4a; background-color: #fefaf5; transition: background-color 0.3s, color 0.3s, font-size 0.3s; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        body.special-mode {
+            background-color: #fff !important;
+            color: #000 !important;
+            font-size: 1.2em !important;
+        }
+        body.special-mode h1, body.special-mode h2, body.special-mode h3, body.special-mode h4 { color: #000 !important; }
+        body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
+        body.special-mode header { background-color: #000 !important; }
+        body.special-mode .nav a { color: #fff !important; }
+        body.special-mode .nav a:hover { color: #ffff00 !important; border-bottom-color: #ffff00 !important; }
+        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
+        body.special-mode .btn:hover { background-color: #333 !important; }
+        body.special-mode .library-card,
+        body.special-mode .footer-content {
+            background-color: #fff !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            border: 1px solid #000 !important;
+        }
+        body.special-mode .share-buttons a,
+        body.special-mode .print-button a {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+        body.special-mode footer { background-color: #000 !important; }
+        body.special-mode .footer-col a { color: #0000ee !important; }
+        .special-toggle {
+            background: transparent; border: 2px solid #fff; color: #fff; padding: 5px 10px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; transition: 0.3s;
+        }
+        .special-toggle:hover { background: rgba(255,255,255,0.2); }
+        body.special-mode .special-toggle { border-color: #000; color: #000; background: #fff; }
+        body.special-mode .special-toggle:hover { background: #ddd; }
+        header { background-color: #b5838d; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0; }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 80px; width: auto; }
+        .nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; flex-wrap: wrap; }
+        .nav a { text-decoration: none; color: #fff; font-weight: 600; transition: color 0.3s; }
+        .nav a:hover, .nav a.active { color: #f4e3d7; border-bottom: 2px solid #f4e3d7; }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav { display: none; width: 100%; margin-top: 1rem; }
+            .nav.active { display: block; }
+            .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
+            .header-inner { flex-wrap: wrap; }
+            .special-toggle { margin: 10px 0; }
+        }
+        .btn { display: inline-block; background-color: #e5989b; color: #fff; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: background 0.3s; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .btn:hover { background-color: #d68b8e; }
+        .section { padding: 4rem 0; }
+        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.2rem; color: #5e4b3c; }
+        .section-title:after { content: ''; display: block; width: 60px; height: 3px; background: #e5989b; margin: 0.5rem auto 0; }
+        
+        .libraries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .library-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .library-card:hover {
+            transform: translateY(-5px);
+        }
+        .library-card h3 {
+            color: #b5838d;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        .library-address {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .library-address i {
+            color: #b5838d;
+            width: 20px;
+        }
+        .library-phone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .library-phone i {
+            color: #b5838d;
+            width: 20px;
+        }
+        .library-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: #e5989b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .library-link:hover {
+            text-decoration: underline;
+        }
+        .footer-content {
+            background: #b5838d;
+            color: #fff;
+            padding: 3rem 0 2rem;
+            margin-top: 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #fff;
+        }
+        .footer-col p, .footer-col a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover {
+            color: #f4e3d7;
+        }
+        .footer-col i {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.2);
+            transition: background-color 0.3s;
+        }
+        .footer-social a:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+        .footer-social i {
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        .footer-actions {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .share-buttons a, .print-button a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            color: #b5838d;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        .share-buttons a:hover {
+            background-color: #f4e3d7;
+            color: #5e4b3c;
+            transform: translateY(-3px);
+        }
+        .print-button a {
+            width: auto;
+            padding: 0 1.2rem;
+            border-radius: 40px;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .print-button a:hover {
+            background-color: #f4e3d7;
+            color: #5e4b3c;
+        }
+        .print-button a i { font-size: 1.2rem; }
+        .social-links { margin: 1rem 0; }
+        .social-links a { color: #fff; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s; }
+        .social-links a:hover { color: #f4e3d7; }
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Парголовская библиотека">
+            </a>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="events.html">События</a></li>
+                    <li><a href="speedcubing.html">Спидкубинг</a></li>
+                    <li><a href="newbooks.html">Новинки</a></li>
+                    <li><a href="faq.html">Вопросы</a></li>
+                    <li><a href="partners.html">Партнёры</a></li>
+                    <li><a href="district-libraries.html" class="active">Библиотеки района</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><button class="special-toggle" id="specialToggle"><i class="fas fa-eye"></i> Версия для слабовидящих</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Библиотеки Выборгского района</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Здесь вы найдёте адреса и контакты всех библиотек Централизованной библиотечной системы Выборгского района.</p>
+            
+            <div class="libraries-grid">
+                <!-- Центральная районная библиотека «В Озерках» -->
+                <div class="library-card fade-in">
+                    <h3>Центральная районная библиотека «В Озерках»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Энгельса, 111</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 553-01-77</div>
+                    <a href="https://vk.com/cbsvib_ozerki" target="_blank" class="library-link">vk.com/cbsvib_ozerki</a>
+                </div>
+                <!-- Библиотека «Батенинская» -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «Батенинская»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> ул. Харченко, 17</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 510-25-02</div>
+                    <a href="https://vk.com/biblio_bateninskaya" target="_blank" class="library-link">vk.com/biblio_bateninskaya</a>
+                </div>
+                <!-- Библиотечный центр «СТАРТ» -->
+                <div class="library-card fade-in">
+                    <h3>Библиотечный центр «СТАРТ»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> ул. Елизаветинская, 8</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 241-15-32</div>
+                    <a href="https://vk.com/start_biblio" target="_blank" class="library-link">vk.com/start_biblio</a>
+                </div>
+                <!-- Библиотека «Удельнинская» -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «Удельнинская»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Энгельса, 53</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 555-22-23</div>
+                    <a href="https://vk.com/udelninskaya" target="_blank" class="library-link">vk.com/udelninskaya</a>
+                </div>
+                <!-- Центральная детская библиотека им. Н.А. Внукова -->
+                <div class="library-card fade-in">
+                    <h3>Центральная детская библиотека им. Н.А. Внукова</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Просвещения, 36</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 558-15-03</div>
+                    <a href="https://vk.com/vnukovlib" target="_blank" class="library-link">vk.com/vnukovlib</a>
+                </div>
+                <!-- Библиотека им. Д.С. Лихачева -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека им. Д.С. Лихачева</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Тореза, 32</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 297-42-09</div>
+                    <a href="https://vk.com/lihachev_lib" target="_blank" class="library-link">vk.com/lihachev_lib</a>
+                </div>
+                <!-- Детская библиотека №7 -->
+                <div class="library-card fade-in">
+                    <h3>Детская библиотека №7</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> Скобелевский пр., 4</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 451-64-02</div>
+                    <a href="https://vk.com/db7spb" target="_blank" class="library-link">vk.com/db7spb</a>
+                </div>
+                <!-- Библиотека «Книга во времени» -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «Книга во времени»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Пархоменко, 18</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 499-03-75</div>
+                    <a href="https://vk.com/kniga_v_vremeni" target="_blank" class="library-link">vk.com/kniga_v_vremeni</a>
+                </div>
+                <!-- Примечание: список не полный, подробнее на сайте ЦБС -->
+            </div>
+            <p style="text-align: center; margin-top: 2rem;">Подробная информация – на официальном сайте <a href="http://cbsvib.ru" target="_blank">cbsvib.ru</a>.</p>
+        </div>
+    </section>
+
+    <footer class="footer-content">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Парголовская библиотека</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
+                    <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Карта сайта</h3>
+                    <p><a href="index.html">Главная</a></p>
+                    <p><a href="about.html">О нас</a></p>
+                    <p><a href="services.html">Услуги</a></p>
+                    <p><a href="events.html">События</a></p>
+                    <p><a href="speedcubing.html">Спидкубинг</a></p>
+                    <p><a href="newbooks.html">Новинки</a></p>
+                    <p><a href="faq.html">Вопросы</a></p>
+                    <p><a href="partners.html">Партнёры</a></p>
+                    <p><a href="district-libraries.html">Библиотеки района</a></p>
+                    <p><a href="contacts.html">Контакты</a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="footer-social">
+                        <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/..." target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank"><i class="fas fa-comment-dots"></i></a>
+                    </div>
+                    <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-actions">
+                    <div class="share-buttons">
+                        <a href="https://vk.com/share.php?url=https://parglbibl.github.io/district-libraries.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/share/url?url=https://parglbibl.github.io/district-libraries.html" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank" title="Поделиться в MAX"><i class="fas fa-comment-dots"></i></a>
+                    </div>
+                    <div class="print-button">
+                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
+                    </div>
+                </div>
+                <p>© 2026 Парголовская библиотека | ЦБС Выборгского района</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTop.classList.add('show');
+            else backToTop.classList.remove('show');
+        });
+
+        const specialToggle = document.getElementById('specialToggle');
+        specialToggle.addEventListener('click', () => {
+            document.body.classList.toggle('special-mode');
+        });
+
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
+    </script>
+</body>
+</html>
