@@ -12,6 +12,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    <!-- Schema.org разметка -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Library",
+      "name": "Парголовская библиотека",
+      "description": "Уютное пространство для чтения, творчества и встреч. Бесплатные занятия по спидкубингу, доступная среда.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Торфяная, 25",
+        "addressLocality": "Парголово",
+        "addressRegion": "Санкт-Петербург",
+        "postalCode": "194362",
+        "addressCountry": "RU"
+      },
+      "telephone": "+7-812-246-93-05",
+      "email": "pargolovo@cbsvib.ru",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "12:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Sunday"],
+          "opens": "",
+          "closes": "",
+          "description": "Выходной"
+        }
+      ],
+      "url": "https://parglbibl.github.io",
+      "sameAs": [
+        "https://vk.com/pargolovskaya_library",
+        "https://cbsvib.ru/"
+      ]
+    }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #4a4a4a; background-color: #fefaf5; transition: background-color 0.3s, color 0.3s, font-size 0.3s; }
@@ -124,7 +163,7 @@
             z-index: 2;
         }
         .photo-gallery a:hover .download-icon { opacity: 1; }
-        /* Улучшенный подвал */
+        /* Подвал */
         .footer-content {
             background: #b5838d;
             color: #fff;
@@ -325,7 +364,7 @@
                     <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
                 </div>
                 <div class="footer-col">
-                    <h3>Быстрые ссылки</h3>
+                    <h3>Карта сайта</h3>
                     <p><a href="index.html">Главная</a></p>
                     <p><a href="about.html">О нас</a></p>
                     <p><a href="services.html">Услуги</a></p>
@@ -350,48 +389,4 @@
                     <div class="share-buttons">
                         <a href="https://vk.com/share.php?url=https://parglbibl.github.io/speedcubing.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
                         <a href="https://t.me/share/url?url=https://parglbibl.github.io/speedcubing.html" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
-                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank" title="Поделиться в MAX"><i class="fas fa-comment-dots"></i></a>
-                    </div>
-                    <div class="print-button">
-                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
-                    </div>
-                </div>
-                <p>© 2026 Парголовская библиотека | ЦБС Выборгского района</p>
-            </div>
-        </div>
-    </footer>
-
-    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
-
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const nav = document.getElementById('nav');
-        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
-
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) backToTop.classList.add('show');
-            else backToTop.classList.remove('show');
-        });
-
-        const specialToggle = document.getElementById('specialToggle');
-        specialToggle.addEventListener('click', () => {
-            document.body.classList.toggle('special-mode');
-        });
-
-        const faders = document.querySelectorAll('.fade-in');
-        const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
-        const appearOnScroll = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, appearOptions);
-        faders.forEach(fader => appearOnScroll.observe(fader));
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <script>Fancybox.bind("[data-fancybox]");</script>
-</body>
-</html>
+                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank" title="Поделиться в MAX"><
