@@ -43,7 +43,7 @@
           "description": "Выходной"
         }
       ],
-      "url": "https://parglbibl.github.io",
+      "url": "https://parglbibl.ru",
       "sameAs": [
         "https://vk.com/pargolovskaya_library",
         "https://cbsvib.ru/"
@@ -127,8 +127,7 @@
         /* ===== АНИМАЦИЯ ДЛЯ ЗАГОЛОВКОВ ===== */
         .section-title {
             position: relative;
-            display: inline-block;
-            text-align: center;
+            text-align: center !important;
             margin-bottom: 3rem;
             font-size: 2.2rem;
             color: #5e4b3c;
@@ -184,11 +183,35 @@
         body.special-mode .special-toggle:hover { background: #ddd; }
 
         /* ===== ШАПКА ===== */
-        header { background-color: #b5838d; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0; }
-        .logo { display: flex; align-items: center; text-decoration: none; }
-        .logo img { height: 80px; width: auto; }
-        .nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; flex-wrap: wrap; }
+        header {
+            background-color: #b5838d;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
@@ -282,15 +305,26 @@
             height: 2px;
             background-color: #fff;
         }
-        .footer-col p, .footer-col a {
+        /* Исправление для отображения иконок и текста в одну строку */
+        .footer-col p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+        }
+        .footer-col a {
             color: #fff;
             text-decoration: none;
-            display: block;
-            margin-bottom: 0.8rem;
             transition: color 0.3s;
+            display: inline-block;
         }
-        .footer-col a:hover { color: #f4e3d7; }
-        .footer-col i { width: 20px; margin-right: 10px; }
+        .footer-col a:hover {
+            color: #f4e3d7;
+        }
+        .footer-col i {
+            width: 20px;
+            text-align: center;
+        }
         .footer-social {
             display: flex;
             gap: 1rem;
@@ -306,8 +340,13 @@
             background-color: rgba(255,255,255,0.2);
             transition: background-color 0.3s;
         }
-        .footer-social a:hover { background-color: rgba(255,255,255,0.4); }
-        .footer-social i { font-size: 1.3rem; margin: 0; }
+        .footer-social a:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+        .footer-social i {
+            font-size: 1.3rem;
+            margin: 0;
+        }
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -490,8 +529,8 @@
             <div class="footer-bottom">
                 <div class="footer-actions">
                     <div class="share-buttons">
-                        <a href="https://vk.com/share.php?url=https://parglbibl.github.io/district-libraries.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
-                        <a href="https://t.me/share/url?url=https://parglbibl.github.io/district-libraries.html" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/district-libraries.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/share/url?url=https://parglbibl.ru/district-libraries.html" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
                         <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank" title="Поделиться в MAX"><i class="fas fa-comment-dots"></i></a>
                     </div>
                     <div class="print-button">
