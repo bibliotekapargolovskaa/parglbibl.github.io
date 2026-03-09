@@ -43,7 +43,7 @@
           "description": "Выходной"
         }
       ],
-      "url": "https://parglbibl.github.io",
+      "url": "https://parglbibl.ru",
       "sameAs": [
         "https://vk.com/pargolovskaya_library",
         "https://cbsvib.ru/"
@@ -127,7 +127,6 @@
         /* ===== АНИМАЦИЯ ДЛЯ ЗАГОЛОВКОВ ===== */
         .section-title {
             position: relative;
-            /* display: inline-block;  удалено – теперь заголовок блочный */
             text-align: center !important;
             margin-bottom: 3rem;
             font-size: 2.2rem;
@@ -197,18 +196,44 @@
         body.special-mode .special-toggle { border-color: #000; color: #000; background: #fff; }
         body.special-mode .special-toggle:hover { background: #ddd; }
 
-        /* ===== ШАПКА ===== */
-        header { background-color: #b5838d; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0; }
-        .logo { display: flex; align-items: center; text-decoration: none; }
-        .logo img { height: 120px; width: auto; }
-        .nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; flex-wrap: wrap; }
+        /* ===== ШАПКА (стили из старого кода) ===== */
+        header {
+            background-color: #b5838d;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            /* flex: 1;  удалено, как в старом коде */
+        }
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+            /* margin-left удалён */
+        }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav { display: none; width: 100%; margin-top: 1rem; }
             .nav.active { display: block; }
-            .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
+            .nav ul { flex-direction: column; gap: 1rem; text-align: center; margin-left: 0; }
             .header-inner { flex-wrap: wrap; }
             .special-toggle { margin: 10px 0; }
         }
@@ -535,12 +560,12 @@
             <h2 class="section-title">Фотогалерея</h2>
             <div class="slider-container">
                 <div class="slider" id="slider">
-                    <img src="s_ylici.jpg" alt="Библиотека с улицы">
-                    <img src="chitalnii_zal.jpg" alt="Читальный зал">
-                    <img src="vzroslay_literatura.jpg" alt="Взрослый абонемент">
-                    <img src="detskie_knigi.jpg" alt="Детский абонемент">
-                    <img src="knigi_vystavka.jpg" alt="Книжная выставка">
-                    <img src="vystavka_kartin.jpg" alt="Интерьер">
+                    <img src="s_ylici.jpg" alt="Библиотека с улицы" loading="lazy">
+                    <img src="chitalnii_zal.jpg" alt="Читальный зал" loading="lazy">
+                    <img src="vzroslay_literatura.jpg" alt="Взрослый абонемент" loading="lazy">
+                    <img src="detskie_knigi.jpg" alt="Детский абонемент" loading="lazy">
+                    <img src="knigi_vystavka.jpg" alt="Книжная выставка" loading="lazy">
+                    <img src="vystavka_kartin.jpg" alt="Интерьер" loading="lazy">
                 </div>
             </div>
             <div class="slider-dots" id="sliderDots"></div>
@@ -654,8 +679,8 @@
             <div class="footer-bottom">
                 <div class="footer-actions">
                     <div class="share-buttons">
-                        <a href="https://vk.com/share.php?url=https://parglbibl.github.io" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
-                        <a href="https://t.me/share/url?url=https://parglbibl.github.io" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/share/url?url=https://parglbibl.ru" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
                         <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank" title="Поделиться в MAX"><i class="fas fa-comment-dots"></i></a>
                     </div>
                     <div class="print-button">
