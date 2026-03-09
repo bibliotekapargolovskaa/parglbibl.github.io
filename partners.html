@@ -11,6 +11,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Schema.org разметка -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Library",
+      "name": "Парголовская библиотека",
+      "description": "Уютное пространство для чтения, творчества и встреч. Бесплатные занятия по спидкубингу, доступная среда.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Торфяная, 25",
+        "addressLocality": "Парголово",
+        "addressRegion": "Санкт-Петербург",
+        "postalCode": "194362",
+        "addressCountry": "RU"
+      },
+      "telephone": "+7-812-246-93-05",
+      "email": "pargolovo@cbsvib.ru",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "12:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Sunday"],
+          "opens": "",
+          "closes": "",
+          "description": "Выходной"
+        }
+      ],
+      "url": "https://parglbibl.github.io",
+      "sameAs": [
+        "https://vk.com/pargolovskaya_library",
+        "https://cbsvib.ru/"
+      ]
+    }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #4a4a4a; background-color: #fefaf5; transition: background-color 0.3s, color 0.3s, font-size 0.3s; }
@@ -273,6 +312,7 @@
                     <li><a href="newbooks.html">Новинки</a></li>
                     <li><a href="faq.html">Вопросы</a></li>
                     <li><a href="partners.html" class="active">Партнёры</a></li>
+                    <li><a href="district-libraries.html">Библиотеки района</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
                     <li><button class="special-toggle" id="specialToggle"><i class="fas fa-eye"></i> Версия для слабовидящих</button></li>
                 </ul>
@@ -357,6 +397,7 @@
                     <p><a href="newbooks.html">Новинки</a></p>
                     <p><a href="faq.html">Вопросы</a></p>
                     <p><a href="partners.html">Партнёры</a></p>
+                    <p><a href="district-libraries.html">Библиотеки района</a></p>
                     <p><a href="contacts.html">Контакты</a></p>
                 </div>
                 <div class="footer-col">
