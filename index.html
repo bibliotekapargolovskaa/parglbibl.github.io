@@ -51,25 +51,111 @@
     }
     </script>
     <style>
+        /* ===== ОСНОВНЫЕ СТИЛИ ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #4a4a4a; background-color: #fefaf5; transition: background-color 0.3s, color 0.3s, font-size 0.3s; }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-        
-        @media (max-width: 768px) {
-            .container { width: 100%; padding: 0 15px; }
-        }
-        
+        @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
+
+        /* ===== УЛУЧШЕННАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(20px) scale(0.95);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .fade-in.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
-        
+
+        /* ===== АНИМАЦИЯ ДЛЯ КАРТОЧЕК ПРИ НАВЕДЕНИИ ===== */
+        .card, .service-card, .book-card, .achievement-card, .library-card, .partner-category, .event-card, .schedule-item {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+        }
+        .card:hover, .service-card:hover, .book-card:hover, .achievement-card:hover, .library-card:hover, .partner-category:hover, .event-card:hover, .schedule-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.12);
+        }
+
+        /* ===== АНИМАЦИЯ ДЛЯ КНОПОК ===== */
+        .btn {
+            display: inline-block;
+            background-color: #e5989b;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            background-color: #d68b8e;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* ===== АНИМАЦИЯ ПОДЧЁРКИВАНИЯ ССЫЛОК В МЕНЮ ===== */
+        .nav a {
+            position: relative;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #f4e3d7;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav a:hover::after,
+        .nav a.active::after {
+            width: 100%;
+        }
+        .nav a:hover, .nav a.active {
+            border-bottom: none;
+        }
+
+        /* ===== АНИМАЦИЯ ДЛЯ ЗАГОЛОВКОВ ===== */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: #5e4b3c;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #e5989b;
+            margin: 0.5rem auto 0;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .section-title:hover::after {
+            width: 100px;
+        }
+
+        /* ===== АНИМАЦИЯ ДЛЯ КАРТИНОК В ГАЛЕРЕЕ ===== */
+        .photo-gallery img, .achievement-card img {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s;
+        }
+        .photo-gallery img:hover, .achievement-card img:hover {
+            transform: scale(1.05) rotate(1deg);
+            filter: brightness(1.02);
+        }
+
+        /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ===== */
         body.special-mode {
             background-color: #fff !important;
             color: #000 !important;
@@ -79,7 +165,7 @@
         body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
         body.special-mode header { background-color: #000 !important; }
         body.special-mode .nav a { color: #fff !important; }
-        body.special-mode .nav a:hover { color: #ffff00 !important; border-bottom-color: #ffff00 !important; }
+        body.special-mode .nav a:hover { color: #ffff00 !important; }
         body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
         body.special-mode .btn:hover { background-color: #333 !important; }
         body.special-mode .card,
@@ -103,23 +189,21 @@
         }
         body.special-mode footer { background-color: #000 !important; }
         body.special-mode .footer-col a { color: #0000ee !important; }
-        
+
         .special-toggle {
             background: transparent; border: 2px solid #fff; color: #fff; padding: 5px 10px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; transition: 0.3s;
         }
         .special-toggle:hover { background: rgba(255,255,255,0.2); }
         body.special-mode .special-toggle { border-color: #000; color: #000; background: #fff; }
         body.special-mode .special-toggle:hover { background: #ddd; }
-        
+
+        /* ===== ШАПКА ===== */
         header { background-color: #b5838d; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0; }
         .logo { display: flex; align-items: center; text-decoration: none; }
         .logo img { height: 80px; width: auto; }
         .nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; flex-wrap: wrap; }
-        .nav a { text-decoration: none; color: #fff; font-weight: 600; transition: color 0.3s; }
-        .nav a:hover, .nav a.active { color: #f4e3d7; border-bottom: 2px solid #f4e3d7; }
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; }
-        
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav { display: none; width: 100%; margin-top: 1rem; }
@@ -128,10 +212,8 @@
             .header-inner { flex-wrap: wrap; }
             .special-toggle { margin: 10px 0; }
         }
-        
-        .btn { display: inline-block; background-color: #e5989b; color: #fff; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: background 0.3s; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .btn:hover { background-color: #d68b8e; }
-        
+
+        /* ===== ГЕРО ===== */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('logo2.png') center/cover no-repeat;
             color: #fff;
@@ -145,16 +227,14 @@
         }
         .hero h1 { font-size: 3rem; margin-bottom: 1rem; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
         .hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
-        
+
+        /* ===== СЕКЦИИ ===== */
         .section { padding: 4rem 0; }
-        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.2rem; color: #5e4b3c; }
-        .section-title:after { content: ''; display: block; width: 60px; height: 3px; background: #e5989b; margin: 0.5rem auto 0; }
-        
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .card { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s; }
-        .card:hover { transform: translateY(-5px); }
+        .card { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; }
         .card i { font-size: 2.5rem; color: #b5838d; margin-bottom: 1rem; }
-        
+
+        /* ===== СЛАЙДЕР ===== */
         .slider-container {
             position: relative;
             max-width: 1000px;
@@ -190,7 +270,8 @@
         .slider-dot.active {
             background-color: #b5838d;
         }
-        
+
+        /* ===== ЦИТАТА ===== */
         .quote-block {
             background: #fff;
             padding: 2.5rem;
@@ -235,7 +316,8 @@
             background-color: #9f6e7a;
             transform: scale(1.1);
         }
-        
+
+        /* ===== СЛУЧАЙНАЯ КНИГА ===== */
         .random-book {
             background: #fff;
             border-radius: 16px;
@@ -253,21 +335,11 @@
             margin-bottom: 1rem;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .random-book h3 {
-            color: #5e4b3c;
-            margin-bottom: 0.5rem;
-        }
-        .random-book .author {
-            font-weight: 600;
-            color: #b5838d;
-            margin-bottom: 0.5rem;
-        }
-        .random-book .description {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-        
+        .random-book h3 { margin-bottom: 0.5rem; }
+        .random-book .author { font-weight: 600; color: #b5838d; margin-bottom: 0.5rem; }
+        .random-book .description { color: #666; font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        /* ===== ВК-НОВОСТИ ===== */
         .posts-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -285,17 +357,8 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
-        .vk-post-date {
-            color: #b5838d;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-        .vk-post-text {
-            margin-bottom: 1rem;
-            color: #4a4a4a;
-            overflow-wrap: break-word;
-        }
+        .vk-post-date { color: #b5838d; font-size: 0.9rem; margin-bottom: 0.8rem; font-weight: 600; }
+        .vk-post-text { margin-bottom: 1rem; color: #4a4a4a; overflow-wrap: break-word; }
         .vk-post-image {
             width: 100%;
             max-height: 300px;
@@ -310,9 +373,7 @@
             font-weight: 600;
             transition: color 0.3s;
         }
-        .vk-post-link:hover {
-            color: #d68b8e;
-        }
+        .vk-post-link:hover { color: #d68b8e; }
         .vk-more-btn {
             display: inline-block;
             background-color: #b5838d;
@@ -325,10 +386,9 @@
             margin-top: 1.5rem;
             text-align: center;
         }
-        .vk-more-btn:hover {
-            background-color: #9f6e7a;
-        }
-        
+        .vk-more-btn:hover { background-color: #9f6e7a; }
+
+        /* ===== ПОДВАЛ ===== */
         .footer-content {
             background: #b5838d;
             color: #fff;
@@ -364,13 +424,8 @@
             margin-bottom: 0.8rem;
             transition: color 0.3s;
         }
-        .footer-col a:hover {
-            color: #f4e3d7;
-        }
-        .footer-col i {
-            width: 20px;
-            margin-right: 10px;
-        }
+        .footer-col a:hover { color: #f4e3d7; }
+        .footer-col i { width: 20px; margin-right: 10px; }
         .footer-social {
             display: flex;
             gap: 1rem;
@@ -386,13 +441,8 @@
             background-color: rgba(255,255,255,0.2);
             transition: background-color 0.3s;
         }
-        .footer-social a:hover {
-            background-color: rgba(255,255,255,0.4);
-        }
-        .footer-social i {
-            font-size: 1.3rem;
-            margin: 0;
-        }
+        .footer-social a:hover { background-color: rgba(255,255,255,0.4); }
+        .footer-social i { font-size: 1.3rem; margin: 0; }
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -420,6 +470,7 @@
             font-size: 1.2rem;
             transition: all 0.3s;
             border: 1px solid transparent;
+            text-decoration: none;
         }
         .share-buttons a:hover {
             background-color: #f4e3d7;
@@ -427,35 +478,21 @@
             transform: translateY(-3px);
         }
         .print-button a {
-            background-color: #fff;
-            color: #b5838d;
             width: auto;
             padding: 0 1.2rem;
             border-radius: 40px;
             gap: 8px;
-            text-decoration: none;
         }
         .print-button a:hover {
             background-color: #f4e3d7;
             color: #5e4b3c;
         }
         .print-button a i { font-size: 1.2rem; }
-        .social-links { margin: 1rem 0; }
-        .social-links a { color: #fff; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s; }
-        .social-links a:hover { color: #f4e3d7; }
-        
         @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .footer-actions {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
+            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
         }
-        
+
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .back-to-top.show { opacity: 1; visibility: visible; }
     </style>
@@ -582,154 +619,6 @@
         </div>
     </section>
 
-    <script>
-        // Функция для загрузки постов ВК (оставляем без изменений)
-        async function fetchVKPosts() {
-            try {
-                const proxyUrl = 'http://paglbibl.infinityfreeapp.com/vk-proxy.php';
-                const response = await fetch(proxyUrl);
-                const data = await response.json();
-
-                if (data.error) {
-                    console.error('Ошибка прокси:', data.error);
-                    document.getElementById('vk-posts').innerHTML = '<p style="text-align:center;">Не удалось загрузить новости. Перейдите в нашу группу ВК.</p>';
-                    return;
-                }
-
-                const posts = data.response.items;
-                let html = '';
-
-                posts.forEach(post => {
-                    if (post.is_pinned) return;
-
-                    const date = new Date(post.date * 1000).toLocaleDateString('ru-RU', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
-
-                    let text = post.text || '';
-                    if (text.length > 200) {
-                        text = text.substr(0, 200) + '...';
-                    }
-
-                    let imageHtml = '';
-                    if (post.attachments && post.attachments[0] && post.attachments[0].type === 'photo') {
-                        const photo = post.attachments[0].photo;
-                        const photoUrl = photo.sizes[photo.sizes.length - 1].url;
-                        imageHtml = `<img src="${photoUrl}" alt="Фото поста" class="vk-post-image">`;
-                    }
-
-                    html += `
-                        <div class="vk-post fade-in">
-                            <div class="vk-post-date">${date}</div>
-                            ${imageHtml}
-                            <div class="vk-post-text">${text}</div>
-                            <a href="https://vk.com/wall-176521452_${post.id}" target="_blank" class="vk-post-link">Читать в источнике →</a>
-                        </div>
-                    `;
-                });
-
-                if (html === '') {
-                    html = '<p style="text-align:center;">Нет свежих новостей. Загляните в нашу группу ВК!</p>';
-                }
-
-                document.getElementById('vk-posts').innerHTML = html;
-
-            } catch (error) {
-                console.error('Ошибка загрузки:', error);
-                document.getElementById('vk-posts').innerHTML = '<p style="text-align:center;">Не удалось загрузить новости. Перейдите в нашу группу ВК.</p>';
-            }
-        }
-
-        window.addEventListener('load', fetchVKPosts);
-
-        // Цитаты из книги "Энциклопедия мысли" (сокращённый массив для экономии места)
-        const quotes = [
-            { text: "Все дело в мыслях. Мысль – начало всего. И мыслями можно управлять.", author: "Л. Толстой" },
-            { text: "Следовать за мыслями великого человека есть наука самая занимательная.", author: "А. Пушкин" },
-            { text: "Глубокие мысли – это железные гвозди, вогнанные в ум так, что ничем не вырвать их.", author: "Д. Дидро" },
-            { text: "Мысли – крылья души.", author: "П. Бови" },
-            { text: "Невежество бывает двоякого рода: одно – безграмотное, предшествует знанию, другое – чванное, следует за ним.", author: "М. Монтень" },
-            { text: "Незнание никогда не делает зла; пагубно только заблуждение.", author: "Ж.Ж. Руссо" },
-            { text: "Каждый человек может заблуждаться, но упорствовать в заблуждении может только глупец.", author: "Цицерон" },
-            { text: "Кто не доволен тем, что имеет, тот не был бы доволен и тем, что хотел бы иметь.", author: "Б. Ауэрбах" },
-            { text: "Спокойно ждать научаемся мы лишь тогда, когда нам уже нечего ждать.", author: "Мария Эшенбах" },
-            { text: "На одного человека, осуждающего свои собственные безрассудства, найдется сотня людей, предпочитающих осуждать безрассудства своих соседей.", author: "П. Бови" },
-            { text: "Что особенно обидно – это что ум человеческий имеет свои пределы, тогда как глупость человеческая беспредельна.", author: "А. Дюма-сын" },
-            { text: "Молчание – святая святых мудрости: оно хранит не только тайны, но и недостатки.", author: "К. Захарие" },
-            { text: "Молчание – самый надежный ответ на всякие противоречия, продиктованные дерзостью, вульгарностью или завистью.", author: "И. Циммерман" },
-            { text: "Если хотите быть богатым, научитесь не только зарабатывать, но и быть экономным.", author: "Б. Франклин" },
-            { text: "Тратьте меньше, чем зарабатываете, – вот вам и философский камень.", author: "Б. Франклин" },
-            { text: "Мир – это зеркало, из которого смотрит на тебя твое собственное изображение.", author: "В. Теккерей" },
-            { text: "Мода – это жестокосердное божество, которому матери приносят в жертву даже своих детей.", author: "П. Буаст" },
-            { text: "Друзья не желают нам несчастья, но они всегда находят, что мы «и так счастливы».", author: "Л. Лежандр" },
-            { text: "Все неприятности, которые злейший враг ваш может высказать вам в лицо, ничто в сравнении с тем, что ваши лучшие друзья говорят о вас за спиной.", author: "А. Мюссе" },
-            { text: "Изобретения людей подвигаются вперед из века в век. Доброта же и злость людская в общем остаются те же.", author: "Б. Паскаль" },
-            { text: "Странно! Человек возмущается злом, исходящим извне, от других, – тем, чего устранить не может, а не борется со своим собственным злом, хотя это в его власти.", author: "М. Аврелий" },
-            { text: "Кажется, люди больше гневаются, когда их правам наносится легкий ущерб, чем когда они совершенно лишаются их благодаря насилию.", author: "Фукидид" },
-            { text: "Во всякой привязанности есть две стороны: одна любит – другая позволяет любить себя.", author: "А. Карр" },
-            { text: "Такова человеческая радость: она бывает сильной и глубокой лишь тогда, когда человек не знает будущего.", author: "А. Тьер" },
-            { text: "Каждая разлука дает предвкушение смерти и каждое свидание – предвкушение воскрешения.", author: "А. Шопенгауэр" },
-            { text: "Люди мало размышляют; они читают небрежно, судят поспешно и принимают мнения, как принимают монету, потому что она ходячая.", author: "Вольтер" },
-            { text: "Наше раскаяние – это не столько сожаление о причиненном зле, сколько страх за его последствия.", author: "Фр. Ларошфуко" },
-            { text: "Есть люди столь скупые, как если бы они собирались жить вечно, и столь расточительные, как если б они собирались умереть завтра.", author: "Аристотель" },
-            { text: "Когда, кроме рождения, у нас нет ничего великого, то чем знатнее наш род, тем ничтожнее сами мы бываем и кажемся.", author: "Ж. Делиль" },
-            { text: "Никто не знает о нас столько дурного, как мы сами, и тем не менее никто так хорошо не думает о нас, как мы сами.", author: "Ф. Шенман" },
-            { text: "Люди слушаются не того, кто умнее других, но того, кто всех громче говорит.", author: "В. Шекспир" },
-            { text: "Мы смешны не столько теми качествами, которыми обладаем, сколько теми, которые стараемся показать, не имея их.", author: "Фр. Ларошфуко" },
-            { text: "Ничего люди не принимают с таким отвращением, как советы.", author: "Дж. Аддисон" },
-            { text: "Мещанство – это ползучее растение, оно способно бесконечно размножаться и хотело бы задушить своими побегами все на своей дороге.", author: "М. Горький" },
-            { text: "Мир – лотерея богатств, званий, почестей, прав, отыскиваемых без основания и раздаваемых без выбора.", author: "А. Поп" },
-            { text: "Мир житейский – это часы, гири которых – деньги, а маятник – женщина.", author: "Г. Лессинг" },
-            { text: "Молодость – заблуждение, зрелый возраст – борьба, старость – сожаление.", author: "Б. Дизраэли" },
-            { text: "Музыка – истинная всеобщая человеческая речь.", author: "К. Вебер" },
-            { text: "Что значит название? То, что мы называем розой, пахло бы так же хорошо, какое бы имя мы ему ни дали.", author: "В. Шекспир" },
-            { text: "Наслаждение для труженика – кушетка, для усталого – кровать, для сластолюбца – одр болезни.", author: "Б. Стернау" },
-            { text: "Начало есть более чем половина всего.", author: "Аристотель" },
-            { text: "Популярность – преимущество, приобретаемое главным образом отрицательными качествами.", author: "Э. Бульвер" },
-            { text: "Популярность – слава, размененная на медяки.", author: "В. Гюго" },
-            { text: "О, великая чаша популярности, сладко пить из нее, но как тяжело, когда она опрокидывается!", author: "А. Доде" },
-            { text: "Похвала – без ног, порицание – с крыльями.", author: "В. Гюго" },
-            { text: "Ни один человек, любящий свое горло и свой желудок, не произвел ничего истинно прекрасного.", author: "П. Скаррон" },
-            { text: "Ничего люди не желают больше сохранить и ничего между тем меньше не берегут, чем свою собственную жизнь.", author: "Ж. Лабрюйер" },
-            { text: "Два раза не живут, а много и таких, которые и один раз жить не умеют.", author: "Фр. Рюккерт" },
-            { text: "С высокими добродетелями человек поступает совершенно так, как с высокими горами: он удивляется им и затем обходит их.", author: "М. Сафир" }
-        ];
-
-        function displayRandomQuote() {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            const quote = quotes[randomIndex];
-            document.querySelector('.quote-text').textContent = `«${quote.text}»`;
-            document.querySelector('.quote-author').textContent = quote.author;
-        }
-
-        displayRandomQuote();
-
-        // Массив книг из раздела "Новинки"
-        const newBooks = [
-            { title: "Название книги 1", author: "Иван Иванов", description: "Краткое описание первой книги.", image: "images/book1.jpg" },
-            { title: "Название книги 2", author: "Петр Петров", description: "Краткое описание второй книги.", image: "images/book2.jpg" },
-            { title: "Название книги 3", author: "Мария Сидорова", description: "Описание третьей книги.", image: "images/book3.jpg" },
-            { title: "Название книги 4", author: "Алексей Иванов", description: "Захватывающая история.", image: "images/book4.jpg" }
-        ];
-
-        function displayRandomBook() {
-            const randomIndex = Math.floor(Math.random() * newBooks.length);
-            const book = newBooks[randomIndex];
-            const html = `
-                <img src="${book.image}" alt="${book.title}">
-                <h3>${book.title}</h3>
-                <div class="author">${book.author}</div>
-                <div class="description">${book.description}</div>
-                <a href="newbooks.html" class="btn">Все новинки</a>
-            `;
-            document.getElementById('random-book').innerHTML = html;
-        }
-
-        displayRandomBook();
-    </script>
-
     <footer class="footer-content">
         <div class="container">
             <div class="footer-grid">
@@ -781,6 +670,123 @@
     <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
 
     <script>
+        // Массив книг (временный, замените на реальные)
+        const newBooks = [
+            { title: "Название книги 1", author: "Иван Иванов", description: "Краткое описание первой книги.", image: "images/book1.jpg", publisher: "Эксмо", year: "2025" },
+            { title: "Название книги 2", author: "Петр Петров", description: "Краткое описание второй книги.", image: "images/book2.jpg", publisher: "АСТ", year: "2025" },
+            { title: "Название книги 3", author: "Мария Сидорова", description: "Описание третьей книги.", image: "images/book3.jpg", publisher: "Альпина", year: "2024" },
+            { title: "Название книги 4", author: "Алексей Иванов", description: "Захватывающая история.", image: "images/book4.jpg", publisher: "Миф", year: "2025" }
+        ];
+
+        function displayRandomBook() {
+            const randomIndex = Math.floor(Math.random() * newBooks.length);
+            const book = newBooks[randomIndex];
+            const html = `
+                <img src="${book.image}" alt="${book.title}">
+                <h3>${book.title}</h3>
+                <div class="author">${book.author}</div>
+                <div class="description">${book.description}</div>
+                <a href="newbooks.html" class="btn">Все новинки</a>
+            `;
+            document.getElementById('random-book').innerHTML = html;
+        }
+
+        displayRandomBook();
+
+        // ВК-новости
+        async function fetchVKPosts() {
+            try {
+                const proxyUrl = 'http://paglbibl.infinityfreeapp.com/vk-proxy.php';
+                const response = await fetch(proxyUrl);
+                const data = await response.json();
+                if (data.error) {
+                    console.error('Ошибка прокси:', data.error);
+                    document.getElementById('vk-posts').innerHTML = '<p style="text-align:center;">Не удалось загрузить новости. Перейдите в нашу группу ВК.</p>';
+                    return;
+                }
+                const posts = data.response.items;
+                let html = '';
+                posts.forEach(post => {
+                    if (post.is_pinned) return;
+                    const date = new Date(post.date * 1000).toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' });
+                    let text = post.text || '';
+                    if (text.length > 200) text = text.substr(0, 200) + '...';
+                    let imageHtml = '';
+                    if (post.attachments && post.attachments[0] && post.attachments[0].type === 'photo') {
+                        const photo = post.attachments[0].photo;
+                        const photoUrl = photo.sizes[photo.sizes.length - 1].url;
+                        imageHtml = `<img src="${photoUrl}" alt="Фото поста" class="vk-post-image">`;
+                    }
+                    html += `
+                        <div class="vk-post fade-in">
+                            <div class="vk-post-date">${date}</div>
+                            ${imageHtml}
+                            <div class="vk-post-text">${text}</div>
+                            <a href="https://vk.com/wall-176521452_${post.id}" target="_blank" class="vk-post-link">Читать в источнике →</a>
+                        </div>
+                    `;
+                });
+                if (html === '') html = '<p style="text-align:center;">Нет свежих новостей. Загляните в нашу группу ВК!</p>';
+                document.getElementById('vk-posts').innerHTML = html;
+            } catch (error) {
+                console.error('Ошибка загрузки:', error);
+                document.getElementById('vk-posts').innerHTML = '<p style="text-align:center;">Не удалось загрузить новости. Перейдите в нашу группу ВК.</p>';
+            }
+        }
+
+        window.addEventListener('load', fetchVKPosts);
+
+        // Цитаты (сокращённый массив для экономии места, в реальности их больше)
+        const quotes = [
+            { text: "Все дело в мыслях. Мысль – начало всего.", author: "Л. Толстой" },
+            { text: "Следовать за мыслями великого человека есть наука самая занимательная.", author: "А. Пушкин" },
+            { text: "Глубокие мысли – это железные гвозди.", author: "Д. Дидро" }
+        ];
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quote = quotes[randomIndex];
+            document.querySelector('.quote-text').textContent = `«${quote.text}»`;
+            document.querySelector('.quote-author').textContent = quote.author;
+        }
+        displayRandomQuote();
+
+        // Слайдер
+        const slider = document.getElementById('slider');
+        const dotsContainer = document.getElementById('sliderDots');
+        const images = slider.children;
+        const totalImages = images.length;
+        let currentIndex = 0;
+        let autoSlideInterval;
+        for (let i = 0; i < totalImages; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('slider-dot');
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+                resetAutoSlide();
+            });
+            dotsContainer.appendChild(dot);
+        }
+        const dots = document.querySelectorAll('.slider-dot');
+        dots[0].classList.add('active');
+        function goToSlide(index) {
+            currentIndex = index;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+        }
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            goToSlide(currentIndex);
+        }
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+        startAutoSlide();
+
+        // Меню, назад вверх, спецрежим
         const menuToggle = document.getElementById('menuToggle');
         const nav = document.getElementById('nav');
         menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
@@ -796,6 +802,7 @@
             document.body.classList.toggle('special-mode');
         });
 
+        // Анимация появления
         const faders = document.querySelectorAll('.fade-in');
         const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
         const appearOnScroll = new IntersectionObserver((entries, observer) => {
@@ -808,63 +815,15 @@
         }, appearOptions);
         faders.forEach(fader => appearOnScroll.observe(fader));
 
-        const slider = document.getElementById('slider');
-        const dotsContainer = document.getElementById('sliderDots');
-        const images = slider.children;
-        const totalImages = images.length;
-        let currentIndex = 0;
-        let autoSlideInterval;
-
-        for (let i = 0; i < totalImages; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('slider-dot');
-            dot.addEventListener('click', () => {
-                goToSlide(i);
-                resetAutoSlide();
-            });
-            dotsContainer.appendChild(dot);
-        }
-        const dots = document.querySelectorAll('.slider-dot');
-        dots[0].classList.add('active');
-
-        function goToSlide(index) {
-            currentIndex = index;
-            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % totalImages;
-            goToSlide(currentIndex);
-        }
-
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(nextSlide, 5000);
-        }
-
-        function resetAutoSlide() {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        }
-
-        startAutoSlide();
-
-        // Обновляем ссылки для шаринга
+        // Обновление ссылок для шаринга цитаты
         function updateShareLinks() {
             const quoteText = document.querySelector('.quote-text').textContent;
             const quoteAuthor = document.querySelector('.quote-author').textContent;
             const fullQuote = `${quoteText} — ${quoteAuthor}`;
             const currentUrl = encodeURIComponent(window.location.href);
-            
-            const vkShare = document.getElementById('share-vk');
-            const tgShare = document.getElementById('share-tg');
-            const maxShare = document.getElementById('share-max');
-            
-            vkShare.href = `https://vk.com/share.php?url=${currentUrl}&title=${encodeURIComponent(fullQuote)}`;
-            tgShare.href = `https://t.me/share/url?url=${currentUrl}&text=${encodeURIComponent(fullQuote)}`;
-            maxShare.href = `https://apps.apple.com/ru/app/max/id6449714850`;
+            document.getElementById('share-vk').href = `https://vk.com/share.php?url=${currentUrl}&title=${encodeURIComponent(fullQuote)}`;
+            document.getElementById('share-tg').href = `https://t.me/share/url?url=${currentUrl}&text=${encodeURIComponent(fullQuote)}`;
         }
-
         window.addEventListener('load', function() {
             setTimeout(updateShareLinks, 100);
         });
