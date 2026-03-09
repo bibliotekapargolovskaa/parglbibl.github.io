@@ -132,11 +132,13 @@
         .btn { display: inline-block; background-color: #e5989b; color: #fff; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: background 0.3s; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .btn:hover { background-color: #d68b8e; }
         
+        /* Параллакс-эффект на секции hero */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('logo2.png') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('logo2.png') center/cover no-repeat fixed;
             color: #fff;
             padding: 6rem 0;
             text-align: center;
+            /* background-attachment: fixed добавлено выше */
         }
         .hero h1 { font-size: 3rem; margin-bottom: 1rem; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
         .hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
