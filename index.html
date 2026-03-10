@@ -174,7 +174,43 @@
             filter: brightness(1.02);
         }
 
-        /* ===== ШАПКА ===== */
+        /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ (оставлена на случай, если понадобится, но кнопка убрана) ===== */
+        body.special-mode {
+            background-color: #fff !important;
+            color: #000 !important;
+            font-size: 1.2em !important;
+            background-image: none !important;
+        }
+        body.special-mode h1, body.special-mode h2, body.special-mode h3, body.special-mode h4 { color: #000 !important; }
+        body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
+        body.special-mode header { background-color: #000 !important; }
+        body.special-mode .nav a { color: #fff !important; }
+        body.special-mode .nav a:hover { color: #ffff00 !important; }
+        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
+        body.special-mode .btn:hover { background-color: #333 !important; }
+        body.special-mode .card,
+        body.special-mode .posts-grid .vk-post,
+        body.special-mode .slider-container,
+        body.special-mode .quote-block,
+        body.special-mode .random-book,
+        body.special-mode .footer-content,
+        body.special-mode .footer-links a {
+            background-color: #fff !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            border: 1px solid #000 !important;
+        }
+        body.special-mode .share-buttons a,
+        body.special-mode .print-button a,
+        body.special-mode .quote-share a {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+        body.special-mode footer { background-color: #000 !important; }
+        body.special-mode .footer-col a { color: #0000ee !important; }
+
+        /* ===== ШАПКА (без бургера, всегда видимое меню) ===== */
         header {
             background-color: #b5838d;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -184,9 +220,9 @@
         }
         .header-inner {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         .logo {
             display: flex;
@@ -197,35 +233,18 @@
             height: 80px;
             width: auto;
         }
+        .nav {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
         .nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
             align-items: center;
             flex-wrap: wrap;
-        }
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
-        
-        /* Отступ логотипа на десктопах */
-        @media (min-width: 769px) {
-            .logo {
-                margin-right: 40px;
-            }
-        }
-
-        /* Для средних экранов (например, ноутбуки) уменьшаем отступы между пунктами меню */
-        @media (max-width: 1200px) {
-            .nav ul {
-                gap: 1.2rem; /* уменьшаем расстояние между пунктами */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            .nav { display: none; width: 100%; margin-top: 1rem; }
-            .nav.active { display: block; }
-            .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
-            .header-inner { flex-wrap: wrap; }
+            justify-content: flex-end;
         }
 
         /* ===== ГЕРО ===== */
@@ -253,6 +272,15 @@
             margin-left: auto;
             margin-right: auto;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* ===== АДАПТАЦИЯ ЗАГОЛОВКА НА МОБИЛЬНЫХ ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem; /* уменьшаем, чтобы не съезжал */
+                line-height: 1.3;
+                padding: 0 10px;
+            }
         }
 
         /* ===== СЕКЦИИ ===== */
@@ -544,19 +572,6 @@
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .back-to-top.show { opacity: 1; visibility: visible; }
     </style>
-    <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107242178', 'ym');
-
-    ym(107242178, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/107242178" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
 </head>
 <body>
     <header>
@@ -564,9 +579,6 @@
             <a href="index.html" class="logo">
                 <img src="logo.PNG" alt="Парголовская библиотека">
             </a>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-            </div>
             <nav class="nav" id="nav">
                 <ul>
                     <li><a href="index.html" class="active">Главная</a></li>
@@ -747,27 +759,12 @@
     <script>
         // Массив книг (временный, замените на реальные)
         const newBooks = [
-    { title: "История русского искусства", author: "Игнатова Н. О.", description: "От Айвазовского до Репина — популярный рассказ о шедеврах и художниках.", image: "n3.jpg", year: "2025" },
-    { title: "Выдающиеся русские люди", author: "Андрианова Н. А.", description: "Рассказы о выдающихся личностях, изменивших историю.", image: "n5.JPG", year: "2024" },
-    { title: "Выдающиеся русские мальчики", author: "Андрианова Н. А.", description: "Рассказы о детстве великих соотечественников для младших школьников.", image: "n6.jpg", year: "2025" },
-    { title: "Мир для детей", author: "Андрианова Н. А.", description: "Путеводитель по странам и континентам с яркими иллюстрациями.", image: "n7.jpg", year: "2022" },
-    { title: "Мигрант", author: "Астахов П. А.", description: "Современный детектив о судьбах людей в большом городе.", image: "n8.JPG", year: "2025" },
-    { title: "Медвежий край", author: "Кузнецова Д. А.", description: "Роман о природе Чукотки, её тайнах и людях.", image: "n9.jpg", year: "2025" },
-    { title: "Ольга Корса. Женщина-воин", author: "Карабет Е. С.", description: "История Героя России, отдавшей жизнь за Родину.", image: "n10.jpg", year: "2025" },
-    { title: "Легенды и мифы Древней Греции", author: "Кун Н. А.", description: "Классический сборник мифов о богах и героях.", image: "n11.jpg", year: "2024" },
-    { title: "Гербы России. История отечественной геральдики", author: "Воробьева Н. Н.", description: "Подарочное издание о символах и истории российских гербов.", image: "n12.JPG", year: "2022" },
-    { title: "Деньги и бизнес для детей", author: "Васин Д. В.", description: "Детский путеводитель по миру финансов и предпринимательства.", image: "n13.jpg", year: "2024" },
-    { title: "Тайны Камчатки", author: "Котова Т. Б.", description: "Захватывающее путешествие по вулканам и дикой природе полуострова.", image: "n14.jpg", year: "2025" },
-    { title: "Девочка, которая хотела...", author: "Лисова И. А.", description: "Добрая проза для детей о мечтах и их исполнении.", image: "n15.jpg", year: "2024" },
-    { title: "Двенадцать месяцев", author: "Маршак С. Я.", description: "Знаменитая сказка-пьеса о падчерице и братьях-месяцах.", image: "n16.jpg", year: "2024" },
-    { title: "Без вести пропавшие", author: "Пичугин Д. В.", description: "Детектив-реконструкция, основанный на реальных событиях.", image: "n17.JPG", year: "2025" },
-    { title: "На один удар больше", author: "Литвинова А. В.", description: "Авантюрный детектив о тайнах приёмного сына.", image: "n20.jpg", year: "2025" },
-    { title: "Последний знак", author: "Райт А.", description: "Триллер о серийном убийце, лауреат премии «Русский детектив».", image: "n21.JPG", year: "2024" },
-    { title: "Маленький принц", author: "Сент-Экзюпери А. де", description: "Философская сказка-притча о дружбе, любви и ответственности.", image: "n23.jpg", year: "2025" },
-    { title: "Большая история путешествий", author: "Тунич А.", description: "Как люди исследовали мир — для детей от 10 до 12 лет.", image: "n24.jpg", year: "2025" },
-    { title: "Царский подарок", author: "Асопил Е.", description: "Вечерний детектив из серии «Тайна старинной книги».", image: "n26.JPG", year: "2025" },
-    { title: "Пионерская клятва на крови", author: "Смелик Э. В.", description: "Остросюжетный роман о прошлом, которое не отпускает.", image: "n27.jpg", year: "2025" }
-];
+            { title: "Название книги 1", author: "Иван Иванов", description: "Краткое описание первой книги.", image: "images/book1.jpg", publisher: "Эксмо", year: "2025" },
+            { title: "Название книги 2", author: "Петр Петров", description: "Краткое описание второй книги.", image: "images/book2.jpg", publisher: "АСТ", year: "2025" },
+            { title: "Название книги 3", author: "Мария Сидорова", description: "Описание третьей книги.", image: "images/book3.jpg", publisher: "Альпина", year: "2024" },
+            { title: "Название книги 4", author: "Алексей Иванов", description: "Захватывающая история.", image: "images/book4.jpg", publisher: "Миф", year: "2025" }
+        ];
+
         function displayRandomBook() {
             const randomIndex = Math.floor(Math.random() * newBooks.length);
             const book = newBooks[randomIndex];
