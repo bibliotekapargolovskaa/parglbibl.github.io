@@ -12,7 +12,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" href="https://example.com/favicon.ico" type="image/x-icon">
     
     <!-- Schema.org разметка -->
     <script type="application/ld+json">
@@ -248,10 +247,10 @@
         }
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.2rem;   /* чуть крупнее, но помещается */
+                font-size: 2.2rem;
                 line-height: 1.3;
                 padding: 0 10px;
-                word-break: break-word; /* если вдруг слово не влезет – перенесёт */
+                word-break: break-word;
             }
         }
 
@@ -541,6 +540,38 @@
             .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
         }
 
+        /* Аккордеон для карты сайта (только мобильные) */
+        @media (max-width: 768px) {
+            .footer-accordion .accordion-content {
+                display: none;
+            }
+            .footer-accordion.open .accordion-content {
+                display: block;
+            }
+            .accordion-header {
+                cursor: pointer;
+                position: relative;
+                padding-right: 25px;
+            }
+            .accordion-header::after {
+                content: '\f107'; /* fa-chevron-down */
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: transform 0.3s;
+            }
+            .footer-accordion.open .accordion-header::after {
+                transform: translateY(-50%) rotate(180deg);
+            }
+        }
+        /* На десктопе контент виден всегда */
+        .footer-accordion .accordion-content {
+            display: block;
+        }
+
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .back-to-top.show { opacity: 1; visibility: visible; }
     </style>
@@ -650,9 +681,7 @@
     <section class="section">
         <div class="container">
             <h2 class="section-title">Случайная книга из новинок</h2>
-            <div id="random-book" class="random-book fade-in">
-                <!-- сюда подставится карточка книги -->
-            </div>
+            <div id="random-book" class="random-book fade-in"></div>
         </div>
     </section>
 
@@ -672,39 +701,48 @@
         VK.Widgets.Group("vk_groups", {mode: 4, wide: 1, height: 600, color1: "FFFFFF", color2: "000000", color3: "5181B8"}, 176521452);
     </script>
 
+    <!-- Подвал с аккордеоном для мобильных -->
     <footer class="footer-content">
         <div class="container">
             <div class="footer-grid">
+                <!-- Контакты -->
                 <div class="footer-col">
                     <h3>Парголовская библиотека</h3>
                     <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
                     <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
                     <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
                 </div>
-                <div class="footer-col">
-                    <h3>Карта сайта</h3>
-                    <p><a href="index.html">Главная</a></p>
-                    <p><a href="about.html">О нас</a></p>
-                    <p><a href="services.html">Услуги</a></p>
-                    <p><a href="events.html">События</a></p>
-                    <p><a href="speedcubing.html">Спидкубинг</a></p>
-                    <p><a href="newbooks.html">Новинки</a></p>
-                    <p><a href="faq.html">Вопросы</a></p>
-                    <p><a href="partners.html">Партнёры</a></p>
-                    <p><a href="district-libraries.html">Библиотеки района</a></p>
-                    <p><a href="contacts.html">Контакты</a></p>
-                    <p><a href="privacy.html">Политика конфиденциальности</a></p>
+
+                <!-- Карта сайта (аккордеон) -->
+                <div class="footer-col footer-accordion">
+                    <h3 class="accordion-header">Карта сайта</h3>
+                    <div class="accordion-content">
+                        <p><a href="index.html">Главная</a></p>
+                        <p><a href="about.html">О нас</a></p>
+                        <p><a href="services.html">Услуги</a></p>
+                        <p><a href="events.html">События</a></p>
+                        <p><a href="speedcubing.html">Спидкубинг</a></p>
+                        <p><a href="newbooks.html">Новинки</a></p>
+                        <p><a href="faq.html">Вопросы</a></p>
+                        <p><a href="partners.html">Партнёры</a></p>
+                        <p><a href="district-libraries.html">Библиотеки района</a></p>
+                        <p><a href="contacts.html">Контакты</a></p>
+                        <p><a href="privacy.html">Политика конфиденциальности</a></p>
+                    </div>
                 </div>
+
+                <!-- Соцсети -->
                 <div class="footer-col">
                     <h3>Мы в соцсетях</h3>
                     <div class="footer-social">
                         <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
-                        <a href="https://t.me/..." target="_blank"><i class="fab fa-telegram"></i></a>
-                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank"><i class="fas fa-comment-dots"></i></a>
+                        <!-- при необходимости добавьте ссылки на Telegram и MAX -->
                     </div>
                     <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
                 </div>
             </div>
+
+            <!-- Нижняя часть -->
             <div class="footer-bottom">
                 <div class="footer-actions">
                     <div class="share-buttons">
@@ -732,29 +770,29 @@
     </div>
 
     <script>
-        // Массив книг (временный, замените на реальные)
+        // Массив книг (20 книг)
         const newBooks = [
-    { title: "История русского искусства", author: "Игнатова Н. О.", description: "От Айвазовского до Репина — популярный рассказ о шедеврах и художниках.", image: "n3.jpg", year: "2025" },
-    { title: "Выдающиеся русские люди", author: "Андрианова Н. А.", description: "Рассказы о выдающихся личностях, изменивших историю.", image: "n5.JPG", year: "2024" },
-    { title: "Выдающиеся русские мальчики", author: "Андрианова Н. А.", description: "Рассказы о детстве великих соотечественников для младших школьников.", image: "n6.jpg", year: "2025" },
-    { title: "Мир для детей", author: "Андрианова Н. А.", description: "Путеводитель по странам и континентам с яркими иллюстрациями.", image: "n7.jpg", year: "2022" },
-    { title: "Мигрант", author: "Астахов П. А.", description: "Современный детектив о судьбах людей в большом городе.", image: "n8.JPG", year: "2025" },
-    { title: "Медвежий край", author: "Кузнецова Д. А.", description: "Роман о природе Чукотки, её тайнах и людях.", image: "n9.jpg", year: "2025" },
-    { title: "Ольга Корса. Женщина-воин", author: "Карабет Е. С.", description: "История Героя России, отдавшей жизнь за Родину.", image: "n10.jpg", year: "2025" },
-    { title: "Легенды и мифы Древней Греции", author: "Кун Н. А.", description: "Классический сборник мифов о богах и героях.", image: "n11.jpg", year: "2024" },
-    { title: "Гербы России. История отечественной геральдики", author: "Воробьева Н. Н.", description: "Подарочное издание о символах и истории российских гербов.", image: "n12.JPG", year: "2022" },
-    { title: "Деньги и бизнес для детей", author: "Васин Д. В.", description: "Детский путеводитель по миру финансов и предпринимательства.", image: "n13.jpg", year: "2024" },
-    { title: "Тайны Камчатки", author: "Котова Т. Б.", description: "Захватывающее путешествие по вулканам и дикой природе полуострова.", image: "n14.jpg", year: "2025" },
-    { title: "Девочка, которая хотела...", author: "Лисова И. А.", description: "Добрая проза для детей о мечтах и их исполнении.", image: "n15.jpg", year: "2024" },
-    { title: "Двенадцать месяцев", author: "Маршак С. Я.", description: "Знаменитая сказка-пьеса о падчерице и братьях-месяцах.", image: "n16.jpg", year: "2024" },
-    { title: "Без вести пропавшие", author: "Пичугин Д. В.", description: "Детектив-реконструкция, основанный на реальных событиях.", image: "n17.JPG", year: "2025" },
-    { title: "На один удар больше", author: "Литвинова А. В.", description: "Авантюрный детектив о тайнах приёмного сына.", image: "n20.jpg", year: "2025" },
-    { title: "Последний знак", author: "Райт А.", description: "Триллер о серийном убийце, лауреат премии «Русский детектив».", image: "n21.JPG", year: "2024" },
-    { title: "Маленький принц", author: "Сент-Экзюпери А. де", description: "Философская сказка-притча о дружбе, любви и ответственности.", image: "n23.jpg", year: "2025" },
-    { title: "Большая история путешествий", author: "Тунич А.", description: "Как люди исследовали мир — для детей от 10 до 12 лет.", image: "n24.jpg", year: "2025" },
-    { title: "Царский подарок", author: "Асопил Е.", description: "Вечерний детектив из серии «Тайна старинной книги».", image: "n26.JPG", year: "2025" },
-    { title: "Зачем художнику детали?", author: "Никонова А. В.", description: "Увлекательное путешествие в мир искусства и деталей, которые меняют всё.", image: "n27.jpg", year: "2025" }
-];
+            { title: "История русского искусства", author: "Игнатова Н. О.", description: "От Айвазовского до Репина — популярный рассказ о шедеврах и художниках.", image: "n3.jpg", year: "2025" },
+            { title: "Выдающиеся русские люди", author: "Андрианова Н. А.", description: "Рассказы о выдающихся личностях, изменивших историю.", image: "n5.JPG", year: "2024" },
+            { title: "Выдающиеся русские мальчики", author: "Андрианова Н. А.", description: "Рассказы о детстве великих соотечественников для младших школьников.", image: "n6.jpg", year: "2025" },
+            { title: "Мир для детей", author: "Андрианова Н. А.", description: "Путеводитель по странам и континентам с яркими иллюстрациями.", image: "n7.jpg", year: "2022" },
+            { title: "Мигрант", author: "Астахов П. А.", description: "Современный детектив о судьбах людей в большом городе.", image: "n8.JPG", year: "2025" },
+            { title: "Медвежий край", author: "Кузнецова Д. А.", description: "Роман о природе Чукотки, её тайнах и людях.", image: "n9.jpg", year: "2025" },
+            { title: "Ольга Корса. Женщина-воин", author: "Карабет Е. С.", description: "История Героя России, отдавшей жизнь за Родину.", image: "n10.jpg", year: "2025" },
+            { title: "Легенды и мифы Древней Греции", author: "Кун Н. А.", description: "Классический сборник мифов о богах и героях.", image: "n11.jpg", year: "2024" },
+            { title: "Гербы России. История отечественной геральдики", author: "Воробьева Н. Н.", description: "Подарочное издание о символах и истории российских гербов.", image: "n12.JPG", year: "2022" },
+            { title: "Деньги и бизнес для детей", author: "Васин Д. В.", description: "Детский путеводитель по миру финансов и предпринимательства.", image: "n13.jpg", year: "2024" },
+            { title: "Тайны Камчатки", author: "Котова Т. Б.", description: "Захватывающее путешествие по вулканам и дикой природе полуострова.", image: "n14.jpg", year: "2025" },
+            { title: "Девочка, которая хотела...", author: "Лисова И. А.", description: "Добрая проза для детей о мечтах и их исполнении.", image: "n15.jpg", year: "2024" },
+            { title: "Двенадцать месяцев", author: "Маршак С. Я.", description: "Знаменитая сказка-пьеса о падчерице и братьях-месяцах.", image: "n16.jpg", year: "2024" },
+            { title: "Без вести пропавшие", author: "Пичугин Д. В.", description: "Детектив-реконструкция, основанный на реальных событиях.", image: "n17.JPG", year: "2025" },
+            { title: "На один удар больше", author: "Литвинова А. В.", description: "Авантюрный детектив о тайнах приёмного сына.", image: "n20.jpg", year: "2025" },
+            { title: "Последний знак", author: "Райт А.", description: "Триллер о серийном убийце, лауреат премии «Русский детектив».", image: "n21.JPG", year: "2024" },
+            { title: "Маленький принц", author: "Сент-Экзюпери А. де", description: "Философская сказка-притча о дружбе, любви и ответственности.", image: "n23.jpg", year: "2025" },
+            { title: "Большая история путешествий", author: "Тунич А.", description: "Как люди исследовали мир — для детей от 10 до 12 лет.", image: "n24.jpg", year: "2025" },
+            { title: "Царский подарок", author: "Асопил Е.", description: "Вечерний детектив из серии «Тайна старинной книги».", image: "n26.JPG", year: "2025" },
+            { title: "Зачем художнику детали?", author: "Никонова А. В.", description: "Увлекательное путешествие в мир искусства и деталей, которые меняют всё.", image: "n27.jpg", year: "2025" }
+        ];
 
         function displayRandomBook() {
             const randomIndex = Math.floor(Math.random() * newBooks.length);
@@ -771,7 +809,7 @@
 
         displayRandomBook();
 
-        // Цитаты (сокращённый массив)
+        // Цитаты
         const quotes = [
             { text: "Все дело в мыслях. Мысль – начало всего.", author: "Л. Толстой" },
             { text: "Следовать за мыслями великого человека есть наука самая занимательная.", author: "А. Пушкин" },
@@ -821,17 +859,29 @@
         }
         startAutoSlide();
 
-        // Меню, назад вверх
+        // Бургер-меню
         const menuToggle = document.getElementById('menuToggle');
         const nav = document.getElementById('nav');
         menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
 
+        // Кнопка "наверх"
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) backToTop.classList.add('show');
             else backToTop.classList.remove('show');
         });
 
+        // Аккордеон в футере (только мобильные)
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    header.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        // Анимация появления
         const faders = document.querySelectorAll('.fade-in');
         const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
         const appearOnScroll = new IntersectionObserver((entries, observer) => {
@@ -853,7 +903,7 @@
             document.getElementById('share-vk').href = `https://vk.com/share.php?url=${currentUrl}&title=${encodeURIComponent(fullQuote)}`;
             document.getElementById('share-tg').href = `https://t.me/share/url?url=${currentUrl}&text=${encodeURIComponent(fullQuote)}`;
         }
-        window.addEventListener('load', function() {
+        window.addEventListener('load', () => {
             setTimeout(updateShareLinks, 100);
         });
 
@@ -861,8 +911,7 @@
         if (!localStorage.getItem('cookieConsent')) {
             document.getElementById('cookie-banner').style.display = 'block';
         }
-
-        document.getElementById('cookie-accept').addEventListener('click', function() {
+        document.getElementById('cookie-accept').addEventListener('click', () => {
             localStorage.setItem('cookieConsent', 'true');
             document.getElementById('cookie-banner').style.display = 'none';
         });
