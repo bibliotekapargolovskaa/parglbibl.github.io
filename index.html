@@ -642,4 +642,275 @@
                 <div class="slider" id="slider">
                     <img src="s_ylici.jpg" alt="Библиотека с улицы" loading="lazy">
                     <img src="chitalnii_zal.jpg" alt="Читальный зал" loading="lazy">
-                    <img src="vz
+                    <img src="vzroslay_literatura.jpg" alt="Взрослый абонемент" loading="lazy">
+                    <img src="detskie_knigi.jpg" alt="Детский абонемент" loading="lazy">
+                    <img src="knigi_vystavka.jpg" alt="Книжная выставка" loading="lazy">
+                    <img src="vystavka_kartin.jpg" alt="Интерьер" loading="lazy">
+                </div>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Книжная цитата дня</h2>
+            <div class="quote-block fade-in" id="quoteBlock">
+                <div class="quote-text"></div>
+                <div class="quote-author"></div>
+                <div class="quote-share">
+                    <a href="#" id="share-vk" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                    <a href="#" id="share-tg" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" id="share-max" target="_blank" title="Поделиться в MAX"><i class="fas fa-comment-dots"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">О нас в двух словах</h2>
+            <div class="cards-grid">
+                <div class="card fade-in">
+                    <i class="fas fa-history"></i>
+                    <h3>С 1938 года</h3>
+                    <p>Библиотека им. М. Горького, с 2016 – «Парголовская».</p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Активная жизнь</h3>
+                    <p>Встречи, праздники, выездные мероприятия в больницах района.</p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>ул. Торфяная, 25</h3>
+                    <p>Парголово, СПб. Ждём вас!</p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>Спидкубинг</h3>
+                    <p>Обучаем сборке кубика Рубика и других головоломок. 6+</p>
+                    <a href="speedcubing.html" class="btn" style="margin-top: 1rem;">Подробнее</a>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Новые поступления</h3>
+                    <p>Самые свежие книги уже в нашей библиотеке. Заходите посмотреть!</p>
+                    <a href="newbooks.html" class="btn" style="margin-top: 1rem;">Все новинки</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Случайная книга из новинок -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Случайная книга из новинок</h2>
+            <div id="random-book" class="random-book fade-in">
+                <!-- сюда подставится карточка книги -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок новостей ВКонтакте -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Последние новости из нашей группы</h2>
+            <div id="vk_groups"></div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://vk.com/pargolovskaya_library" target="_blank" class="vk-more-btn">Все новости в группе ВК</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Инициализация виджета ВК -->
+    <script type="text/javascript">
+        VK.Widgets.Group("vk_groups", {mode: 4, wide: 1, height: 600, color1: "FFFFFF", color2: "000000", color3: "5181B8"}, 176521452);
+    </script>
+
+    <footer class="footer-content">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Парголовская библиотека</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
+                    <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Карта сайта</h3>
+                    <p><a href="index.html">Главная</a></p>
+                    <p><a href="about.html">О нас</a></p>
+                    <p><a href="services.html">Услуги</a></p>
+                    <p><a href="events.html">События</a></p>
+                    <p><a href="speedcubing.html">Спидкубинг</a></p>
+                    <p><a href="newbooks.html">Новинки</a></p>
+                    <p><a href="faq.html">Вопросы</a></p>
+                    <p><a href="partners.html">Партнёры</a></p>
+                    <p><a href="district-libraries.html">Библиотеки района</a></p>
+                    <p><a href="contacts.html">Контакты</a></p>
+                    <p><a href="privacy.html">Политика конфиденциальности</a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="footer-social">
+                        <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/..." target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank"><i class="fas fa-comment-dots"></i></a>
+                    </div>
+                    <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-actions">
+                    <div class="share-buttons">
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/share/url?url=https://parglbibl.ru" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank" title="Поделиться в MAX"><i class="fas fa-comment-dots"></i></a>
+                    </div>
+                    <div class="print-button">
+                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
+                    </div>
+                </div>
+                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color: #fff; text-decoration: underline;">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <!-- Баннер для cookies -->
+    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
+        <p style="margin: 0; display: inline-block; margin-right: 20px; font-size: 0.95rem;">
+            Мы используем файлы cookie для улучшения работы сайта. Продолжая использовать наш сайт, вы соглашаетесь с <a href="privacy.html" style="color: #e5989b; text-decoration: underline;">политикой конфиденциальности</a>.
+        </p>
+        <button id="cookie-accept" style="background-color: #e5989b; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: background-color 0.3s;">Принять</button>
+    </div>
+
+    <script>
+        // Массив книг (временный, замените на реальные)
+        const newBooks = [
+            { title: "Название книги 1", author: "Иван Иванов", description: "Краткое описание первой книги.", image: "images/book1.jpg", publisher: "Эксмо", year: "2025" },
+            { title: "Название книги 2", author: "Петр Петров", description: "Краткое описание второй книги.", image: "images/book2.jpg", publisher: "АСТ", year: "2025" },
+            { title: "Название книги 3", author: "Мария Сидорова", description: "Описание третьей книги.", image: "images/book3.jpg", publisher: "Альпина", year: "2024" },
+            { title: "Название книги 4", author: "Алексей Иванов", description: "Захватывающая история.", image: "images/book4.jpg", publisher: "Миф", year: "2025" }
+        ];
+
+        function displayRandomBook() {
+            const randomIndex = Math.floor(Math.random() * newBooks.length);
+            const book = newBooks[randomIndex];
+            const html = `
+                <img src="${book.image}" alt="${book.title}">
+                <h3>${book.title}</h3>
+                <div class="author">${book.author}</div>
+                <div class="description">${book.description}</div>
+                <a href="newbooks.html" class="btn">Все новинки</a>
+            `;
+            document.getElementById('random-book').innerHTML = html;
+        }
+
+        displayRandomBook();
+
+        // Цитаты (сокращённый массив)
+        const quotes = [
+            { text: "Все дело в мыслях. Мысль – начало всего.", author: "Л. Толстой" },
+            { text: "Следовать за мыслями великого человека есть наука самая занимательная.", author: "А. Пушкин" },
+            { text: "Глубокие мысли – это железные гвозди.", author: "Д. Дидро" }
+        ];
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quote = quotes[randomIndex];
+            document.querySelector('.quote-text').textContent = `«${quote.text}»`;
+            document.querySelector('.quote-author').textContent = quote.author;
+        }
+        displayRandomQuote();
+
+        // Слайдер
+        const slider = document.getElementById('slider');
+        const dotsContainer = document.getElementById('sliderDots');
+        const images = slider.children;
+        const totalImages = images.length;
+        let currentIndex = 0;
+        let autoSlideInterval;
+        for (let i = 0; i < totalImages; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('slider-dot');
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+                resetAutoSlide();
+            });
+            dotsContainer.appendChild(dot);
+        }
+        const dots = document.querySelectorAll('.slider-dot');
+        dots[0].classList.add('active');
+        function goToSlide(index) {
+            currentIndex = index;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+        }
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            goToSlide(currentIndex);
+        }
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+        startAutoSlide();
+
+        // Меню, назад вверх, спецрежим
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTop.classList.add('show');
+            else backToTop.classList.remove('show');
+        });
+
+        const specialToggle = document.getElementById('specialToggle');
+        specialToggle.addEventListener('click', () => {
+            document.body.classList.toggle('special-mode');
+        });
+
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
+
+        // Обновление ссылок для шаринга цитаты
+        function updateShareLinks() {
+            const quoteText = document.querySelector('.quote-text').textContent;
+            const quoteAuthor = document.querySelector('.quote-author').textContent;
+            const fullQuote = `${quoteText} — ${quoteAuthor}`;
+            const currentUrl = encodeURIComponent(window.location.href);
+            document.getElementById('share-vk').href = `https://vk.com/share.php?url=${currentUrl}&title=${encodeURIComponent(fullQuote)}`;
+            document.getElementById('share-tg').href = `https://t.me/share/url?url=${currentUrl}&text=${encodeURIComponent(fullQuote)}`;
+        }
+        window.addEventListener('load', function() {
+            setTimeout(updateShareLinks, 100);
+        });
+
+        // Cookie-баннер
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
