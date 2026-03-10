@@ -201,11 +201,13 @@
                 margin-right: 40px;
             }
         }
+
         @media (max-width: 1200px) {
             .nav ul {
                 gap: 1.2rem;
             }
         }
+
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav { display: none; width: 100%; margin-top: 1rem; }
@@ -371,6 +373,7 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
+
         @media (min-width: 769px) {
             #vk_groups {
                 width: 100vw;
@@ -384,6 +387,7 @@
                 height: 600px;
             }
         }
+
         @media (max-width: 768px) {
             #vk_groups {
                 width: 100vw;
@@ -568,88 +572,6 @@
             }
         }
 
-        /* ===== ЯЗЫЧОК ДЛЯ СЛАБОВИДЯЩИХ ===== */
-        .special-tab {
-            position: fixed;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            z-index: 1000;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .special-tab-inner {
-            background-color: #e5989b;
-            color: #fff;
-            padding: 12px 8px;
-            border-radius: 0 8px 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-            transition: background-color 0.3s, transform 0.3s;
-            transform: translateX(-80%); /* скрываем текст */
-        }
-
-        .special-tab:hover .special-tab-inner {
-            transform: translateX(0); /* при наведении выезжает */
-        }
-
-        .special-tab-inner i {
-            font-size: 1.5rem;
-            min-width: 24px;
-            text-align: center;
-        }
-
-        .special-tab-inner span {
-            white-space: nowrap;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        /* Адаптация для мобильных — язычок меньше и всегда видна только иконка */
-        @media (max-width: 768px) {
-            .special-tab-inner {
-                padding: 10px 6px;
-                transform: translateX(-70%);
-            }
-            .special-tab-inner span {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* ===== КНОПКА "НАВЕРХ" ===== */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #e5989b;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 99;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .back-to-top:hover {
-            background-color: #d68b8e;
-            transform: scale(1.05);
-        }
-
         /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ===== */
         body.special-mode {
             background-color: #fff !important;
@@ -665,10 +587,12 @@
         body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
         body.special-mode .btn:hover { background-color: #333 !important; }
         body.special-mode .card,
+        body.special-mode .posts-grid .vk-post,
         body.special-mode .slider-container,
         body.special-mode .quote-block,
         body.special-mode .random-book,
-        body.special-mode .footer-content {
+        body.special-mode .footer-content,
+        body.special-mode .footer-links a {
             background-color: #fff !important;
             color: #000 !important;
             box-shadow: none !important;
@@ -683,23 +607,12 @@
         }
         body.special-mode footer { background-color: #000 !important; }
         body.special-mode .footer-col a { color: #0000ee !important; }
-        /* Спецрежим для язычка */
-        body.special-mode .special-tab-inner {
-            background-color: #000 !important;
-            color: #fff !important;
-            border: 2px solid #fff !important;
-        }
+
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .back-to-top.show { opacity: 1; visibility: visible; }
     </style>
 </head>
 <body>
-    <!-- Язычок для слабовидящих -->
-    <div class="special-tab" id="specialTab">
-        <div class="special-tab-inner">
-            <i class="fas fa-eye"></i>
-            <span>Версия для слабовидящих</span>
-        </div>
-    </div>
-
     <header>
         <div class="container header-inner">
             <a href="index.html" class="logo">
@@ -824,9 +737,11 @@
         VK.Widgets.Group("vk_groups", {mode: 4, wide: 1, height: 600, color1: "FFFFFF", color2: "000000", color3: "5181B8"}, 176521452);
     </script>
 
+    <!-- Подвал с версией для слабовидящих -->
     <footer class="footer-content">
         <div class="container">
             <div class="footer-grid">
+                <!-- Контакты -->
                 <div class="footer-col">
                     <h3>Парголовская библиотека</h3>
                     <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
@@ -834,6 +749,7 @@
                     <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
                 </div>
 
+                <!-- Карта сайта (аккордеон) -->
                 <div class="footer-col footer-accordion">
                     <h3 class="accordion-header">Карта сайта</h3>
                     <div class="accordion-content">
@@ -851,15 +767,23 @@
                     </div>
                 </div>
 
+                <!-- Соцсети и ссылка на спецверсию -->
                 <div class="footer-col">
                     <h3>Мы в соцсетях</h3>
                     <div class="footer-social">
                         <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
                     </div>
-                    <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
+                    <!-- Ссылка на версию для слабовидящих -->
+                    <p style="margin-top: 1.5rem;">
+                        <a href="#" id="specialFooterLink" style="color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-eye"></i> Версия для слабовидящих
+                        </a>
+                    </p>
+                    <p style="margin-top: 0.5rem;">Подпишитесь на новости!</p>
                 </div>
             </div>
 
+            <!-- Нижняя часть -->
             <div class="footer-bottom">
                 <div class="footer-actions">
                     <div class="share-buttons">
@@ -993,11 +917,14 @@
             });
         });
 
-        // Язычок для слабовидящих – клик для переключения режима
-        const specialTab = document.getElementById('specialTab');
-        specialTab.addEventListener('click', () => {
-            document.body.classList.toggle('special-mode');
-        });
+        // Ссылка на версию для слабовидящих в подвале
+        const specialFooterLink = document.getElementById('specialFooterLink');
+        if (specialFooterLink) {
+            specialFooterLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.toggle('special-mode');
+            });
+        }
 
         // Анимация появления
         const faders = document.querySelectorAll('.fade-in');
@@ -1012,7 +939,7 @@
         }, appearOptions);
         faders.forEach(fader => appearOnScroll.observe(fader));
 
-        // Обновление ссылок для шаринга цитаты (опционально)
+        // Обновление ссылок для шаринга цитаты
         function updateShareLinks() {
             const quoteText = document.querySelector('.quote-text').textContent;
             const quoteAuthor = document.querySelector('.quote-author').textContent;
