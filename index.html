@@ -75,7 +75,7 @@
             transition: background-color 0.3s, color 0.3s, font-size 0.3s;
         }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .container { width: 90%; max-width: 1400px; margin: 0 auto; } /* Увеличил максимальную ширину */
         @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
 
         /* ===== УЛУЧШЕННАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
@@ -210,6 +210,13 @@
         @media (min-width: 769px) {
             .logo {
                 margin-right: 40px;
+            }
+        }
+
+        /* Для средних экранов (например, ноутбуки) уменьшаем отступы между пунктами меню */
+        @media (max-width: 1200px) {
+            .nav ul {
+                gap: 1.2rem; /* уменьшаем расстояние между пунктами */
             }
         }
 
