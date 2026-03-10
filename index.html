@@ -18,7 +18,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Library",
-      "name": "Парголовская библиотека",
+      "name": "Библиотека «Парголовская»",
       "description": "Уютное пространство для чтения, творчества и встреч. Бесплатные занятия по спидкубингу, доступная среда.",
       "address": {
         "@type": "PostalAddress",
@@ -688,6 +688,7 @@
                     <p><a href="partners.html">Партнёры</a></p>
                     <p><a href="district-libraries.html">Библиотеки района</a></p>
                     <p><a href="contacts.html">Контакты</a></p>
+                    <p><a href="privacy.html">Политика конфиденциальности</a></p>
                 </div>
                 <div class="footer-col">
                     <h3>Мы в соцсетях</h3>
@@ -710,12 +711,20 @@
                         <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
                     </div>
                 </div>
-                <p>© 2026 Парголовская библиотека | ЦБС Выборгского района</p>
+                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color: #fff; text-decoration: underline;">Политика конфиденциальности</a></p>
             </div>
         </div>
     </footer>
 
     <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <!-- Баннер для cookies -->
+    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
+        <p style="margin: 0; display: inline-block; margin-right: 20px; font-size: 0.95rem;">
+            Мы используем файлы cookie для улучшения работы сайта. Продолжая использовать наш сайт, вы соглашаетесь с <a href="privacy.html" style="color: #e5989b; text-decoration: underline;">политикой конфиденциальности</a>.
+        </p>
+        <button id="cookie-accept" style="background-color: #e5989b; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: background-color 0.3s;">Принять</button>
+    </div>
 
     <script>
         // Массив книг (временный, замените на реальные)
@@ -874,6 +883,16 @@
         }
         window.addEventListener('load', function() {
             setTimeout(updateShareLinks, 100);
+        });
+
+        // Cookie-баннер
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
         });
     </script>
 </body>
