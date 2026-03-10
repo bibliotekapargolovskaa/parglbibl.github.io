@@ -196,21 +196,16 @@
         }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
         
-        /* Отступ логотипа на десктопах */
         @media (min-width: 769px) {
             .logo {
                 margin-right: 40px;
             }
         }
-
-        /* Для средних экранов (например, ноутбуки) уменьшаем отступы между пунктами меню */
         @media (max-width: 1200px) {
             .nav ul {
                 gap: 1.2rem;
             }
         }
-
-        /* Мобильная версия – бургер-меню */
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav { display: none; width: 100%; margin-top: 1rem; }
@@ -376,7 +371,6 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
-
         @media (min-width: 769px) {
             #vk_groups {
                 width: 100vw;
@@ -390,7 +384,6 @@
                 height: 600px;
             }
         }
-
         @media (max-width: 768px) {
             #vk_groups {
                 width: 100vw;
@@ -551,12 +544,12 @@
             .accordion-header {
                 cursor: pointer;
                 position: relative;
-                padding-right: 40px; /* чтобы текст не наезжал на стрелку */
+                padding-right: 40px;
                 user-select: none;
                 word-break: break-word;
             }
             .accordion-header::before {
-                content: '\f107'; /* fa-chevron-down — стрелка */
+                content: '\f107';
                 font-family: 'Font Awesome 6 Free';
                 font-weight: 900;
                 position: absolute;
@@ -569,11 +562,97 @@
                 transform: translateY(-50%) rotate(180deg);
             }
         }
-        /* На десктопе контент виден всегда */
         @media (min-width: 769px) {
             .footer-accordion .accordion-content {
                 display: block !important;
             }
+        }
+
+        /* ===== ПЛАВАЮЩАЯ КНОПКА ДЛЯ СЛАБОВИДЯЩИХ ===== */
+        .special-toggle {
+            position: fixed;
+            bottom: 100px; /* выше кнопки "наверх" */
+            right: 20px;
+            background-color: #b5838d;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: background-color 0.3s, transform 0.2s;
+            border: 2px solid transparent;
+        }
+        .special-toggle:hover {
+            background-color: #9f6e7a;
+            transform: scale(1.05);
+        }
+        .special-toggle i {
+            font-size: 1.2rem;
+        }
+        @media (max-width: 768px) {
+            .special-toggle {
+                bottom: 80px;
+                right: 15px;
+                padding: 10px 15px;
+            }
+            .special-toggle span {
+                display: none; /* на мобильных скрываем текст, оставляем иконку */
+            }
+            .special-toggle i {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ===== */
+        body.special-mode {
+            background-color: #fff !important;
+            color: #000 !important;
+            font-size: 1.2em !important;
+            background-image: none !important;
+        }
+        body.special-mode h1, body.special-mode h2, body.special-mode h3, body.special-mode h4 { color: #000 !important; }
+        body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
+        body.special-mode header { background-color: #000 !important; }
+        body.special-mode .nav a { color: #fff !important; }
+        body.special-mode .nav a:hover { color: #ffff00 !important; }
+        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
+        body.special-mode .btn:hover { background-color: #333 !important; }
+        body.special-mode .card,
+        body.special-mode .posts-grid .vk-post,
+        body.special-mode .slider-container,
+        body.special-mode .quote-block,
+        body.special-mode .random-book,
+        body.special-mode .footer-content,
+        body.special-mode .footer-links a {
+            background-color: #fff !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            border: 1px solid #000 !important;
+        }
+        body.special-mode .share-buttons a,
+        body.special-mode .print-button a,
+        body.special-mode .quote-share a {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+        body.special-mode footer { background-color: #000 !important; }
+        body.special-mode .footer-col a { color: #0000ee !important; }
+        /* Спецрежим для кнопки */
+        body.special-mode .special-toggle {
+            background-color: #000 !important;
+            color: #fff !important;
+            border: 2px solid #fff !important;
+        }
+        body.special-mode .special-toggle:hover {
+            background-color: #333 !important;
         }
 
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
@@ -581,6 +660,9 @@
     </style>
 </head>
 <body>
+    <!-- Плавающая кнопка для слабовидящих -->
+    <button class="special-toggle" id="specialToggle"><i class="fas fa-eye"></i> <span>Версия для слабовидящих</span></button>
+
     <header>
         <div class="container header-inner">
             <a href="index.html" class="logo">
@@ -651,32 +733,32 @@
             <h2 class="section-title">О нас в двух словах</h2>
             <div class="cards-grid">
                 <div class="card fade-in">
-    <i class="fas fa-history"></i>
-    <h3>С 1938 года</h3>
-    <p>Старейшая библиотека Парголово: начиная как библиотека им. Горького, с 2016 года мы — «Парголовская».</p>
-</div>
-<div class="card fade-in">
-    <i class="fas fa-calendar-alt"></i>
-    <h3>Всегда в движении</h3>
-    <p>Праздники, встречи, выездные мероприятия — библиотека живёт активной жизнью и за стенами.</p>
-</div>
-<div class="card fade-in">
-    <i class="fas fa-map-marker-alt"></i>
-    <h3>ул. Торфяная, 25</h3>
-    <p>Парголово, СПб. Уютное пространство в самом сердце посёлка — ждём вас!</p>
-</div>
-<div class="card fade-in">
-    <i class="fas fa-puzzle-piece"></i>
-    <h3>Спидкубинг</h3>
-    <p>Учим собирать кубик Рубика и другие головоломки. Для детей и взрослых. 6+</p>
-    <a href="speedcubing.html" class="btn" style="margin-top: 1rem;">Подробнее</a>
-</div>
-<div class="card fade-in">
-    <i class="fas fa-book-open"></i>
-    <h3>Новые поступления</h3>
-    <p>Свежие книги уже на полках. Заходите выбрать что-то новенькое!</p>
-    <a href="newbooks.html" class="btn" style="margin-top: 1rem;">Все новинки</a>
-</div>
+                    <i class="fas fa-history"></i>
+                    <h3>С 1938 года</h3>
+                    <p>Библиотека им. М. Горького, с 2016 – «Парголовская».</p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Активная жизнь</h3>
+                    <p>Встречи, праздники, выездные мероприятия в больницах района.</p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>ул. Торфяная, 25</h3>
+                    <p>Парголово, СПб. Ждём вас!</p>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>Спидкубинг</h3>
+                    <p>Обучаем сборке кубика Рубика и других головоломок. 6+</p>
+                    <a href="speedcubing.html" class="btn" style="margin-top: 1rem;">Подробнее</a>
+                </div>
+                <div class="card fade-in">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Новые поступления</h3>
+                    <p>Самые свежие книги уже в нашей библиотеке. Заходите посмотреть!</p>
+                    <a href="newbooks.html" class="btn" style="margin-top: 1rem;">Все новинки</a>
+                </div>
             </div>
         </div>
     </section>
@@ -705,11 +787,9 @@
         VK.Widgets.Group("vk_groups", {mode: 4, wide: 1, height: 600, color1: "FFFFFF", color2: "000000", color3: "5181B8"}, 176521452);
     </script>
 
-    <!-- Подвал с аккордеоном для мобильных -->
     <footer class="footer-content">
         <div class="container">
             <div class="footer-grid">
-                <!-- Контакты -->
                 <div class="footer-col">
                     <h3>Парголовская библиотека</h3>
                     <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
@@ -717,7 +797,6 @@
                     <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
                 </div>
 
-                <!-- Карта сайта (аккордеон) -->
                 <div class="footer-col footer-accordion">
                     <h3 class="accordion-header">Карта сайта</h3>
                     <div class="accordion-content">
@@ -735,24 +814,19 @@
                     </div>
                 </div>
 
-                <!-- Соцсети -->
                 <div class="footer-col">
                     <h3>Мы в соцсетях</h3>
                     <div class="footer-social">
                         <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
-                        <!-- при необходимости добавьте ссылки на Telegram и MAX -->
                     </div>
                     <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
                 </div>
             </div>
 
-            <!-- Нижняя часть -->
             <div class="footer-bottom">
                 <div class="footer-actions">
                     <div class="share-buttons">
                         <a href="https://vk.com/share.php?url=https://parglbibl.ru" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
-                        <a href="https://t.me/share/url?url=https://parglbibl.ru" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
-                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank" title="Поделиться в MAX"><i class="fas fa-comment-dots"></i></a>
                     </div>
                     <div class="print-button">
                         <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
@@ -882,6 +956,12 @@
             });
         });
 
+        // Кнопка для слабовидящих
+        const specialToggle = document.getElementById('specialToggle');
+        specialToggle.addEventListener('click', () => {
+            document.body.classList.toggle('special-mode');
+        });
+
         // Анимация появления
         const faders = document.querySelectorAll('.fade-in');
         const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
@@ -903,6 +983,7 @@
             const currentUrl = encodeURIComponent(window.location.href);
             document.getElementById('share-vk').href = `https://vk.com/share.php?url=${currentUrl}&title=${encodeURIComponent(fullQuote)}`;
             document.getElementById('share-tg').href = `https://t.me/share/url?url=${currentUrl}&text=${encodeURIComponent(fullQuote)}`;
+            document.getElementById('share-max').href = `https://apps.apple.com/ru/app/max/id6449714850`;
         }
         window.addEventListener('load', () => {
             setTimeout(updateShareLinks, 100);
