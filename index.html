@@ -232,11 +232,11 @@
             }
         }
         .hero h1 {
-    font-size: 2.2rem;   /* было 2rem, теперь чуть больше */
-    line-height: 1.3;
-    padding: 0 10px;
-    word-break: break-word; /* если слово не поместится, перенесёт */
-}
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
@@ -247,9 +247,10 @@
         }
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;   /* чуть крупнее, но помещается */
                 line-height: 1.3;
                 padding: 0 10px;
+                word-break: break-word; /* если вдруг слово не влезет – перенесёт */
             }
         }
 
