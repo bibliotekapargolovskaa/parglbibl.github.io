@@ -75,7 +75,8 @@
             transition: background-color 0.3s, color 0.3s, font-size 0.3s;
         }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
 
         /* ===== УЛУЧШЕННАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
         .fade-in {
@@ -173,12 +174,12 @@
             filter: brightness(1.02);
         }
 
-        /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ (оставлена на случай, если понадобится, но кнопка убрана) ===== */
+        /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ===== */
         body.special-mode {
             background-color: #fff !important;
             color: #000 !important;
             font-size: 1.2em !important;
-            background-image: none !important;
+            background-image: none !important; /* убираем текстуру в спецрежиме */
         }
         body.special-mode h1, body.special-mode h2, body.special-mode h3, body.special-mode h4 { color: #000 !important; }
         body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
@@ -209,7 +210,25 @@
         body.special-mode footer { background-color: #000 !important; }
         body.special-mode .footer-col a { color: #0000ee !important; }
 
-        /* ===== ШАПКА (с горизонтальным меню, всегда видимое, без переносов) ===== */
+        .special-toggle {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+        .special-toggle:hover { background: rgba(255,255,255,0.2); }
+        body.special-mode .special-toggle { border-color: #000; color: #000; background: #fff; }
+        body.special-mode .special-toggle:hover { background: #ddd; }
+
+        /* ===== ШАПКА ===== */
         header {
             background-color: #b5838d;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -219,53 +238,48 @@
         }
         .header-inner {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
-            flex-wrap: wrap; /* Логотип остаётся сверху на узких экранах */
+            padding: 0;
         }
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
+            /* отступ будет добавлен только на десктопах через медиазапрос */
         }
         .logo img {
             height: 80px;
             width: auto;
-        }
-        .nav {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-            min-width: 0; /* Для корректного сжатия */
         }
         .nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
             align-items: center;
-            justify-content: flex-end;
-            /* Запрещаем перенос строк — всегда горизонтальное меню */
-            flex-wrap: nowrap;
-            /* Добавляем горизонтальную прокрутку при необходимости */
-            overflow-x: auto;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            /* Скрываем полосу прокрутки (опционально) */
-            scrollbar-width: none; /* Firefox */
-            margin: 0;
-            padding: 0 0 5px 0; /* небольшой отступ для эстетики */
+            flex-wrap: wrap;
         }
-        .nav ul::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Edge */
-        }
-        .nav li {
-            white-space: nowrap; /* Текст пунктов не переносится */
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
+        
+        /* Отступ логотипа на десктопах */
+        @media (min-width: 769px) {
+            .logo {
+                margin-right: 40px;
+            }
         }
 
-        /* Адаптация для мобильных: уменьшаем расстояние между пунктами */
         @media (max-width: 768px) {
-            .nav ul {
-                gap: 1rem;
+            .menu-toggle { display: block; }
+            .nav { display: none; width: 100%; margin-top: 1rem; }
+            .nav.active { display: block; }
+            .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
+            .header-inner { flex-wrap: wrap; }
+            /* на мобильных кнопка спецверсии без текста */
+            .special-toggle span {
+                display: none; /* прячем текст, оставляем только иконку */
+            }
+            .special-toggle {
+                padding: 5px;
             }
         }
 
@@ -592,6 +606,10 @@
             <a href="index.html" class="logo">
                 <img src="logo.PNG" alt="Парголовская библиотека">
             </a>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <button class="special-toggle" id="specialToggle"><i class="fas fa-eye"></i> <span>Версия для слабовидящих</span></button>
+                <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            </div>
             <nav class="nav" id="nav">
                 <ul>
                     <li><a href="index.html" class="active">Главная</a></li>
@@ -843,14 +861,22 @@
         }
         startAutoSlide();
 
-        // Кнопка "Наверх"
+        // Меню, назад вверх, спецрежим
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) backToTop.classList.add('show');
             else backToTop.classList.remove('show');
         });
 
-        // Анимация появления
+        const specialToggle = document.getElementById('specialToggle');
+        specialToggle.addEventListener('click', () => {
+            document.body.classList.toggle('special-mode');
+        });
+
         const faders = document.querySelectorAll('.fade-in');
         const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
         const appearOnScroll = new IntersectionObserver((entries, observer) => {
