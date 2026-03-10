@@ -199,11 +199,13 @@
                 margin-right: 40px;
             }
         }
+
         @media (max-width: 1200px) {
             .nav ul {
                 gap: 1.2rem;
             }
         }
+
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav { display: none; width: 100%; margin-top: 1rem; }
@@ -272,7 +274,7 @@
         }
         .photo-gallery a:hover .download-icon { opacity: 1; }
 
-        /* ===== ПОДВАЛ ===== */
+        /* ===== ПОДВАЛ (единый с index) ===== */
         .footer-content {
             background: #b5838d;
             color: #fff;
@@ -392,6 +394,41 @@
             .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
         }
 
+        /* Аккордеон для карты сайта (только на мобильных) */
+        @media (max-width: 768px) {
+            .footer-accordion .accordion-content {
+                display: none;
+            }
+            .footer-accordion.open .accordion-content {
+                display: block;
+            }
+            .accordion-header {
+                cursor: pointer;
+                position: relative;
+                padding-right: 40px;
+                user-select: none;
+                word-break: break-word;
+            }
+            .accordion-header::before {
+                content: '\f107';
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: transform 0.3s;
+            }
+            .footer-accordion.open .accordion-header::before {
+                transform: translateY(-50%) rotate(180deg);
+            }
+        }
+        @media (min-width: 769px) {
+            .footer-accordion .accordion-content {
+                display: block !important;
+            }
+        }
+
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .back-to-top.show { opacity: 1; visibility: visible; }
     </style>
@@ -503,42 +540,47 @@
     <footer class="footer-content">
         <div class="container">
             <div class="footer-grid">
+                <!-- Контакты -->
                 <div class="footer-col">
                     <h3>Парголовская библиотека</h3>
                     <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
                     <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
                     <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
                 </div>
-                <div class="footer-col">
-                    <h3>Карта сайта</h3>
-                    <p><a href="index.html">Главная</a></p>
-                    <p><a href="about.html">О нас</a></p>
-                    <p><a href="services.html">Услуги</a></p>
-                    <p><a href="events.html">События</a></p>
-                    <p><a href="speedcubing.html">Спидкубинг</a></p>
-                    <p><a href="newbooks.html">Новинки</a></p>
-                    <p><a href="faq.html">Вопросы</a></p>
-                    <p><a href="partners.html">Партнёры</a></p>
-                    <p><a href="district-libraries.html">Библиотеки района</a></p>
-                    <p><a href="contacts.html">Контакты</a></p>
-                    <p><a href="privacy.html">Политика конфиденциальности</a></p>
+
+                <!-- Карта сайта (аккордеон) -->
+                <div class="footer-col footer-accordion">
+                    <h3 class="accordion-header">Карта сайта</h3>
+                    <div class="accordion-content">
+                        <p><a href="index.html">Главная</a></p>
+                        <p><a href="about.html">О нас</a></p>
+                        <p><a href="services.html">Услуги</a></p>
+                        <p><a href="events.html">События</a></p>
+                        <p><a href="speedcubing.html">Спидкубинг</a></p>
+                        <p><a href="newbooks.html">Новинки</a></p>
+                        <p><a href="faq.html">Вопросы</a></p>
+                        <p><a href="partners.html">Партнёры</a></p>
+                        <p><a href="district-libraries.html">Библиотеки района</a></p>
+                        <p><a href="contacts.html">Контакты</a></p>
+                        <p><a href="privacy.html">Политика конфиденциальности</a></p>
+                    </div>
                 </div>
+
+                <!-- Соцсети (только VK) -->
                 <div class="footer-col">
                     <h3>Мы в соцсетях</h3>
                     <div class="footer-social">
                         <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
-                        <a href="https://t.me/..." target="_blank"><i class="fab fa-telegram"></i></a>
-                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank"><i class="fas fa-comment-dots"></i></a>
                     </div>
                     <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
                 </div>
             </div>
+
+            <!-- Нижняя часть (только VK в кнопках поделиться) -->
             <div class="footer-bottom">
                 <div class="footer-actions">
                     <div class="share-buttons">
                         <a href="https://vk.com/share.php?url=https://parglbibl.ru/speedcubing.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
-                        <a href="https://t.me/share/url?url=https://parglbibl.ru/speedcubing.html" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
-                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank" title="Поделиться в MAX"><i class="fas fa-comment-dots"></i></a>
                     </div>
                     <div class="print-button">
                         <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
@@ -568,6 +610,13 @@
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) backToTop.classList.add('show');
             else backToTop.classList.remove('show');
+        });
+
+        // Аккордеон в футере
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                this.closest('.footer-accordion').classList.toggle('open');
+            });
         });
 
         const faders = document.querySelectorAll('.fade-in');
