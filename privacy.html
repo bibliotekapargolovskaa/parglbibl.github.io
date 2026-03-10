@@ -19,90 +19,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* ===== ОСНОВНЫЕ СТИЛИ ===== */
+        /* === Стили, аналогичные основным страницам (сокращено для экономии места, но можно скопировать из предыдущей версии) === */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #4a4a4a; background-color: #fefaf5; transition: background-color 0.3s, color 0.3s, font-size 0.3s; }
+        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #4a4a4a; background-color: #fefaf5; }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
-
-        /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ===== */
-        body.special-mode {
-            background-color: #fff !important;
-            color: #000 !important;
-            font-size: 1.2em !important;
-        }
-        body.special-mode h1, body.special-mode h2, body.special-mode h3, body.special-mode h4 { color: #000 !important; }
-        body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
-        body.special-mode header { background-color: #000 !important; }
-        body.special-mode .nav a { color: #fff !important; }
-        body.special-mode .nav a:hover { color: #ffff00 !important; }
-        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
-        body.special-mode .btn:hover { background-color: #333 !important; }
-        body.special-mode .privacy-block,
-        body.special-mode .footer-content,
-        body.special-mode .footer-links a {
-            background-color: #fff !important;
-            color: #000 !important;
-            box-shadow: none !important;
-            border: 1px solid #000 !important;
-        }
-        body.special-mode .share-buttons a,
-        body.special-mode .print-button a {
-            background-color: #000 !important;
-            color: #fff !important;
-            border-color: #fff !important;
-        }
-        body.special-mode footer { background-color: #000 !important; }
-        body.special-mode .footer-col a { color: #0000ee !important; }
-
-        .special-toggle {
-            background: transparent; border: 2px solid #fff; color: #fff; padding: 5px 10px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; transition: 0.3s;
-        }
-        .special-toggle:hover { background: rgba(255,255,255,0.2); }
-        body.special-mode .special-toggle { border-color: #000; color: #000; background: #fff; }
-        body.special-mode .special-toggle:hover { background: #ddd; }
-
-        /* ===== ШАПКА ===== */
-        header {
-            background-color: #b5838d;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-        .logo img {
-            height: 80px;
-            width: auto;
-        }
-        .nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .nav a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        .nav a:hover {
-            color: #f4e3d7;
-            border-bottom: 2px solid #f4e3d7;
-        }
+        header { background-color: #b5838d; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0; }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 80px; width: auto; }
+        .nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; flex-wrap: wrap; }
+        .nav a { text-decoration: none; color: #fff; font-weight: 600; }
+        .nav a:hover { color: #f4e3d7; border-bottom: 2px solid #f4e3d7; }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
@@ -110,172 +39,38 @@
             .nav.active { display: block; }
             .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
             .header-inner { flex-wrap: wrap; }
-            .special-toggle { margin: 10px 0; }
         }
-
-        /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
         .section { padding: 4rem 0; }
-        .privacy-block {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .privacy-block h1 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #5e4b3c;
-        }
-        .privacy-block h2 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #b5838d;
-            font-size: 1.5rem;
-        }
-        .privacy-block h2:first-of-type {
-            margin-top: 0;
-        }
-        .privacy-block p {
-            margin-bottom: 1rem;
-            color: #4a4a4a;
-        }
-        .privacy-block ul {
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-        }
-        .privacy-block li {
-            margin-bottom: 0.5rem;
-        }
-        .privacy-block a {
-            color: #e5989b;
-            text-decoration: none;
-        }
-        .privacy-block a:hover {
-            text-decoration: underline;
-        }
-
-        /* ===== ПОДВАЛ ===== */
-        .footer-content {
-            background: #b5838d;
-            color: #fff;
-            padding: 3rem 0 2rem;
-            margin-top: 2rem;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .footer-col h3 {
-            color: #fff;
-            font-size: 1.3rem;
-            margin-bottom: 1.2rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 2px;
-            background-color: #fff;
-        }
-        .footer-col p {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.8rem;
-        }
-        .footer-col a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-            display: inline-block;
-        }
-        .footer-col a:hover {
-            color: #f4e3d7;
-        }
-        .footer-col i {
-            width: 20px;
-            text-align: center;
-        }
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.2);
-            transition: background-color 0.3s;
-        }
-        .footer-social a:hover {
-            background-color: rgba(255,255,255,0.4);
-        }
-        .footer-social i {
-            font-size: 1.3rem;
-            margin: 0;
-        }
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-        .footer-actions {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-        .share-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        .share-buttons a, .print-button a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #fff;
-            color: #b5838d;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-            text-decoration: none;
-        }
-        .share-buttons a:hover {
-            background-color: #f4e3d7;
-            color: #5e4b3c;
-            transform: translateY(-3px);
-        }
-        .print-button a {
-            width: auto;
-            padding: 0 1.2rem;
-            border-radius: 40px;
-            gap: 8px;
-        }
-        .print-button a:hover {
-            background-color: #f4e3d7;
-            color: #5e4b3c;
-        }
-        .print-button a i { font-size: 1.2rem; }
+        .privacy-block { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 900px; margin: 0 auto; }
+        .privacy-block h1 { text-align: center; margin-bottom: 2rem; }
+        .privacy-block h2 { margin-top: 2rem; margin-bottom: 1rem; color: #b5838d; }
+        .privacy-block p { margin-bottom: 1rem; }
+        .privacy-block ul { margin-left: 2rem; margin-bottom: 1rem; }
+        .privacy-block a { color: #e5989b; text-decoration: none; }
+        .privacy-block a:hover { text-decoration: underline; }
+        .footer-content { background: #b5838d; color: #fff; padding: 3rem 0 2rem; margin-top: 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem; }
+        .footer-col h3 { color: #fff; font-size: 1.3rem; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.5rem; }
+        .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background-color: #fff; }
+        .footer-col p { display: flex; align-items: center; gap: 10px; margin-bottom: 0.8rem; }
+        .footer-col a { color: #fff; text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: #f4e3d7; }
+        .footer-col i { width: 20px; text-align: center; }
+        .footer-social { display: flex; gap: 1rem; margin-top: 1rem; }
+        .footer-social a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.2); transition: background-color 0.3s; }
+        .footer-social a:hover { background-color: rgba(255,255,255,0.4); }
+        .footer-social i { font-size: 1.3rem; margin: 0; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); }
+        .footer-actions { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+        .share-buttons { display: flex; gap: 1rem; }
+        .share-buttons a, .print-button a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: #fff; color: #b5838d; font-size: 1.2rem; transition: all 0.3s; text-decoration: none; }
+        .share-buttons a:hover { background-color: #f4e3d7; color: #5e4b3c; transform: translateY(-3px); }
+        .print-button a { width: auto; padding: 0 1.2rem; border-radius: 40px; gap: 8px; }
+        .print-button a:hover { background-color: #f4e3d7; color: #5e4b3c; }
         @media (max-width: 768px) {
             .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
         }
-
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .back-to-top.show { opacity: 1; visibility: visible; }
     </style>
@@ -283,9 +78,7 @@
 <body>
     <header>
         <div class="container header-inner">
-            <a href="index.html" class="logo">
-                <img src="logo.PNG" alt="Парголовская библиотека">
-            </a>
+            <a href="index.html" class="logo"><img src="logo.PNG" alt="Парголовская библиотека"></a>
             <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
             <nav class="nav" id="nav">
                 <ul>
@@ -299,7 +92,7 @@
                     <li><a href="partners.html">Партнёры</a></li>
                     <li><a href="district-libraries.html">Библиотеки района</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
-                    <li><button class="special-toggle" id="specialToggle"><i class="fas fa-eye"></i> Версия для слабовидящих</button></li>
+                    <li><button class="special-toggle" id="specialToggle" style="background: transparent; border: 2px solid #fff; color: #fff; padding: 5px 10px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 5px;"><i class="fas fa-eye"></i> Версия для слабовидящих</button></li>
                 </ul>
             </nav>
         </div>
@@ -309,45 +102,68 @@
         <div class="container">
             <div class="privacy-block">
                 <h1>Политика конфиденциальности</h1>
-                <p>Настоящая Политика конфиденциальности (далее — Политика) действует в отношении всей информации, которую сайт «Парголовская библиотека» (расположенный по адресу <strong>parglbibl.ru</strong>) может получить о пользователе во время использования им сайта.</p>
                 
-                <h2>1. Какие данные мы собираем</h2>
-                <p>Мы собираем только те данные, которые вы добровольно предоставляете нам через форму обратной связи на странице «Контакты»:</p>
+                <h2>1. Общие положения</h2>
+                <p>Настоящая Политика конфиденциальности (далее — Политика) действует в отношении всей информации, которую сайт «Библиотека «Парголовская»» (далее — Оператор), расположенный на доменном имени <strong>parglbibl.ru</strong>, может получить о пользователе во время использования им сайта.</p>
+                <p>Использование сайта означает безоговорочное согласие пользователя с настоящей Политикой и указанными в ней условиями обработки его персональных данных. В случае несогласия с этими условиями пользователь должен воздержаться от использования сайта.</p>
+                
+                <h2>2. Сведения об Операторе</h2>
                 <ul>
-                    <li>Ваше имя;</li>
-                    <li>Ваш адрес электронной почты;</li>
-                    <li>Текст вашего сообщения.</li>
+                    <li><strong>Наименование:</strong> Библиотека «Парголовская» (структурное подразделение ЦБС Выборгского района)</li>
+                    <li><strong>Адрес:</strong> 194362, Санкт-Петербург, пос. Парголово, ул. Торфяная, д. 25</li>
+                    <li><strong>Телефон:</strong> +7 (812) 246-93-05</li>
+                    <li><strong>Электронная почта:</strong> pargolovo@cbsvib.ru</li>
                 </ul>
-                <p>Мы не собираем никакие другие персональные данные (адрес, телефон, паспортные данные, платёжную информацию и т.д.).</p>
                 
-                <h2>2. Для чего мы собираем данные</h2>
-                <p>Собранные данные используются исключительно для:</p>
+                <h2>3. Какие данные мы собираем</h2>
+                <p><strong>3.1. Данные, которые вы предоставляете добровольно:</strong></p>
                 <ul>
-                    <li>Ответа на ваше обращение (например, чтобы связаться с вами по поводу записи на спидкубинг или вопроса о книгах);</li>
-                    <li>Улучшения качества обслуживания.</li>
+                    <li>Имя, адрес электронной почты, текст сообщения (при заполнении формы обратной связи).</li>
                 </ul>
-                <p>Мы не используем ваши данные для рассылки рекламы или передачи третьим лицам.</p>
-                
-                <h2>3. Передача данных третьим лицам</h2>
-                <p>Мы не передаём ваши персональные данные третьим лицам. Исключение составляют случаи, предусмотренные законодательством Российской Федерации (например, по запросу уполномоченных государственных органов).</p>
-                
-                <h2>4. Защита данных</h2>
-                <p>Мы принимаем все необходимые меры для защиты ваших данных от несанкционированного доступа, изменения, раскрытия или уничтожения. Сайт работает по защищённому протоколу HTTPS, что гарантирует шифрование передаваемой информации.</p>
-                
-                <h2>5. Хранение данных</h2>
-                <p>Ваши данные хранятся до тех пор, пока не будет достигнута цель их сбора (например, пока мы не ответим на ваше обращение). После этого они удаляются.</p>
-                
-                <h2>6. Ваши права</h2>
-                <p>Вы имеете право в любой момент запросить удаление ваших данных или уточнить, какая информация о вас хранится. Для этого свяжитесь с нами по адресу: <a href="mailto:pargolovo@cbsvib.ru">pargolovo@cbsvib.ru</a>.</p>
-                
-                <h2>7. Изменения в Политике</h2>
-                <p>Мы оставляем за собой право вносить изменения в настоящую Политику. Новая версия всегда будет доступна на этой странице. Продолжая пользоваться сайтом после изменений, вы автоматически соглашаетесь с обновлённой Политикой.</p>
-                
-                <h2>8. Контактная информация</h2>
-                <p>По всем вопросам, связанным с обработкой персональных данных, вы можете обращаться:</p>
+                <p><strong>3.2. Данные, собираемые автоматически:</strong></p>
                 <ul>
-                    <li>По электронной почте: <a href="mailto:pargolovo@cbsvib.ru">pargolovo@cbsvib.ru</a></li>
-                    <li>Через форму обратной связи на странице <a href="contacts.html">Контакты</a></li>
+                    <li>IP-адрес, тип браузера, время посещения, страницы, которые вы просматриваете, — с помощью файлов cookie и аналогичных технологий.</li>
+                </ul>
+                <p>Мы не собираем и не обрабатываем специальные категории персональных данных (касающиеся расовой, национальной принадлежности, политических взглядов, состояния здоровья и т.п.).</p>
+                
+                <h2>4. Цели обработки персональных данных</h2>
+                <ul>
+                    <li>Ответ на обращения пользователей (через форму обратной связи).</li>
+                    <li>Улучшение работы сайта, анализ посещаемости и предпочтений пользователей (с помощью метрических систем).</li>
+                </ul>
+                
+                <h2>5. Правовые основания обработки</h2>
+                <p>Обработка персональных данных осуществляется на основании Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и в соответствии с согласием пользователя, выраженным путем активного проставления галочки в чек-боксе при отправке формы, а также путем продолжения использования сайта после уведомления о cookie.</p>
+                
+                <h2>6. Сроки хранения и порядок уничтожения</h2>
+                <p>Персональные данные хранятся не дольше, чем это необходимо для целей обработки. Данные, полученные через форму обратной связи, хранятся до момента ответа на обращение, но не более 30 дней. По истечении срока или при отзыве согласия данные уничтожаются путем стирания из электронных баз.</p>
+                
+                <h2>7. Передача данных третьим лицам</h2>
+                <p>Мы не передаем персональные данные третьим лицам, за исключением случаев, предусмотренных законодательством РФ (по запросу суда, правоохранительных органов).</p>
+                
+                <h2>8. Использование файлов cookie и метрических систем</h2>
+                <p>На сайте используются файлы cookie и сервисы Яндекс.Метрика для сбора статистики посещений. Эти данные помогают нам улучшать сайт и делать его удобнее. Продолжая пользоваться сайтом, вы соглашаетесь с использованием cookie. Вы можете отключить cookie в настройках браузера, но тогда некоторые функции сайта могут быть недоступны.</p>
+                
+                <h2>9. Защита персональных данных</h2>
+                <p>Мы принимаем все необходимые организационные и технические меры для защиты персональных данных от неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, распространения. Сайт работает по защищенному протоколу HTTPS, что обеспечивает шифрование передаваемых данных.</p>
+                
+                <h2>10. Права пользователей</h2>
+                <p>Пользователь имеет право:</p>
+                <ul>
+                    <li>получить информацию о том, какие его данные хранятся;</li>
+                    <li>требовать уточнения, блокирования или уничтожения своих данных;</li>
+                    <li>отозвать согласие на обработку в любой момент.</li>
+                </ul>
+                <p>Для реализации этих прав достаточно написать нам на электронную почту <a href="mailto:pargolovo@cbsvib.ru">pargolovo@cbsvib.ru</a>.</p>
+                
+                <h2>11. Изменения в Политике</h2>
+                <p>Мы оставляем за собой право вносить изменения в настоящую Политику. Новая версия всегда будет доступна на этой странице. Продолжая пользоваться сайтом после изменений, вы автоматически соглашаетесь с обновленной Политикой.</p>
+                
+                <h2>12. Контактная информация</h2>
+                <p>По всем вопросам, связанным с обработкой персональных данных, обращайтесь:</p>
+                <ul>
+                    <li>Электронная почта: <a href="mailto:pargolovo@cbsvib.ru">pargolovo@cbsvib.ru</a></li>
+                    <li>Форма обратной связи: <a href="contacts.html">Контакты</a></li>
                 </ul>
                 <p style="margin-top: 2rem; font-style: italic;">Дата последнего обновления: 10 марта 2026 г.</p>
             </div>
@@ -390,13 +206,11 @@
             <div class="footer-bottom">
                 <div class="footer-actions">
                     <div class="share-buttons">
-                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/privacy.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
-                        <a href="https://t.me/share/url?url=https://parglbibl.ru/privacy.html" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
-                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank" title="Поделиться в MAX"><i class="fas fa-comment-dots"></i></a>
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/privacy.html" target="_blank"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/share/url?url=https://parglbibl.ru/privacy.html" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank"><i class="fas fa-comment-dots"></i></a>
                     </div>
-                    <div class="print-button">
-                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
-                    </div>
+                    <div class="print-button"><a href="javascript:window.print()"><i class="fas fa-print"></i> <span>Печать</span></a></div>
                 </div>
                 <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color: #fff; text-decoration: underline;">Политика конфиденциальности</a></p>
             </div>
@@ -406,23 +220,21 @@
     <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
 
     <script>
-        // Меню
         const menuToggle = document.getElementById('menuToggle');
         const nav = document.getElementById('nav');
         menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
 
-        // Кнопка "Наверх"
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) backToTop.classList.add('show');
             else backToTop.classList.remove('show');
         });
 
-        // Версия для слабовидящих
         const specialToggle = document.getElementById('specialToggle');
         specialToggle.addEventListener('click', () => {
             document.body.classList.toggle('special-mode');
         });
     </script>
+    <!-- Баннер для cookies (будет добавлен отдельно на всех страницах) -->
 </body>
 </html>
