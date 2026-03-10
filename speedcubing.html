@@ -429,6 +429,42 @@
             }
         }
 
+        /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ===== */
+        body.special-mode {
+            background-color: #fff !important;
+            color: #000 !important;
+            font-size: 1.2em !important;
+            background-image: none !important;
+        }
+        body.special-mode h1, body.special-mode h2, body.special-mode h3, body.special-mode h4 { color: #000 !important; }
+        body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
+        body.special-mode header { background-color: #000 !important; }
+        body.special-mode .nav a { color: #fff !important; }
+        body.special-mode .nav a:hover { color: #ffff00 !important; }
+        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
+        body.special-mode .btn:hover { background-color: #333 !important; }
+        body.special-mode .info-block,
+        body.special-mode .photo-gallery a,
+        body.special-mode .photo-gallery .download-icon,
+        body.special-mode .footer-content,
+        body.special-mode .footer-links a {
+            background-color: #fff !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            border: 1px solid #000 !important;
+        }
+        body.special-mode .photo-gallery img {
+            filter: grayscale(100%) contrast(150%);
+        }
+        body.special-mode .share-buttons a,
+        body.special-mode .print-button a {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+        body.special-mode footer { background-color: #000 !important; }
+        body.special-mode .footer-col a { color: #0000ee !important; }
+
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .back-to-top.show { opacity: 1; visibility: visible; }
     </style>
@@ -566,17 +602,22 @@
                     </div>
                 </div>
 
-                <!-- Соцсети (только VK) -->
+                <!-- Соцсети, подписка и ссылка на спецверсию -->
                 <div class="footer-col">
                     <h3>Мы в соцсетях</h3>
                     <div class="footer-social">
                         <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
                     </div>
                     <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
+                    <p style="margin-top: 0.5rem;">
+                        <a href="#" id="specialFooterLink" style="color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-eye"></i> Версия для слабовидящих
+                        </a>
+                    </p>
                 </div>
             </div>
 
-            <!-- Нижняя часть (только VK в кнопках поделиться) -->
+            <!-- Нижняя часть -->
             <div class="footer-bottom">
                 <div class="footer-actions">
                     <div class="share-buttons">
@@ -618,6 +659,15 @@
                 this.closest('.footer-accordion').classList.toggle('open');
             });
         });
+
+        // Ссылка на версию для слабовидящих в подвале
+        const specialFooterLink = document.getElementById('specialFooterLink');
+        if (specialFooterLink) {
+            specialFooterLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.toggle('special-mode');
+            });
+        }
 
         const faders = document.querySelectorAll('.fade-in');
         const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
