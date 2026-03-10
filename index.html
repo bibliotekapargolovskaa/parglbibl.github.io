@@ -70,13 +70,13 @@
             line-height: 1.6;
             color: #4a4a4a;
             background-color: #fefaf5;
-            /* ФОН: локальный файл paper.png (вы загрузили) */
+            /* ФОН: локальный файл paper.png */
             background-image: url('paper.png');
             transition: background-color 0.3s, color 0.3s, font-size 0.3s;
         }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-        @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
+        @media (max-width: 1024px) { .container { width: 100%; padding: 0 15px; } }
 
         /* ===== УЛУЧШЕННАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
         .fade-in {
@@ -261,12 +261,11 @@
         }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
         
-        /* Отступ логотипа на десктопах */
-        @media (min-width: 769px) {
+        /* ===== ДЕСКТОПНАЯ ВЕРСИЯ (от 1025px) ===== */
+        @media (min-width: 1025px) {
             .logo {
                 margin-right: 40px;
             }
-            /* Растягиваем меню, чтобы кнопка была справа */
             .nav {
                 flex: 1;
                 display: flex;
@@ -278,14 +277,15 @@
             }
         }
 
-        @media (max-width: 768px) {
+        /* ===== ПЛАНШЕТНАЯ И МОБИЛЬНАЯ ВЕРСИЯ (до 1024px) ===== */
+        @media (max-width: 1024px) {
             .menu-toggle { display: block; }
             .nav { display: none; width: 100%; margin-top: 1rem; }
             .nav.active { display: block; }
             .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
             .header-inner { flex-wrap: wrap; }
             .special-toggle span {
-                display: none;
+                display: none; /* прячем текст кнопки, оставляем только иконку */
             }
             .special-toggle {
                 padding: 5px;
@@ -299,7 +299,7 @@
             padding: 6rem 0;
             text-align: center;
         }
-        @media (min-width: 769px) {
+        @media (min-width: 1025px) {
             .hero {
                 background-attachment: fixed;
             }
@@ -442,7 +442,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
-        @media (min-width: 769px) {
+        @media (min-width: 1025px) {
             #vk_groups {
                 width: 100vw;
                 max-width: 100vw;
@@ -456,7 +456,7 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             #vk_groups {
                 width: 100vw;
                 max-width: 100vw;
@@ -600,7 +600,7 @@
             color: #5e4b3c;
         }
         .print-button a i { font-size: 1.2rem; }
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
         }
