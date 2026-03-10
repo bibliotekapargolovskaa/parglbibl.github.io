@@ -76,7 +76,7 @@
         }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
         .container { width: 90%; max-width: 1400px; margin: 0 auto; }
-        @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
+        @media (max-width: 768px) { .container { width: 100%; padding: 0 5px; } } /* расширили контейнер, убрали лишние отступы */
 
         /* ===== УЛУЧШЕННАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
         .fade-in {
@@ -215,18 +215,45 @@
         /* Для средних экранов (например, ноутбуки) уменьшаем отступы между пунктами меню */
         @media (max-width: 1200px) {
             .nav ul {
-                gap: 1.2rem; /* уменьшаем расстояние между пунктами */
+                gap: 1.2rem;
             }
         }
 
-        /* Мобильная версия – только адаптация контейнера, меню остаётся горизонтальным с переносом */
+        /* Мобильная версия – логотип и меню в одну строку, максимальная экономия места */
         @media (max-width: 768px) {
             .header-inner {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;        /* логотип и меню в один ряд */
+                justify-content: flex-start;
+                gap: 5px;                 /* небольшой зазор */
+            }
+            .logo img {
+                height: 40px;              /* уменьшенный логотип */
+            }
+            .nav {
+                flex: 1;                   /* меню занимает остаток ширины */
+                min-width: 0;               /* позволяет сжиматься */
             }
             .nav ul {
-                gap: 0.8rem; /* чуть меньше отступы на мобильных */
-                justify-content: center; /* центрируем пункты при переносе */
+                flex-wrap: nowrap;          /* запрещаем перенос */
+                gap: 0.2rem;                /* минимальные отступы */
+                justify-content: flex-start; /* пункты сразу после логотипа */
+                overflow-x: auto;            /* если всё же не влезут – появится скролл */
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;       /* скрываем скроллбар (Firefox) */
+                padding-bottom: 2px;          /* небольшой отступ для скролла */
+                white-space: nowrap;
+            }
+            .nav ul::-webkit-scrollbar {
+                display: none;                /* скрываем скроллбар (Chrome/Safari) */
+            }
+            .nav li {
+                white-space: nowrap;
+            }
+            .nav a {
+                font-size: 0.75rem;           /* очень мелкий шрифт */
+                padding: 0.2rem 0.2rem;
+                display: inline-block;
             }
         }
 
