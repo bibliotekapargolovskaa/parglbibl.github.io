@@ -75,8 +75,7 @@
             transition: background-color 0.3s, color 0.3s, font-size 0.3s;
         }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-        @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
 
         /* ===== УЛУЧШЕННАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
         .fade-in {
@@ -238,9 +237,8 @@
         }
         .header-inner {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0;
+            gap: 20px;
             flex-wrap: wrap;
         }
         .logo {
@@ -252,62 +250,35 @@
             height: 80px;
             width: auto;
         }
+        .nav {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
         .nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
             align-items: center;
             flex-wrap: wrap;
+            justify-content: flex-end;
         }
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
-        
-        /* ===== ДЕСКТОПНАЯ ВЕРСИЯ (от 769px) ===== */
-        @media (min-width: 769px) {
-            .header-inner {
-                display: grid;
-                grid-template-columns: auto 1fr auto;
-                align-items: center;
-                flex-wrap: nowrap;
-            }
-            .logo {
-                grid-column: 1;
-                margin-right: 40px; /* отступ как раньше */
-            }
-            .nav {
-                grid-column: 2;
-                display: flex;
-                justify-content: flex-end;
-            }
-            .nav ul {
-                justify-content: flex-end;
-                flex-wrap: wrap;
-            }
-            .special-toggle {
-                grid-column: 3;
-                justify-self: end;
-            }
-            .menu-toggle {
-                display: none; /* бургер не нужен на десктопе */
-            }
+        .special-toggle {
+            /* кнопка всегда иконка без текста, но можно оставить padding */
+            padding: 5px 10px;
+            border: 2px solid #fff;
+            background: transparent;
+            border-radius: 20px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
-
-        /* ===== МОБИЛЬНАЯ ВЕРСИЯ (до 768px) ===== */
-        @media (max-width: 768px) {
-            .header-inner {
-                display: flex;
-                flex-wrap: wrap;
-            }
-            .menu-toggle { display: block; }
-            .nav { display: none; width: 100%; margin-top: 1rem; }
-            .nav.active { display: block; }
-            .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
-            .header-inner { flex-wrap: wrap; }
-            .special-toggle span {
-                display: none; /* прячем текст кнопки, оставляем иконку */
-            }
-            .special-toggle {
-                padding: 5px;
-            }
+        .special-toggle i {
+            font-size: 1.2rem;
+        }
+        .special-toggle span {
+            display: none; /* текст скрыт на всех устройствах */
         }
 
         /* ===== ГЕРО ===== */
@@ -647,10 +618,7 @@
                     <li><a href="contacts.html">Контакты</a></li>
                 </ul>
             </nav>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <button class="special-toggle" id="specialToggle"><i class="fas fa-eye"></i> <span>Версия для слабовидящих</span></button>
-                <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-            </div>
+            <button class="special-toggle" id="specialToggle"><i class="fas fa-eye"></i> <span style="display: none;">Версия для слабовидящих</span></button>
         </div>
     </header>
 
@@ -889,9 +857,11 @@
         startAutoSlide();
 
         // Меню, назад вверх, спецрежим
-        const menuToggle = document.getElementById('menuToggle');
+        const menuToggle = document.getElementById('menuToggle'); // удалён, но скрипт можно убрать, если он не нужен
         const nav = document.getElementById('nav');
-        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+        // menuToggle больше нет, поэтому удаляем обработчик
+        // const menuToggle = document.getElementById('menuToggle'); // эта строка не нужна
+        // menuToggle.addEventListener('click', () => nav.classList.toggle('active')); // удалить
 
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
