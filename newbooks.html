@@ -1,42 +1,574 @@
-const newBooks = [
-    // n3.jpg
-    { title: "История русского искусства", author: "Игнатова Н. О.", description: "Популярное искусствоведение.", image: "n3.jpg", year: "2025" },
-    // n5.JPG — исправлено название
-    { title: "Выдающиеся русские мальчики", author: "Андрианова Н. А.", description: "Детская познавательная литература.", image: "n5.JPG", year: "2024" },
-    // n6.jpg
-    { title: "За спиной", author: "Омер М.", description: "Психологический триллер. Продолжение истории.", image: "n6.jpg", year: "2025" },
-    // n7.jpg
-    { title: "Мир для детей", author: "Андрианова Н. А.", description: "Путеводитель по странам.", image: "n7.jpg", year: "2022" },
-    // n8.JPG
-    { title: "Мигрант", author: "Астахов П. А.", description: "Современный детектив.", image: "n8.JPG", year: "2025" },
-    // n9.jpg
-    { title: "Медвежий край", author: "Кузнецова Д. А.", description: "Роман о природе и людях.", image: "n9.jpg", year: "2025" },
-    // n10.jpg
-    { title: "Ольга Корса. Женщина-воин", author: "Карабет Е. С.", description: "Биографический роман.", image: "n10.jpg", year: "2025" },
-    // n11.jpg
-    { title: "Легенды и мифы Древней Греции", author: "Кун Н. А.", description: "Классический сборник мифов.", image: "n11.jpg", year: "2024" },
-    // n12.JPG
-    { title: "Гербы России. История отечественной геральдики", author: "Воробьева Н. Н.", description: "Подарочное издание по геральдике.", image: "n12.JPG", year: "2022" },
-    // n13.jpg
-    { title: "Деньги и бизнес для детей", author: "Васин Д. В.", description: "Детский путеводитель по финансам.", image: "n13.jpg", year: "2024" },
-    // n14.jpg
-    { title: "Тайны Камчатки", author: "Котова Т. Б.", description: "Путешествие по вулканам.", image: "n14.jpg", year: "2025" },
-    // n15.jpg
-    { title: "Девочка, которая хотела...", author: "Лисова И. А.", description: "Детская проза.", image: "n15.jpg", year: "2024" },
-    // n16.jpg
-    { title: "Двенадцать месяцев", author: "Маршак С. Я.", description: "Сказка для детей.", image: "n16.jpg", year: "2024" },
-    // n17.JPG
-    { title: "Без вести пропавшие", author: "Пичугин Д. В.", description: "Детектив-реконструкция.", image: "n17.JPG", year: "2025" },
-    // n20.jpg
-    { title: "На один удар больше", author: "Литвинова А. В.", description: "Авантюрный детектив.", image: "n20.jpg", year: "2025" },
-    // n21.JPG
-    { title: "Последний знак", author: "Райт А.", description: "Триллер о серийном убийце.", image: "n21.JPG", year: "2024" },
-    // n23.jpg
-    { title: "Маленький принц", author: "Сент-Экзюпери А. де", description: "Знаменитая философская сказка.", image: "n23.jpg", year: "2025" },
-    // n24.jpg
-    { title: "Большая история путешествий", author: "Тунич А.", description: "Детский путеводитель.", image: "n24.jpg", year: "2025" },
-    // n26.JPG
-    { title: "Царский подарок", author: "Асопил Е.", description: "Вечерний детектив.", image: "n26.JPG", year: "2025" },
-    // n27.jpg
-    { title: "Пионерская клятва на крови", author: "Смелик Э. В.", description: "Остросюжетный роман.", image: "n27.jpg", year: "2025" }
-];
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Парголовская библиотека - Новые поступления</title>
+    <meta name="description" content="Новые книги в Парголовской библиотеке. Свежие поступления художественной и научно-популярной литературы.">
+    <meta name="keywords" content="Парголовская библиотека, библиотека Выборгского района, новые книги, новинки, чтение">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Schema.org разметка -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Library",
+      "name": "Библиотека «Парголовская»",
+      "description": "Уютное пространство для чтения, творчества и встреч. Бесплатные занятия по спидкубингу, доступная среда.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Торфяная, 25",
+        "addressLocality": "Парголово",
+        "addressRegion": "Санкт-Петербург",
+        "postalCode": "194362",
+        "addressCountry": "RU"
+      },
+      "telephone": "+7-812-246-93-05",
+      "email": "pargolovo@cbsvib.ru",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "12:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Sunday"],
+          "opens": "",
+          "closes": "",
+          "description": "Выходной"
+        }
+      ],
+      "url": "https://parglbibl.ru",
+      "sameAs": [
+        "https://vk.com/pargolovskaya_library",
+        "https://cbsvib.ru/"
+      ]
+    }
+    </script>
+    
+    <!-- Шрифты и стили -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    
+    <style>
+        /* ===== ОСНОВНЫЕ СТИЛИ (унифицированы с главной) ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            background-color: #fefaf5;
+            background-image: url('paper.png');
+            transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+        }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
+        .container { width: 90%; max-width: 1400px; margin: 0 auto; }
+        @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
+
+        /* ===== УЛУЧШЕННАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ===== АНИМАЦИЯ ДЛЯ КАРТОЧЕК ПРИ НАВЕДЕНИИ ===== */
+        .book-card {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+        }
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.12);
+        }
+
+        /* ===== АНИМАЦИЯ ДЛЯ КНОПОК ===== */
+        .btn {
+            display: inline-block;
+            background-color: #e5989b;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            background-color: #d68b8e;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* ===== АНИМАЦИЯ ПОДЧЁРКИВАНИЯ ССЫЛОК В МЕНЮ ===== */
+        .nav a {
+            position: relative;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #f4e3d7;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav a:hover::after,
+        .nav a.active::after {
+            width: 100%;
+        }
+        .nav a:hover, .nav a.active {
+            border-bottom: none;
+        }
+
+        /* ===== АНИМАЦИЯ ДЛЯ ЗАГОЛОВКОВ ===== */
+        .section-title {
+            position: relative;
+            text-align: center !important;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: #5e4b3c;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #e5989b;
+            margin: 0.5rem auto 0;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .section-title:hover::after {
+            width: 100px;
+        }
+
+        /* ===== ШАПКА ===== */
+        header {
+            background-color: #b5838d;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
+        
+        @media (min-width: 769px) {
+            .logo {
+                margin-right: 40px;
+            }
+        }
+        @media (max-width: 1200px) {
+            .nav ul {
+                gap: 1.2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav { display: none; width: 100%; margin-top: 1rem; }
+            .nav.active { display: block; }
+            .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
+            .header-inner { flex-wrap: wrap; }
+        }
+
+        /* ===== СЕКЦИИ ===== */
+        .section { padding: 4rem 0; }
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .book-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .book-card a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .book-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .book-card img:hover {
+            transform: scale(1.02);
+        }
+        .book-card h3 {
+            margin-bottom: 0.5rem;
+            color: #5e4b3c;
+            font-size: 1.2rem;
+        }
+        .book-card .author {
+            font-weight: 600;
+            color: #b5838d;
+            margin-bottom: 0.5rem;
+        }
+        .book-card .description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        .book-card .details {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: auto;
+        }
+
+        /* ===== ПОДВАЛ ===== */
+        .footer-content {
+            background: #b5838d;
+            color: #fff;
+            padding: 3rem 0 2rem;
+            margin-top: 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #fff;
+        }
+        .footer-col p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+        }
+        .footer-col a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+        .footer-col a:hover {
+            color: #f4e3d7;
+        }
+        .footer-col i {
+            width: 20px;
+            text-align: center;
+        }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.2);
+            transition: background-color 0.3s;
+        }
+        .footer-social a:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+        .footer-social i {
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        .footer-actions {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .share-buttons a, .print-button a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            color: #b5838d;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            text-decoration: none;
+        }
+        .share-buttons a:hover {
+            background-color: #f4e3d7;
+            color: #5e4b3c;
+            transform: translateY(-3px);
+        }
+        .print-button a {
+            width: auto;
+            padding: 0 1.2rem;
+            border-radius: 40px;
+            gap: 8px;
+        }
+        .print-button a:hover {
+            background-color: #f4e3d7;
+            color: #5e4b3c;
+        }
+        .print-button a i { font-size: 1.2rem; }
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.PNG" alt="Парголовская библиотека">
+            </a>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            </div>
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="events.html">События</a></li>
+                    <li><a href="speedcubing.html">Спидкубинг</a></li>
+                    <li><a href="newbooks.html" class="active">Новинки</a></li>
+                    <li><a href="faq.html">Вопросы</a></li>
+                    <li><a href="partners.html">Партнёры</a></li>
+                    <li><a href="district-libraries.html">Библиотеки района</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Новые поступления книг</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Каждый месяц мы пополняем фонд самыми интересными новинками художественной и научно-популярной литературы.</p>
+            <div class="books-grid" id="all-books-grid"></div>
+        </div>
+    </section>
+
+    <footer class="footer-content">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Парголовская библиотека</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
+                    <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Карта сайта</h3>
+                    <p><a href="index.html">Главная</a></p>
+                    <p><a href="about.html">О нас</a></p>
+                    <p><a href="services.html">Услуги</a></p>
+                    <p><a href="events.html">События</a></p>
+                    <p><a href="speedcubing.html">Спидкубинг</a></p>
+                    <p><a href="newbooks.html">Новинки</a></p>
+                    <p><a href="faq.html">Вопросы</a></p>
+                    <p><a href="partners.html">Партнёры</a></p>
+                    <p><a href="district-libraries.html">Библиотеки района</a></p>
+                    <p><a href="contacts.html">Контакты</a></p>
+                    <p><a href="privacy.html">Политика конфиденциальности</a></p>
+                </div>
+                <div class="footer-col">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="footer-social">
+                        <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/..." target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank"><i class="fas fa-comment-dots"></i></a>
+                    </div>
+                    <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-actions">
+                    <div class="share-buttons">
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/newbooks.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/share/url?url=https://parglbibl.ru/newbooks.html" target="_blank" title="Поделиться в Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://apps.apple.com/ru/app/max/id6449714850" target="_blank" title="Поделиться в MAX"><i class="fas fa-comment-dots"></i></a>
+                    </div>
+                    <div class="print-button">
+                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
+                    </div>
+                </div>
+                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color: #fff; text-decoration: underline;">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <!-- Баннер для cookies -->
+    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
+        <p style="margin: 0; display: inline-block; margin-right: 20px; font-size: 0.95rem;">
+            Мы используем файлы cookie для улучшения работы сайта. Продолжая использовать наш сайт, вы соглашаетесь с <a href="privacy.html" style="color: #e5989b; text-decoration: underline;">политикой конфиденциальности</a>.
+        </p>
+        <button id="cookie-accept" style="background-color: #e5989b; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: background-color 0.3s;">Принять</button>
+    </div>
+
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        // Массив книг (20 книг с краткими аннотациями)
+        const newBooks = [
+            { title: "История русского искусства", author: "Игнатова Н. О.", description: "От Айвазовского до Репина — популярный рассказ о шедеврах и художниках.", image: "n3.jpg", year: "2025" },
+            { title: "Выдающиеся русские мальчики", author: "Андрианова Н. А.", description: "Рассказы о детстве великих соотечественников для младших школьников.", image: "n5.JPG", year: "2024" },
+            { title: "За спиной", author: "Омер М.", description: "Психологический триллер, продолжение истории профайлера.", image: "n6.jpg", year: "2025" },
+            { title: "Мир для детей", author: "Андрианова Н. А.", description: "Путеводитель по странам и континентам с яркими иллюстрациями.", image: "n7.jpg", year: "2022" },
+            { title: "Мигрант", author: "Астахов П. А.", description: "Современный детектив о судьбах людей в большом городе.", image: "n8.JPG", year: "2025" },
+            { title: "Медвежий край", author: "Кузнецова Д. А.", description: "Роман о природе Чукотки, её тайнах и людях.", image: "n9.jpg", year: "2025" },
+            { title: "Ольга Корса. Женщина-воин", author: "Карабет Е. С.", description: "История Героя России, отдавшей жизнь за Родину.", image: "n10.jpg", year: "2025" },
+            { title: "Легенды и мифы Древней Греции", author: "Кун Н. А.", description: "Классический сборник мифов о богах и героях.", image: "n11.jpg", year: "2024" },
+            { title: "Гербы России. История отечественной геральдики", author: "Воробьева Н. Н.", description: "Подарочное издание о символах и истории российских гербов.", image: "n12.JPG", year: "2022" },
+            { title: "Деньги и бизнес для детей", author: "Васин Д. В.", description: "Детский путеводитель по миру финансов и предпринимательства.", image: "n13.jpg", year: "2024" },
+            { title: "Тайны Камчатки", author: "Котова Т. Б.", description: "Захватывающее путешествие по вулканам и дикой природе полуострова.", image: "n14.jpg", year: "2025" },
+            { title: "Девочка, которая хотела...", author: "Лисова И. А.", description: "Добрая проза для детей о мечтах и их исполнении.", image: "n15.jpg", year: "2024" },
+            { title: "Двенадцать месяцев", author: "Маршак С. Я.", description: "Знаменитая сказка-пьеса о падчерице и братьях-месяцах.", image: "n16.jpg", year: "2024" },
+            { title: "Без вести пропавшие", author: "Пичугин Д. В.", description: "Детектив-реконструкция, основанный на реальных событиях.", image: "n17.JPG", year: "2025" },
+            { title: "На один удар больше", author: "Литвинова А. В.", description: "Авантюрный детектив о тайнах приёмного сына.", image: "n20.jpg", year: "2025" },
+            { title: "Последний знак", author: "Райт А.", description: "Триллер о серийном убийце, лауреат премии «Русский детектив».", image: "n21.JPG", year: "2024" },
+            { title: "Маленький принц", author: "Сент-Экзюпери А. де", description: "Философская сказка-притча о дружбе, любви и ответственности.", image: "n23.jpg", year: "2025" },
+            { title: "Большая история путешествий", author: "Тунич А.", description: "Как люди исследовали мир — для детей от 10 до 12 лет.", image: "n24.jpg", year: "2025" },
+            { title: "Царский подарок", author: "Асопил Е.", description: "Вечерний детектив из серии «Тайна старинной книги».", image: "n26.JPG", year: "2025" },
+            { title: "Пионерская клятва на крови", author: "Смелик Э. В.", description: "Остросюжетный роман о прошлом, которое не отпускает.", image: "n27.jpg", year: "2025" }
+        ];
+
+        function displayAllBooks() {
+            const container = document.getElementById('all-books-grid');
+            let html = '';
+            newBooks.forEach(book => {
+                html += `
+                    <div class="book-card fade-in">
+                        <a href="${book.image}" data-fancybox="gallery" data-caption="${book.title} — ${book.author}">
+                            <img src="${book.image}" alt="${book.title}">
+                        </a>
+                        <h3>${book.title}</h3>
+                        <div class="author">${book.author}</div>
+                        <div class="description">${book.description}</div>
+                        <div class="details">${book.year}</div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            // Инициализация Fancybox после добавления карточек
+            Fancybox.bind("[data-fancybox]", {});
+        }
+
+        displayAllBooks();
+
+        // Бургер-меню
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+        // Кнопка "наверх"
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTop.classList.add('show');
+            else backToTop.classList.remove('show');
+        });
+
+        // Анимация появления
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
+
+        // Cookie-баннер
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
