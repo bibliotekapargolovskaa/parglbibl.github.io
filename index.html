@@ -75,8 +75,8 @@
             transition: background-color 0.3s, color 0.3s, font-size 0.3s;
         }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
-        .container { width: 90%; max-width: 1400px; margin: 0 auto; }
-        @media (max-width: 768px) { .container { width: 100%; padding: 0 5px; } } /* расширили контейнер, убрали лишние отступы */
+        .container { width: 90%; max-width: 1400px; margin: 0 auto; } /* Увеличил максимальную ширину */
+        @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
 
         /* ===== УЛУЧШЕННАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
         .fade-in {
@@ -204,6 +204,7 @@
             align-items: center;
             flex-wrap: wrap;
         }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
         
         /* Отступ логотипа на десктопах */
         @media (min-width: 769px) {
@@ -215,46 +216,16 @@
         /* Для средних экранов (например, ноутбуки) уменьшаем отступы между пунктами меню */
         @media (max-width: 1200px) {
             .nav ul {
-                gap: 1.2rem;
+                gap: 1.2rem; /* уменьшаем расстояние между пунктами */
             }
         }
 
-        /* Мобильная версия – логотип и меню в одну строку, максимальная экономия места */
         @media (max-width: 768px) {
-            .header-inner {
-                flex-wrap: nowrap;        /* логотип и меню в один ряд */
-                justify-content: flex-start;
-                gap: 5px;                 /* небольшой зазор */
-            }
-            .logo img {
-                height: 40px;              /* уменьшенный логотип */
-            }
-            .nav {
-                flex: 1;                   /* меню занимает остаток ширины */
-                min-width: 0;               /* позволяет сжиматься */
-            }
-            .nav ul {
-                flex-wrap: nowrap;          /* запрещаем перенос */
-                gap: 0.2rem;                /* минимальные отступы */
-                justify-content: flex-start; /* пункты сразу после логотипа */
-                overflow-x: auto;            /* если всё же не влезут – появится скролл */
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;       /* скрываем скроллбар (Firefox) */
-                padding-bottom: 2px;          /* небольшой отступ для скролла */
-                white-space: nowrap;
-            }
-            .nav ul::-webkit-scrollbar {
-                display: none;                /* скрываем скроллбар (Chrome/Safari) */
-            }
-            .nav li {
-                white-space: nowrap;
-            }
-            .nav a {
-                font-size: 0.75rem;           /* очень мелкий шрифт */
-                padding: 0.2rem 0.2rem;
-                display: inline-block;
-            }
+            .menu-toggle { display: block; }
+            .nav { display: none; width: 100%; margin-top: 1rem; }
+            .nav.active { display: block; }
+            .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
+            .header-inner { flex-wrap: wrap; }
         }
 
         /* ===== ГЕРО ===== */
@@ -580,6 +551,9 @@
             <a href="index.html" class="logo">
                 <img src="logo.PNG" alt="Парголовская библиотека">
             </a>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            </div>
             <nav class="nav" id="nav">
                 <ul>
                     <li><a href="index.html" class="active">Главная</a></li>
@@ -831,7 +805,11 @@
         }
         startAutoSlide();
 
-        // Кнопка "Наверх"
+        // Меню, назад вверх
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) backToTop.classList.add('show');
