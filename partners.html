@@ -60,19 +60,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* ===== ОСНОВНЫЕ СТИЛИ ===== */
+        /* ===== ОСНОВНЫЕ СТИЛИ (унифицированы с главной: фон и шапка) ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
             color: #4a4a4a;
             background-color: #fefaf5;
-            /* НОВЫЙ ФОН: текстура бумаги */
-            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            /* ФОН: локальный файл paper.png (как на главной) */
+            background-image: url('paper.png');
             transition: background-color 0.3s, color 0.3s, font-size 0.3s;
         }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .container { width: 90%; max-width: 1400px; margin: 0 auto; } /* увеличено до 1400px */
         @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
 
         /* ===== УЛУЧШЕННАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
@@ -162,56 +162,7 @@
             width: 100px;
         }
 
-        /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ===== */
-        body.special-mode {
-            background-color: #fff !important;
-            color: #000 !important;
-            font-size: 1.2em !important;
-            background-image: none !important;
-        }
-        body.special-mode h1, body.special-mode h2, body.special-mode h3, body.special-mode h4 { color: #000 !important; }
-        body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
-        body.special-mode header { background-color: #000 !important; }
-        body.special-mode .nav a { color: #fff !important; }
-        body.special-mode .nav a:hover { color: #ffff00 !important; }
-        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
-        body.special-mode .btn:hover { background-color: #333 !important; }
-        body.special-mode .partner-category,
-        body.special-mode .footer-content,
-        body.special-mode .footer-links a {
-            background-color: #fff !important;
-            color: #000 !important;
-            box-shadow: none !important;
-            border: 1px solid #000 !important;
-        }
-        body.special-mode .share-buttons a,
-        body.special-mode .print-button a {
-            background-color: #000 !important;
-            color: #fff !important;
-            border-color: #fff !important;
-        }
-        body.special-mode footer { background-color: #000 !important; }
-        body.special-mode .footer-col a { color: #0000ee !important; }
-
-        .special-toggle {
-            background: transparent;
-            border: 2px solid #fff;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-        .special-toggle:hover { background: rgba(255,255,255,0.2); }
-        body.special-mode .special-toggle { border-color: #000; color: #000; background: #fff; }
-        body.special-mode .special-toggle:hover { background: #ddd; }
-
-        /* ===== ШАПКА ===== */
+        /* ===== ШАПКА (полностью скопирована с главной, без кнопки спецверсии) ===== */
         header {
             background-color: #b5838d;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -243,9 +194,17 @@
         }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
         
+        /* Отступ логотипа на десктопах */
         @media (min-width: 769px) {
             .logo {
                 margin-right: 40px;
+            }
+        }
+
+        /* Для средних экранов (ноутбуки) уменьшаем отступы между пунктами меню */
+        @media (max-width: 1200px) {
+            .nav ul {
+                gap: 1.2rem;
             }
         }
 
@@ -255,15 +214,9 @@
             .nav.active { display: block; }
             .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
             .header-inner { flex-wrap: wrap; }
-            .special-toggle span {
-                display: none;
-            }
-            .special-toggle {
-                padding: 5px;
-            }
         }
 
-        /* ===== СЕКЦИИ ===== */
+        /* ===== СЕКЦИИ (оригинальные стили partners.html, не меняем) ===== */
         .section { padding: 4rem 0; }
         .partners-grid {
             display: grid;
@@ -316,7 +269,7 @@
             margin-top: 0.2rem;
         }
 
-        /* ===== ПОДВАЛ ===== */
+        /* ===== ПОДВАЛ (оригинальный, не меняем) ===== */
         .footer-content {
             background: #b5838d;
             color: #fff;
@@ -447,7 +400,7 @@
                 <img src="logo.PNG" alt="Парголовская библиотека">
             </a>
             <div style="display: flex; align-items: center; gap: 10px;">
-                <button class="special-toggle" id="specialToggle"><i class="fas fa-eye"></i> <span>Версия для слабовидящих</span></button>
+                <!-- Кнопка для слабовидящих полностью удалена, как в index.html -->
                 <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
             </div>
             <nav class="nav" id="nav">
@@ -585,11 +538,6 @@
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) backToTop.classList.add('show');
             else backToTop.classList.remove('show');
-        });
-
-        const specialToggle = document.getElementById('specialToggle');
-        specialToggle.addEventListener('click', () => {
-            document.body.classList.toggle('special-mode');
         });
 
         const faders = document.querySelectorAll('.fade-in');
