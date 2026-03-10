@@ -568,63 +568,86 @@
             }
         }
 
-        /* ===== ПЛАВАЮЩАЯ КНОПКА ДЛЯ СЛАБОВИДЯЩИХ И КНОПКА "НАВЕРХ" ===== */
-        .back-to-top,
-        .special-toggle {
+        /* ===== ЯЗЫЧОК ДЛЯ СЛАБОВИДЯЩИХ ===== */
+        .special-tab {
             position: fixed;
-            bottom: 2rem;       /* одинаковый отступ снизу */
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .special-tab-inner {
+            background-color: #e5989b;
+            color: #fff;
+            padding: 12px 8px;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, transform 0.3s;
+            transform: translateX(-80%); /* скрываем текст */
+        }
+
+        .special-tab:hover .special-tab-inner {
+            transform: translateX(0); /* при наведении выезжает */
+        }
+
+        .special-tab-inner i {
+            font-size: 1.5rem;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .special-tab-inner span {
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Адаптация для мобильных — язычок меньше и всегда видна только иконка */
+        @media (max-width: 768px) {
+            .special-tab-inner {
+                padding: 10px 6px;
+                transform: translateX(-70%);
+            }
+            .special-tab-inner span {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ===== КНОПКА "НАВЕРХ" ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
             right: 2rem;
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: #e5989b; /* одинаковый цвет */
+            background-color: #e5989b;
             color: #fff;
-            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: background-color 0.3s, transform 0.2s, opacity 0.3s, visibility 0.3s;
-            z-index: 99;
-            font-size: 1.2rem;
-            padding: 0;
-        }
-
-        .back-to-top:hover,
-        .special-toggle:hover {
-            background-color: #d68b8e; /* одинаковый цвет при наведении */
-            transform: scale(1.05);
-        }
-
-        /* Кнопка "наверх" изначально скрыта, появляется при скролле */
-        .back-to-top {
+            text-decoration: none;
             opacity: 0;
             visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .back-to-top.show {
             opacity: 1;
             visibility: visible;
         }
-
-        /* Кнопка для слабовидящих всегда видна */
-        .special-toggle {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* На мобильных убираем текст у кнопки слабовидящих, оставляем только иконку */
-        .special-toggle span {
-            display: inline;
-        }
-        @media (max-width: 768px) {
-            .special-toggle span {
-                display: none;
-            }
-            .special-toggle {
-                width: 50px;
-                height: 50px;
-            }
+        .back-to-top:hover {
+            background-color: #d68b8e;
+            transform: scale(1.05);
         }
 
         /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ===== */
@@ -642,12 +665,10 @@
         body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
         body.special-mode .btn:hover { background-color: #333 !important; }
         body.special-mode .card,
-        body.special-mode .posts-grid .vk-post,
         body.special-mode .slider-container,
         body.special-mode .quote-block,
         body.special-mode .random-book,
-        body.special-mode .footer-content,
-        body.special-mode .footer-links a {
+        body.special-mode .footer-content {
             background-color: #fff !important;
             color: #000 !important;
             box-shadow: none !important;
@@ -662,20 +683,22 @@
         }
         body.special-mode footer { background-color: #000 !important; }
         body.special-mode .footer-col a { color: #0000ee !important; }
-        /* Спецрежим для кнопки */
-        body.special-mode .special-toggle {
+        /* Спецрежим для язычка */
+        body.special-mode .special-tab-inner {
             background-color: #000 !important;
             color: #fff !important;
             border: 2px solid #fff !important;
         }
-        body.special-mode .special-toggle:hover {
-            background-color: #333 !important;
-        }
     </style>
 </head>
 <body>
-    <!-- Плавающая кнопка для слабовидящих -->
-    <button class="special-toggle" id="specialToggle"><i class="fas fa-eye"></i> <span>Версия для слабовидящих</span></button>
+    <!-- Язычок для слабовидящих -->
+    <div class="special-tab" id="specialTab">
+        <div class="special-tab-inner">
+            <i class="fas fa-eye"></i>
+            <span>Версия для слабовидящих</span>
+        </div>
+    </div>
 
     <header>
         <div class="container header-inner">
@@ -970,9 +993,9 @@
             });
         });
 
-        // Кнопка для слабовидящих
-        const specialToggle = document.getElementById('specialToggle');
-        specialToggle.addEventListener('click', () => {
+        // Язычок для слабовидящих – клик для переключения режима
+        const specialTab = document.getElementById('specialTab');
+        specialTab.addEventListener('click', () => {
             document.body.classList.toggle('special-mode');
         });
 
