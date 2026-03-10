@@ -747,11 +747,6 @@
     <script>
         // Массив книг (временный, замените на реальные)
         const newBooks = [
-    { title: "Чудовище во мне", author: "Эрванд М.", description: "Захватывающий триллер о профайлере.", image: "images/book1.jpg", year: "2024", publisher: "" },
-    { title: "За спиной", author: "Омер М.", description: "Психологический триллер. Продолжение истории.", image: "images/book2.jpg", year: "2025", publisher: "" },
-    { title: "Смерть в пионерском галстуке", author: "Смелик Э. В.", description: "Остросюжетный роман.", image: "images/book3.jpg", year: "2025", publisher: "" },
-    { title: "Расчленинград. Маньяки на...", author: "Буга Е. М.", description: "Документальный триллер.", image: "images/book4.jpg", year: "2025", publisher: "" },
-    { title: "Путешествие из Петербурга...", author: "Радищев А. Н.", description: "Классика русской литературы.", image: "images/book5.jpg", year: "2025", publisher: "" },
     { title: "Путешествие из Петербурга...", author: "Радищев А. Н.", description: "Классика русской литературы.", image: "images/book5.jpg", year: "2025", publisher: "" },
     { title: "Ген хищника", author: "Ивлиева Ю. Ф.", description: "Детектив из цикла «Метод профайлера».", image: "images/book6.jpg", year: "2023", publisher: "" },
     { title: "История русского искусства...", author: "Игнатова Н. О.", description: "Популярное искусствоведение.", image: "images/book7.jpg", year: "2025", publisher: "" },
@@ -768,26 +763,18 @@
     { title: "Тайны Камчатки", author: "Котова Т. Б.", description: "Путешествие по вулканам.", image: "images/book18.jpg", year: "2025", publisher: "" },
     { title: "Девочка, которая хотела...", author: "Лисова И. А.", description: "Детская проза.", image: "images/book19.jpg", year: "2024", publisher: "" },
     { title: "Двенадцать месяцев", author: "Маршак С. Я.", description: "Сказка для детей.", image: "images/book20.jpg", year: "2024", publisher: "" },
-    { title: "Двенадцать месяцев", author: "Маршак С. Я.", description: "Сказка для детей.", image: "images/book20.jpg", year: "2024", publisher: "" },
-    { title: "Двенадцать месяцев", author: "Маршак С. Я.", description: "Сказка для детей.", image: "images/book20.jpg", year: "2024", publisher: "" },
     { title: "Без вести пропавшие", author: "Пичугин Д. В.", description: "Детектив-реконструкция.", image: "images/book21.jpg", year: "2025", publisher: "" },
     { title: "Закрытый сеанс", author: "Пашкова К. Л.", description: "Мистический триллер.", image: "images/book22.jpg", year: "2024", publisher: "" },
     { title: "Лесная газета", author: "Бианки В. В.", description: "Природоведение для детей.", image: "images/book23.jpg", year: "2024", publisher: "" },
-    { title: "Лесная газета", author: "Бианки В. В.", description: "Природоведение для детей.", image: "images/book23.jpg", year: "2024", publisher: "" },
-    { title: "Лесная газета", author: "Бианки В. В.", description: "Природоведение для детей.", image: "images/book23.jpg", year: "2024", publisher: "" },
-    { title: "На один удар больше", author: "Литвинова А. В.", description: "Авантюрный детектив.", image: "images/book24.jpg", year: "2025", publisher: "" },
     { title: "На один удар больше", author: "Литвинова А. В.", description: "Авантюрный детектив.", image: "images/book24.jpg", year: "2025", publisher: "" },
     { title: "Последний знак", author: "Райт А.", description: "Триллер о серийном убийце.", image: "images/book25.jpg", year: "2024", publisher: "" },
     { title: "Дитя культа", author: "Райт А.", description: "Психологический триллер.", image: "images/book26.jpg", year: "2025", publisher: "" },
-    { title: "Пионерская клятва на крови...", author: "Смелик Э. В.", description: "Остросюжетный роман.", image: "images/book27.jpg", year: "2025", publisher: "" },
     { title: "Маленький принц", author: "Сент-Экзюпери А. де", description: "Знаменитая философская сказка.", image: "images/book28.jpg", year: "2025", publisher: "" },
     { title: "Большая история путешествий", author: "Тунич А.", description: "Детский путеводитель.", image: "images/book29.jpg", year: "2025", publisher: "" },
-    { title: "Маленький принц", author: "Сент-Экзюпери А. де", description: "Знаменитая философская сказка.", image: "images/book28.jpg", year: "2025", publisher: "" },
     { title: "Дети Воинова", author: "Вишневская Ж. Ю.", description: "Семейная сага.", image: "images/book30.jpg", year: "2025", publisher: "" },
     { title: "Царский подарок", author: "Дорош Е.", description: "Вечерний детектив.", image: "images/book31.jpg", year: "2025", publisher: "" },
     { title: "Зачем художнику детали?", author: "Никонова А. В.", description: "Искусствоведение для всех.", image: "images/book32.jpg", year: "2025", publisher: "" }
 ];
-
         function displayRandomBook() {
             const randomIndex = Math.floor(Math.random() * newBooks.length);
             const book = newBooks[randomIndex];
