@@ -447,4 +447,299 @@
             border: 1px solid #000 !important;
         }
         body.special-mode .share-buttons a,
-        body
+        body.special-mode .print-button a {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+        body.special-mode footer { background-color: #000 !important; }
+        body.special-mode .footer-col a { color: #0000ee !important; }
+
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.PNG" alt="Парголовская библиотека">
+            </a>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            </div>
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="events.html">События</a></li>
+                    <li><a href="speedcubing.html">Спидкубинг</a></li>
+                    <li><a href="newbooks.html">Новинки</a></li>
+                    <li><a href="faq.html">Вопросы</a></li>
+                    <li><a href="partners.html">Партнёры</a></li>
+                    <li><a href="district-libraries.html" class="active">Библиотеки района</a></li>
+                    <li><a href="kraevedenie.html">Краеведение</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Библиотеки Выборгского района</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Здесь вы найдёте адреса и контакты всех библиотек Централизованной библиотечной системы Выборгского района.</p>
+            
+            <div class="libraries-grid">
+                <!-- 1. Библиотека им. Д.С. Лихачева (01) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека им. Д.С. Лихачева</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Тореза, д. 32</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-01</div>
+                    <a href="https://vk.ru/toreza32" target="_blank" class="library-link">vk.ru/toreza32</a>
+                </div>
+
+                <!-- 2. Библиотека «Батенинская» (02) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «Батенинская»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> ул. Харченко, д. 17</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-02</div>
+                    <a href="https://vk.ru/kharchenko_17" target="_blank" class="library-link">vk.ru/kharchenko_17</a>
+                </div>
+
+                <!-- 3. Библиотека «Удельнинская» (03) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «Удельнинская»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Энгельса, д. 53</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-03</div>
+                    <a href="https://vk.ru/engelsa_53" target="_blank" class="library-link">vk.ru/engelsa_53</a>
+                </div>
+
+                <!-- 4. Библиотека «Своя» (04) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «Своя»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> ул. Руднева, д. 25</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-04</div>
+                    <a href="https://vk.ru/rudneva25" target="_blank" class="library-link">vk.ru/rudneva25</a>
+                </div>
+
+                <!-- 5. Библиотека «Парголовская» (05) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «Парголовская»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пос. Парголово, ул. Торфяная, д. 25</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</div>
+                    <a href="https://vk.com/pargolovskaya_library" target="_blank" class="library-link">vk.com/pargolovskaya_library</a>
+                </div>
+
+                <!-- 6. Библиотека «Левашовская» (06) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «Левашовская»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пос. Левашово, ул. Железнодорожная, д. 46</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-06</div>
+                    <a href="https://vk.ru/zheleznodorozhnyi46" target="_blank" class="library-link">vk.ru/zheleznodorozhnyi46</a>
+                </div>
+
+                <!-- 7. Библиоцентр детского чтения (07) -->
+                <div class="library-card fade-in">
+                    <h3>Библиоцентр детского чтения</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Скобелевский, д. 4</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-07</div>
+                    <a href="https://vk.ru/skobelev4" target="_blank" class="library-link">vk.ru/skobelev4</a>
+                </div>
+
+                <!-- 8. Библиотечный центр «СТАРТ» (08) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотечный центр «СТАРТ»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> ул. Елизаветинская, д. 8/1</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-08</div>
+                    <a href="https://vk.ru/bc_start" target="_blank" class="library-link">vk.ru/bc_start</a>
+                </div>
+
+                <!-- 9. Библиотека «Книга во времени» (09) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «Книга во времени»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Пархоменко, д. 18</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-09</div>
+                    <a href="https://vk.ru/parhomenko18" target="_blank" class="library-link">vk.ru/parhomenko18</a>
+                </div>
+
+                <!-- 10. Библиотека-филиал № 10 (на Художников) (10) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека-филиал № 10 (на Художников)</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Художников, д. 9, корп. 1</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-10</div>
+                    <a href="https://vk.ru/khudognikov" target="_blank" class="library-link">vk.ru/khudognikov</a>
+                </div>
+
+                <!-- 11. Центральная районная библиотека «В Озерках» (11) -->
+                <div class="library-card fade-in">
+                    <h3>Центральная районная библиотека «В Озерках»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Энгельса, д. 111, корп. 1</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-11</div>
+                    <a href="https://vk.ru/engelsa111" target="_blank" class="library-link">vk.ru/engelsa111</a>
+                </div>
+
+                <!-- 12. Центральная детская библиотека им. Н.А. Внукова (12) -->
+                <div class="library-card fade-in">
+                    <h3>Центральная детская библиотека им. Н.А. Внукова</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Просвещения, д. 36/141</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-12</div>
+                    <a href="https://vk.ru/spb_cdb" target="_blank" class="library-link">vk.ru/spb_cdb</a>
+                </div>
+
+                <!-- 13. Библиотека «АЗАРТ» (13) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «АЗАРТ»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> Б. Сампсониевский пр., д. 77</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-13</div>
+                    <a href="https://vk.ru/azart_book" target="_blank" class="library-link">vk.ru/azart_book</a>
+                </div>
+
+                <!-- 14. Библиотека «Мастерская» (27) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «Мастерская»</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Просвещения, д. 43, ТРК «Парк Молл», 2 этаж</div>
+                    <div class="library-phone"><i class="fas fa-phone-alt"></i> +7 (812) 246-93-27</div>
+                    <a href="https://vk.ru/workshop_book" target="_blank" class="library-link">vk.ru/workshop_book</a>
+                </div>
+
+                <!-- 15. Библиотека «АВЕНЮ» (без телефона) -->
+                <div class="library-card fade-in">
+                    <h3>Библиотека «АВЕНЮ» (семейная библиотека)</h3>
+                    <div class="library-address"><i class="fas fa-map-marker-alt"></i> пр. Просвещения, д. 87</div>
+                    <!-- Телефон отсутствует, строка не выводится -->
+                    <a href="https://vk.ru/biblioteka_avenue" target="_blank" class="library-link">vk.ru/biblioteka_avenue</a>
+                </div>
+            </div>
+
+            <!-- Контактная информация ЦБС -->
+            <div style="text-align: center; margin-top: 3rem; padding: 1.5rem; background: #fff; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                <p><strong>Централизованная библиотечная система Выборгского района</strong></p>
+                <p><i class="fas fa-map-marker-alt" style="color: #b5838d;"></i> пр. Энгельса, д. 13/2, Санкт-Петербург</p>
+                <p><i class="fas fa-phone-alt" style="color: #b5838d;"></i> +7 (812) 246-93-19</p>
+                <p><i class="fas fa-envelope" style="color: #b5838d;"></i> info@cbsvib.ru</p>
+                <p><a href="http://cbsvib.ru" target="_blank" style="color: #e5989b;">cbsvib.ru</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-content">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Контакты -->
+                <div class="footer-col">
+                    <h3>Парголовская библиотека</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
+                    <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
+                </div>
+
+                <!-- Карта сайта (аккордеон) -->
+                <div class="footer-col footer-accordion">
+                    <h3 class="accordion-header">Карта сайта</h3>
+                    <div class="accordion-content">
+                        <p><a href="index.html">Главная</a></p>
+                        <p><a href="about.html">О нас</a></p>
+                        <p><a href="services.html">Услуги</a></p>
+                        <p><a href="events.html">События</a></p>
+                        <p><a href="speedcubing.html">Спидкубинг</a></p>
+                        <p><a href="newbooks.html">Новинки</a></p>
+                        <p><a href="faq.html">Вопросы</a></p>
+                        <p><a href="partners.html">Партнёры</a></p>
+                        <p><a href="district-libraries.html">Библиотеки района</a></p>
+                        <p><a href="contacts.html">Контакты</a></p>
+                        <p><a href="privacy.html">Политика конфиденциальности</a></p>
+                    </div>
+                </div>
+
+                <!-- Соцсети, подписка и ссылка на спецверсию -->
+                <div class="footer-col">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="footer-social">
+                        <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
+                    <p style="margin-top: 0.5rem;">
+                        <a href="#" id="specialFooterLink" style="color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-eye"></i> Версия для слабовидящих
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Нижняя часть -->
+            <div class="footer-bottom">
+                <div class="footer-actions">
+                    <div class="share-buttons">
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/district-libraries.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <div class="print-button">
+                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
+                    </div>
+                </div>
+                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color: #fff; text-decoration: underline;">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <!-- Баннер для cookies -->
+    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
+        <p style="margin: 0; display: inline-block; margin-right: 20px; font-size: 0.95rem;">
+            Мы используем файлы cookie для улучшения работы сайта. Продолжая использовать наш сайт, вы соглашаетесь с <a href="privacy.html" style="color: #e5989b; text-decoration: underline;">политикой конфиденциальности</a>.
+        </p>
+        <button id="cookie-accept" style="background-color: #e5989b; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: background-color 0.3s;">Принять</button>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTop.classList.add('show');
+            else backToTop.classList.remove('show');
+        });
+
+        // Аккордеон в футере
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                this.closest('.footer-accordion').classList.toggle('open');
+            });
+        });
+
+        // Ссылка на версию для слабовидящих в подвале
+        const specialFooterLink = document.getElementById('specialFooterLink');
+        if (specialFooterLink) {
+            specialFooterLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.toggle('special-mode');
+            });
+        }
+
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
+
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
