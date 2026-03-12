@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Краеведение — Парголовская библиотека</title>
-    <meta name="description" content="Краеведческие проекты Парголовской библиотеки: история улиц, Парголово в культуре и другие исследования.">
+    <meta name="description" content="Краеведческие проекты Парголовской библиотеки: история Нижнего и Верхнего Парголово, улицы, культура.">
     
-    <!-- Favicon – правильный набор (как на всём сайте) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* ===== ОСНОВНЫЕ СТИЛИ (унифицированы со всем сайтом) ===== */
+        /* Стили такие же, как на предыдущих страницах, но адаптированные */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Open Sans', sans-serif;
@@ -35,7 +35,6 @@
         .container { width: 90%; max-width: 1400px; margin: 0 auto; }
         @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
 
-        /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
         .fade-in {
             opacity: 0;
             transform: translateY(20px) scale(0.95);
@@ -46,7 +45,6 @@
             transform: translateY(0) scale(1);
         }
 
-        /* ===== АНИМАЦИЯ ДЛЯ КАРТОЧЕК ===== */
         .project-card {
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
         }
@@ -55,7 +53,6 @@
             box-shadow: 0 20px 30px rgba(0,0,0,0.12);
         }
 
-        /* ===== ШАПКА (полностью скопирована с index) ===== */
         header {
             background-color: #b5838d;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -126,7 +123,6 @@
             .header-inner { flex-wrap: wrap; }
         }
 
-        /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
         .section { padding: 4rem 0; }
         .section-title {
             position: relative;
@@ -148,7 +144,6 @@
             width: 100px;
         }
 
-        /* Сетка проектов */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -195,21 +190,7 @@
             background-color: #d68b8e;
             transform: scale(1.05);
         }
-        .project-card.placeholder {
-            background: #f8f8f8;
-            border: 2px dashed #ccc;
-        }
-        .project-card.placeholder i {
-            color: #aaa;
-        }
-        .project-card.placeholder h3 {
-            color: #888;
-        }
-        .project-card.placeholder p {
-            color: #aaa;
-        }
 
-        /* ===== ПОДВАЛ (полностью скопирован с index) ===== */
         .footer-content {
             background: #b5838d;
             color: #fff;
@@ -316,13 +297,11 @@
             background-color: #f4e3d7;
             color: #5e4b3c;
         }
-        .print-button a i { font-size: 1.2rem; }
         @media (max-width: 768px) {
             .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
         }
 
-        /* Аккордеон для карты сайта */
         @media (max-width: 768px) {
             .footer-accordion .accordion-content {
                 display: none;
@@ -357,7 +336,6 @@
             }
         }
 
-        /* Версия для слабовидящих */
         body.special-mode {
             background-color: #fff !important;
             color: #000 !important;
@@ -369,8 +347,7 @@
         body.special-mode header { background-color: #000 !important; }
         body.special-mode .nav a { color: #fff !important; }
         body.special-mode .nav a:hover { color: #ffff00 !important; }
-        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
-        body.special-mode .btn:hover { background-color: #333 !important; }
+        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; }
         body.special-mode .project-card,
         body.special-mode .footer-content {
             background-color: #fff !important;
@@ -432,7 +409,7 @@
                     <li><a href="faq.html">Вопросы</a></li>
                     <li><a href="partners.html">Партнёры</a></li>
                     <li><a href="district-libraries.html">Библиотеки района</a></li>
-                    <li><a href="kraevedenie.html">Краеведение</a></li>
+                    <li><a href="kraevedenie.html" class="active">Краеведение</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
                 </ul>
             </nav>
@@ -443,31 +420,29 @@
         <div class="container">
             <h1 class="section-title">Краеведение в Парголовской библиотеке</h1>
             <p style="text-align: center; margin-bottom: 3rem; font-size: 1.2rem;">
-                Мы собираем и изучаем историю нашего посёлка. Приглашаем вас познакомиться с нашими проектами и принять в них участие.
+                Мы собираем и изучаем историю нашего посёлка, разделяя её на две большие части: Нижнее и Верхнее Парголово. Приглашаем вас в путешествие!
             </p>
 
             <div class="projects-grid">
-                <!-- Карточка проекта "Улица Торфяная" -->
+                <!-- Карточка Нижнего Парголово -->
                 <div class="project-card fade-in">
-                    <i class="fas fa-road"></i>
-                    <h3>Улица Торфяная: перекрёсток историй</h3>
-                    <p>Фотографии, документы и воспоминания жителей об одной из старейших улиц Парголово.</p>
-                    <a href="torfyanaya.html" class="btn">Перейти к проекту</a>
+                    <i class="fas fa-arrow-left" style="color: #e5989b;"></i>
+                    <h3>Нижнее Парголово</h3>
+                    <p>Историческая часть слева от Выборгского шоссе: улица Торфяная, станция Парголово, церковь Спаса Нерукотворного, воспоминания жителей.</p>
+                    <a href="nizhnee-pargolovo.html" class="btn">Перейти к разделу</a>
                 </div>
-
-                <!-- Парголово в литературе/кино/музыке -->
+                <!-- Карточка Верхнего Парголово -->
                 <div class="project-card fade-in">
-    <i class="fas fa-music"></i>
-    <h3>Парголово в литературе, музыке и искусстве</h3>
-    <p>Грибоедов, Писемский, Римский-Корсаков, Репин и другие творцы, связанные с нашим краем.</p>
-    <a href="pargolovo-culture.html" class="btn">Перейти к проекту</a>
-</div>
-
-                <!-- Карточка-заглушка для других идей -->
-                <div class="project-card placeholder fade-in">
-                    <i class="fas fa-plus-circle"></i>
-                    <h3>Ваш проект?</h3>
-                    <p>Если у вас есть идеи или материалы, поделитесь с нами через раздел «Контакты».</p>
+                    <i class="fas fa-arrow-right" style="color: #e5989b;"></i>
+                    <h3>Верхнее Парголово</h3>
+                    <p>Шувалово, усадьба и парк, гора Парнас, литературные и музыкальные страницы, известные люди.</p>
+                    <a href="verkhnee-pargolovo.html" class="btn">Перейти к разделу</a>
+                </div>
+                <!-- Заглушка для обратной связи -->
+                <div class="project-card placeholder fade-in" style="background: #f8f8f8; border: 2px dashed #ccc;">
+                    <i class="fas fa-plus-circle" style="color: #aaa;"></i>
+                    <h3 style="color: #888;">Ваш проект?</h3>
+                    <p style="color: #aaa;">Если у вас есть идеи или материалы, поделитесь с нами через раздел «Контакты».</p>
                 </div>
             </div>
         </div>
@@ -495,9 +470,9 @@
                         <p><a href="faq.html">Вопросы</a></p>
                         <p><a href="partners.html">Партнёры</a></p>
                         <p><a href="district-libraries.html">Библиотеки района</a></p>
+                        <p><a href="kraevedenie.html">Краеведение</a></p>
                         <p><a href="contacts.html">Контакты</a></p>
                         <p><a href="privacy.html">Политика конфиденциальности</a></p>
-                        <!-- Ссылка на краеведение пока не добавлена, но вы можете добавить её позже -->
                     </div>
                 </div>
 
