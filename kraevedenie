@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Краеведение — Парголовская библиотека</title>
+    <meta name="description" content="Краеведческие проекты Парголовской библиотеки: история улиц, Парголово в культуре и другие исследования.">
+    <!-- Здесь все те же стили и фавиконки, что и на всём сайте -->
+</head>
+<body>
+    <!-- Шапка с меню (такая же, как на всех страницах) -->
+    <header> ... </header>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">Краеведение в Парголовской библиотеке</h1>
+            <p style="text-align: center; margin-bottom: 3rem;">Мы собираем и изучаем историю нашего посёлка. Приглашаем вас познакомиться с нашими проектами и принять в них участие.</p>
+
+            <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                
+                <!-- Карточка проекта "Улица Торфяная" -->
+                <div class="project-card" style="background: #fff; border-radius: 16px; padding: 2rem; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                    <i class="fas fa-road" style="font-size: 3rem; color: #b5838d; margin-bottom: 1rem;"></i>
+                    <h3>Улица Торфяная: перекрёсток историй</h3>
+                    <p>Фотографии, документы и воспоминания жителей об одной из старейших улиц Парголово.</p>
+                    <a href="torfyanaya.html" class="btn" style="margin-top: 1.5rem;">Перейти к проекту</a>
+                </div>
+
+                <!-- Карточка-заглушка для будущих проектов -->
+                <div class="project-card" style="background: #f8f8f8; border-radius: 16px; padding: 2rem; text-align: center; border: 2px dashed #ccc;">
+                    <i class="fas fa-plus-circle" style="font-size: 3rem; color: #aaa; margin-bottom: 1rem;"></i>
+                    <h3 style="color: #888;">Скоро здесь появится новый проект</h3>
+                    <p style="color: #aaa;">Следите за новостями!</p>
+                </div>
+
+                <!-- По аналогии можно добавить другие заглушки или, когда появится контент, полноценные карточки -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer> ... </footer>
+</body>
+</html>
