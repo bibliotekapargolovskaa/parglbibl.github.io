@@ -3,66 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Парголовская библиотека - Услуги</title>
-    <meta name="description" content="Услуги Парголовской библиотеки: абонемент, электронные ресурсы, мероприятия, доступная среда, спидкубинг.">
-    <meta name="keywords" content="Парголовская библиотека, библиотека Выборгского района, спидкубинг, кубик Рубика, чтение, мероприятия, книги">
+    <title>Парголовская библиотека - Политика конфиденциальности</title>
+    <meta name="description" content="Политика конфиденциальности Парголовской библиотеки. Как мы обрабатываем ваши персональные данные.">
     
     <!-- Favicon – правильный набор -->
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="Парголовская библиотека" />
-<link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Парголовская библиотека" />
+    <link rel="manifest" href="/site.webmanifest" />
     
-    <!-- Schema.org разметка -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Library",
-      "name": "Библиотека «Парголовская»",
-      "description": "Уютное пространство для чтения, творчества и встреч. Бесплатные занятия по спидкубингу, доступная среда.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "ул. Торфяная, 25",
-        "addressLocality": "Парголово",
-        "addressRegion": "Санкт-Петербург",
-        "postalCode": "194362",
-        "addressCountry": "RU"
-      },
-      "telephone": "+7-812-246-93-05",
-      "email": "pargolovo@cbsvib.ru",
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "12:00",
-          "closes": "18:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Sunday"],
-          "opens": "",
-          "closes": "",
-          "description": "Выходной"
-        }
-      ],
-      "url": "https://parglbibl.ru",
-      "sameAs": [
-        "https://vk.com/pargolovskaya_library",
-        "https://cbsvib.ru/"
-      ]
-    }
-    </script>
-    
-    <!-- Шрифты и стили -->
+    <!-- Шрифты и стили (как на всём сайте) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* ===== ОСНОВНЫЕ СТИЛИ (унифицированы с главной) ===== */
+        /* ===== ОСНОВНЫЕ СТИЛИ (как на всём сайте) ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Open Sans', sans-serif;
@@ -76,7 +35,6 @@
         .container { width: 90%; max-width: 1400px; margin: 0 auto; }
         @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
 
-        /* ===== УЛУЧШЕННАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
         .fade-in {
             opacity: 0;
             transform: translateY(20px) scale(0.95);
@@ -87,80 +45,47 @@
             transform: translateY(0) scale(1);
         }
 
-        /* ===== АНИМАЦИЯ ДЛЯ КАРТОЧЕК ПРИ НАВЕДЕНИИ ===== */
-        .service-card, .access-block {
+        .privacy-block {
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 0 auto;
         }
-        .service-card:hover, .access-block:hover {
+        .privacy-block:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 30px rgba(0,0,0,0.12);
         }
-
-        /* ===== АНИМАЦИЯ ДЛЯ КНОПОК ===== */
-        .btn {
-            display: inline-block;
-            background-color: #e5989b;
-            color: #fff;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-        }
-        .btn:hover {
-            background-color: #d68b8e;
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        /* ===== АНИМАЦИЯ ПОДЧЁРКИВАНИЯ ССЫЛОК В МЕНЮ ===== */
-        .nav a {
-            position: relative;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #f4e3d7;
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .nav a:hover::after,
-        .nav a.active::after {
-            width: 100%;
-        }
-        .nav a:hover, .nav a.active {
-            border-bottom: none;
-        }
-
-        /* ===== АНИМАЦИЯ ДЛЯ ЗАГОЛОВКОВ ===== */
-        .section-title {
-            position: relative;
-            text-align: center !important;
-            margin-bottom: 3rem;
-            font-size: 2.2rem;
+        .privacy-block h1 {
+            text-align: center;
+            margin-bottom: 2rem;
             color: #5e4b3c;
         }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #e5989b;
-            margin: 0.5rem auto 0;
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .privacy-block h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #b5838d;
+            font-size: 1.5rem;
         }
-        .section-title:hover::after {
-            width: 100px;
+        .privacy-block p {
+            margin-bottom: 1rem;
+            color: #4a4a4a;
+        }
+        .privacy-block ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        .privacy-block li {
+            margin-bottom: 0.5rem;
+        }
+        .privacy-block a {
+            color: #e5989b;
+            text-decoration: none;
+        }
+        .privacy-block a:hover {
+            text-decoration: underline;
         }
 
         /* ===== ШАПКА ===== */
@@ -193,6 +118,27 @@
             align-items: center;
             flex-wrap: wrap;
         }
+        .nav a {
+            position: relative;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #f4e3d7;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav a:hover::after,
+        .nav a.active::after {
+            width: 100%;
+        }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
         
         @media (min-width: 769px) {
@@ -200,13 +146,11 @@
                 margin-right: 40px;
             }
         }
-
         @media (max-width: 1200px) {
             .nav ul {
                 gap: 1.2rem;
             }
         }
-
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav { display: none; width: 100%; margin-top: 1rem; }
@@ -215,14 +159,28 @@
             .header-inner { flex-wrap: wrap; }
         }
 
-        /* ===== СЕКЦИИ ===== */
         .section { padding: 4rem 0; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .service-card { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; }
-        .service-icon { font-size: 2.5rem; color: #b5838d; margin-bottom: 1rem; }
-        .access-block { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-top: 3rem; text-align: center; }
+        .section-title {
+            position: relative;
+            text-align: center !important;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: #5e4b3c;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #e5989b;
+            margin: 0.5rem auto 0;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .section-title:hover::after {
+            width: 100px;
+        }
 
-        /* ===== ПОДВАЛ (единый с index) ===== */
+        /* ===== ПОДВАЛ ===== */
         .footer-content {
             background: #b5838d;
             color: #fff;
@@ -303,10 +261,6 @@
             gap: 2rem;
             margin-bottom: 1rem;
         }
-        .share-buttons {
-            display: flex;
-            gap: 1rem;
-        }
         .share-buttons a, .print-button a {
             display: inline-flex;
             align-items: center;
@@ -342,7 +296,6 @@
             .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
         }
 
-        /* Аккордеон для карты сайта (только на мобильных) */
         @media (max-width: 768px) {
             .footer-accordion .accordion-content {
                 display: none;
@@ -377,7 +330,6 @@
             }
         }
 
-        /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ===== */
         body.special-mode {
             background-color: #fff !important;
             color: #000 !important;
@@ -389,15 +341,11 @@
         body.special-mode header { background-color: #000 !important; }
         body.special-mode .nav a { color: #fff !important; }
         body.special-mode .nav a:hover { color: #ffff00 !important; }
-        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
-        body.special-mode .btn:hover { background-color: #333 !important; }
-        body.special-mode .service-card,
-        body.special-mode .access-block,
-        body.special-mode .footer-content,
-        body.special-mode .footer-links a {
+        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; }
+        body.special-mode .privacy-block,
+        body.special-mode .footer-content {
             background-color: #fff !important;
             color: #000 !important;
-            box-shadow: none !important;
             border: 1px solid #000 !important;
         }
         body.special-mode .share-buttons a,
@@ -409,8 +357,30 @@
         body.special-mode footer { background-color: #000 !important; }
         body.special-mode .footer-col a { color: #0000ee !important; }
 
-        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: #e5989b; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #e5989b;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
         .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover {
+            background-color: #d68b8e;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -426,7 +396,7 @@
                 <ul>
                     <li><a href="index.html">Главная</a></li>
                     <li><a href="about.html">О нас</a></li>
-                    <li><a href="services.html" class="active">Услуги</a></li>
+                    <li><a href="services.html">Услуги</a></li>
                     <li><a href="events.html">События</a></li>
                     <li><a href="speedcubing.html">Спидкубинг</a></li>
                     <li><a href="newbooks.html">Новинки</a></li>
@@ -442,44 +412,81 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Что мы предлагаем</h2>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-book-open"></i></div>
-                    <h3>Абонемент</h3>
-                    <p>Выдача книг на дом на 30 дней. Широкий выбор художественной и научной литературы.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-laptop"></i></div>
-                    <h3>Электронные ресурсы</h3>
-                    <p>Доступ к Национальной электронной библиотеке, онлайн-базам данных и бесплатный Wi-Fi.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-calendar-alt"></i></div>
-                    <h3>Мероприятия</h3>
-                    <p>Тематические встречи, праздники, лекции, мастер-классы для всех возрастов.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-child"></i></div>
-                    <h3>Детский отдел</h3>
-                    <p>Книжки для малышей и подростков, интерактивные занятия и игровые программы.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-hands"></i></div>
-                    <h3>Доступная среда</h3>
-                    <p>Видеоролики с сурдопереводом помогут легко ориентироваться в библиотеке.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon"><i class="fas fa-puzzle-piece"></i></div>
-                    <h3>Спидкубинг</h3>
-                    <p>Занятия по сборке кубика Рубика для детей и взрослых (6+).</p>
-                </div>
-            </div>
-
-            <div class="access-block fade-in">
-                <h3>ДОСТУПНАЯ НАВИГАЦИЯ: БИБЛИОТЕКА ДЛЯ ВСЕХ</h3>
-                <p>Мы заботимся о комфорте каждого посетителя. Специально подготовленные видеоролики наглядно показывают, как легко ориентироваться внутри помещения, пользоваться услугами и находить нужные ресурсы.</p>
-                <p>Видео с сурдопереводом доступно в разделе <a href="contacts.html">Контакты</a>.</p>
+            <div class="privacy-block">
+                <h1>Политика конфиденциальности</h1>
+                
+                <h2>1. Общие положения</h2>
+                <p>Настоящая Политика конфиденциальности (далее — Политика) действует в отношении всей информации, которую сайт «Библиотека «Парголовская»» (далее — Оператор), расположенный на доменном имени <strong>parglbibl.ru</strong>, может получить о пользователе во время использования им сайта.</p>
+                <p>Использование сайта означает безоговорочное согласие пользователя с настоящей Политикой и указанными в ней условиями обработки его персональных данных. В случае несогласия с этими условиями пользователь должен воздержаться от использования сайта.</p>
+                
+                <h2>2. Сведения об Операторе</h2>
+                <ul>
+                    <li><strong>Наименование:</strong> Библиотека «Парголовская» (структурное подразделение ЦБС Выборгского района)</li>
+                    <li><strong>Юридический адрес:</strong> 194362, Санкт-Петербург, пос. Парголово, ул. Торфяная, д. 25</li>
+                    <li><strong>ИНН/ОГРН (если есть):</strong> (укажите, если имеется; если нет, можно опустить или написать «Не применяется»)</li>
+                    <li><strong>Телефон:</strong> +7 (812) 246-93-05</li>
+                    <li><strong>Электронная почта:</strong> pargolovo@cbsvib.ru</li>
+                </ul>
+                
+                <h2>3. Персональные данные, которые мы собираем</h2>
+                <p><strong>3.1. Данные, предоставляемые пользователем добровольно:</strong></p>
+                <ul>
+                    <li>Имя, адрес электронной почты, текст сообщения (при заполнении формы обратной связи).</li>
+                    <li>Имя, контактные данные, описание и файлы (при отправке материалов через форму «Поделиться историей»).</li>
+                </ul>
+                <p><strong>3.2. Данные, собираемые автоматически:</strong></p>
+                <ul>
+                    <li>IP-адрес, тип браузера, время посещения, просмотренные страницы, источник перехода — с помощью файлов cookie и сервисов веб-аналитики (Яндекс.Метрика).</li>
+                </ul>
+                <p>Мы не собираем специальные категории персональных данных (касающиеся расовой, национальной принадлежности, политических взглядов, состояния здоровья).</p>
+                
+                <h2>4. Цели обработки персональных данных</h2>
+                <ul>
+                    <li>Ответ на обращения пользователей, направленные через формы на сайте.</li>
+                    <li>Сбор и сохранение краеведческих материалов (фотографий, документов, воспоминаний).</li>
+                    <li>Улучшение работы сайта, анализ посещаемости и предпочтений пользователей.</li>
+                </ul>
+                
+                <h2>5. Правовые основания обработки</h2>
+                <p>Обработка персональных данных осуществляется на основании Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и в соответствии с согласием пользователя, выраженным путем активного проставления галочки в чек-боксе при отправке формы, а также путем продолжения использования сайта после уведомления о cookie.</p>
+                
+                <h2>6. Сроки хранения и порядок уничтожения</h2>
+                <p>Персональные данные хранятся не дольше, чем это необходимо для целей обработки. Данные, полученные через формы обратной связи, хранятся до момента ответа на обращение, но не более 30 дней. Краеведческие материалы (с согласия авторов) могут храниться бессрочно в архиве библиотеки. По истечении срока или при отзыве согласия данные уничтожаются путем стирания из электронных баз.</p>
+                <p>Факт согласия или отказа от cookie фиксируется в браузере пользователя и хранится локально.</p>
+                
+                <h2>7. Передача данных третьим лицам</h2>
+                <p>Мы не передаем персональные данные третьим лицам, за исключением случаев, предусмотренных законодательством РФ (по запросу суда, правоохранительных органов).</p>
+                <p><strong>Трансграничная передача:</strong> Мы используем только российские сервисы аналитики (Яндекс.Метрика), которые обеспечивают хранение данных на территории Российской Федерации. Передача данных за пределы РФ не осуществляется.</p>
+                
+                <h2>8. Использование файлов cookie и метрических систем</h2>
+                <p>На сайте используются файлы cookie и сервис Яндекс.Метрика для сбора статистики посещений. Эти данные помогают нам улучшать сайт и делать его удобнее. Продолжая пользоваться сайтом, вы соглашаетесь с использованием cookie. Вы можете отключить cookie в настройках браузера, но тогда некоторые функции сайта могут быть недоступны.</p>
+                <p>При первом посещении сайта вам предлагается выбор: принять или отклонить использование cookie. Ваш выбор сохраняется и может быть изменён в любое время путём очистки cookie в браузере.</p>
+                
+                <h2>9. Защита персональных данных</h2>
+                <p>Мы принимаем все необходимые организационные и технические меры для защиты персональных данных от неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, распространения. Сайт работает по защищенному протоколу HTTPS, что обеспечивает шифрование передаваемых данных.</p>
+                
+                <h2>10. Права пользователей</h2>
+                <p>Пользователь имеет право:</p>
+                <ul>
+                    <li>получить информацию о том, какие его данные хранятся;</li>
+                    <li>требовать уточнения, блокирования или уничтожения своих данных;</li>
+                    <li>отозвать согласие на обработку в любой момент.</li>
+                </ul>
+                <p>Для реализации этих прав достаточно написать нам на электронную почту <a href="mailto:pargolovo@cbsvib.ru">pargolovo@cbsvib.ru</a>.</p>
+                
+                <h2>11. Согласие на обработку данных в формах</h2>
+                <p>При отправке любой формы на сайте вы подтверждаете, что ознакомлены с настоящей Политикой и даете согласие на обработку ваших персональных данных в целях, указанных в ней. Согласие фиксируется путем проставления отметки в чек-боксе рядом с текстом «Я согласен на обработку персональных данных» и ссылкой на данную Политику.</p>
+                
+                <h2>12. Изменения в Политике</h2>
+                <p>Мы оставляем за собой право вносить изменения в настоящую Политику. Новая версия всегда будет доступна на этой странице. Продолжая пользоваться сайтом после изменений, вы автоматически соглашаетесь с обновленной Политикой.</p>
+                
+                <h2>13. Контактная информация</h2>
+                <p>По всем вопросам, связанным с обработкой персональных данных, обращайтесь:</p>
+                <ul>
+                    <li>Электронная почта: <a href="mailto:pargolovo@cbsvib.ru">pargolovo@cbsvib.ru</a></li>
+                    <li>Форма обратной связи: <a href="contacts.html">Контакты</a></li>
+                </ul>
+                <p style="margin-top: 2rem; font-style: italic;">Дата последнего обновления: 13 марта 2026 г.</p>
             </div>
         </div>
     </section>
@@ -533,7 +540,7 @@
             <div class="footer-bottom">
                 <div class="footer-actions">
                     <div class="share-buttons">
-                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/services.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/privacy.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
                     </div>
                     <div class="print-button">
                         <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
@@ -565,14 +572,12 @@
             else backToTop.classList.remove('show');
         });
 
-        // Аккордеон в футере
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', function() {
                 this.closest('.footer-accordion').classList.toggle('open');
             });
         });
 
-        // Ссылка на версию для слабовидящих в подвале
         const specialFooterLink = document.getElementById('specialFooterLink');
         if (specialFooterLink) {
             specialFooterLink.addEventListener('click', (e) => {
