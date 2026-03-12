@@ -128,10 +128,11 @@
         /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
         .section { padding: 4rem 0; }
 
-        /* Единые отступы для всех заголовков (как на странице "Спидкубинг") */
+        /* Единые отступы для всех заголовков */
         .section-title {
             position: relative;
             text-align: center !important;
+            margin-top: 0;
             margin-bottom: 3rem;
             font-size: 2.2rem;
             color: #5e4b3c;
@@ -154,7 +155,6 @@
             position: relative;
             max-width: 800px;
             margin: 0 auto;
-            padding-top: 2rem; /* добавлено для единого отступа */
         }
         .timeline-item {
             background: #fff;
@@ -174,10 +174,11 @@
         /* Карта */
         .map-container {
             background: #fff;
-            padding: 2rem; /* увеличено с 1.5rem до 2rem */
+            padding: 1rem;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             overflow: hidden;
+            margin-top: 2rem;
         }
         .map-container iframe {
             width: 100%;
@@ -207,6 +208,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
+            margin-top: 2rem;
         }
         .photo-gallery a {
             display: block;
@@ -228,7 +230,7 @@
         .empty-gallery {
             grid-column: 1/-1;
             text-align: center;
-            padding: 2rem; /* увеличено с 1.5rem до 2rem */
+            padding: 2rem;
             background: #fff;
             border-radius: 16px;
             color: #888;
@@ -239,6 +241,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
         .book-card {
             background: #fff;
@@ -268,23 +271,13 @@
             font-size: 0.95rem;
             color: #666;
         }
-        .books-grid .book-card:first-child {
-            margin-top: 2rem; /* увеличено с 1.5rem до 2rem */
-        }
 
         /* Голоса улицы */
         .voices-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-        }
-        .voice-intro {
-            grid-column: 1/-1;
-            text-align: center;
-            padding: 2rem; /* увеличено с 1.5rem до 2rem */
-            background: #fff;
-            border-radius: 16px;
-            color: #666;
+            margin-top: 2rem;
         }
         .voice-card {
             background: #fff;
@@ -305,9 +298,10 @@
         /* Форма */
         .form-block {
             background: #fff;
-            padding: 2rem; /* увеличено с 1.5rem до 2rem */
+            padding: 2rem;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-top: 2rem;
         }
         .form-group {
             margin-bottom: 1rem;
@@ -541,9 +535,7 @@
         body.special-mode .form-block,
         body.special-mode .map-container,
         body.special-mode .map-point,
-        body.special-mode .footer-content,
-        body.special-mode .empty-gallery,
-        body.special-mode .voice-intro {
+        body.special-mode .footer-content {
             background-color: #fff !important;
             color: #000 !important;
             border: 1px solid #000 !important;
@@ -603,7 +595,6 @@
                     <li><a href="faq.html">Вопросы</a></li>
                     <li><a href="partners.html">Партнёры</a></li>
                     <li><a href="district-libraries.html">Библиотеки района</a></li>
-                    <li><a href="kraevedenie.html">Краеведение</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
                 </ul>
             </nav>
@@ -690,7 +681,7 @@
             <!-- Голоса улицы -->
             <h2 class="section-title">Голоса улицы</h2>
             <div class="voices-grid fade-in" id="voicesGrid">
-                <div class="voice-intro">
+                <div style="grid-column: 1/-1; text-align: center; padding: 2rem; background: #fff; border-radius: 16px;">
                     <i class="fas fa-microphone-alt" style="font-size: 3rem; color: #e5989b; margin-bottom: 1rem;"></i>
                     <p>Что помнят старожилы? Какой была Торфяная улица 30, 40, 50 лет назад? Мы только начинаем собирать эти истории.</p>
                     <div style="text-align: left; margin-top: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
