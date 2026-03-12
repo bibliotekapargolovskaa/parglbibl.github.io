@@ -174,7 +174,7 @@
         /* Карта */
         .map-container {
             background: #fff;
-            padding: 1rem;
+            padding: 1.5rem; /* Увеличено с 1rem до 1.5rem для единого отступа */
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             overflow: hidden;
@@ -228,7 +228,7 @@
         .empty-gallery {
             grid-column: 1/-1;
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem; /* Уменьшено с 2rem до 1.5rem */
             background: #fff;
             border-radius: 16px;
             color: #888;
@@ -268,12 +268,24 @@
             font-size: 0.95rem;
             color: #666;
         }
+        /* Отступ для первой карточки, чтобы сравнять с остальными разделами */
+        .books-grid .book-card:first-child {
+            margin-top: 1.5rem;
+        }
 
         /* Голоса улицы */
         .voices-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+        }
+        .voice-intro {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 1.5rem; /* Уменьшено с 2rem до 1.5rem */
+            background: #fff;
+            border-radius: 16px;
+            color: #666;
         }
         .voice-card {
             background: #fff;
@@ -294,7 +306,7 @@
         /* Форма */
         .form-block {
             background: #fff;
-            padding: 2rem;
+            padding: 1.5rem; /* Уменьшено с 2rem до 1.5rem */
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
@@ -530,7 +542,9 @@
         body.special-mode .form-block,
         body.special-mode .map-container,
         body.special-mode .map-point,
-        body.special-mode .footer-content {
+        body.special-mode .footer-content,
+        body.special-mode .empty-gallery,
+        body.special-mode .voice-intro {
             background-color: #fff !important;
             color: #000 !important;
             border: 1px solid #000 !important;
@@ -567,18 +581,6 @@
         .back-to-top:hover {
             background-color: #d68b8e;
             transform: scale(1.05);
-        }
-
-        /* ===== ЕДИНЫЕ ОТСТУПЫ ПОСЛЕ ЗАГОЛОВКОВ ===== */
-        /* Все блоки, идущие после заголовков h2.section-title, получают margin-top: 0,
-           чтобы они прилегали так же, как .timeline (без дополнительного отступа) */
-        .timeline,
-        .map-container,
-        .photo-gallery,
-        .voices-grid,
-        .books-grid,
-        .form-block {
-            margin-top: 0;
         }
     </style>
 </head>
@@ -688,7 +690,7 @@
             <!-- Голоса улицы -->
             <h2 class="section-title">Голоса улицы</h2>
             <div class="voices-grid fade-in" id="voicesGrid">
-                <div style="grid-column: 1/-1; text-align: center; padding: 2rem; background: #fff; border-radius: 16px;">
+                <div class="voice-intro">
                     <i class="fas fa-microphone-alt" style="font-size: 3rem; color: #e5989b; margin-bottom: 1rem;"></i>
                     <p>Что помнят старожилы? Какой была Торфяная улица 30, 40, 50 лет назад? Мы только начинаем собирать эти истории.</p>
                     <div style="text-align: left; margin-top: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
