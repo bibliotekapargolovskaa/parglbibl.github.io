@@ -46,10 +46,11 @@
             transform: translateY(0) scale(1);
         }
 
-        .timeline-item, .photo-gallery a, .book-card, .voice-card {
+        /* ===== ЕДИНАЯ АНИМАЦИЯ ДЛЯ ВСЕХ КАРТОЧЕК ===== */
+        .timeline-item, .photo-gallery a, .book-card, .voice-card, .map-container, .form-block, .map-point {
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
         }
-        .timeline-item:hover, .photo-gallery a:hover, .book-card:hover, .voice-card:hover {
+        .timeline-item:hover, .photo-gallery a:hover, .book-card:hover, .voice-card:hover, .map-container:hover, .form-block:hover, .map-point:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 30px rgba(0,0,0,0.12);
         }
@@ -211,7 +212,7 @@
         .map-point {
             background: #fff;
             padding: 1rem;
-            border-radius: 12px;
+            border-radius: 16px; /* исправлено с 12px на 16px */
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         .map-point h4 {
@@ -303,12 +304,11 @@
             border-radius: 16px;
             color: #666;
         }
-        /* Убираем верхний отступ у первого элемента внутри .voice-intro */
         .voice-intro > :first-child {
             margin-top: 0;
         }
         .voice-intro .yandex-link {
-            margin-top: 0; /* дополнительная страховка */
+            margin-top: 0;
             margin-bottom: 1rem;
         }
         .voice-card {
