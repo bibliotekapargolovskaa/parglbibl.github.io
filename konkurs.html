@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конкурс «История одной улицы» — Парголовская библиотека</title>
+    <meta name="description" content="Конкурс краеведческих выставок «История одной улицы». Примите участие!">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Парголовская библиотека" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Шрифты и стили -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    
+    <style>
+        /* Стили такие же, как на всех страницах (копия из nizhnee-pargolovo.html) */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            background-color: #fefaf5;
+            background-image: url('paper.png');
+            transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+        }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
+        .container { width: 90%; max-width: 1400px; margin: 0 auto; }
+        @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        header {
+            background-color: #b5838d;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            position: relative;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #f4e3d7;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav a:hover::after,
+        .nav a.active::after {
+            width: 100%;
+        }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
+        
+        @media (min-width: 769px) {
+            .logo {
+                margin-right: 40px;
+            }
+        }
+        @media (max-width: 1200px) {
+            .nav ul {
+                gap: 1.2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav { display: none; width: 100%; margin-top: 1rem; }
+            .nav.active { display: block; }
+            .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
+            .header-inner { flex-wrap: wrap; }
+        }
+
+        .section { padding: 4rem 0; }
+        .section-title {
+            position: relative;
+            text-align: center !important;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: #5e4b3c;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #e5989b;
+            margin: 0.5rem auto 0;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .section-title:hover::after {
+            width: 100px;
+        }
+
+        .back-link {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .back-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid #e5989b;
+            color: #e5989b;
+            padding: 6px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .back-link a:hover {
+            background-color: #e5989b;
+            color: white;
+        }
+
+        .info-block {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        .info-block h3 {
+            color: #b5838d;
+            margin-bottom: 1rem;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .photo-gallery a {
+            display: block;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .photo-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.5s;
+        }
+        .photo-gallery a:hover img {
+            transform: scale(1.05);
+        }
+        .empty-gallery {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 16px;
+            color: #888;
+        }
+
+        .voices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .voice-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .voice-card h3 {
+            margin-bottom: 0.5rem;
+            color: #b5838d;
+        }
+        .voice-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .voice-card small {
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        .footer-content {
+            background: #b5838d;
+            color: #fff;
+            padding: 3rem 0 2rem;
+            margin-top: 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #fff;
+        }
+        .footer-col p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+        }
+        .footer-col a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover {
+            color: #f4e3d7;
+        }
+        .footer-col i {
+            width: 20px;
+            text-align: center;
+        }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.2);
+            transition: background-color 0.3s;
+        }
+        .footer-social a:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+        .footer-social i {
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        .footer-actions {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        .share-buttons a, .print-button a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            color: #b5838d;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        .share-buttons a:hover {
+            background-color: #f4e3d7;
+            color: #5e4b3c;
+            transform: translateY(-3px);
+        }
+        .print-button a {
+            width: auto;
+            padding: 0 1.2rem;
+            border-radius: 40px;
+            gap: 8px;
+        }
+        .print-button a:hover {
+            background-color: #f4e3d7;
+            color: #5e4b3c;
+        }
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+
+        @media (max-width: 768px) {
+            .footer-accordion .accordion-content {
+                display: none;
+            }
+            .footer-accordion.open .accordion-content {
+                display: block;
+            }
+            .accordion-header {
+                cursor: pointer;
+                position: relative;
+                padding-right: 40px;
+                user-select: none;
+                word-break: break-word;
+            }
+            .accordion-header::before {
+                content: '\f107';
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: transform 0.3s;
+            }
+            .footer-accordion.open .accordion-header::before {
+                transform: translateY(-50%) rotate(180deg);
+            }
+        }
+        @media (min-width: 769px) {
+            .footer-accordion .accordion-content {
+                display: block !important;
+            }
+        }
+
+        body.special-mode {
+            background-color: #fff !important;
+            color: #000 !important;
+            font-size: 1.2em !important;
+            background-image: none !important;
+        }
+        body.special-mode h1, body.special-mode h2, body.special-mode h3, body.special-mode h4 { color: #000 !important; }
+        body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
+        body.special-mode header { background-color: #000 !important; }
+        body.special-mode .nav a { color: #fff !important; }
+        body.special-mode .nav a:hover { color: #ffff00 !important; }
+        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; }
+        body.special-mode .info-block,
+        body.special-mode .voice-card,
+        body.special-mode .footer-content {
+            background-color: #fff !important;
+            color: #000 !important;
+            border: 1px solid #000 !important;
+        }
+        body.special-mode .share-buttons a,
+        body.special-mode .print-button a {
+            background-color: #000 !important;
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+        body.special-mode footer { background-color: #000 !important; }
+        body.special-mode .footer-col a { color: #0000ee !important; }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #e5989b;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover {
+            background-color: #d68b8e;
+            transform: scale(1.05);
+        }
+
+        .btn-large {
+            font-size: 1.2rem;
+            padding: 1rem 3rem;
+            margin: 1rem 0;
+        }
+        .stats {
+            font-size: 1.2rem;
+            color: #b5838d;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.PNG" alt="Парголовская библиотека">
+            </a>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            </div>
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="events.html">События</a></li>
+                    <li><a href="speedcubing.html">Спидкубинг</a></li>
+                    <li><a href="newbooks.html">Новинки</a></li>
+                    <li><a href="faq.html">Вопросы</a></li>
+                    <li><a href="partners.html">Партнёры</a></li>
+                    <li><a href="district-libraries.html">Библиотеки района</a></li>
+                    <li><a href="kraevedenie.html">Краеведение</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <!-- Кнопка возврата на страницу Нижнего Парголово -->
+            <div class="back-link fade-in">
+                <a href="nizhnee-pargolovo.html">
+                    <i class="fas fa-arrow-left"></i> Назад к Нижнему Парголово
+                </a>
+            </div>
+
+            <h1 class="section-title">Конкурс «История одной улицы»</h1>
+
+            <!-- Блок с информацией о конкурсе -->
+            <div class="info-block fade-in" style="background-color: #fff9f0; border: 2px solid #e5989b;">
+                <h3><i class="fas fa-trophy" style="color: #e5989b;"></i> О конкурсе</h3>
+                <p>Мы участвуем в городском конкурсе краеведческих выставок <strong>«История одной улицы»</strong>, посвящённом улице Торфяной. Главное условие конкурса — <strong>сотворчество</strong>: вы можете стать соавторами нашей инсталляции, поделившись старыми фотографиями, документами, воспоминаниями.</p>
+                <p><strong>Сроки проведения:</strong> февраль – ноябрь 2026.</p>
+                <p><strong>Как участвовать:</strong> заполните форму на странице проекта «Улица Торфяная» (кнопка ниже) или принесите материалы лично в библиотеку. Все участники будут отмечены в нашей галерее и на странице конкурса.</p>
+                <div class="stats">
+                    <i class="fas fa-users"></i> Уже <span id="participant-counter">0</span> человек поделились историями и фотографиями. Спасибо!
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="torfyanaya.html#form" class="btn btn-large">📤 Поделиться историей</a>
+                </div>
+            </div>
+
+            <!-- Галерея народных фотографий (пока пустая) -->
+            <h2 class="section-title">Народный альбом</h2>
+            <div class="photo-gallery fade-in" id="folkAlbum">
+                <div class="empty-gallery">
+                    <i class="fas fa-images" style="font-size: 3rem; color: #e5989b; margin-bottom: 1rem;"></i>
+                    <p>Здесь появятся фотографии, присланные вами. Присылайте свои снимки Торфяной улицы разных лет — и они попадут в этот альбом!</p>
+                </div>
+                <!-- Пример карточки фото (будет добавляться вручную)
+                <a href="images/folk/ivanov_1985.jpg" data-fancybox="folk" data-caption="Фото от Иванова И. (примерно 1985 г.)">
+                    <img src="images/folk/ivanov_1985_thumb.jpg" alt="Народное фото">
+                </a>
+                -->
+            </div>
+
+            <!-- Голоса улицы -->
+            <h2 class="section-title">Голоса улицы</h2>
+            <div class="voices-grid fade-in" id="voicesGrid">
+                <!-- Пример карточки истории (будет добавляться вручную)
+                <div class="voice-card">
+                    <h3>Иван Петров</h3>
+                    <p>«В 1970-х мы с друзьями бегали купаться на озеро, а потом за мороженым в киоск на углу...»</p>
+                    <small>добавлено 15.03.2026</small>
+                </div>
+                -->
+                <div class="voice-card" style="background: #f8f8f8; border: 2px dashed #ccc; text-align: center; color: #aaa;">
+                    <i class="fas fa-microphone-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p>Здесь будут ваши воспоминания. Делитесь историями о Торфяной улице!</p>
+                </div>
+            </div>
+
+            <!-- Ссылка на форму (дублируем) -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="torfyanaya.html#form" class="btn btn-large">📤 Поделиться историей</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал (такой же, как в nizhnee-pargolovo.html) -->
+    <footer class="footer-content">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Парголовская библиотека</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
+                    <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
+                </div>
+
+                <div class="footer-col footer-accordion">
+                    <h3 class="accordion-header">Карта сайта</h3>
+                    <div class="accordion-content">
+                        <p><a href="index.html">Главная</a></p>
+                        <p><a href="about.html">О нас</a></p>
+                        <p><a href="services.html">Услуги</a></p>
+                        <p><a href="events.html">События</a></p>
+                        <p><a href="speedcubing.html">Спидкубинг</a></p>
+                        <p><a href="newbooks.html">Новинки</a></p>
+                        <p><a href="faq.html">Вопросы</a></p>
+                        <p><a href="partners.html">Партнёры</a></p>
+                        <p><a href="district-libraries.html">Библиотеки района</a></p>
+                        <p><a href="kraevedenie.html">Краеведение</a></p>
+                        <p><a href="nizhnee-pargolovo.html">Нижнее Парголово</a></p>
+                        <p><a href="verkhnee-pargolovo.html">Верхнее Парголово</a></p>
+                        <p><a href="torfyanaya.html">Улица Торфяная</a></p>
+                        <p><a href="pargolovo-culture.html">Парголово в культуре</a></p>
+                        <p><a href="shuvalovsky-park.html">Шуваловский парк</a></p>
+                        <p><a href="khramy-verkhnee-pargolovo.html">Храмы Верхнего Парголово</a></p>
+                        <p><a href="konkurs.html">Конкурс «История одной улицы»</a></p>
+                        <p><a href="contacts.html">Контакты</a></p>
+                        <p><a href="privacy.html">Политика конфиденциальности</a></p>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="footer-social">
+                        <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
+                    <p style="margin-top: 0.5rem;">
+                        <a href="#" id="specialFooterLink" style="color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-eye"></i> Версия для слабовидящих
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-actions">
+                    <div class="share-buttons">
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/konkurs.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <div class="print-button">
+                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
+                    </div>
+                </div>
+                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color: #fff; text-decoration: underline;">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <!-- Баннер для cookies с выбором -->
+    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
+        <p style="margin: 0; display: inline-block; margin-right: 20px; font-size: 0.95rem;">
+            Мы используем файлы cookie для улучшения работы сайта. Пожалуйста, выберите вариант:
+            <a href="privacy.html" style="color: #e5989b; text-decoration: underline; margin-left: 5px;">Подробнее</a>.
+        </p>
+        <button id="cookie-accept" style="background-color: #e5989b; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: background-color 0.3s; margin-right: 10px;">Принять</button>
+        <button id="cookie-decline" style="background-color: #666; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: background-color 0.3s;">Отклонить</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTop.classList.add('show');
+            else backToTop.classList.remove('show');
+        });
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                this.closest('.footer-accordion').classList.toggle('open');
+            });
+        });
+
+        const specialFooterLink = document.getElementById('specialFooterLink');
+        if (specialFooterLink) {
+            specialFooterLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.toggle('special-mode');
+            });
+        }
+
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
+
+        Fancybox.bind("[data-fancybox]", {});
+
+        // Cookie-баннер с выбором
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+
+        document.getElementById('cookie-decline').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'false');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+
+        // Счётчик участников (обновлять вручную при добавлении материалов)
+        // Можно вынести в переменную, но для простоты оставим статическим
+        // Если хотите динамику, можно подключать базу данных, но пока так.
+        document.getElementById('participant-counter').innerText = '12'; // пример
+    </script>
+</body>
+</html>
