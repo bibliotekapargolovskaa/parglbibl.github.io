@@ -8,12 +8,18 @@
     <meta name="keywords" content="Парголовская библиотека, библиотека Выборгского района, спидкубинг, кубик Рубика, чтение, мероприятия, книги">
     
     <!-- Favicon – правильный набор -->
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="Парголовская библиотека" />
-<link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Парголовская библиотека" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Preconnect для внешних ресурсов (ускоряет загрузку) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://vk.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
     <!-- Schema.org разметка -->
     <script type="application/ld+json">
@@ -55,14 +61,12 @@
     }
     </script>
     
-    <!-- Шрифты и стили -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Шрифты и стили (кешируются браузером) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <!-- Подключение Open API ВК -->
-    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169" defer></script>
     
     <style>
         /* ===== ОСНОВНЫЕ СТИЛИ ===== */
@@ -79,7 +83,6 @@
         .container { width: 90%; max-width: 1400px; margin: 0 auto; }
         @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
 
-        /* ===== УЛУЧШЕННАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
         .fade-in {
             opacity: 0;
             transform: translateY(20px) scale(0.95);
@@ -90,7 +93,6 @@
             transform: translateY(0) scale(1);
         }
 
-        /* ===== АНИМАЦИЯ ДЛЯ КАРТОЧЕК ПРИ НАВЕДЕНИИ ===== */
         .card, .service-card, .book-card, .achievement-card, .library-card, .partner-category, .event-card, .schedule-item {
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
         }
@@ -99,7 +101,6 @@
             box-shadow: 0 20px 30px rgba(0,0,0,0.12);
         }
 
-        /* ===== АНИМАЦИЯ ДЛЯ КНОПОК ===== */
         .btn {
             display: inline-block;
             background-color: #e5989b;
@@ -119,7 +120,6 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
-        /* ===== АНИМАЦИЯ ПОДЧЁРКИВАНИЯ ССЫЛОК В МЕНЮ ===== */
         .nav a {
             position: relative;
             text-decoration: none;
@@ -145,7 +145,6 @@
             border-bottom: none;
         }
 
-        /* ===== АНИМАЦИЯ ДЛЯ ЗАГОЛОВКОВ ===== */
         .section-title {
             position: relative;
             text-align: center !important;
@@ -166,7 +165,6 @@
             width: 100px;
         }
 
-        /* ===== ШАПКА ===== */
         header {
             background-color: #b5838d;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -203,13 +201,11 @@
                 margin-right: 40px;
             }
         }
-
         @media (max-width: 1200px) {
             .nav ul {
                 gap: 1.2rem;
             }
         }
-
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav { display: none; width: 100%; margin-top: 1rem; }
@@ -218,7 +214,6 @@
             .header-inner { flex-wrap: wrap; }
         }
 
-        /* ===== ГЕРО ===== */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('logo2.png') center/cover no-repeat;
             color: #fff;
@@ -253,13 +248,11 @@
             }
         }
 
-        /* ===== СЕКЦИИ ===== */
         .section { padding: 4rem 0; }
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .card { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; }
         .card i { font-size: 2.5rem; color: #b5838d; margin-bottom: 1rem; }
 
-        /* ===== СЛАЙДЕР ===== */
         .slider-container {
             position: relative;
             max-width: 1000px;
@@ -296,7 +289,6 @@
             background-color: #b5838d;
         }
 
-        /* ===== ЦИТАТА ===== */
         .quote-block {
             background: #fff;
             padding: 2.5rem;
@@ -342,7 +334,6 @@
             transform: scale(1.1);
         }
 
-        /* ===== СЛУЧАЙНАЯ КНИГА ===== */
         .random-book {
             background: #fff;
             border-radius: 16px;
@@ -364,7 +355,6 @@
         .random-book .author { font-weight: 600; color: #b5838d; margin-bottom: 0.5rem; }
         .random-book .description { color: #666; font-size: 0.95rem; margin-bottom: 1.5rem; }
 
-        /* ===== ВИДЖЕТ ВК ===== */
         #vk_groups {
             width: 100%;
             max-width: 100%;
@@ -419,7 +409,6 @@
             background-color: #9f6e7a;
         }
 
-        /* ===== ПОДВАЛ ===== */
         .footer-content {
             background: #b5838d;
             color: #fff;
@@ -539,7 +528,6 @@
             .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
         }
 
-        /* Аккордеон для карты сайта (только на мобильных) */
         @media (max-width: 768px) {
             .footer-accordion .accordion-content {
                 display: none;
@@ -574,7 +562,6 @@
             }
         }
 
-        /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ===== */
         body.special-mode {
             background-color: #fff !important;
             color: #000 !important;
@@ -652,12 +639,12 @@
             <h2 class="section-title">Фотогалерея</h2>
             <div class="slider-container">
                 <div class="slider" id="slider">
-                    <img src="s_ylici.jpg" alt="Библиотека с улицы" loading="lazy">
-                    <img src="chitalnii_zal.jpg" alt="Читальный зал" loading="lazy">
-                    <img src="vzroslay_literatura.jpg" alt="Взрослый абонемент" loading="lazy">
-                    <img src="detskie_knigi.jpg" alt="Детский абонемент" loading="lazy">
-                    <img src="knigi_vystavka.jpg" alt="Книжная выставка" loading="lazy">
-                    <img src="vystavka_kartin.jpg" alt="Интерьер" loading="lazy">
+                    <img src="s_ylici.jpg" alt="Библиотека с улицы" loading="lazy" width="1000" height="400">
+                    <img src="chitalnii_zal.jpg" alt="Читальный зал" loading="lazy" width="1000" height="400">
+                    <img src="vzroslay_literatura.jpg" alt="Взрослый абонемент" loading="lazy" width="1000" height="400">
+                    <img src="detskie_knigi.jpg" alt="Детский абонемент" loading="lazy" width="1000" height="400">
+                    <img src="knigi_vystavka.jpg" alt="Книжная выставка" loading="lazy" width="1000" height="400">
+                    <img src="vystavka_kartin.jpg" alt="Интерьер" loading="lazy" width="1000" height="400">
                 </div>
             </div>
             <div class="slider-dots" id="sliderDots"></div>
@@ -712,9 +699,268 @@
         </div>
     </section>
 
-    <!-- НОВЫЙ БЛОК О КОНКУРСЕ -->
+    <!-- Блок о конкурсе -->
     <section class="section">
         <div class="container">
             <div class="info-block fade-in" style="background-color: #fff9f0; border: 2px solid #e5989b; text-align: center; padding: 2.5rem;">
                 <i class="fas fa-trophy" style="font-size: 3rem; color: #e5989b; margin-bottom: 1rem;"></i>
-                <h2
+                <h2 style="color: #b5838d; margin-bottom: 1rem;">Конкурс «История одной улицы»</h2>
+                <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 1.5rem;">Мы участвуем в городском конкурсе краеведческих выставок. Приглашаем вас поделиться фотографиями и воспоминаниями о Торфяной улице. Ваши истории станут частью нашей инсталляции!</p>
+                <a href="konkurs.html" class="btn" style="font-size: 1.2rem; padding: 0.8rem 3rem;">Узнать подробнее и участвовать</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Случайная книга из новинок -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Случайная книга из новинок</h2>
+            <div id="random-book" class="random-book fade-in"></div>
+        </div>
+    </section>
+
+    <!-- Блок новостей ВКонтакте -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Последние новости из нашей группы</h2>
+            <div id="vk_groups"></div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://vk.com/pargolovskaya_library" target="_blank" class="vk-more-btn">Все новости в группе ВК</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Инициализация виджета ВК -->
+    <script type="text/javascript">
+        VK.Widgets.Group("vk_groups", {mode: 4, wide: 1, height: 600, color1: "FFFFFF", color2: "000000", color3: "5181B8"}, 176521452);
+    </script>
+
+    <footer class="footer-content">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Парголовская библиотека</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
+                    <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
+                </div>
+
+                <div class="footer-col footer-accordion">
+                    <h3 class="accordion-header">Карта сайта</h3>
+                    <div class="accordion-content">
+                        <p><a href="index.html">Главная</a></p>
+                        <p><a href="about.html">О нас</a></p>
+                        <p><a href="services.html">Услуги</a></p>
+                        <p><a href="events.html">События</a></p>
+                        <p><a href="speedcubing.html">Спидкубинг</a></p>
+                        <p><a href="newbooks.html">Новинки</a></p>
+                        <p><a href="faq.html">Вопросы</a></p>
+                        <p><a href="partners.html">Партнёры</a></p>
+                        <p><a href="district-libraries.html">Библиотеки района</a></p>
+                        <p><a href="kraevedenie.html">Краеведение</a></p>
+                        <p><a href="nizhnee-pargolovo.html">Нижнее Парголово</a></p>
+                        <p><a href="verkhnee-pargolovo.html">Верхнее Парголово</a></p>
+                        <p><a href="torfyanaya.html">Улица Торфяная</a></p>
+                        <p><a href="pargolovo-culture.html">Парголово в культуре</a></p>
+                        <p><a href="shuvalovsky-park.html">Шуваловский парк</a></p>
+                        <p><a href="khramy-verkhnee-pargolovo.html">Храмы Верхнего Парголово</a></p>
+                        <p><a href="konkurs.html">Конкурс «История одной улицы»</a></p>
+                        <p><a href="contacts.html">Контакты</a></p>
+                        <p><a href="privacy.html">Политика конфиденциальности</a></p>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="footer-social">
+                        <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
+                    <p style="margin-top: 0.5rem;">
+                        <a href="#" id="specialFooterLink" style="color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-eye"></i> Версия для слабовидящих
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-actions">
+                    <div class="share-buttons">
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <div class="print-button">
+                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
+                    </div>
+                </div>
+                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color: #fff; text-decoration: underline;">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <!-- Баннер для cookies с выбором -->
+    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
+        <p style="margin: 0; display: inline-block; margin-right: 20px; font-size: 0.95rem;">
+            Мы используем файлы cookie для улучшения работы сайта. Пожалуйста, выберите вариант:
+            <a href="privacy.html" style="color: #e5989b; text-decoration: underline; margin-left: 5px;">Подробнее</a>.
+        </p>
+        <button id="cookie-accept" style="background-color: #e5989b; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: background-color 0.3s; margin-right: 10px;">Принять</button>
+        <button id="cookie-decline" style="background-color: #666; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: background-color 0.3s;">Отклонить</button>
+    </div>
+
+    <script>
+        // Массив книг (20 книг)
+        const newBooks = [
+            { title: "История русского искусства", author: "Игнатова Н. О.", description: "От Айвазовского до Репина — популярный рассказ о шедеврах и художниках.", image: "n3.jpg", year: "2025" },
+            { title: "Выдающиеся русские люди", author: "Андрианова Н. А.", description: "Рассказы о выдающихся личностях, изменивших историю.", image: "n5.JPG", year: "2024" },
+            { title: "Выдающиеся русские мальчики", author: "Андрианова Н. А.", description: "Рассказы о детстве великих соотечественников для младших школьников.", image: "n6.jpg", year: "2025" },
+            { title: "Мир для детей", author: "Андрианова Н. А.", description: "Путеводитель по странам и континентам с яркими иллюстрациями.", image: "n7.jpg", year: "2022" },
+            { title: "Мигрант", author: "Астахов П. А.", description: "Современный детектив о судьбах людей в большом городе.", image: "n8.JPG", year: "2025" },
+            { title: "Медвежий край", author: "Кузнецова Д. А.", description: "Роман о природе Чукотки, её тайнах и людях.", image: "n9.jpg", year: "2025" },
+            { title: "Ольга Корса. Женщина-воин", author: "Карабет Е. С.", description: "История Героя России, отдавшей жизнь за Родину.", image: "n10.jpg", year: "2025" },
+            { title: "Легенды и мифы Древней Греции", author: "Кун Н. А.", description: "Классический сборник мифов о богах и героях.", image: "n11.jpg", year: "2024" },
+            { title: "Гербы России. История отечественной геральдики", author: "Воробьева Н. Н.", description: "Подарочное издание о символах и истории российских гербов.", image: "n12.JPG", year: "2022" },
+            { title: "Деньги и бизнес для детей", author: "Васин Д. В.", description: "Детский путеводитель по миру финансов и предпринимательства.", image: "n13.jpg", year: "2024" },
+            { title: "Тайны Камчатки", author: "Котова Т. Б.", description: "Захватывающее путешествие по вулканам и дикой природе полуострова.", image: "n14.jpg", year: "2025" },
+            { title: "Девочка, которая хотела...", author: "Лисова И. А.", description: "Добрая проза для детей о мечтах и их исполнении.", image: "n15.jpg", year: "2024" },
+            { title: "Двенадцать месяцев", author: "Маршак С. Я.", description: "Знаменитая сказка-пьеса о падчерице и братьях-месяцах.", image: "n16.jpg", year: "2024" },
+            { title: "Без вести пропавшие", author: "Пичугин Д. В.", description: "Детектив-реконструкция, основанный на реальных событиях.", image: "n17.JPG", year: "2025" },
+            { title: "На один удар больше", author: "Литвинова А. В.", description: "Авантюрный детектив о тайнах приёмного сына.", image: "n20.jpg", year: "2025" },
+            { title: "Последний знак", author: "Райт А.", description: "Триллер о серийном убийце, лауреат премии «Русский детектив».", image: "n21.JPG", year: "2024" },
+            { title: "Маленький принц", author: "Сент-Экзюпери А. де", description: "Философская сказка-притча о дружбе, любви и ответственности.", image: "n23.jpg", year: "2025" },
+            { title: "Большая история путешествий", author: "Тунич А.", description: "Как люди исследовали мир — для детей от 10 до 12 лет.", image: "n24.jpg", year: "2025" },
+            { title: "Царский подарок", author: "Асопил Е.", description: "Вечерний детектив из серии «Тайна старинной книги».", image: "n26.JPG", year: "2025" },
+            { title: "Зачем художнику детали?", author: "Никонова А. В.", description: "Увлекательное путешествие в мир искусства и деталей, которые меняют всё.", image: "n27.jpg", year: "2025" }
+        ];
+
+        function displayRandomBook() {
+            const randomIndex = Math.floor(Math.random() * newBooks.length);
+            const book = newBooks[randomIndex];
+            const html = `
+                <img src="${book.image}" alt="${book.title}" loading="lazy" width="250" height="350">
+                <h3>${book.title}</h3>
+                <div class="author">${book.author}</div>
+                <div class="description">${book.description}</div>
+                <a href="newbooks.html" class="btn">Все новинки</a>
+            `;
+            document.getElementById('random-book').innerHTML = html;
+        }
+
+        displayRandomBook();
+
+        // Цитаты
+        const quotes = [
+            { text: "Все дело в мыслях. Мысль – начало всего.", author: "Л. Толстой" },
+            { text: "Следовать за мыслями великого человека есть наука самая занимательная.", author: "А. Пушкин" },
+            { text: "Глубокие мысли – это железные гвозди.", author: "Д. Дидро" }
+        ];
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quote = quotes[randomIndex];
+            document.querySelector('.quote-text').textContent = `«${quote.text}»`;
+            document.querySelector('.quote-author').textContent = quote.author;
+        }
+        displayRandomQuote();
+
+        // Слайдер
+        const slider = document.getElementById('slider');
+        const dotsContainer = document.getElementById('sliderDots');
+        const images = slider.children;
+        const totalImages = images.length;
+        let currentIndex = 0;
+        let autoSlideInterval;
+        for (let i = 0; i < totalImages; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('slider-dot');
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+                resetAutoSlide();
+            });
+            dotsContainer.appendChild(dot);
+        }
+        const dots = document.querySelectorAll('.slider-dot');
+        dots[0].classList.add('active');
+        function goToSlide(index) {
+            currentIndex = index;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+        }
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            goToSlide(currentIndex);
+        }
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+        startAutoSlide();
+
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTop.classList.add('show');
+            else backToTop.classList.remove('show');
+        });
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                this.closest('.footer-accordion').classList.toggle('open');
+            });
+        });
+
+        const specialFooterLink = document.getElementById('specialFooterLink');
+        if (specialFooterLink) {
+            specialFooterLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.toggle('special-mode');
+            });
+        }
+
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
+
+        function updateShareLinks() {
+            const quoteText = document.querySelector('.quote-text').textContent;
+            const quoteAuthor = document.querySelector('.quote-author').textContent;
+            const fullQuote = `${quoteText} — ${quoteAuthor}`;
+            const currentUrl = encodeURIComponent(window.location.href);
+            document.getElementById('share-vk').href = `https://vk.com/share.php?url=${currentUrl}&title=${encodeURIComponent(fullQuote)}`;
+        }
+        window.addEventListener('load', () => {
+            setTimeout(updateShareLinks, 100);
+        });
+
+        // Cookie-баннер с выбором
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+
+        document.getElementById('cookie-decline').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'false');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
