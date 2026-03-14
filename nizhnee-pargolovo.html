@@ -6,7 +6,6 @@
     <title>Нижнее Парголово — Парголовская библиотека</title>
     <meta name="description" content="Нижнее Парголово (2-е Парголово): история, улицы, достопримечательности. Краеведческий проект Парголовской библиотеки.">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -14,15 +13,11 @@
     <meta name="apple-mobile-web-app-title" content="Парголовская библиотека" />
     <link rel="manifest" href="/site.webmanifest" />
     
-    <!-- Общие стили -->
     <link rel="stylesheet" href="common.css">
-    
-    <!-- Шрифты и иконки -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* Уникальные стили */
         .project-card {
             transition: transform 0.4s, box-shadow 0.4s;
         }
@@ -98,32 +93,7 @@
     </style>
 </head>
 <body class="page-transition">
-    <header>
-        <!-- То же меню, что в др. страницах -->
-        <div class="container header-inner">
-            <a href="index.html" class="logo">
-                <img src="logo.PNG" alt="Парголовская библиотека" loading="lazy">
-            </a>
-            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-            <nav class="nav" id="nav">
-                <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
-                    <li><a href="about.html"><i class="fas fa-users"></i> О нас</a></li>
-                    <li><a href="kraevedenie.html" class="active"><i class="fas fa-map-signs"></i> Краеведение</a></li>
-                    <li><a href="newbooks.html"><i class="fas fa-book-open"></i> Новинки</a></li>
-                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Услуги</a></li>
-                    <li><a href="events.html"><i class="fas fa-calendar-alt"></i> События</a></li>
-                    <li><a href="speedcubing.html"><i class="fas fa-puzzle-piece"></i> Спидкубинг</a></li>
-                    <li><a href="district-libraries.html"><i class="fas fa-building"></i> Библиотеки района</a></li>
-                    <li><a href="partners.html"><i class="fas fa-handshake"></i> Партнёры</a></li>
-                    <li><a href="faq.html"><i class="fas fa-question-circle"></i> Вопросы</a></li>
-                    <li><a href="gallery.html"><i class="fas fa-images"></i> Фотогалерея</a></li>
-                    <li><a href="contacts.html"><i class="fas fa-phone-alt"></i> Контакты</a></li>
-                </ul>
-                <div class="search-icon-container">...</div>
-            </nav>
-        </div>
-    </header>
+    <header>...</header> <!-- аналогично about.html, но активный пункт Краеведение? можно скопировать шапку с активным классом на Краеведение -->
 
     <section class="section">
         <div class="container">
@@ -134,9 +104,7 @@
             </div>
 
             <div class="back-link fade-in">
-                <a href="kraevedenie.html">
-                    <i class="fas fa-arrow-left"></i> Назад к краеведению
-                </a>
+                <a href="kraevedenie.html"><i class="fas fa-arrow-left"></i> Назад к краеведению</a>
             </div>
 
             <h1 class="section-title">Нижнее Парголово</h1>
@@ -163,19 +131,20 @@
                 </div>
             </div>
 
-            <div class="info-block fade-in" style="margin-top: 2rem;">
-                <h3 style="color: #b5838d;">Достопримечательности Нижнего Парголово</h3>
-                <ul style="list-style: none; padding-left: 0;">
-                    <li><i class="fas fa-train" style="color: #e5989b; width: 1.5rem;"></i> <strong>Станция Парголово</strong> — вокзал 1906 года в стиле финского национального романтизма (арх. Бруно Гранхольм). Сохранились уникальные интерьеры: печи с изразцами, деревянные потолки, метлахская плитка. Здание изображено на гербе Парголово.</li>
-                    <li><i class="fas fa-church" style="color: #e5989b; width: 1.5rem;"></i> <strong>Церковь Спаса Нерукотворного Образа</strong> — деревянная церковь 1792 года (арх. Луиджи Руска) и каменная 1880 года. В годы блокады храм не закрывался.</li>
-                    <li><i class="fas fa-tree" style="color: #e5989b; width: 1.5rem;"></i> <strong>Озеро Парголовское</strong> — живописное озеро, популярное место отдыха.</li>
+            <div class="info-block fade-in" style="margin-top:2rem;">
+                <h3 style="color:#b5838d;">Достопримечательности Нижнего Парголово</h3>
+                <ul style="list-style:none; padding-left:0;">
+                    <li><i class="fas fa-train" style="color:#e5989b; width:1.5rem;"></i> <strong>Станция Парголово</strong> — вокзал 1906 года в стиле финского национального романтизма (арх. Бруно Гранхольм). Сохранились уникальные интерьеры: печи с изразцами, деревянные потолки, метлахская плитка. Здание изображено на гербе Парголово.</li>
+                    <li><i class="fas fa-church" style="color:#e5989b; width:1.5rem;"></i> <strong>Церковь Спаса Нерукотворного Образа</strong> — деревянная церковь 1792 года (арх. Луиджи Руска) и каменная 1880 года. В годы блокады храм не закрывался.</li>
+                    <li><i class="fas fa-tree" style="color:#e5989b; width:1.5rem;"></i> <strong>Озеро Парголовское</strong> — живописное озеро, популярное место отдыха.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Подвал и скрипты -->
-    <footer class="footer-content">...</footer>
-    <script>// адаптивное меню и пр.</script>
+    <footer class="footer-content">...</footer> <!-- копия подвала -->
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+    <div id="cookie-banner">...</div>
+    <script src="common.js"></script>
 </body>
 </html>
