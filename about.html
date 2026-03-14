@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-title" content="Парголовская библиотека" />
     <link rel="manifest" href="/site.webmanifest" />
     
-    <!-- Schema.org разметка (библиотека) -->
+    <!-- Schema.org разметка -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -308,13 +308,262 @@
         </div>
     </section>
 
-    <!-- Подвал (такой же как в index.html) -->
+    <!-- Подвал -->
     <footer class="footer-content">
-        <!-- ... полностью скопировать из index.html ... -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Парголовская библиотека</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
+                    <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
+                </div>
+
+                <div class="footer-col footer-accordion">
+                    <h3 class="accordion-header">Карта сайта</h3>
+                    <div class="accordion-content">
+                        <p><a href="index.html">Главная</a></p>
+                        <p><a href="about.html">О нас</a></p>
+                        <p><a href="kraevedenie.html">Краеведение</a></p>
+                        <p><a href="newbooks.html">Новинки</a></p>
+                        <p><a href="services.html">Услуги</a></p>
+                        <p><a href="events.html">События</a></p>
+                        <p><a href="speedcubing.html">Спидкубинг</a></p>
+                        <p><a href="district-libraries.html">Библиотеки района</a></p>
+                        <p><a href="partners.html">Партнёры</a></p>
+                        <p><a href="faq.html">Вопросы</a></p>
+                        <p><a href="gallery.html">Фотогалерея</a></p>
+                        <p><a href="contacts.html">Контакты</a></p>
+                        <p><a href="nizhnee-pargolovo.html">Нижнее Парголово</a></p>
+                        <p><a href="verkhnee-pargolovo.html">Верхнее Парголово</a></p>
+                        <p><a href="torfyanaya.html">Улица Торфяная</a></p>
+                        <p><a href="pargolovo-culture.html">Парголово в культуре</a></p>
+                        <p><a href="shuvalovsky-park.html">Шуваловский парк</a></p>
+                        <p><a href="khramy-verkhnee-pargolovo.html">Храмы Верхнего Парголово</a></p>
+                        <p><a href="konkurs.html">Конкурс «История одной улицы»</a></p>
+                        <p><a href="privacy.html">Политика конфиденциальности</a></p>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="footer-social">
+                        <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
+                    <p style="margin-top: 0.5rem;">
+                        <a href="#" id="specialFooterLink" style="color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-eye"></i> Версия для слабовидящих
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-actions">
+                    <div class="share-buttons">
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/about.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <div class="print-button">
+                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
+                    </div>
+                </div>
+                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color: #fff; text-decoration: underline;">Политика конфиденциальности</a></p>
+            </div>
+        </div>
     </footer>
 
-    <!-- Баннер cookie, back-to-top и скрипты -->
-    <!-- ... скопировать из index.html ... -->
-    <!-- ВАЖНО: в скриптах нужно оставить адаптивное меню (без добавления searchBlock) -->
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <!-- Баннер cookie -->
+    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
+        <p style="margin: 0; display: inline-block; margin-right: 20px; font-size: 0.95rem;">
+            Мы используем файлы cookie для улучшения работы сайта. Пожалуйста, выберите вариант:
+            <a href="privacy.html" style="color: #e5989b; text-decoration: underline; margin-left: 5px;">Подробнее</a>.
+        </p>
+        <button id="cookie-accept" style="background-color: #e5989b; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; margin-right: 10px;">Принять</button>
+        <button id="cookie-decline" style="background-color: #666; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600;">Отклонить</button>
+    </div>
+
+    <script>
+        // === БАЗОВЫЙ ОБРАБОТЧИК БУРГЕРА ===
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+        }
+
+        // === СКРИПТ ДЛЯ ПОИСКА ===
+        const searchIcon = document.getElementById('searchIcon');
+        const searchPopup = document.getElementById('searchPopup');
+        if (searchIcon && searchPopup) {
+            searchIcon.addEventListener('click', function(e) {
+                e.stopPropagation();
+                searchPopup.classList.toggle('active');
+                if (searchPopup.classList.contains('active')) {
+                    searchPopup.querySelector('input').focus();
+                }
+            });
+            document.addEventListener('click', function(e) {
+                if (!searchPopup.contains(e.target) && e.target !== searchIcon) {
+                    searchPopup.classList.remove('active');
+                }
+            });
+        }
+
+        // === АДАПТИВНОЕ МЕНЮ С ПЕРЕНОСОМ "СОБЫТИЙ" В ПОДМЕНЮ ===
+        (function() {
+            const nav = document.getElementById('nav');
+            const originalMenuHTML = nav.innerHTML;
+
+            function buildMobileMenu(originalItems) {
+                const mainItems = [
+                    'Главная',
+                    'О нас',
+                    'Краеведение',
+                    'Новинки',
+                    'Услуги'
+                ];
+                const moreItems = [
+                    'Спидкубинг',
+                    'События',
+                    'Библиотеки района',
+                    'Партнёры',
+                    'Вопросы',
+                    'Фотогалерея',
+                    'Контакты'
+                ];
+
+                let html = '<ul>';
+
+                mainItems.forEach(text => {
+                    const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
+                    if (linkElem) {
+                        const href = linkElem.getAttribute('href');
+                        const activeClass = linkElem.classList.contains('active') ? 'active' : '';
+                        const iconHtml = linkElem.querySelector('i') ? linkElem.querySelector('i').outerHTML : '';
+                        html += `<li><a href="${href}" class="${activeClass}">${iconHtml} ${text}</a></li>`;
+                    }
+                });
+
+                html += `<li class="mobile-more">
+                    <a href="#" id="mobileMoreToggle">Ещё <i class="fas fa-chevron-down"></i></a>
+                    <ul class="mobile-submenu" style="display: none;">`;
+
+                moreItems.forEach(text => {
+                    const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
+                    if (linkElem) {
+                        const href = linkElem.getAttribute('href');
+                        const activeClass = linkElem.classList.contains('active') ? 'active' : '';
+                        const iconHtml = linkElem.querySelector('i') ? linkElem.querySelector('i').outerHTML : '';
+                        html += `<li><a href="${href}" class="${activeClass}">${iconHtml} ${text}</a></li>`;
+                    }
+                });
+
+                html += '</ul></li></ul>';
+                return html;
+            }
+
+            function updateMenu() {
+                if (window.innerWidth <= 768) {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = originalMenuHTML;
+                    const originalItems = Array.from(tempDiv.querySelectorAll('ul > li'));
+
+                    nav.innerHTML = buildMobileMenu(originalItems);
+
+                    const moreToggle = document.getElementById('mobileMoreToggle');
+                    if (moreToggle) {
+                        moreToggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const submenu = this.nextElementSibling;
+                            if (submenu.style.display === 'none' || submenu.style.display === '') {
+                                submenu.style.display = 'block';
+                                this.querySelector('i').classList.remove('fa-chevron-down');
+                                this.querySelector('i').classList.add('fa-chevron-up');
+                            } else {
+                                submenu.style.display = 'none';
+                                this.querySelector('i').classList.remove('fa-chevron-up');
+                                this.querySelector('i').classList.add('fa-chevron-down');
+                            }
+                        });
+                    }
+                } else {
+                    nav.innerHTML = originalMenuHTML;
+                }
+            }
+
+            const mediaQuery = window.matchMedia('(max-width: 768px)');
+            mediaQuery.addEventListener('change', updateMenu);
+            window.addEventListener('load', updateMenu);
+            if (mediaQuery.matches) {
+                updateMenu();
+            }
+        })();
+
+        // === ОБЩИЕ СКРИПТЫ ===
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backToTop.classList.add('show');
+            else backToTop.classList.remove('show');
+        });
+
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                this.closest('.footer-accordion').classList.toggle('open');
+            });
+        });
+
+        const specialFooterLink = document.getElementById('specialFooterLink');
+        if (specialFooterLink) {
+            specialFooterLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.toggle('special-mode');
+            });
+        }
+
+        // Яндекс.Метрика
+        function loadYandexMetrica() {
+            if (window.ym && window.ym(107242178)) return;
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+            ym(107242178, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
+            var noscript = document.createElement('noscript');
+            var div = document.createElement('div');
+            var img = document.createElement('img');
+            img.src = 'https://mc.yandex.ru/watch/107242178';
+            img.style = 'position:absolute; left:-9999px;';
+            img.alt = '';
+            div.appendChild(img);
+            noscript.appendChild(div);
+            document.body.appendChild(noscript);
+        }
+
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        } else {
+            if (localStorage.getItem('cookieConsent') === 'true') loadYandexMetrica();
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+            loadYandexMetrica();
+        });
+
+        document.getElementById('cookie-decline').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'false');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+
+        // Fancybox
+        Fancybox.bind("[data-fancybox]");
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 </body>
 </html>
