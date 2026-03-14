@@ -7,7 +7,6 @@
     <meta name="description" content="Ответы на частые вопросы о Парголовской библиотеке: запись, часы работы, Wi-Fi, спидкубинг, доступная среда.">
     <meta name="keywords" content="Парголовская библиотека, вопросы, ответы, FAQ, запись, спидкубинг">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -15,55 +14,11 @@
     <meta name="apple-mobile-web-app-title" content="Парголовская библиотека" />
     <link rel="manifest" href="/site.webmanifest" />
     
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Library",
-      "name": "Библиотека «Парголовская»",
-      "description": "Уютное пространство для чтения, творчества и встреч. Бесплатные занятия по спидкубингу, доступная среда.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "ул. Торфяная, 25",
-        "addressLocality": "Парголово",
-        "addressRegion": "Санкт-Петербург",
-        "postalCode": "194362",
-        "addressCountry": "RU"
-      },
-      "telephone": "+7-812-246-93-05",
-      "email": "pargolovo@cbsvib.ru",
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "12:00",
-          "closes": "18:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Sunday"],
-          "opens": "",
-          "closes": "",
-          "description": "Выходной"
-        }
-      ],
-      "url": "https://parglbibl.ru",
-      "sameAs": [
-        "https://vk.com/pargolovskaya_library",
-        "https://cbsvib.ru/"
-      ]
-    }
-    </script>
-    
-    <!-- Общие стили -->
     <link rel="stylesheet" href="common.css">
-    
-    <!-- Шрифты и иконки -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* Уникальные стили */
         .faq-item {
             transition: transform 0.4s, box-shadow 0.4s;
         }
@@ -110,7 +65,42 @@
     </style>
 </head>
 <body class="page-transition">
-    <header>...</header> <!-- то же меню -->
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.PNG" alt="Парголовская библиотека" loading="lazy">
+            </a>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="about.html"><i class="fas fa-users"></i> О нас</a></li>
+                    <li><a href="kraevedenie.html"><i class="fas fa-map-signs"></i> Краеведение</a></li>
+                    <li><a href="newbooks.html"><i class="fas fa-book-open"></i> Новинки</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Услуги</a></li>
+                    <li><a href="events.html"><i class="fas fa-calendar-alt"></i> События</a></li>
+                    <li><a href="speedcubing.html"><i class="fas fa-puzzle-piece"></i> Спидкубинг</a></li>
+                    <li><a href="district-libraries.html"><i class="fas fa-building"></i> Библиотеки района</a></li>
+                    <li><a href="partners.html"><i class="fas fa-handshake"></i> Партнёры</a></li>
+                    <li><a href="faq.html" class="active"><i class="fas fa-question-circle"></i> Вопросы</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Фотогалерея</a></li>
+                    <li><a href="contacts.html"><i class="fas fa-phone-alt"></i> Контакты</a></li>
+                </ul>
+                <div class="search-icon-container">
+                    <i class="fas fa-search" id="searchIcon"></i>
+                    <div class="search-popup" id="searchPopup">
+                        <form action="https://yandex.ru/search/" method="get" target="_blank">
+                            <input type="hidden" name="site" value="parglbibl.ru">
+                            <input type="hidden" name="host" value="parglbibl.ru">
+                            <input type="hidden" name="lr" value="2">
+                            <input type="text" name="text" placeholder="Поиск по сайту..." autocomplete="off">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
 
     <section class="section">
         <div class="container">
@@ -295,8 +285,72 @@
         </div>
     </section>
 
-    <!-- Подвал и скрипты (с аккордеоном для FAQ и адаптивным меню) -->
-    <footer class="footer-content">...</footer>
+    <footer class="footer-content">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Парголовская библиотека</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
+                    <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
+                </div>
+                <div class="footer-col footer-accordion">
+                    <h3 class="accordion-header">Карта сайта</h3>
+                    <div class="accordion-content">
+                        <p><a href="index.html">Главная</a></p>
+                        <p><a href="about.html">О нас</a></p>
+                        <p><a href="kraevedenie.html">Краеведение</a></p>
+                        <p><a href="newbooks.html">Новинки</a></p>
+                        <p><a href="services.html">Услуги</a></p>
+                        <p><a href="events.html">События</a></p>
+                        <p><a href="speedcubing.html">Спидкубинг</a></p>
+                        <p><a href="district-libraries.html">Библиотеки района</a></p>
+                        <p><a href="partners.html">Партнёры</a></p>
+                        <p><a href="faq.html">Вопросы</a></p>
+                        <p><a href="gallery.html">Фотогалерея</a></p>
+                        <p><a href="contacts.html">Контакты</a></p>
+                        <p><a href="nizhnee-pargolovo.html">Нижнее Парголово</a></p>
+                        <p><a href="verkhnee-pargolovo.html">Верхнее Парголово</a></p>
+                        <p><a href="torfyanaya.html">Улица Торфяная</a></p>
+                        <p><a href="pargolovo-culture.html">Парголово в культуре</a></p>
+                        <p><a href="shuvalovsky-park.html">Шуваловский парк</a></p>
+                        <p><a href="khramy-verkhnee-pargolovo.html">Храмы Верхнего Парголово</a></p>
+                        <p><a href="konkurs.html">Конкурс «История одной улицы»</a></p>
+                        <p><a href="privacy.html">Политика конфиденциальности</a></p>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="footer-social">
+                        <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <p style="margin-top:1.5rem;">Подпишитесь на новости!</p>
+                    <p><a href="#" id="specialFooterLink" style="color:#fff;"><i class="fas fa-eye"></i> Версия для слабовидящих</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-actions">
+                    <div class="share-buttons">
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/faq.html" target="_blank"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <div class="print-button">
+                        <a href="javascript:window.print()"><i class="fas fa-print"></i> Печать</a>
+                    </div>
+                </div>
+                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color:#fff; text-decoration:underline;">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
+        <p style="margin: 0; display: inline-block; margin-right: 20px;">Мы используем файлы cookie. <a href="privacy.html" style="color:#e5989b;">Подробнее</a>.</p>
+        <button id="cookie-accept" style="background-color:#e5989b; color:#fff; border:none; padding:8px 20px; border-radius:50px; margin-right:10px;">Принять</button>
+        <button id="cookie-decline" style="background-color:#666; color:#fff; border:none; padding:8px 20px; border-radius:50px;">Отклонить</button>
+    </div>
+
+    <script src="common.js"></script>
     <script>
         // Аккордеон для FAQ
         const faqQuestions = document.querySelectorAll('.faq-question');
@@ -316,8 +370,6 @@
                 }
             });
         });
-
-        // Остальные скрипты (меню, поиск, метрика) как в services.html
     </script>
 </body>
 </html>
