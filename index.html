@@ -133,7 +133,7 @@
             color: #fff;
             font-weight: 600;
             transition: color 0.3s;
-            font-size: 1.0rem;      /* ваш размер */
+            font-size: 1.0rem;
             white-space: nowrap;
         }
         .nav a::after {
@@ -214,7 +214,7 @@
         .nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;            /* ваш отступ */
+            gap: 2rem;
             align-items: center;
             margin: 0;
             padding: 0;
@@ -529,16 +529,12 @@
                 gap: 5px;
             }
             .mobile-submenu {
-                display: none;
                 list-style: none;
                 padding: 0;
                 margin-top: 5px;
-                background-color: #b5838d; /* тот же цвет, что и у шапки */
+                background-color: #b5838d;
                 border-radius: 8px;
                 overflow: hidden;
-            }
-            .mobile-submenu.show {
-                display: block;
             }
             .mobile-submenu li {
                 border-top: 1px solid rgba(255,255,255,0.2);
@@ -1197,10 +1193,9 @@
             document.getElementById('cookie-banner').style.display = 'none';
         });
 
-        // === АДАПТИВНОЕ МЕНЮ ===
+        // === АДАПТИВНОЕ МЕНЮ (исправленная версия) ===
         (function() {
             const nav = document.getElementById('nav');
-            // Сохраняем оригинальную структуру вместе с поиском
             const originalMenuHTML = nav.innerHTML;
 
             function buildMobileMenu(originalItems) {
@@ -1232,9 +1227,10 @@
                     }
                 });
 
+                // Пункт "Ещё" с подменю, скрытым по умолчанию
                 html += `<li class="mobile-more">
                     <a href="#" id="mobileMoreToggle">Ещё <i class="fas fa-chevron-down"></i></a>
-                    <ul class="mobile-submenu">`;
+                    <ul class="mobile-submenu" style="display: none;">`; // принудительно скрыто
 
                 moreItems.forEach(text => {
                     const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
@@ -1247,7 +1243,7 @@
 
                 html += '</ul></li></ul>';
 
-                // Добавляем блок поиска обратно (он не должен пропадать)
+                // Добавляем блок поиска (он был в оригинале)
                 const searchBlock = document.querySelector('.search-icon-container');
                 if (searchBlock) {
                     html += searchBlock.outerHTML;
@@ -1268,10 +1264,16 @@
                         moreToggle.addEventListener('click', function(e) {
                             e.preventDefault();
                             const submenu = this.nextElementSibling;
-                            submenu.classList.toggle('show');
-                            const icon = this.querySelector('i');
-                            icon.classList.toggle('fa-chevron-down');
-                            icon.classList.toggle('fa-chevron-up');
+                            // Переключаем видимость
+                            if (submenu.style.display === 'none' || submenu.style.display === '') {
+                                submenu.style.display = 'block';
+                                this.querySelector('i').classList.remove('fa-chevron-down');
+                                this.querySelector('i').classList.add('fa-chevron-up');
+                            } else {
+                                submenu.style.display = 'none';
+                                this.querySelector('i').classList.remove('fa-chevron-up');
+                                this.querySelector('i').classList.add('fa-chevron-down');
+                            }
                         });
                     }
                 } else {
@@ -1279,11 +1281,9 @@
                 }
             }
 
-            // Используем matchMedia для более надёжного определения
             const mediaQuery = window.matchMedia('(max-width: 768px)');
             mediaQuery.addEventListener('change', updateMenu);
             window.addEventListener('load', updateMenu);
-            // Также запускаем сразу, если уже мобильное разрешение
             if (mediaQuery.matches) {
                 updateMenu();
             }
