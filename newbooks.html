@@ -6,7 +6,6 @@
     <title>Парголовская библиотека - Новые поступления</title>
     <meta name="description" content="Новые книги в Парголовской библиотеке. Свежие поступления художественной и научно-популярной литературы.">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -14,14 +13,9 @@
     <meta name="apple-mobile-web-app-title" content="Парголовская библиотека" />
     <link rel="manifest" href="/site.webmanifest" />
     
-    <!-- Общие стили -->
     <link rel="stylesheet" href="common.css">
-    
-    <!-- Шрифты и иконки -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Fancybox CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
     
     <style>
@@ -77,4 +71,226 @@
         }
         .book-card .description {
             font-size: 0.9rem;
-            color:
+            color: #666;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        .book-card .details {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+        .rating i {
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin: 0 2px;
+        }
+    </style>
+</head>
+<body class="page-transition">
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.PNG" alt="Парголовская библиотека" loading="lazy">
+            </a>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="about.html"><i class="fas fa-users"></i> О нас</a></li>
+                    <li><a href="kraevedenie.html"><i class="fas fa-map-signs"></i> Краеведение</a></li>
+                    <li><a href="newbooks.html" class="active"><i class="fas fa-book-open"></i> Новинки</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Услуги</a></li>
+                    <li><a href="events.html"><i class="fas fa-calendar-alt"></i> События</a></li>
+                    <li><a href="speedcubing.html"><i class="fas fa-puzzle-piece"></i> Спидкубинг</a></li>
+                    <li><a href="district-libraries.html"><i class="fas fa-building"></i> Библиотеки района</a></li>
+                    <li><a href="partners.html"><i class="fas fa-handshake"></i> Партнёры</a></li>
+                    <li><a href="faq.html"><i class="fas fa-question-circle"></i> Вопросы</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Фотогалерея</a></li>
+                    <li><a href="contacts.html"><i class="fas fa-phone-alt"></i> Контакты</a></li>
+                </ul>
+                <div class="search-icon-container">
+                    <i class="fas fa-search" id="searchIcon"></i>
+                    <div class="search-popup" id="searchPopup">
+                        <form action="https://yandex.ru/search/" method="get" target="_blank">
+                            <input type="hidden" name="site" value="parglbibl.ru">
+                            <input type="hidden" name="host" value="parglbibl.ru">
+                            <input type="hidden" name="lr" value="2">
+                            <input type="text" name="text" placeholder="Поиск по сайту..." autocomplete="off">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a> &raquo;
+                <span>Новые поступления</span>
+            </div>
+
+            <h2 class="section-title">Новые поступления книг</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Каждый месяц мы пополняем фонд самыми интересными новинками.</p>
+            <div class="books-grid" id="books-grid"></div>
+        </div>
+    </section>
+
+    <footer class="footer-content">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Парголовская библиотека</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
+                    <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
+                    <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
+                </div>
+
+                <div class="footer-col footer-accordion">
+                    <h3 class="accordion-header">Карта сайта</h3>
+                    <div class="accordion-content">
+                        <p><a href="index.html">Главная</a></p>
+                        <p><a href="about.html">О нас</a></p>
+                        <p><a href="kraevedenie.html">Краеведение</a></p>
+                        <p><a href="newbooks.html">Новинки</a></p>
+                        <p><a href="services.html">Услуги</a></p>
+                        <p><a href="events.html">События</a></p>
+                        <p><a href="speedcubing.html">Спидкубинг</a></p>
+                        <p><a href="district-libraries.html">Библиотеки района</a></p>
+                        <p><a href="partners.html">Партнёры</a></p>
+                        <p><a href="faq.html">Вопросы</a></p>
+                        <p><a href="gallery.html">Фотогалерея</a></p>
+                        <p><a href="contacts.html">Контакты</a></p>
+                        <p><a href="nizhnee-pargolovo.html">Нижнее Парголово</a></p>
+                        <p><a href="verkhnee-pargolovo.html">Верхнее Парголово</a></p>
+                        <p><a href="torfyanaya.html">Улица Торфяная</a></p>
+                        <p><a href="pargolovo-culture.html">Парголово в культуре</a></p>
+                        <p><a href="shuvalovsky-park.html">Шуваловский парк</a></p>
+                        <p><a href="khramy-verkhnee-pargolovo.html">Храмы Верхнего Парголово</a></p>
+                        <p><a href="konkurs.html">Конкурс «История одной улицы»</a></p>
+                        <p><a href="privacy.html">Политика конфиденциальности</a></p>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="footer-social">
+                        <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
+                    <p style="margin-top: 0.5rem;">
+                        <a href="#" id="specialFooterLink" style="color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-eye"></i> Версия для слабовидящих
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-actions">
+                    <div class="share-buttons">
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/newbooks.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <div class="print-button">
+                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
+                    </div>
+                </div>
+                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color: #fff; text-decoration: underline;">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+
+    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
+        <p style="margin: 0; display: inline-block; margin-right: 20px;">Мы используем файлы cookie. <a href="privacy.html" style="color:#e5989b;">Подробнее</a>.</p>
+        <button id="cookie-accept" style="background-color:#e5989b; color:#fff; border:none; padding:8px 20px; border-radius:50px; margin-right:10px;">Принять</button>
+        <button id="cookie-decline" style="background-color:#666; color:#fff; border:none; padding:8px 20px; border-radius:50px;">Отклонить</button>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        // Массив книг (20 книг) – замените пути на свои
+        const newBooks = [
+            { title: "История русского искусства", author: "Игнатова Н. О.", description: "От Айвазовского до Репина — популярный рассказ о шедеврах и художниках.", image: "n3.jpg", webp: "n3.webp", year: "2025" },
+            { title: "Выдающиеся русские люди", author: "Андрианова Н. А.", description: "Рассказы о выдающихся личностях, изменивших историю.", image: "n5.JPG", webp: "n5.webp", year: "2024" },
+            { title: "Выдающиеся русские мальчики", author: "Андрианова Н. А.", description: "Рассказы о детстве великих соотечественников для младших школьников.", image: "n6.jpg", webp: "n6.webp", year: "2025" },
+            { title: "Мир для детей", author: "Андрианова Н. А.", description: "Путеводитель по странам и континентам с яркими иллюстрациями.", image: "n7.jpg", webp: "n7.webp", year: "2022" },
+            { title: "Мигрант", author: "Астахов П. А.", description: "Современный детектив о судьбах людей в большом городе.", image: "n8.JPG", webp: "n8.webp", year: "2025" },
+            { title: "Медвежий край", author: "Кузнецова Д. А.", description: "Роман о природе Чукотки, её тайнах и людях.", image: "n9.jpg", webp: "n9.webp", year: "2025" },
+            { title: "Ольга Корса. Женщина-воин", author: "Карабет Е. С.", description: "История Героя России, отдавшей жизнь за Родину.", image: "n10.jpg", webp: "n10.webp", year: "2025" },
+            { title: "Легенды и мифы Древней Греции", author: "Кун Н. А.", description: "Классический сборник мифов о богах и героях.", image: "n11.jpg", webp: "n11.webp", year: "2024" },
+            { title: "Гербы России. История отечественной геральдики", author: "Воробьева Н. Н.", description: "Подарочное издание о символах и истории российских гербов.", image: "n12.JPG", webp: "n12.webp", year: "2022" },
+            { title: "Деньги и бизнес для детей", author: "Васин Д. В.", description: "Детский путеводитель по миру финансов и предпринимательства.", image: "n13.jpg", webp: "n13.webp", year: "2024" },
+            { title: "Тайны Камчатки", author: "Котова Т. Б.", description: "Захватывающее путешествие по вулканам и дикой природе полуострова.", image: "n14.jpg", webp: "n14.webp", year: "2025" },
+            { title: "Девочка, которая хотела...", author: "Лисова И. А.", description: "Добрая проза для детей о мечтах и их исполнении.", image: "n15.jpg", webp: "n15.webp", year: "2024" },
+            { title: "Двенадцать месяцев", author: "Маршак С. Я.", description: "Знаменитая сказка-пьеса о падчерице и братьях-месяцах.", image: "n16.jpg", webp: "n16.webp", year: "2024" },
+            { title: "Без вести пропавшие", author: "Пичугин Д. В.", description: "Детектив-реконструкция, основанный на реальных событиях.", image: "n17.JPG", webp: "n17.webp", year: "2025" },
+            { title: "На один удар больше", author: "Литвинова А. В.", description: "Авантюрный детектив о тайнах приёмного сына.", image: "n20.jpg", webp: "n20.webp", year: "2025" },
+            { title: "Последний знак", author: "Райт А.", description: "Триллер о серийном убийце, лауреат премии «Русский детектив».", image: "n21.JPG", webp: "n21.webp", year: "2024" },
+            { title: "Маленький принц", author: "Сент-Экзюпери А. де", description: "Философская сказка-притча о дружбе, любви и ответственности.", image: "n23.jpg", webp: "n23.webp", year: "2025" },
+            { title: "Большая история путешествий", author: "Тунич А.", description: "Как люди исследовали мир — для детей от 10 до 12 лет.", image: "n24.jpg", webp: "n24.webp", year: "2025" },
+            { title: "Царский подарок", author: "Асопил Е.", description: "Вечерний детектив из серии «Тайна старинной книги».", image: "n26.JPG", webp: "n26.webp", year: "2025" },
+            { title: "Зачем художнику детали?", author: "Никонова А. В.", description: "Увлекательное путешествие в мир искусства и деталей, которые меняют всё.", image: "n27.jpg", webp: "n27.webp", year: "2025" }
+        ];
+
+        function renderBooks() {
+            const container = document.getElementById('books-grid');
+            if (!container) return;
+            let html = '';
+            newBooks.forEach(book => {
+                const savedRating = localStorage.getItem('bookRating_' + book.title) || 0;
+                html += `
+                    <div class="book-card fade-in">
+                        <a href="${book.image}" data-fancybox="gallery" data-caption="${book.title} — ${book.author}">
+                            <picture>
+                                <source srcset="${book.webp}" type="image/webp">
+                                <img src="${book.image}" alt="${book.title}" loading="lazy">
+                            </picture>
+                        </a>
+                        <h3>${book.title}</h3>
+                        <div class="author">${book.author}</div>
+                        <div class="description">${book.description}</div>
+                        <div class="details">${book.year}</div>
+                        <div class="rating" data-book="${book.title}">
+                            ${[1,2,3,4,5].map(star => 
+                                `<i class="fa${star <= savedRating ? 's' : 'r'} fa-star" data-value="${star}"></i>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+
+            // Обработчики для звёзд
+            document.querySelectorAll('.rating').forEach(ratingDiv => {
+                const bookTitle = ratingDiv.dataset.book;
+                ratingDiv.querySelectorAll('i').forEach(star => {
+                    star.addEventListener('click', function() {
+                        const value = parseInt(this.dataset.value);
+                        localStorage.setItem('bookRating_' + bookTitle, value);
+                        // обновляем звёзды в этой карточке
+                        const stars = ratingDiv.querySelectorAll('i');
+                        stars.forEach((s, idx) => {
+                            if (idx < value) {
+                                s.classList.remove('far');
+                                s.classList.add('fas');
+                            } else {
+                                s.classList.remove('fas');
+                                s.classList.add('far');
+                            }
+                        });
+                    });
+                });
+            });
+
+            Fancybox.bind("[data-fancybox]");
+        }
+
+        renderBooks();
+    </script>
+</body>
+</html>
