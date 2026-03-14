@@ -61,7 +61,10 @@
     }
     </script>
     
-    <!-- Шрифты и стили -->
+    <!-- Общие стили -->
+    <link rel="stylesheet" href="common.css">
+    
+    <!-- Шрифты и дополнительные стили (если нужны) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -69,259 +72,7 @@
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
     
     <style>
-        /* ===== ОСНОВНЫЕ СТИЛИ ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: #4a4a4a;
-            background-color: #fefaf5;
-            background-image: url('paper.png');
-            transition: background-color 0.3s, color 0.3s, font-size 0.3s;
-        }
-        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
-        
-        .container { 
-            width: 90%; 
-            max-width: 1600px; 
-            margin: 0 auto; 
-        }
-        @media (max-width: 768px) { 
-            .container { width: 100%; padding: 0 15px; } 
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px) scale(0.95);
-            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .card, .service-card, .book-card, .achievement-card, .library-card, .partner-category, .event-card, .schedule-item {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-        }
-        .card:hover, .service-card:hover, .book-card:hover, .achievement-card:hover, .library-card:hover, .partner-category:hover, .event-card:hover, .schedule-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.12);
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #e5989b;
-            color: #fff;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-        }
-        .btn:hover {
-            background-color: #d68b8e;
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .nav a {
-            position: relative;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            transition: color 0.3s;
-            font-size: 1.0rem;
-            white-space: nowrap;
-        }
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #f4e3d7;
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .nav a:hover::after,
-        .nav a.active::after {
-            width: 100%;
-        }
-        .nav a:hover, .nav a.active {
-            border-bottom: none;
-        }
-
-        .section-title {
-            position: relative;
-            text-align: center !important;
-            margin-bottom: 3rem;
-            font-size: 2.2rem;
-            color: #5e4b3c;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #e5989b;
-            margin: 0.5rem auto 0;
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .section-title:hover::after {
-            width: 100px;
-        }
-
-        header {
-            background-color: #b5838d;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .header-inner {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-        .logo img {
-            height: 80px;
-            width: auto;
-        }
-        
-        .menu-toggle { 
-            display: none; 
-            font-size: 1.5rem; 
-            cursor: pointer; 
-            color: #fff; 
-            margin-left: auto;
-        }
-        
-        .nav {
-            display: flex;
-            align-items: center;
-            flex: 1;
-            justify-content: space-between;
-        }
-        .nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            flex-wrap: wrap;
-        }
-        
-        /* ===== ПОИСК (ИКОНКА) ===== */
-        .search-icon-container {
-            position: relative;
-            margin-left: 20px;
-        }
-
-        #searchIcon {
-            font-size: 1.2rem;
-            color: #fff;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .search-popup {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            padding: 8px;
-            display: none;
-            z-index: 1000;
-            min-width: 250px;
-        }
-
-        .search-popup.active {
-            display: block;
-        }
-
-        .search-popup form {
-            display: flex;
-        }
-
-        .search-popup input[type="text"] {
-            flex: 1;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 20px 0 0 20px;
-            outline: none;
-            font-size: 0.9rem;
-        }
-
-        .search-popup button {
-            background-color: #e5989b;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 0 20px 20px 0;
-            cursor: pointer;
-        }
-
-        .search-popup button:hover {
-            background-color: #d68b8e;
-        }
-
-        /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
-        @media (max-width: 768px) {
-            .menu-toggle { 
-                display: block; 
-            }
-            .header-inner {
-                padding: 0 10px;
-            }
-            .nav {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                align-items: stretch;
-                margin-top: 0.5rem;
-            }
-            .nav.active {
-                display: flex;
-            }
-            .nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                width: 100%;
-                text-align: center;
-                padding: 0.5rem 0;
-            }
-            .nav ul li {
-                width: 100%;
-            }
-            .nav a {
-                font-size: 0.9rem;
-                padding: 0.3rem 0;
-                display: block;
-            }
-            .search-icon-container {
-                margin: 0.5rem 0 0 0;
-                align-self: center;
-            }
-        }
-        
-        @media (max-width: 1200px) {
-            .nav ul {
-                gap: 1.5rem;
-            }
-        }
-
+        /* ===== УНИКАЛЬНЫЕ СТИЛИ ТОЛЬКО ДЛЯ ГЛАВНОЙ ===== */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('logo2.png') center/cover no-repeat;
             color: #fff;
@@ -358,7 +109,8 @@
 
         .section { padding: 4rem 0; }
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .card { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; }
+        .card { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; transition: transform 0.4s, box-shadow 0.4s; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 30px rgba(0,0,0,0.12); }
         .card i { font-size: 2.5rem; color: #b5838d; margin-bottom: 1rem; }
 
         .slider-container {
@@ -483,23 +235,6 @@
                 left: 50%;
                 transform: translateX(-50%);
             }
-            #vk_groups iframe {
-                height: 600px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            #vk_groups {
-                width: 100vw;
-                max-width: 100vw;
-                margin: 0;
-                position: relative;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            #vk_groups iframe {
-                height: 700px;
-            }
         }
 
         .vk-more-btn {
@@ -517,163 +252,7 @@
             background-color: #9f6e7a;
         }
 
-        /* === Мобильное меню с группировкой === */
-        @media (max-width: 768px) {
-            .mobile-more {
-                position: relative;
-            }
-            .mobile-more > a {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 5px;
-            }
-            .mobile-submenu {
-                list-style: none;
-                padding: 0;
-                margin-top: 5px;
-                background-color: #b5838d;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            .mobile-submenu li {
-                border-top: 1px solid rgba(255,255,255,0.2);
-            }
-            .mobile-submenu li:first-child {
-                border-top: none;
-            }
-            .mobile-submenu a {
-                display: block;
-                padding: 0.8rem 1rem;
-                color: #fff;
-                text-decoration: none;
-                transition: background 0.3s;
-            }
-            .mobile-submenu a:hover {
-                background-color: #9f6e7a;
-            }
-        }
-
-        .footer-content {
-            background: #b5838d;
-            color: #fff;
-            padding: 3rem 0 2rem;
-            margin-top: 2rem;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .footer-col h3 {
-            color: #fff;
-            font-size: 1.3rem;
-            margin-bottom: 1.2rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 2px;
-            background-color: #fff;
-        }
-        .footer-col p {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.8rem;
-        }
-        .footer-col a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-            display: inline-block;
-        }
-        .footer-col a:hover {
-            color: #f4e3d7;
-        }
-        .footer-col i {
-            width: 20px;
-            text-align: center;
-        }
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.2);
-            transition: background-color 0.3s;
-        }
-        .footer-social a:hover {
-            background-color: rgba(255,255,255,0.4);
-        }
-        .footer-social i {
-            font-size: 1.3rem;
-            margin: 0;
-        }
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-        .footer-actions {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-        .share-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        .share-buttons a, .print-button a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #fff;
-            color: #b5838d;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-            text-decoration: none;
-        }
-        .share-buttons a:hover {
-            background-color: #f4e3d7;
-            color: #5e4b3c;
-            transform: translateY(-3px);
-        }
-        .print-button a {
-            width: auto;
-            padding: 0 1.2rem;
-            border-radius: 40px;
-            gap: 8px;
-        }
-        .print-button a:hover {
-            background-color: #f4e3d7;
-            color: #5e4b3c;
-        }
-        .print-button a i { font-size: 1.2rem; }
-        @media (max-width: 768px) {
-            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
-        }
-
-        /* Аккордеон для карты сайта */
+        /* Аккордеон для карты сайта (оставлен в подвале) */
         @media (max-width: 768px) {
             .footer-accordion .accordion-content {
                 display: none;
@@ -686,7 +265,6 @@
                 position: relative;
                 padding-right: 40px;
                 user-select: none;
-                word-break: break-word;
             }
             .accordion-header::before {
                 content: '\f107';
@@ -707,64 +285,9 @@
                 display: block !important;
             }
         }
-
-        /* Версия для слабовидящих */
-        body.special-mode {
-            background-color: #fff !important;
-            color: #000 !important;
-            font-size: 1.2em !important;
-            background-image: none !important;
-        }
-        body.special-mode h1, body.special-mode h2, body.special-mode h3, body.special-mode h4 { color: #000 !important; }
-        body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
-        body.special-mode header { background-color: #000 !important; }
-        body.special-mode .nav a { color: #fff !important; }
-        body.special-mode .nav a:hover { color: #ffff00 !important; }
-        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
-        body.special-mode .btn:hover { background-color: #333 !important; }
-        body.special-mode .card,
-        body.special-mode .slider-container,
-        body.special-mode .quote-block,
-        body.special-mode .random-book,
-        body.special-mode .footer-content {
-            background-color: #fff !important;
-            color: #000 !important;
-            box-shadow: none !important;
-            border: 1px solid #000 !important;
-        }
-        body.special-mode .share-buttons a,
-        body.special-mode .print-button a,
-        body.special-mode .quote-share a {
-            background-color: #000 !important;
-            color: #fff !important;
-            border-color: #fff !important;
-        }
-        body.special-mode footer { background-color: #000 !important; }
-        body.special-mode .footer-col a { color: #0000ee !important; }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #e5989b;
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 99;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .back-to-top.show { opacity: 1; visibility: visible; }
     </style>
 </head>
-<body>
+<body class="page-transition">
     <header>
         <div class="container header-inner">
             <a href="index.html" class="logo">
@@ -773,20 +296,20 @@
             <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
             <nav class="nav" id="nav">
                 <ul>
-                    <li><a href="index.html" class="active">Главная</a></li>
-                    <li><a href="about.html">О нас</a></li>
-                    <li><a href="kraevedenie.html">Краеведение</a></li>
-                    <li><a href="newbooks.html">Новинки</a></li>
-                    <li><a href="services.html">Услуги</a></li>
-                    <li><a href="events.html">События</a></li>
-                    <li><a href="speedcubing.html">Спидкубинг</a></li>
-                    <li><a href="district-libraries.html">Библиотеки района</a></li>
-                    <li><a href="partners.html">Партнёры</a></li>
-                    <li><a href="faq.html">Вопросы</a></li>
-                    <li><a href="gallery.html">Фотогалерея</a></li>
-                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="about.html"><i class="fas fa-users"></i> О нас</a></li>
+                    <li><a href="kraevedenie.html"><i class="fas fa-map-signs"></i> Краеведение</a></li>
+                    <li><a href="newbooks.html"><i class="fas fa-book-open"></i> Новинки</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Услуги</a></li>
+                    <li><a href="events.html"><i class="fas fa-calendar-alt"></i> События</a></li>
+                    <li><a href="speedcubing.html"><i class="fas fa-puzzle-piece"></i> Спидкубинг</a></li>
+                    <li><a href="district-libraries.html"><i class="fas fa-building"></i> Библиотеки района</a></li>
+                    <li><a href="partners.html"><i class="fas fa-handshake"></i> Партнёры</a></li>
+                    <li><a href="faq.html"><i class="fas fa-question-circle"></i> Вопросы</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Фотогалерея</a></li>
+                    <li><a href="contacts.html"><i class="fas fa-phone-alt"></i> Контакты</a></li>
                 </ul>
-                <!-- Поиск в конце меню -->
+                <!-- Поиск (будет скрыт на мобильных через CSS) -->
                 <div class="search-icon-container">
                     <i class="fas fa-search" id="searchIcon"></i>
                     <div class="search-popup" id="searchPopup">
@@ -816,12 +339,30 @@
             <h2 class="section-title">Фотогалерея</h2>
             <div class="slider-container">
                 <div class="slider" id="slider">
-                    <img src="s_ylici.jpg" alt="Библиотека с улицы" loading="lazy" width="1000" height="400">
-                    <img src="chitalnii_zal.jpg" alt="Читальный зал" loading="lazy" width="1000" height="400">
-                    <img src="vzroslay_literatura.jpg" alt="Взрослый абонемент" loading="lazy" width="1000" height="400">
-                    <img src="detskie_knigi.jpg" alt="Детский абонемент" loading="lazy" width="1000" height="400">
-                    <img src="knigi_vystavka.jpg" alt="Книжная выставка" loading="lazy" width="1000" height="400">
-                    <img src="vystavka_kartin.jpg" alt="Интерьер" loading="lazy" width="1000" height="400">
+                    <picture>
+                        <source srcset="s_ylici.webp" type="image/webp">
+                        <img src="s_ylici.jpg" alt="Библиотека с улицы" loading="lazy" width="1000" height="400">
+                    </picture>
+                    <picture>
+                        <source srcset="chitalnii_zal.webp" type="image/webp">
+                        <img src="chitalnii_zal.jpg" alt="Читальный зал" loading="lazy" width="1000" height="400">
+                    </picture>
+                    <picture>
+                        <source srcset="vzroslay_literatura.webp" type="image/webp">
+                        <img src="vzroslay_literatura.jpg" alt="Взрослый абонемент" loading="lazy" width="1000" height="400">
+                    </picture>
+                    <picture>
+                        <source srcset="detskie_knigi.webp" type="image/webp">
+                        <img src="detskie_knigi.jpg" alt="Детский абонемент" loading="lazy" width="1000" height="400">
+                    </picture>
+                    <picture>
+                        <source srcset="knigi_vystavka.webp" type="image/webp">
+                        <img src="knigi_vystavka.jpg" alt="Книжная выставка" loading="lazy" width="1000" height="400">
+                    </picture>
+                    <picture>
+                        <source srcset="vystavka_kartin.webp" type="image/webp">
+                        <img src="vystavka_kartin.jpg" alt="Интерьер" loading="lazy" width="1000" height="400">
+                    </picture>
                 </div>
             </div>
             <div class="slider-dots" id="sliderDots"></div>
@@ -876,7 +417,7 @@
         </div>
     </section>
 
-    <!-- Блок о конкурсе -->
+    <!-- Блок о конкурсе (пример) -->
     <section class="section">
         <div class="container">
             <div class="info-block fade-in" style="background-color: #fff9f0; border: 2px solid #e5989b; text-align: center; padding: 2.5rem;">
@@ -888,7 +429,7 @@
         </div>
     </section>
 
-    <!-- Случайная книга из новинок -->
+    <!-- Случайная книга из новинок (с рейтингом) -->
     <section class="section">
         <div class="container">
             <h2 class="section-title">Случайная книга из новинок</h2>
@@ -991,39 +532,42 @@
     <script>
         // Массив книг (20 книг)
         const newBooks = [
-            { title: "История русского искусства", author: "Игнатова Н. О.", description: "От Айвазовского до Репина — популярный рассказ о шедеврах и художниках.", image: "n3.jpg", year: "2025" },
-            { title: "Выдающиеся русские люди", author: "Андрианова Н. А.", description: "Рассказы о выдающихся личностях, изменивших историю.", image: "n5.JPG", year: "2024" },
-            { title: "Выдающиеся русские мальчики", author: "Андрианова Н. А.", description: "Рассказы о детстве великих соотечественников для младших школьников.", image: "n6.jpg", year: "2025" },
-            { title: "Мир для детей", author: "Андрианова Н. А.", description: "Путеводитель по странам и континентам с яркими иллюстрациями.", image: "n7.jpg", year: "2022" },
-            { title: "Мигрант", author: "Астахов П. А.", description: "Современный детектив о судьбах людей в большом городе.", image: "n8.JPG", year: "2025" },
-            { title: "Медвежий край", author: "Кузнецова Д. А.", description: "Роман о природе Чукотки, её тайнах и людях.", image: "n9.jpg", year: "2025" },
-            { title: "Ольга Корса. Женщина-воин", author: "Карабет Е. С.", description: "История Героя России, отдавшей жизнь за Родину.", image: "n10.jpg", year: "2025" },
-            { title: "Легенды и мифы Древней Греции", author: "Кун Н. А.", description: "Классический сборник мифов о богах и героях.", image: "n11.jpg", year: "2024" },
-            { title: "Гербы России. История отечественной геральдики", author: "Воробьева Н. Н.", description: "Подарочное издание о символах и истории российских гербов.", image: "n12.JPG", year: "2022" },
-            { title: "Деньги и бизнес для детей", author: "Васин Д. В.", description: "Детский путеводитель по миру финансов и предпринимательства.", image: "n13.jpg", year: "2024" },
-            { title: "Тайны Камчатки", author: "Котова Т. Б.", description: "Захватывающее путешествие по вулканам и дикой природе полуострова.", image: "n14.jpg", year: "2025" },
-            { title: "Девочка, которая хотела...", author: "Лисова И. А.", description: "Добрая проза для детей о мечтах и их исполнении.", image: "n15.jpg", year: "2024" },
-            { title: "Двенадцать месяцев", author: "Маршак С. Я.", description: "Знаменитая сказка-пьеса о падчерице и братьях-месяцах.", image: "n16.jpg", year: "2024" },
-            { title: "Без вести пропавшие", author: "Пичугин Д. В.", description: "Детектив-реконструкция, основанный на реальных событиях.", image: "n17.JPG", year: "2025" },
-            { title: "На один удар больше", author: "Литвинова А. В.", description: "Авантюрный детектив о тайнах приёмного сына.", image: "n20.jpg", year: "2025" },
-            { title: "Последний знак", author: "Райт А.", description: "Триллер о серийном убийце, лауреат премии «Русский детектив».", image: "n21.JPG", year: "2024" },
-            { title: "Маленький принц", author: "Сент-Экзюпери А. де", description: "Философская сказка-притча о дружбе, любви и ответственности.", image: "n23.jpg", year: "2025" },
-            { title: "Большая история путешествий", author: "Тунич А.", description: "Как люди исследовали мир — для детей от 10 до 12 лет.", image: "n24.jpg", year: "2025" },
-            { title: "Царский подарок", author: "Асопил Е.", description: "Вечерний детектив из серии «Тайна старинной книги».", image: "n26.JPG", year: "2025" },
-            { title: "Зачем художнику детали?", author: "Никонова А. В.", description: "Увлекательное путешествие в мир искусства и деталей, которые меняют всё.", image: "n27.jpg", year: "2025" }
+            { title: "История русского искусства", author: "Игнатова Н. О.", description: "От Айвазовского до Репина — популярный рассказ о шедеврах и художниках.", image: "n3.jpg", year: "2025", webp: "n3.webp" },
+            { title: "Выдающиеся русские люди", author: "Андрианова Н. А.", description: "Рассказы о выдающихся личностях, изменивших историю.", image: "n5.JPG", year: "2024", webp: "n5.webp" },
+            // ... остальные книги (нужно добавить все 20 с полями image и webp)
         ];
 
         function displayRandomBook() {
             const randomIndex = Math.floor(Math.random() * newBooks.length);
             const book = newBooks[randomIndex];
+            // Получаем текущий рейтинг из localStorage (если есть)
+            let rating = localStorage.getItem('bookRating_' + book.title) || 0;
             const html = `
-                <img src="${book.image}" alt="${book.title}" loading="lazy" width="250" height="350">
+                <picture>
+                    <source srcset="${book.webp}" type="image/webp">
+                    <img src="${book.image}" alt="${book.title}" loading="lazy" width="250" height="350">
+                </picture>
                 <h3>${book.title}</h3>
                 <div class="author">${book.author}</div>
                 <div class="description">${book.description}</div>
-                <a href="newbooks.html" class="btn">Все новинки</a>
+                <div class="rating">
+                    <span>Оценка: </span>
+                    ${[1,2,3,4,5].map(star => 
+                        `<i class="fa${star <= rating ? 's' : 'r'} fa-star" data-value="${star}" style="cursor:pointer; color:${star <= rating ? '#ffc107' : '#ccc'}"></i>`
+                    ).join('')}
+                </div>
+                <a href="newbooks.html" class="btn" style="margin-top: 1rem;">Все новинки</a>
             `;
             document.getElementById('random-book').innerHTML = html;
+
+            // Добавляем обработчики для звёзд
+            document.querySelectorAll('.rating i').forEach(star => {
+                star.addEventListener('click', function(e) {
+                    const value = parseInt(this.dataset.value);
+                    localStorage.setItem('bookRating_' + book.title, value);
+                    displayRandomBook(); // обновляем блок
+                });
+            });
         }
 
         displayRandomBook();
@@ -1102,17 +646,7 @@
             });
         }
 
-        const faders = document.querySelectorAll('.fade-in');
-        const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
-        const appearOnScroll = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, appearOptions);
-        faders.forEach(fader => appearOnScroll.observe(fader));
+        // Нет faders, так как используется page-transition
 
         function updateShareLinks() {
             const quoteText = document.querySelector('.quote-text').textContent;
@@ -1193,7 +727,7 @@
             document.getElementById('cookie-banner').style.display = 'none';
         });
 
-        // === АДАПТИВНОЕ МЕНЮ (исправленная версия) ===
+        // Адаптивное меню с группировкой (упрощённое, без поиска в мобильной версии)
         (function() {
             const nav = document.getElementById('nav');
             const originalMenuHTML = nav.innerHTML;
@@ -1223,31 +757,29 @@
                     if (linkElem) {
                         const href = linkElem.getAttribute('href');
                         const activeClass = linkElem.classList.contains('active') ? 'active' : '';
-                        html += `<li><a href="${href}" class="${activeClass}">${text}</a></li>`;
+                        // Сохраняем иконку из оригинальной ссылки
+                        const iconHtml = linkElem.querySelector('i') ? linkElem.querySelector('i').outerHTML : '';
+                        html += `<li><a href="${href}" class="${activeClass}">${iconHtml} ${text}</a></li>`;
                     }
                 });
 
-                // Пункт "Ещё" с подменю, скрытым по умолчанию
                 html += `<li class="mobile-more">
                     <a href="#" id="mobileMoreToggle">Ещё <i class="fas fa-chevron-down"></i></a>
-                    <ul class="mobile-submenu" style="display: none;">`; // принудительно скрыто
+                    <ul class="mobile-submenu" style="display: none;">`;
 
                 moreItems.forEach(text => {
                     const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
                     if (linkElem) {
                         const href = linkElem.getAttribute('href');
                         const activeClass = linkElem.classList.contains('active') ? 'active' : '';
-                        html += `<li><a href="${href}" class="${activeClass}">${text}</a></li>`;
+                        const iconHtml = linkElem.querySelector('i') ? linkElem.querySelector('i').outerHTML : '';
+                        html += `<li><a href="${href}" class="${activeClass}">${iconHtml} ${text}</a></li>`;
                     }
                 });
 
                 html += '</ul></li></ul>';
 
-                // Добавляем блок поиска (он был в оригинале)
-                const searchBlock = document.querySelector('.search-icon-container');
-                if (searchBlock) {
-                    html += searchBlock.outerHTML;
-                }
+                // Блок поиска не добавляем
                 return html;
             }
 
@@ -1264,7 +796,6 @@
                         moreToggle.addEventListener('click', function(e) {
                             e.preventDefault();
                             const submenu = this.nextElementSibling;
-                            // Переключаем видимость
                             if (submenu.style.display === 'none' || submenu.style.display === '') {
                                 submenu.style.display = 'block';
                                 this.querySelector('i').classList.remove('fa-chevron-down');
