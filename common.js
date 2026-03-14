@@ -28,14 +28,18 @@
         });
     }
 
-    // ---- Адаптивное меню (оставлено как есть) ----
+    // ---- Адаптивное меню (исправленная версия) ----
     (function() {
         const nav = document.getElementById('nav');
         if (!nav) return;
-        const originalHTML = nav.innerHTML;
+        const originalHTML = nav.innerHTML; // сохраняем исходное меню
+
         function buildMobile(items) {
+            // Основные пункты, которые всегда видны
             const main = ['Главная', 'О нас', 'Краеведение', 'Новинки', 'Услуги'];
+            // Остальные уходят в подменю «Ещё»
             const more = ['Спидкубинг', 'События', 'Библиотеки района', 'Партнёры', 'Вопросы', 'Фотогалерея', 'Контакты'];
+
             let html = '<ul>';
             main.forEach(text => {
                 const li = items.find(li => li.textContent.trim() === text);
@@ -65,8 +69,10 @@
             html += '</ul></li></ul>';
             return html;
         }
+
         function update() {
             if (window.innerWidth <= 768) {
+                // Строим мобильное меню только если оно ещё не построено или изменилось
                 const temp = document.createElement('div');
                 temp.innerHTML = originalHTML;
                 const items = Array.from(temp.querySelectorAll('ul > li'));
@@ -89,16 +95,23 @@
                     });
                 }
             } else {
+                // Возвращаем исходное меню
                 nav.innerHTML = originalHTML;
             }
         }
+
         const mq = window.matchMedia('(max-width: 768px)');
-        mq.addEventListener('change', update);
+        // Используем современный API addEventListener, если он есть, иначе fallback
+        if (mq.addEventListener) {
+            mq.addEventListener('change', update);
+        } else {
+            mq.addListener(update); // для старых браузеров
+        }
         window.addEventListener('load', update);
         if (mq.matches) update();
     })();
 
-    // ---- КНОПКА «НАВЕРХ» (усиленная) ----
+    // ---- КНОПКА «НАВЕРХ» (исправлено: убран конфликт с инлайн-стилями) ----
     const backToTop = document.getElementById('backToTop');
     if (backToTop) {
         function toggleButton() {
@@ -109,7 +122,6 @@
             }
         }
         window.addEventListener('scroll', toggleButton);
-        window.addEventListener('resize', toggleButton);
         toggleButton(); // сразу при загрузке
 
         backToTop.addEventListener('click', function(e) {
@@ -135,24 +147,28 @@
         });
     }
 
-    // ---- Cookie-баннер и Яндекс.Метрика ----
+    // ---- Cookie-баннер и Яндекс.Метрика (исправлено) ----
     function loadYandexMetrica() {
-        if (window.ym && window.ym(107242178)) return;
-        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-        ym(107242178, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
-        const ns = document.createElement('noscript');
-        const div = document.createElement('div');
-        const img = document.createElement('img');
-        img.src = 'https://mc.yandex.ru/watch/107242178';
-        img.style = 'position:absolute; left:-9999px;';
-        img.alt = '';
-        div.appendChild(img);
-        ns.appendChild(div);
-        document.body.appendChild(ns);
+        // Проверяем, не загружена ли уже метрика
+        if (window.ym && window.yaCounter107242178) return;
+
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) { return; }
+            }
+            k=e.createElement(t), a=e.getElementsByTagName(t)[0], k.async=1, k.src=r, a.parentNode.insertBefore(k,a)
+        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(107242178, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+
+        // Яндекс.Метрика сама добавляет noscript, дублировать не нужно
     }
 
     const banner = document.getElementById('cookie-banner');
