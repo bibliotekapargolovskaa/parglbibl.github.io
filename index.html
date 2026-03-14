@@ -208,25 +208,24 @@
         .random-book .author { font-weight: 600; color: #b5838d; margin-bottom: 0.5rem; }
         .random-book .description { color: #666; font-size: 0.95rem; margin-bottom: 1.5rem; }
 
+        /* Исправленный блок для виджета ВК */
         #vk_groups {
             width: 100%;
-            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
         }
         #vk_groups iframe {
             width: 100% !important;
+            max-width: 900px;
             height: 600px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
-
-        @media (min-width: 769px) {
-            #vk_groups {
-                width: 100vw;
-                max-width: 100vw;
-                margin: 0;
-                position: relative;
-                left: 50%;
-                transform: translateX(-50%);
+        @media (max-width: 768px) {
+            #vk_groups iframe {
+                height: 700px;
+                max-width: 100%;
             }
         }
 
@@ -375,7 +374,7 @@
         </div>
     </section>
 
-    <!-- Блок о конкурсе (оставлен как был) -->
+    <!-- Блок о конкурсе -->
     <section class="section">
         <div class="container">
             <div class="info-block fade-in" style="background-color: #fff9f0; border: 2px solid #e5989b; text-align: center; padding: 2.5rem;">
@@ -406,6 +405,7 @@
         </div>
     </section>
 
+    <!-- Инициализация виджета ВК -->
     <script type="text/javascript">
         VK.Widgets.Group("vk_groups", {mode: 4, wide: 1, height: 600, color1: "FFFFFF", color2: "000000", color3: "5181B8"}, 176521452);
     </script>
