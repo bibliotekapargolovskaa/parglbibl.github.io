@@ -679,15 +679,19 @@
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                 <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
                 <!-- Поиск -->
-                <div class="search-container">
-    <form action="https://yandex.ru/search/" method="get" target="_blank">
-        <input type="hidden" name="site" value="parglbibl.ru">
-        <input type="hidden" name="host" value="parglbibl.ru">
-        <input type="hidden" name="lr" value="2">
-        <input type="text" name="text" placeholder="Поиск" required>
-        <button type="submit"><i class="fas fa-search"></i></button>
-    </form>
+                <div class="search-icon-container">
+    <i class="fas fa-search" id="searchIcon"></i>
+    <div class="search-popup" id="searchPopup">
+        <form action="https://yandex.ru/search/" method="get" target="_blank">
+            <input type="hidden" name="site" value="parglbibl.ru">
+            <input type="hidden" name="host" value="parglbibl.ru">
+            <input type="hidden" name="lr" value="2">
+            <input type="text" name="text" placeholder="Поиск по сайту..." autocomplete="off">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
 </div>
+
             </div>
             <nav class="nav" id="nav">
                 <ul>
@@ -1077,6 +1081,27 @@
             localStorage.setItem('cookieConsent', 'false');
             document.getElementById('cookie-banner').style.display = 'none';
         });
+        <script>
+    // Поиск по иконке
+    const searchIcon = document.getElementById('searchIcon');
+    const searchPopup = document.getElementById('searchPopup');
+
+    if (searchIcon && searchPopup) {
+        searchIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            searchPopup.classList.toggle('active');
+            if (searchPopup.classList.contains('active')) {
+                searchPopup.querySelector('input').focus();
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!searchPopup.contains(e.target) && e.target !== searchIcon) {
+                searchPopup.classList.remove('active');
+            }
+        });
+    }
+</script>
     </script>
 </body>
 </html>
