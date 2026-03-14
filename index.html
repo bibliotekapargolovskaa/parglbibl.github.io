@@ -81,7 +81,6 @@
         }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
         
-        /* Контейнер — шире, чтобы вместить меню */
         .container { 
             width: 90%; 
             max-width: 1600px; 
@@ -134,7 +133,8 @@
             color: #fff;
             font-weight: 600;
             transition: color 0.3s;
-            font-size: 0.95rem; /* чуть меньше, чтобы влезло */
+            font-size: 0.95rem;
+            white-space: nowrap; /* запрещаем перенос */
         }
         .nav a::after {
             content: '';
@@ -183,49 +183,49 @@
         }
         .header-inner {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0;
             flex-wrap: wrap;
         }
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
+            margin-right: 20px; /* небольшой отступ после логотипа */
         }
         .logo img {
             height: 80px;
             width: auto;
         }
         
-        /* Навигация flex, чтобы поиск был справа */
-        .nav {
-            display: flex;
-            align-items: center;
-            flex: 1;
-            justify-content: flex-end;
-        }
-        .nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1rem; /* уменьшили отступы */
-            align-items: center;
-            flex-wrap: wrap;
-            margin: 0;
-            padding: 0;
-        }
         .menu-toggle { 
             display: none; 
             font-size: 1.5rem; 
             cursor: pointer; 
             color: #fff; 
-            padding-right: 15px; 
+            margin-left: auto; /* на мобильных будет справа */
+        }
+        
+        /* Навигация: занимает всё оставшееся пространство, flex для разделения меню и поиска */
+        .nav {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: space-between;
+        }
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
         }
         
         /* ===== ПОИСК (ИКОНКА) ===== */
         .search-icon-container {
             position: relative;
-            margin-left: 15px;
+            margin-left: 20px;
         }
 
         #searchIcon {
@@ -279,21 +279,35 @@
         }
 
         @media (max-width: 768px) {
-            .search-icon-container {
-                margin-left: 10px;
+            .menu-toggle { 
+                display: block; 
             }
-            .search-popup {
-                min-width: 200px;
-                right: -10px;
+            .nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 1rem;
+            }
+            .nav.active {
+                display: flex;
+            }
+            .nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+            .nav ul li {
+                width: 100%;
+            }
+            .search-icon-container {
+                margin: 10px 0 0 0;
+                align-self: flex-end;
             }
         }
         /* ===== КОНЕЦ СТИЛЕЙ ПОИСКА ===== */
         
-        @media (min-width: 769px) {
-            .logo {
-                margin-right: 40px;
-            }
-        }
         @media (max-width: 1200px) {
             .nav ul {
                 gap: 0.8rem;
@@ -301,28 +315,6 @@
             .nav a {
                 font-size: 0.9rem;
             }
-        }
-        @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            .nav { 
-                display: none; 
-                width: 100%; 
-                margin-top: 1rem; 
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .nav.active { display: flex; }
-            .nav ul { 
-                flex-direction: column; 
-                gap: 1rem; 
-                text-align: center; 
-                width: 100%;
-            }
-            .search-icon-container {
-                margin: 10px 0 0 0;
-                align-self: flex-end;
-            }
-            .header-inner { flex-wrap: wrap; }
         }
 
         .hero {
@@ -736,9 +728,7 @@
             <a href="index.html" class="logo">
                 <img src="logo.PNG" alt="Парголовская библиотека">
             </a>
-            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-            </div>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
             <nav class="nav" id="nav">
                 <ul>
                     <li><a href="index.html" class="active">Главная</a></li>
