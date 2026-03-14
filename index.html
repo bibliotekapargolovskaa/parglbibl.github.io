@@ -598,13 +598,17 @@
         });
     </script>
     <script>
-// Кнопка «Наверх» — работает всегда
 (function() {
     var btn = document.getElementById('backToTop');
     if (btn) {
         function toggleBtn() {
-            if (window.scrollY > 300) btn.classList.add('show');
-            else btn.classList.remove('show');
+            if (window.scrollY > 300) {
+                btn.style.opacity = '1';
+                btn.style.visibility = 'visible';
+            } else {
+                btn.style.opacity = '0';
+                btn.style.visibility = 'hidden';
+            }
         }
         window.addEventListener('scroll', toggleBtn);
         toggleBtn(); // проверить сразу
