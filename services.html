@@ -62,7 +62,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* ===== ОСНОВНЫЕ СТИЛИ ===== */
+        /* ===== ОБЩИЕ СТИЛИ (как в index.html) ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Open Sans', sans-serif;
@@ -73,7 +73,7 @@
             transition: background-color 0.3s, color 0.3s, font-size 0.3s;
         }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
-        .container { width: 90%; max-width: 1400px; margin: 0 auto; }
+        .container { width: 90%; max-width: 1600px; margin: 0 auto; }
         @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
 
         .fade-in {
@@ -84,14 +84,6 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0) scale(1);
-        }
-
-        .service-card, .access-block {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-        }
-        .service-card:hover, .access-block:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.12);
         }
 
         .btn {
@@ -119,6 +111,8 @@
             color: #fff;
             font-weight: 600;
             transition: color 0.3s;
+            font-size: 1.0rem;
+            white-space: nowrap;
         }
         .nav a::after {
             content: '';
@@ -167,86 +161,189 @@
         }
         .header-inner {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0;
             flex-wrap: wrap;
         }
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
+            margin-right: 20px;
         }
         .logo img {
             height: 80px;
             width: auto;
+        }
+        
+        .menu-toggle { 
+            display: none; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            color: #fff; 
+            margin-left: auto;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            justify-content: space-between;
         }
         .nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
             align-items: center;
+            margin: 0;
+            padding: 0;
             flex-wrap: wrap;
         }
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: #fff; padding-right: 15px; }
         
-        /* Поиск */
-        .search-container {
-            display: flex;
-            align-items: center;
+        /* ===== ПОИСК (ИКОНКА) ===== */
+        .search-icon-container {
+            position: relative;
             margin-left: 20px;
         }
-        .search-container form {
+
+        #searchIcon {
+            font-size: 1.2rem;
+            color: #fff;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .search-popup {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 8px;
+            display: none;
+            z-index: 1000;
+            min-width: 250px;
+        }
+
+        .search-popup.active {
+            display: block;
+        }
+
+        .search-popup form {
             display: flex;
         }
-        .search-container input[type="text"] {
-            padding: 5px 10px;
+
+        .search-popup input[type="text"] {
+            flex: 1;
+            padding: 8px 12px;
             border: 1px solid #ddd;
             border-radius: 20px 0 0 20px;
             outline: none;
-            width: 200px;
             font-size: 0.9rem;
         }
-        .search-container button {
+
+        .search-popup button {
             background-color: #e5989b;
             color: white;
             border: none;
-            padding: 5px 15px;
+            padding: 8px 15px;
             border-radius: 0 20px 20px 0;
             cursor: pointer;
         }
-        .search-container button:hover {
+
+        .search-popup button:hover {
             background-color: #d68b8e;
         }
+
+        /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
         @media (max-width: 768px) {
-            .search-container {
-                margin: 10px 0;
+            .menu-toggle { 
+                display: block; 
+            }
+            .header-inner {
+                padding: 0 10px;
+            }
+            .nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                margin-top: 0.5rem;
+            }
+            .nav.active {
+                display: flex;
+            }
+            .nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+            .nav ul li {
                 width: 100%;
             }
-            .search-container form {
-                width: 100%;
+            .nav a {
+                font-size: 0.9rem;
+                padding: 0.3rem 0;
+                display: block;
             }
-            .search-container input[type="text"] {
-                flex-grow: 1;
+            .search-icon-container {
+                margin: 0.5rem 0 0 0;
+                align-self: center;
             }
         }
         
-        @media (min-width: 769px) {
-            .logo {
-                margin-right: 40px;
-            }
-        }
         @media (max-width: 1200px) {
             .nav ul {
-                gap: 1.2rem;
+                gap: 1.5rem;
             }
         }
+
+        /* === Мобильное меню с группировкой === */
         @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            .nav { display: none; width: 100%; margin-top: 1rem; }
-            .nav.active { display: block; }
-            .nav ul { flex-direction: column; gap: 1rem; text-align: center; }
-            .header-inner { flex-wrap: wrap; }
+            .mobile-more {
+                position: relative;
+            }
+            .mobile-more > a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+            }
+            .mobile-submenu {
+                list-style: none;
+                padding: 0;
+                margin-top: 5px;
+                background-color: #b5838d;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .mobile-submenu li {
+                border-top: 1px solid rgba(255,255,255,0.2);
+            }
+            .mobile-submenu li:first-child {
+                border-top: none;
+            }
+            .mobile-submenu a {
+                display: block;
+                padding: 0.8rem 1rem;
+                color: #fff;
+                text-decoration: none;
+                transition: background 0.3s;
+            }
+            .mobile-submenu a:hover {
+                background-color: #9f6e7a;
+            }
+        }
+
+        /* ===== СПЕЦИФИЧЕСКИЕ СТИЛИ ДЛЯ services.html ===== */
+        .service-card, .access-block {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+        }
+        .service-card:hover, .access-block:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.12);
         }
 
         .section { padding: 4rem 0; }
@@ -255,7 +352,7 @@
         .service-icon { font-size: 2.5rem; color: #b5838d; margin-bottom: 1rem; }
         .access-block { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-top: 3rem; text-align: center; }
 
-        /* Подвал */
+        /* Подвал (как в общих) */
         .footer-content {
             background: #b5838d;
             color: #fff;
@@ -464,14 +561,7 @@
             <a href="index.html" class="logo">
                 <img src="logo.PNG" alt="Парголовская библиотека">
             </a>
-            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
-                <!-- Поиск -->
-                <div class="search-container">
-                    <script async src="https://cse.google.com/cse.js?cx=f572b2cfd95394cbd"></script>
-                    <div class="gcse-search"></div>
-                </div>
-            </div>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
             <nav class="nav" id="nav">
                 <ul>
                     <li><a href="index.html">Главная</a></li>
@@ -487,6 +577,19 @@
                     <li><a href="gallery.html">Фотогалерея</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
                 </ul>
+                <!-- Поиск -->
+                <div class="search-icon-container">
+                    <i class="fas fa-search" id="searchIcon"></i>
+                    <div class="search-popup" id="searchPopup">
+                        <form action="https://yandex.ru/search/" method="get" target="_blank">
+                            <input type="hidden" name="site" value="parglbibl.ru">
+                            <input type="hidden" name="host" value="parglbibl.ru">
+                            <input type="hidden" name="lr" value="2">
+                            <input type="text" name="text" placeholder="Поиск по сайту..." autocomplete="off">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -619,6 +722,7 @@
     </div>
 
     <script>
+        // === ОБЩИЕ СКРИПТЫ ===
         const menuToggle = document.getElementById('menuToggle');
         const nav = document.getElementById('nav');
         menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
@@ -655,23 +759,35 @@
         }, appearOptions);
         faders.forEach(fader => appearOnScroll.observe(fader));
 
+        // === СКРИПТ ДЛЯ ПОИСКА ===
+        const searchIcon = document.getElementById('searchIcon');
+        const searchPopup = document.getElementById('searchPopup');
+
+        if (searchIcon && searchPopup) {
+            searchIcon.addEventListener('click', function(e) {
+                e.stopPropagation();
+                searchPopup.classList.toggle('active');
+                if (searchPopup.classList.contains('active')) {
+                    searchPopup.querySelector('input').focus();
+                }
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!searchPopup.contains(e.target) && e.target !== searchIcon) {
+                    searchPopup.classList.remove('active');
+                }
+            });
+        }
+
         // Яндекс.Метрика
         function loadYandexMetrica() {
             if (window.ym && window.ym(107242178)) return;
-
             (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
             m[i].l=1*new Date();
             for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
             (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-            ym(107242178, "init", {
-                clickmap: true,
-                trackLinks: true,
-                accurateTrackBounce: true,
-                webvisor: true
-            });
-
+            ym(107242178, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
             var noscript = document.createElement('noscript');
             var div = document.createElement('div');
             var img = document.createElement('img');
@@ -683,12 +799,11 @@
             document.body.appendChild(noscript);
         }
 
+        // Cookie-баннер
         if (!localStorage.getItem('cookieConsent')) {
             document.getElementById('cookie-banner').style.display = 'block';
         } else {
-            if (localStorage.getItem('cookieConsent') === 'true') {
-                loadYandexMetrica();
-            }
+            if (localStorage.getItem('cookieConsent') === 'true') loadYandexMetrica();
         }
 
         document.getElementById('cookie-accept').addEventListener('click', function() {
@@ -701,6 +816,99 @@
             localStorage.setItem('cookieConsent', 'false');
             document.getElementById('cookie-banner').style.display = 'none';
         });
+
+        // === АДАПТИВНОЕ МЕНЮ ===
+        (function() {
+            const nav = document.getElementById('nav');
+            const originalMenuHTML = nav.innerHTML;
+
+            function buildMobileMenu(originalItems) {
+                const mainItems = [
+                    'Главная',
+                    'О нас',
+                    'Краеведение',
+                    'Новинки',
+                    'Услуги',
+                    'События'
+                ];
+                const moreItems = [
+                    'Спидкубинг',
+                    'Библиотеки района',
+                    'Партнёры',
+                    'Вопросы',
+                    'Фотогалерея',
+                    'Контакты'
+                ];
+
+                let html = '<ul>';
+
+                mainItems.forEach(text => {
+                    const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
+                    if (linkElem) {
+                        const href = linkElem.getAttribute('href');
+                        const activeClass = linkElem.classList.contains('active') ? 'active' : '';
+                        html += `<li><a href="${href}" class="${activeClass}">${text}</a></li>`;
+                    }
+                });
+
+                html += `<li class="mobile-more">
+                    <a href="#" id="mobileMoreToggle">Ещё <i class="fas fa-chevron-down"></i></a>
+                    <ul class="mobile-submenu" style="display: none;">`;
+
+                moreItems.forEach(text => {
+                    const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
+                    if (linkElem) {
+                        const href = linkElem.getAttribute('href');
+                        const activeClass = linkElem.classList.contains('active') ? 'active' : '';
+                        html += `<li><a href="${href}" class="${activeClass}">${text}</a></li>`;
+                    }
+                });
+
+                html += '</ul></li></ul>';
+
+                const searchBlock = document.querySelector('.search-icon-container');
+                if (searchBlock) {
+                    html += searchBlock.outerHTML;
+                }
+                return html;
+            }
+
+            function updateMenu() {
+                if (window.innerWidth <= 768) {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = originalMenuHTML;
+                    const originalItems = Array.from(tempDiv.querySelectorAll('ul > li'));
+
+                    nav.innerHTML = buildMobileMenu(originalItems);
+
+                    const moreToggle = document.getElementById('mobileMoreToggle');
+                    if (moreToggle) {
+                        moreToggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const submenu = this.nextElementSibling;
+                            if (submenu.style.display === 'none' || submenu.style.display === '') {
+                                submenu.style.display = 'block';
+                                this.querySelector('i').classList.remove('fa-chevron-down');
+                                this.querySelector('i').classList.add('fa-chevron-up');
+                            } else {
+                                submenu.style.display = 'none';
+                                this.querySelector('i').classList.remove('fa-chevron-up');
+                                this.querySelector('i').classList.add('fa-chevron-down');
+                            }
+                        });
+                    }
+                } else {
+                    nav.innerHTML = originalMenuHTML;
+                }
+            }
+
+            const mediaQuery = window.matchMedia('(max-width: 768px)');
+            mediaQuery.addEventListener('change', updateMenu);
+            window.addEventListener('load', updateMenu);
+            if (mediaQuery.matches) {
+                updateMenu();
+            }
+        })();
     </script>
 </body>
 </html>
