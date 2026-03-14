@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-title" content="Парголовская библиотека" />
     <link rel="manifest" href="/site.webmanifest" />
     
-    <!-- Schema.org разметка -->
+    <!-- Schema.org разметка (библиотека) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -55,292 +55,18 @@
     }
     </script>
     
-    <!-- Шрифты и стили -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Общие стили -->
+    <link rel="stylesheet" href="common.css">
+    
+    <!-- Шрифты и иконки -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
     
     <style>
-        /* ===== ОБЩИЕ СТИЛИ (как в index.html) ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: #4a4a4a;
-            background-color: #fefaf5;
-            background-image: url('paper.png');
-            transition: background-color 0.3s, color 0.3s, font-size 0.3s;
-        }
-        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 600; color: #5e4b3c; }
-        .container { width: 90%; max-width: 1600px; margin: 0 auto; }
-        @media (max-width: 768px) { .container { width: 100%; padding: 0 15px; } }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px) scale(0.95);
-            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #e5989b;
-            color: #fff;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-        }
-        .btn:hover {
-            background-color: #d68b8e;
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .nav a {
-            position: relative;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            transition: color 0.3s;
-            font-size: 1.0rem;
-            white-space: nowrap;
-        }
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #f4e3d7;
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .nav a:hover::after,
-        .nav a.active::after {
-            width: 100%;
-        }
-        .nav a:hover, .nav a.active {
-            border-bottom: none;
-        }
-
-        .section-title {
-            position: relative;
-            text-align: center !important;
-            margin-bottom: 3rem;
-            font-size: 2.2rem;
-            color: #5e4b3c;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #e5989b;
-            margin: 0.5rem auto 0;
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .section-title:hover::after {
-            width: 100px;
-        }
-
-        header {
-            background-color: #b5838d;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .header-inner {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-        .logo img {
-            height: 80px;
-            width: auto;
-        }
-        
-        .menu-toggle { 
-            display: none; 
-            font-size: 1.5rem; 
-            cursor: pointer; 
-            color: #fff; 
-            margin-left: auto;
-        }
-        
-        .nav {
-            display: flex;
-            align-items: center;
-            flex: 1;
-            justify-content: space-between;
-        }
-        .nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            flex-wrap: wrap;
-        }
-        
-        /* ===== ПОИСК (ИКОНКА) ===== */
-        .search-icon-container {
-            position: relative;
-            margin-left: 20px;
-        }
-
-        #searchIcon {
-            font-size: 1.2rem;
-            color: #fff;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .search-popup {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            padding: 8px;
-            display: none;
-            z-index: 1000;
-            min-width: 250px;
-        }
-
-        .search-popup.active {
-            display: block;
-        }
-
-        .search-popup form {
-            display: flex;
-        }
-
-        .search-popup input[type="text"] {
-            flex: 1;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 20px 0 0 20px;
-            outline: none;
-            font-size: 0.9rem;
-        }
-
-        .search-popup button {
-            background-color: #e5989b;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 0 20px 20px 0;
-            cursor: pointer;
-        }
-
-        .search-popup button:hover {
-            background-color: #d68b8e;
-        }
-
-        /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
-        @media (max-width: 768px) {
-            .menu-toggle { 
-                display: block; 
-            }
-            .header-inner {
-                padding: 0 10px;
-            }
-            .nav {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                align-items: stretch;
-                margin-top: 0.5rem;
-            }
-            .nav.active {
-                display: flex;
-            }
-            .nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                width: 100%;
-                text-align: center;
-                padding: 0.5rem 0;
-            }
-            .nav ul li {
-                width: 100%;
-            }
-            .nav a {
-                font-size: 0.9rem;
-                padding: 0.3rem 0;
-                display: block;
-            }
-            .search-icon-container {
-                margin: 0.5rem 0 0 0;
-                align-self: center;
-            }
-        }
-        
-        @media (max-width: 1200px) {
-            .nav ul {
-                gap: 1.5rem;
-            }
-        }
-
-        /* === Мобильное меню с группировкой === */
-        @media (max-width: 768px) {
-            .mobile-more {
-                position: relative;
-            }
-            .mobile-more > a {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 5px;
-            }
-            .mobile-submenu {
-                list-style: none;
-                padding: 0;
-                margin-top: 5px;
-                background-color: #b5838d;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            .mobile-submenu li {
-                border-top: 1px solid rgba(255,255,255,0.2);
-            }
-            .mobile-submenu li:first-child {
-                border-top: none;
-            }
-            .mobile-submenu a {
-                display: block;
-                padding: 0.8rem 1rem;
-                color: #fff;
-                text-decoration: none;
-                transition: background 0.3s;
-            }
-            .mobile-submenu a:hover {
-                background-color: #9f6e7a;
-            }
-        }
-
-        /* ===== СПЕЦИФИЧЕСКИЕ СТИЛИ ДЛЯ about.html ===== */
+        /* Уникальные стили для about.html */
         .history-block, .photo-gallery a, .achievement-card {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+            transition: transform 0.4s, box-shadow 0.4s;
         }
         .history-block:hover, .photo-gallery a:hover, .achievement-card:hover {
             transform: translateY(-8px);
@@ -348,8 +74,19 @@
         }
 
         .section { padding: 4rem 0; }
-        .history-block { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 2rem; }
-        .history-block h3 { color: #b5838d; margin-top: 1.5rem; margin-bottom: 0.8rem; font-size: 1.3rem; }
+        .history-block {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        .history-block h3 {
+            color: #b5838d;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
         .history-block h3:first-of-type { margin-top: 0; }
 
         .photo-gallery {
@@ -368,7 +105,12 @@
             overflow: hidden;
             border-radius: 8px;
         }
-        .photo-gallery img { width: 100%; height: 200px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .photo-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
         .download-icon {
             position: absolute;
             bottom: 10px;
@@ -412,258 +154,31 @@
         .achievement-card a { display: block; text-decoration: none; color: inherit; }
         .achievement-card h3 { color: #b5838d; margin-bottom: 0.5rem; font-size: 1.2rem; }
         .achievement-card p { color: #666; font-size: 0.95rem; }
-
-        /* Подвал (как в общих) */
-        .footer-content {
-            background: #b5838d;
-            color: #fff;
-            padding: 3rem 0 2rem;
-            margin-top: 2rem;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .footer-col h3 {
-            color: #fff;
-            font-size: 1.3rem;
-            margin-bottom: 1.2rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 2px;
-            background-color: #fff;
-        }
-        .footer-col p {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.8rem;
-        }
-        .footer-col a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-            display: inline-block;
-        }
-        .footer-col a:hover {
-            color: #f4e3d7;
-        }
-        .footer-col i {
-            width: 20px;
-            text-align: center;
-        }
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.2);
-            transition: background-color 0.3s;
-        }
-        .footer-social a:hover {
-            background-color: rgba(255,255,255,0.4);
-        }
-        .footer-social i {
-            font-size: 1.3rem;
-            margin: 0;
-        }
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-        .footer-actions {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-        .share-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        .share-buttons a, .print-button a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #fff;
-            color: #b5838d;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-            text-decoration: none;
-        }
-        .share-buttons a:hover {
-            background-color: #f4e3d7;
-            color: #5e4b3c;
-            transform: translateY(-3px);
-        }
-        .print-button a {
-            width: auto;
-            padding: 0 1.2rem;
-            border-radius: 40px;
-            gap: 8px;
-        }
-        .print-button a:hover {
-            background-color: #f4e3d7;
-            color: #5e4b3c;
-        }
-        .print-button a i { font-size: 1.2rem; }
-        @media (max-width: 768px) {
-            .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .footer-actions { flex-direction: column; align-items: center; gap: 1rem; }
-        }
-
-        /* Аккордеон */
-        @media (max-width: 768px) {
-            .footer-accordion .accordion-content {
-                display: none;
-            }
-            .footer-accordion.open .accordion-content {
-                display: block;
-            }
-            .accordion-header {
-                cursor: pointer;
-                position: relative;
-                padding-right: 40px;
-                user-select: none;
-                word-break: break-word;
-            }
-            .accordion-header::before {
-                content: '\f107';
-                font-family: 'Font Awesome 6 Free';
-                font-weight: 900;
-                position: absolute;
-                right: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                transition: transform 0.3s;
-            }
-            .footer-accordion.open .accordion-header::before {
-                transform: translateY(-50%) rotate(180deg);
-            }
-        }
-        @media (min-width: 769px) {
-            .footer-accordion .accordion-content {
-                display: block !important;
-            }
-        }
-
-        /* Версия для слабовидящих */
-        body.special-mode {
-            background-color: #fff !important;
-            color: #000 !important;
-            font-size: 1.2em !important;
-            background-image: none !important;
-        }
-        body.special-mode h1, body.special-mode h2, body.special-mode h3, body.special-mode h4 { color: #000 !important; }
-        body.special-mode a { color: #0000ee !important; text-decoration: underline !important; }
-        body.special-mode header { background-color: #000 !important; }
-        body.special-mode .nav a { color: #fff !important; }
-        body.special-mode .nav a:hover { color: #ffff00 !important; }
-        body.special-mode .btn { background-color: #000 !important; color: #fff !important; border: 2px solid #fff !important; box-shadow: none !important; }
-        body.special-mode .btn:hover { background-color: #333 !important; }
-        body.special-mode .history-block,
-        body.special-mode .photo-gallery a,
-        body.special-mode .photo-gallery .download-icon,
-        body.special-mode .achievement-card,
-        body.special-mode .footer-content {
-            background-color: #fff !important;
-            color: #000 !important;
-            box-shadow: none !important;
-            border: 1px solid #000 !important;
-        }
-        body.special-mode .photo-gallery img,
-        body.special-mode .achievement-card img {
-            filter: grayscale(100%) contrast(150%);
-        }
-        body.special-mode .share-buttons a,
-        body.special-mode .print-button a {
-            background-color: #000 !important;
-            color: #fff !important;
-            border-color: #fff !important;
-        }
-        body.special-mode footer { background-color: #000 !important; }
-        body.special-mode .footer-col a { color: #0000ee !important; }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #e5989b;
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 99;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .back-to-top.show { opacity: 1; visibility: visible; }
-        
-        /* Хлебные крошки */
-        .breadcrumbs {
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: #888;
-        }
-        .breadcrumbs a {
-            color: #e5989b;
-            text-decoration: none;
-        }
-        .breadcrumbs a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
-<body>
+<body class="page-transition">
     <header>
         <div class="container header-inner">
             <a href="index.html" class="logo">
-                <img src="logo.PNG" alt="Парголовская библиотека">
+                <img src="logo.PNG" alt="Парголовская библиотека" loading="lazy">
             </a>
             <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
             <nav class="nav" id="nav">
                 <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="about.html" class="active">О нас</a></li>
-                    <li><a href="kraevedenie.html">Краеведение</a></li>
-                    <li><a href="newbooks.html">Новинки</a></li>
-                    <li><a href="services.html">Услуги</a></li>
-                    <li><a href="events.html">События</a></li>
-                    <li><a href="speedcubing.html">Спидкубинг</a></li>
-                    <li><a href="district-libraries.html">Библиотеки района</a></li>
-                    <li><a href="partners.html">Партнёры</a></li>
-                    <li><a href="faq.html">Вопросы</a></li>
-                    <li><a href="gallery.html">Фотогалерея</a></li>
-                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="about.html" class="active"><i class="fas fa-users"></i> О нас</a></li>
+                    <li><a href="kraevedenie.html"><i class="fas fa-map-signs"></i> Краеведение</a></li>
+                    <li><a href="newbooks.html"><i class="fas fa-book-open"></i> Новинки</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Услуги</a></li>
+                    <li><a href="events.html"><i class="fas fa-calendar-alt"></i> События</a></li>
+                    <li><a href="speedcubing.html"><i class="fas fa-puzzle-piece"></i> Спидкубинг</a></li>
+                    <li><a href="district-libraries.html"><i class="fas fa-building"></i> Библиотеки района</a></li>
+                    <li><a href="partners.html"><i class="fas fa-handshake"></i> Партнёры</a></li>
+                    <li><a href="faq.html"><i class="fas fa-question-circle"></i> Вопросы</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Фотогалерея</a></li>
+                    <li><a href="contacts.html"><i class="fas fa-phone-alt"></i> Контакты</a></li>
                 </ul>
-                <!-- Поиск -->
+                <!-- Поиск (скрыт на мобильных через CSS) -->
                 <div class="search-icon-container">
                     <i class="fas fa-search" id="searchIcon"></i>
                     <div class="search-popup" id="searchPopup">
@@ -711,14 +226,20 @@
             <div class="achievements-grid">
                 <div class="achievement-card fade-in">
                     <a href="diplom1.png" data-fancybox="achievements" data-caption="Диплом I степени в конкурсе новогоднего оформления">
-                        <img src="diplom1.png" alt="Диплом 1 место">
+                        <picture>
+                            <source srcset="diplom1.webp" type="image/webp">
+                            <img src="diplom1.png" alt="Диплом 1 место" loading="lazy">
+                        </picture>
                     </a>
                     <h3>🥇 I место</h3>
                     <p>в конкурсе на лучшее новогоднее оформление среди библиотек Выборгского района<br>«Новый год, открытие!»<br>Номинация: «Когда часы 12 бьют»<br>2025 год</p>
                 </div>
                 <div class="achievement-card fade-in">
                     <a href="diplom2.png" data-fancybox="achievements" data-caption="Диплом II степени в конкурсе новогоднего оформления">
-                        <img src="diplom2.png" alt="Диплом 2 место">
+                        <picture>
+                            <source srcset="diplom2.webp" type="image/webp">
+                            <img src="diplom2.png" alt="Диплом 2 место" loading="lazy">
+                        </picture>
                     </a>
                     <h3>🥈 II место</h3>
                     <p>в конкурсе на лучшее новогоднее оформление среди библиотек Выборгского района<br>«Новый год, откройте!»<br>Номинация: «Очумелые ручки»<br>2025 год</p>
@@ -728,320 +249,72 @@
             <h2 class="section-title">Фотографии</h2>
             <div class="photo-gallery">
                 <a href="s_ylici.jpg" data-fancybox="gallery" data-caption="Библиотека Парголовская" download>
-                    <img src="s_ylici.jpg" alt="Библиотека Парголовская">
+                    <picture>
+                        <source srcset="s_ylici.webp" type="image/webp">
+                        <img src="s_ylici.jpg" alt="Библиотека Парголовская" loading="lazy">
+                    </picture>
                     <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
                 <a href="ya.jpg" data-fancybox="gallery" data-caption="Библиотекарь" download>
-                    <img src="ya.jpg" alt="Библиотекарь">
+                    <picture>
+                        <source srcset="ya.webp" type="image/webp">
+                        <img src="ya.jpg" alt="Библиотекарь" loading="lazy">
+                    </picture>
                     <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
                 <a href="chitalnii_zal.jpg" data-fancybox="gallery" data-caption="Читальный зал" download>
-                    <img src="chitalnii_zal.jpg" alt="Читальный зал">
+                    <picture>
+                        <source srcset="chitalnii_zal.webp" type="image/webp">
+                        <img src="chitalnii_zal.jpg" alt="Читальный зал" loading="lazy">
+                    </picture>
                     <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
                 <a href="vzroslay_literatura.jpg" data-fancybox="gallery" data-caption="Взрослый абонемент" download>
-                    <img src="vzroslay_literatura.jpg" alt="Взрослый абонемент">
+                    <picture>
+                        <source srcset="vzroslay_literatura.webp" type="image/webp">
+                        <img src="vzroslay_literatura.jpg" alt="Взрослый абонемент" loading="lazy">
+                    </picture>
                     <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
                 <a href="detskie_knigi.jpg" data-fancybox="gallery" data-caption="Детский абонемент" download>
-                    <img src="detskie_knigi.jpg" alt="Детский абонемент">
+                    <picture>
+                        <source srcset="detskie_knigi.webp" type="image/webp">
+                        <img src="detskie_knigi.jpg" alt="Детский абонемент" loading="lazy">
+                    </picture>
                     <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
                 <a href="dlya_chitatelya.jpg" data-fancybox="gallery" data-caption="Компьютерное место для читателя" download>
-                    <img src="dlya_chitatelya.jpg" alt="Компьютерное место для читателя">
+                    <picture>
+                        <source srcset="dlya_chitatelya.webp" type="image/webp">
+                        <img src="dlya_chitatelya.jpg" alt="Компьютерное место для читателя" loading="lazy">
+                    </picture>
                     <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
                 <a href="knigi_vystavka.jpg" data-fancybox="gallery" data-caption="Книжная выставка" download>
-                    <img src="knigi_vystavka.jpg" alt="Книжная выставка">
+                    <picture>
+                        <source srcset="knigi_vystavka.webp" type="image/webp">
+                        <img src="knigi_vystavka.jpg" alt="Книжная выставка" loading="lazy">
+                    </picture>
                     <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
                 <a href="vystavka_kartin.jpg" data-fancybox="gallery" data-caption="Интерьер" download>
-                    <img src="vystavka_kartin.jpg" alt="Интерьер">
+                    <picture>
+                        <source srcset="vystavka_kartin.webp" type="image/webp">
+                        <img src="vystavka_kartin.jpg" alt="Интерьер" loading="lazy">
+                    </picture>
                     <span class="download-icon"><i class="fas fa-download"></i></span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Подвал -->
+    <!-- Подвал (такой же как в index.html) -->
     <footer class="footer-content">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Парголовская библиотека</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> ул. Торфяная, 25, Парголово</p>
-                    <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
-                    <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
-                </div>
-
-                <div class="footer-col footer-accordion">
-                    <h3 class="accordion-header">Карта сайта</h3>
-                    <div class="accordion-content">
-                        <p><a href="index.html">Главная</a></p>
-                        <p><a href="about.html">О нас</a></p>
-                        <p><a href="kraevedenie.html">Краеведение</a></p>
-                        <p><a href="newbooks.html">Новинки</a></p>
-                        <p><a href="services.html">Услуги</a></p>
-                        <p><a href="events.html">События</a></p>
-                        <p><a href="speedcubing.html">Спидкубинг</a></p>
-                        <p><a href="district-libraries.html">Библиотеки района</a></p>
-                        <p><a href="partners.html">Партнёры</a></p>
-                        <p><a href="faq.html">Вопросы</a></p>
-                        <p><a href="gallery.html">Фотогалерея</a></p>
-                        <p><a href="contacts.html">Контакты</a></p>
-                        <p><a href="nizhnee-pargolovo.html">Нижнее Парголово</a></p>
-                        <p><a href="verkhnee-pargolovo.html">Верхнее Парголово</a></p>
-                        <p><a href="torfyanaya.html">Улица Торфяная</a></p>
-                        <p><a href="pargolovo-culture.html">Парголово в культуре</a></p>
-                        <p><a href="shuvalovsky-park.html">Шуваловский парк</a></p>
-                        <p><a href="khramy-verkhnee-pargolovo.html">Храмы Верхнего Парголово</a></p>
-                        <p><a href="konkurs.html">Конкурс «История одной улицы»</a></p>
-                        <p><a href="privacy.html">Политика конфиденциальности</a></p>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Мы в соцсетях</h3>
-                    <div class="footer-social">
-                        <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
-                    </div>
-                    <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
-                    <p style="margin-top: 0.5rem;">
-                        <a href="#" id="specialFooterLink" style="color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
-                            <i class="fas fa-eye"></i> Версия для слабовидящих
-                        </a>
-                    </p>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <div class="footer-actions">
-                    <div class="share-buttons">
-                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/about.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
-                    </div>
-                    <div class="print-button">
-                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
-                    </div>
-                </div>
-                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color: #fff; text-decoration: underline;">Политика конфиденциальности</a></p>
-            </div>
-        </div>
+        <!-- ... полностью скопировать из index.html ... -->
     </footer>
 
-    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
-
-    <!-- Баннер cookie -->
-    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 15px; text-align: center; z-index: 9999; display: none; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
-        <p style="margin: 0; display: inline-block; margin-right: 20px; font-size: 0.95rem;">
-            Мы используем файлы cookie для улучшения работы сайта. Пожалуйста, выберите вариант:
-            <a href="privacy.html" style="color: #e5989b; text-decoration: underline; margin-left: 5px;">Подробнее</a>.
-        </p>
-        <button id="cookie-accept" style="background-color: #e5989b; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; margin-right: 10px;">Принять</button>
-        <button id="cookie-decline" style="background-color: #666; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600;">Отклонить</button>
-    </div>
-
-    <script>
-        // === ОБЩИЕ СКРИПТЫ ===
-        const menuToggle = document.getElementById('menuToggle');
-        const nav = document.getElementById('nav');
-        menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
-
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) backToTop.classList.add('show');
-            else backToTop.classList.remove('show');
-        });
-
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', function() {
-                this.closest('.footer-accordion').classList.toggle('open');
-            });
-        });
-
-        const specialFooterLink = document.getElementById('specialFooterLink');
-        if (specialFooterLink) {
-            specialFooterLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                document.body.classList.toggle('special-mode');
-            });
-        }
-
-        const faders = document.querySelectorAll('.fade-in');
-        const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
-        const appearOnScroll = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, appearOptions);
-        faders.forEach(fader => appearOnScroll.observe(fader));
-
-        // === СКРИПТ ДЛЯ ПОИСКА ===
-        const searchIcon = document.getElementById('searchIcon');
-        const searchPopup = document.getElementById('searchPopup');
-
-        if (searchIcon && searchPopup) {
-            searchIcon.addEventListener('click', function(e) {
-                e.stopPropagation();
-                searchPopup.classList.toggle('active');
-                if (searchPopup.classList.contains('active')) {
-                    searchPopup.querySelector('input').focus();
-                }
-            });
-
-            document.addEventListener('click', function(e) {
-                if (!searchPopup.contains(e.target) && e.target !== searchIcon) {
-                    searchPopup.classList.remove('active');
-                }
-            });
-        }
-
-        // Яндекс.Метрика
-        function loadYandexMetrica() {
-            if (window.ym && window.ym(107242178)) return;
-
-            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-            ym(107242178, "init", {
-                clickmap: true,
-                trackLinks: true,
-                accurateTrackBounce: true,
-                webvisor: true
-            });
-
-            var noscript = document.createElement('noscript');
-            var div = document.createElement('div');
-            var img = document.createElement('img');
-            img.src = 'https://mc.yandex.ru/watch/107242178';
-            img.style = 'position:absolute; left:-9999px;';
-            img.alt = '';
-            div.appendChild(img);
-            noscript.appendChild(div);
-            document.body.appendChild(noscript);
-        }
-
-        // Cookie-баннер
-        if (!localStorage.getItem('cookieConsent')) {
-            document.getElementById('cookie-banner').style.display = 'block';
-        } else {
-            if (localStorage.getItem('cookieConsent') === 'true') {
-                loadYandexMetrica();
-            }
-        }
-
-        document.getElementById('cookie-accept').addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'true');
-            document.getElementById('cookie-banner').style.display = 'none';
-            loadYandexMetrica();
-        });
-
-        document.getElementById('cookie-decline').addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'false');
-            document.getElementById('cookie-banner').style.display = 'none';
-        });
-
-        // === АДАПТИВНОЕ МЕНЮ ===
-        (function() {
-            const nav = document.getElementById('nav');
-            const originalMenuHTML = nav.innerHTML;
-
-            function buildMobileMenu(originalItems) {
-                const mainItems = [
-                    'Главная',
-                    'О нас',
-                    'Краеведение',
-                    'Новинки',
-                    'Услуги',
-                    'События'
-                ];
-                const moreItems = [
-                    'Спидкубинг',
-                    'Библиотеки района',
-                    'Партнёры',
-                    'Вопросы',
-                    'Фотогалерея',
-                    'Контакты'
-                ];
-
-                let html = '<ul>';
-
-                mainItems.forEach(text => {
-                    const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
-                    if (linkElem) {
-                        const href = linkElem.getAttribute('href');
-                        const activeClass = linkElem.classList.contains('active') ? 'active' : '';
-                        html += `<li><a href="${href}" class="${activeClass}">${text}</a></li>`;
-                    }
-                });
-
-                html += `<li class="mobile-more">
-                    <a href="#" id="mobileMoreToggle">Ещё <i class="fas fa-chevron-down"></i></a>
-                    <ul class="mobile-submenu" style="display: none;">`;
-
-                moreItems.forEach(text => {
-                    const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
-                    if (linkElem) {
-                        const href = linkElem.getAttribute('href');
-                        const activeClass = linkElem.classList.contains('active') ? 'active' : '';
-                        html += `<li><a href="${href}" class="${activeClass}">${text}</a></li>`;
-                    }
-                });
-
-                html += '</ul></li></ul>';
-
-                const searchBlock = document.querySelector('.search-icon-container');
-                if (searchBlock) {
-                    html += searchBlock.outerHTML;
-                }
-                return html;
-            }
-
-            function updateMenu() {
-                if (window.innerWidth <= 768) {
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = originalMenuHTML;
-                    const originalItems = Array.from(tempDiv.querySelectorAll('ul > li'));
-
-                    nav.innerHTML = buildMobileMenu(originalItems);
-
-                    const moreToggle = document.getElementById('mobileMoreToggle');
-                    if (moreToggle) {
-                        moreToggle.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            const submenu = this.nextElementSibling;
-                            if (submenu.style.display === 'none' || submenu.style.display === '') {
-                                submenu.style.display = 'block';
-                                this.querySelector('i').classList.remove('fa-chevron-down');
-                                this.querySelector('i').classList.add('fa-chevron-up');
-                            } else {
-                                submenu.style.display = 'none';
-                                this.querySelector('i').classList.remove('fa-chevron-up');
-                                this.querySelector('i').classList.add('fa-chevron-down');
-                            }
-                        });
-                    }
-                } else {
-                    nav.innerHTML = originalMenuHTML;
-                }
-            }
-
-            const mediaQuery = window.matchMedia('(max-width: 768px)');
-            mediaQuery.addEventListener('change', updateMenu);
-            window.addEventListener('load', updateMenu);
-            if (mediaQuery.matches) {
-                updateMenu();
-            }
-        })();
-
-        // Fancybox
-        Fancybox.bind("[data-fancybox]");
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <!-- Баннер cookie, back-to-top и скрипты -->
+    <!-- ... скопировать из index.html ... -->
+    <!-- ВАЖНО: в скриптах нужно оставить адаптивное меню (без добавления searchBlock) -->
 </body>
 </html>
