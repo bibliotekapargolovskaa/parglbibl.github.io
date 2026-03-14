@@ -125,7 +125,31 @@
     </style>
 </head>
 <body class="page-transition">
-    <header>...</header>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.PNG" alt="Парголовская библиотека" loading="lazy">
+            </a>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav class="nav" id="nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="about.html"><i class="fas fa-users"></i> О нас</a></li>
+                    <li><a href="kraevedenie.html"><i class="fas fa-map-signs"></i> Краеведение</a></li>
+                    <li><a href="newbooks.html"><i class="fas fa-book-open"></i> Новинки</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Услуги</a></li>
+                    <li><a href="events.html"><i class="fas fa-calendar-alt"></i> События</a></li>
+                    <li><a href="speedcubing.html"><i class="fas fa-puzzle-piece"></i> Спидкубинг</a></li>
+                    <li><a href="district-libraries.html"><i class="fas fa-building"></i> Библиотеки района</a></li>
+                    <li><a href="partners.html"><i class="fas fa-handshake"></i> Партнёры</a></li>
+                    <li><a href="faq.html"><i class="fas fa-question-circle"></i> Вопросы</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Фотогалерея</a></li>
+                    <li><a href="contacts.html"><i class="fas fa-phone-alt"></i> Контакты</a></li>
+                </ul>
+                <div class="search-icon-container">...</div>
+            </nav>
+        </div>
+    </header>
 
     <section class="section">
         <div class="container">
@@ -148,7 +172,7 @@
                 <p><strong>Сроки проведения:</strong> февраль – ноябрь 2026.</p>
                 <p><strong>Как участвовать:</strong> заполните форму на странице проекта «Улица Торфяная» (кнопка ниже) или принесите материалы лично в библиотеку. Все участники будут отмечены в нашей галерее и на странице конкурса.</p>
                 <div class="stats">
-                    <i class="fas fa-users"></i> Уже <span id="participant-counter">0</span> человек поделились историями и фотографиями. Спасибо!
+                    <i class="fas fa-users"></i> Уже <span id="participant-counter">12</span> человек поделились историями и фотографиями. Спасибо!
                 </div>
                 <div style="text-align: center; margin-top: 2rem;">
                     <a href="torfyanaya.html#form" class="btn btn-large">📤 Поделиться историей</a>
@@ -177,14 +201,19 @@
         </div>
     </section>
 
-    <footer class="footer-content">...</footer>
+    <footer class="footer-content">
+        <!-- подвал -->
+    </footer>
+
     <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
     <div id="cookie-banner">...</div>
+
     <script src="common.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
         Fancybox.bind("[data-fancybox]");
-        document.getElementById('participant-counter').innerText = '12'; // пример
+        // Счётчик участников (можно обновлять вручную)
+        // document.getElementById('participant-counter').innerText = '12'; // уже установлено
     </script>
 </body>
 </html>
