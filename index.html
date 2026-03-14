@@ -517,6 +517,47 @@
             background-color: #9f6e7a;
         }
 
+        /* === Мобильное меню с группировкой === */
+        @media (max-width: 768px) {
+            .mobile-more {
+                position: relative;
+            }
+            .mobile-more > a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+            }
+            .mobile-submenu {
+                display: none;
+                list-style: none;
+                padding: 0;
+                margin-top: 5px;
+                background-color: #b5838d; /* тот же цвет, что и у шапки */
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .mobile-submenu.show {
+                display: block;
+            }
+            .mobile-submenu li {
+                border-top: 1px solid rgba(255,255,255,0.2);
+            }
+            .mobile-submenu li:first-child {
+                border-top: none;
+            }
+            .mobile-submenu a {
+                display: block;
+                padding: 0.8rem 1rem;
+                color: #fff;
+                text-decoration: none;
+                transition: background 0.3s;
+            }
+            .mobile-submenu a:hover {
+                background-color: #9f6e7a;
+            }
+        }
+
         .footer-content {
             background: #b5838d;
             color: #fff;
@@ -1155,6 +1196,86 @@
             localStorage.setItem('cookieConsent', 'false');
             document.getElementById('cookie-banner').style.display = 'none';
         });
+
+        // === АДАПТИВНОЕ МЕНЮ ===
+        (function() {
+            // Сохраняем оригинальную структуру меню
+            const nav = document.getElementById('nav');
+            const originalMenuHTML = nav.innerHTML;
+
+            function buildMobileMenu(originalItems) {
+                const mainItems = [
+                    'Главная',
+                    'О нас',
+                    'Краеведение',
+                    'Новинки',
+                    'Услуги',
+                    'События'
+                ];
+                const moreItems = [
+                    'Спидкубинг',
+                    'Библиотеки района',
+                    'Партнёры',
+                    'Вопросы',
+                    'Фотогалерея',
+                    'Контакты'
+                ];
+
+                let html = '<ul>';
+
+                mainItems.forEach(text => {
+                    const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
+                    if (linkElem) {
+                        const href = linkElem.getAttribute('href');
+                        const activeClass = linkElem.classList.contains('active') ? 'active' : '';
+                        html += `<li><a href="${href}" class="${activeClass}">${text}</a></li>`;
+                    }
+                });
+
+                html += `<li class="mobile-more">
+                    <a href="#" id="mobileMoreToggle">Ещё <i class="fas fa-chevron-down"></i></a>
+                    <ul class="mobile-submenu">`;
+
+                moreItems.forEach(text => {
+                    const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
+                    if (linkElem) {
+                        const href = linkElem.getAttribute('href');
+                        const activeClass = linkElem.classList.contains('active') ? 'active' : '';
+                        html += `<li><a href="${href}" class="${activeClass}">${text}</a></li>`;
+                    }
+                });
+
+                html += '</ul></li></ul>';
+                return html;
+            }
+
+            function updateMenu() {
+                if (window.innerWidth <= 768) {
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = originalMenuHTML;
+                    const originalItems = Array.from(tempDiv.querySelectorAll('ul > li'));
+
+                    nav.innerHTML = buildMobileMenu(originalItems);
+
+                    const moreToggle = document.getElementById('mobileMoreToggle');
+                    if (moreToggle) {
+                        moreToggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            const submenu = this.nextElementSibling;
+                            submenu.classList.toggle('show');
+                            const icon = this.querySelector('i');
+                            icon.classList.toggle('fa-chevron-down');
+                            icon.classList.toggle('fa-chevron-up');
+                        });
+                    }
+                } else {
+                    nav.innerHTML = originalMenuHTML;
+                }
+            }
+
+            window.addEventListener('load', updateMenu);
+            window.addEventListener('resize', updateMenu);
+        })();
     </script>
 </body>
 </html>
