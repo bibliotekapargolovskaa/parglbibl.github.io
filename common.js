@@ -115,16 +115,20 @@
         }
     })();
 
-    // === КНОПКА «НАВЕРХ» ===
+    // === КНОПКА «НАВЕРХ» (исправлено) ===
     const backToTop = document.getElementById('backToTop');
     if (backToTop) {
-        window.addEventListener('scroll', function() {
+        // Функция проверки прокрутки
+        function toggleBackToTop() {
             if (window.scrollY > 300) {
                 backToTop.classList.add('show');
             } else {
                 backToTop.classList.remove('show');
             }
-        });
+        }
+        window.addEventListener('scroll', toggleBackToTop);
+        // Вызываем сразу, чтобы установить правильное состояние при загрузке
+        toggleBackToTop();
 
         backToTop.addEventListener('click', function(e) {
             e.preventDefault();
