@@ -58,13 +58,12 @@
     <!-- Общие стили -->
     <link rel="stylesheet" href="common.css">
     
-    <!-- Шрифты и иконки -->
+    <!-- Шрифты и иконки (подключаются также в common.css, но для надёжности оставим ссылки) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
     
+    <!-- Дополнительные стили только для этой страницы -->
     <style>
-        /* Уникальные стили для about.html */
         .history-block, .photo-gallery a, .achievement-card {
             transition: transform 0.4s, box-shadow 0.4s;
         }
@@ -155,6 +154,9 @@
         .achievement-card h3 { color: #b5838d; margin-bottom: 0.5rem; font-size: 1.2rem; }
         .achievement-card p { color: #666; font-size: 0.95rem; }
     </style>
+    
+    <!-- Fancybox CSS (если используется на странице) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
 </head>
 <body class="page-transition">
     <header>
@@ -178,7 +180,7 @@
                     <li><a href="gallery.html"><i class="fas fa-images"></i> Фотогалерея</a></li>
                     <li><a href="contacts.html"><i class="fas fa-phone-alt"></i> Контакты</a></li>
                 </ul>
-                <!-- Поиск (скрыт на мобильных через CSS) -->
+                <!-- Поиск -->
                 <div class="search-icon-container">
                     <i class="fas fa-search" id="searchIcon"></i>
                     <div class="search-popup" id="searchPopup">
@@ -385,185 +387,10 @@
         <button id="cookie-decline" style="background-color: #666; color: #fff; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600;">Отклонить</button>
     </div>
 
-    <script>
-        // === БАЗОВЫЙ ОБРАБОТЧИК БУРГЕРА ===
-        const menuToggle = document.getElementById('menuToggle');
-        const nav = document.getElementById('nav');
-        if (menuToggle && nav) {
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('active');
-            });
-        }
-
-        // === СКРИПТ ДЛЯ ПОИСКА ===
-        const searchIcon = document.getElementById('searchIcon');
-        const searchPopup = document.getElementById('searchPopup');
-        if (searchIcon && searchPopup) {
-            searchIcon.addEventListener('click', function(e) {
-                e.stopPropagation();
-                searchPopup.classList.toggle('active');
-                if (searchPopup.classList.contains('active')) {
-                    searchPopup.querySelector('input').focus();
-                }
-            });
-            document.addEventListener('click', function(e) {
-                if (!searchPopup.contains(e.target) && e.target !== searchIcon) {
-                    searchPopup.classList.remove('active');
-                }
-            });
-        }
-
-        // === АДАПТИВНОЕ МЕНЮ С ПЕРЕНОСОМ "СОБЫТИЙ" В ПОДМЕНЮ ===
-        (function() {
-            const nav = document.getElementById('nav');
-            const originalMenuHTML = nav.innerHTML;
-
-            function buildMobileMenu(originalItems) {
-                const mainItems = [
-                    'Главная',
-                    'О нас',
-                    'Краеведение',
-                    'Новинки',
-                    'Услуги'
-                ];
-                const moreItems = [
-                    'Спидкубинг',
-                    'События',
-                    'Библиотеки района',
-                    'Партнёры',
-                    'Вопросы',
-                    'Фотогалерея',
-                    'Контакты'
-                ];
-
-                let html = '<ul>';
-
-                mainItems.forEach(text => {
-                    const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
-                    if (linkElem) {
-                        const href = linkElem.getAttribute('href');
-                        const activeClass = linkElem.classList.contains('active') ? 'active' : '';
-                        const iconHtml = linkElem.querySelector('i') ? linkElem.querySelector('i').outerHTML : '';
-                        html += `<li><a href="${href}" class="${activeClass}">${iconHtml} ${text}</a></li>`;
-                    }
-                });
-
-                html += `<li class="mobile-more">
-                    <a href="#" id="mobileMoreToggle">Ещё <i class="fas fa-chevron-down"></i></a>
-                    <ul class="mobile-submenu" style="display: none;">`;
-
-                moreItems.forEach(text => {
-                    const linkElem = originalItems.find(li => li.textContent.trim() === text)?.querySelector('a');
-                    if (linkElem) {
-                        const href = linkElem.getAttribute('href');
-                        const activeClass = linkElem.classList.contains('active') ? 'active' : '';
-                        const iconHtml = linkElem.querySelector('i') ? linkElem.querySelector('i').outerHTML : '';
-                        html += `<li><a href="${href}" class="${activeClass}">${iconHtml} ${text}</a></li>`;
-                    }
-                });
-
-                html += '</ul></li></ul>';
-                return html;
-            }
-
-            function updateMenu() {
-                if (window.innerWidth <= 768) {
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = originalMenuHTML;
-                    const originalItems = Array.from(tempDiv.querySelectorAll('ul > li'));
-
-                    nav.innerHTML = buildMobileMenu(originalItems);
-
-                    const moreToggle = document.getElementById('mobileMoreToggle');
-                    if (moreToggle) {
-                        moreToggle.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            const submenu = this.nextElementSibling;
-                            if (submenu.style.display === 'none' || submenu.style.display === '') {
-                                submenu.style.display = 'block';
-                                this.querySelector('i').classList.remove('fa-chevron-down');
-                                this.querySelector('i').classList.add('fa-chevron-up');
-                            } else {
-                                submenu.style.display = 'none';
-                                this.querySelector('i').classList.remove('fa-chevron-up');
-                                this.querySelector('i').classList.add('fa-chevron-down');
-                            }
-                        });
-                    }
-                } else {
-                    nav.innerHTML = originalMenuHTML;
-                }
-            }
-
-            const mediaQuery = window.matchMedia('(max-width: 768px)');
-            mediaQuery.addEventListener('change', updateMenu);
-            window.addEventListener('load', updateMenu);
-            if (mediaQuery.matches) {
-                updateMenu();
-            }
-        })();
-
-        // === ОБЩИЕ СКРИПТЫ ===
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) backToTop.classList.add('show');
-            else backToTop.classList.remove('show');
-        });
-
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', function() {
-                this.closest('.footer-accordion').classList.toggle('open');
-            });
-        });
-
-        const specialFooterLink = document.getElementById('specialFooterLink');
-        if (specialFooterLink) {
-            specialFooterLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                document.body.classList.toggle('special-mode');
-            });
-        }
-
-        // Яндекс.Метрика
-        function loadYandexMetrica() {
-            if (window.ym && window.ym(107242178)) return;
-            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-            ym(107242178, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
-            var noscript = document.createElement('noscript');
-            var div = document.createElement('div');
-            var img = document.createElement('img');
-            img.src = 'https://mc.yandex.ru/watch/107242178';
-            img.style = 'position:absolute; left:-9999px;';
-            img.alt = '';
-            div.appendChild(img);
-            noscript.appendChild(div);
-            document.body.appendChild(noscript);
-        }
-
-        if (!localStorage.getItem('cookieConsent')) {
-            document.getElementById('cookie-banner').style.display = 'block';
-        } else {
-            if (localStorage.getItem('cookieConsent') === 'true') loadYandexMetrica();
-        }
-
-        document.getElementById('cookie-accept').addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'true');
-            document.getElementById('cookie-banner').style.display = 'none';
-            loadYandexMetrica();
-        });
-
-        document.getElementById('cookie-decline').addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'false');
-            document.getElementById('cookie-banner').style.display = 'none';
-        });
-
-        // Fancybox
-        Fancybox.bind("[data-fancybox]");
-    </script>
+    <!-- Подключаем общий JavaScript -->
+    <script src="common.js"></script>
+    <!-- Fancybox JS (если используется) -->
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <!-- Уникальный скрипт для этой страницы не требуется, так как всё в common.js, но можно добавить что-то специфическое при необходимости -->
 </body>
 </html>
