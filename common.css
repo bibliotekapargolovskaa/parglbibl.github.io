@@ -379,7 +379,7 @@ header {
     }
 }
 
-/* ===== МОБИЛЬНОЕ МЕНЮ (без поиска) ===== */
+/* ===== МОБИЛЬНОЕ МЕНЮ ===== */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -418,6 +418,22 @@ header {
     .search-icon-container {
         display: none;
     }
+
+    /* Стили для подменю «Ещё» */
+    .mobile-more {
+        position: relative;
+    }
+    .mobile-submenu {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 0.5rem;
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+    }
+    .mobile-submenu li a {
+        padding: 0.5rem 1rem;
+        justify-content: center;
+    }
 }
 
 /* Дополнительная адаптация для очень маленьких экранов */
@@ -434,6 +450,14 @@ header {
         padding: 0.6rem 1.5rem;
         font-size: 0.9rem;
     }
+}
+
+/* ===== АККОРДЕОН В ПОДВАЛЕ ===== */
+.footer-accordion .accordion-content {
+    display: none;
+}
+.footer-accordion.open .accordion-content {
+    display: block;
 }
 
 /* ===== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ===== */
