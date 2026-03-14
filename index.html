@@ -283,7 +283,7 @@
                 display: block; 
             }
             .header-inner {
-                padding: 0 10px;        /* небольшие отступы по бокам */
+                padding: 0 10px;
             }
             .nav {
                 display: none;
@@ -297,7 +297,7 @@
             }
             .nav ul {
                 flex-direction: column;
-                gap: 0.5rem;            /* уменьшаем вертикальные отступы */
+                gap: 0.5rem;
                 width: 100%;
                 text-align: center;
                 padding: 0.5rem 0;
@@ -306,19 +306,19 @@
                 width: 100%;
             }
             .nav a {
-                font-size: 0.9rem;       /* чуть меньше шрифт */
-                padding: 0.3rem 0;       /* добавляем область касания */
+                font-size: 0.9rem;
+                padding: 0.3rem 0;
                 display: block;
             }
             .search-icon-container {
                 margin: 0.5rem 0 0 0;
-                align-self: center;      /* центрируем иконку поиска */
+                align-self: center;
             }
         }
         
         @media (max-width: 1200px) {
             .nav ul {
-                gap: 1.5rem; /* чуть уменьшаем на средних экранах */
+                gap: 1.5rem;
             }
         }
 
@@ -1199,8 +1199,8 @@
 
         // === АДАПТИВНОЕ МЕНЮ ===
         (function() {
-            // Сохраняем оригинальную структуру меню
             const nav = document.getElementById('nav');
+            // Сохраняем оригинальную структуру вместе с поиском
             const originalMenuHTML = nav.innerHTML;
 
             function buildMobileMenu(originalItems) {
@@ -1246,6 +1246,12 @@
                 });
 
                 html += '</ul></li></ul>';
+
+                // Добавляем блок поиска обратно (он не должен пропадать)
+                const searchBlock = document.querySelector('.search-icon-container');
+                if (searchBlock) {
+                    html += searchBlock.outerHTML;
+                }
                 return html;
             }
 
@@ -1273,8 +1279,14 @@
                 }
             }
 
+            // Используем matchMedia для более надёжного определения
+            const mediaQuery = window.matchMedia('(max-width: 768px)');
+            mediaQuery.addEventListener('change', updateMenu);
             window.addEventListener('load', updateMenu);
-            window.addEventListener('resize', updateMenu);
+            // Также запускаем сразу, если уже мобильное разрешение
+            if (mediaQuery.matches) {
+                updateMenu();
+            }
         })();
     </script>
 </body>
