@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="common.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
     
     <style>
         .project-card {
@@ -70,6 +71,39 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             margin-top: 2rem;
+        }
+
+        /* Стили для книжной полки */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .book-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .book-card .book-cover {
+            margin-bottom: 1rem;
+        }
+        .book-card h3 {
+            margin-bottom: 0.5rem;
+            color: #5e4b3c;
+            font-size: 1.2rem;
+        }
+        .book-card .author {
+            font-weight: 600;
+            color: #b5838d;
+            margin-bottom: 0.5rem;
+        }
+        .book-card .description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 0.5rem;
         }
 
         /* Викторина */
@@ -184,6 +218,7 @@
                 Мы собираем и изучаем историю нашего посёлка, разделяя её на две большие части: Нижнее и Верхнее Парголово. Приглашаем вас в путешествие!
             </p>
 
+            <!-- Сетка проектов -->
             <div class="projects-grid">
                 <!-- Карточка Нижнего Парголово -->
                 <div class="project-card fade-in">
@@ -221,7 +256,7 @@
                 <i class="fas fa-map-pin" style="color: #e5989b;"></i> Кликните по метке, чтобы узнать подробности.
             </p>
 
-            <!-- НАРОДЫ ПАРГОЛОВО (НОВЫЙ БЛОК) -->
+            <!-- Народы Парголово -->
             <h2 class="section-title">Народы Парголово</h2>
             <div class="projects-grid" style="margin-bottom: 2rem;">
                 <div class="project-card fade-in" style="text-align: left;">
@@ -241,6 +276,154 @@
                 </div>
             </div>
 
+            <!-- КНИЖНАЯ ПОЛКА (перенесена из torfyanaya.html) -->
+            <h2 class="section-title">Книжная полка</h2>
+            <div class="books-grid fade-in">
+                <!-- 1. Мурашова, Мыслина – Усадьбы Всеволожского района -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <svg width="100%" height="200" viewBox="0 0 250 350" preserveAspectRatio="xMidYMid meet" style="background: #f9f0e7; border-radius: 8px;">
+                            <rect width="250" height="350" fill="#f9f0e7" rx="8" ry="8"/>
+                            <text x="125" y="120" font-family="Montserrat, sans-serif" font-size="18" fill="#b5838d" text-anchor="middle" font-weight="600">Дворянские</text>
+                            <text x="125" y="150" font-family="Montserrat, sans-serif" font-size="18" fill="#b5838d" text-anchor="middle" font-weight="600">усадьбы</text>
+                            <text x="125" y="200" font-family="Open Sans, sans-serif" font-size="14" fill="#4a4a4a" text-anchor="middle">Мурашова, Мыслина</text>
+                            <text x="125" y="280" font-family="Open Sans, sans-serif" font-size="12" fill="#e5989b" text-anchor="middle">Есть в фонде</text>
+                        </svg>
+                    </div>
+                    <h3>Дворянские усадьбы Санкт-Петербургской губернии. Всеволожский район</h3>
+                    <div class="author">Н.В. Мурашова, Л.П. Мыслина</div>
+                    <div class="description">История усадеб Всеволожского района, включая Рябово, Приютино, Елизаветино. Издание содержит карты, таблицы, портреты и фотографии. СПб: Агаборг, 2008. К 300-летию губернии.</div>
+                    <div style="margin-top:0.5rem;"><span style="color:#b5838d;"><i class="fas fa-check-circle"></i> Есть в фонде</span></div>
+                </div>
+
+                <!-- 2. Александрова – Парголово. Parkala -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <svg width="100%" height="200" viewBox="0 0 250 350" preserveAspectRatio="xMidYMid meet" style="background: #f9f0e7; border-radius: 8px;">
+                            <rect width="250" height="350" fill="#f9f0e7" rx="8" ry="8"/>
+                            <text x="125" y="120" font-family="Montserrat, sans-serif" font-size="20" fill="#b5838d" text-anchor="middle" font-weight="600">Парголово</text>
+                            <text x="125" y="155" font-family="Montserrat, sans-serif" font-size="18" fill="#b5838d" text-anchor="middle" font-weight="600">Parkala</text>
+                            <text x="125" y="200" font-family="Open Sans, sans-serif" font-size="14" fill="#4a4a4a" text-anchor="middle">Е. Александрова</text>
+                            <text x="125" y="280" font-family="Open Sans, sans-serif" font-size="12" fill="#e5989b" text-anchor="middle">Есть в фонде</text>
+                        </svg>
+                    </div>
+                    <h3>Парголово. Parkala</h3>
+                    <div class="author">Елена Александрова</div>
+                    <div class="description">Фундаментальный труд по истории Парголово от ледникового периода до XX века. Ижорские поселения, шведский период, имение Шуваловых, Суздальская слобода. СПб: Гиоль, 2013.</div>
+                    <div style="margin-top:0.5rem;"><span style="color:#b5838d;"><i class="fas fa-check-circle"></i> Есть в фонде</span></div>
+                </div>
+
+                <!-- 3. Александрова – Северные окрестности Петербурга -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <svg width="100%" height="200" viewBox="0 0 250 350" preserveAspectRatio="xMidYMid meet" style="background: #f9f0e7; border-radius: 8px;">
+                            <rect width="250" height="350" fill="#f9f0e7" rx="8" ry="8"/>
+                            <text x="125" y="100" font-family="Montserrat, sans-serif" font-size="16" fill="#b5838d" text-anchor="middle" font-weight="600">Северные</text>
+                            <text x="125" y="130" font-family="Montserrat, sans-serif" font-size="16" fill="#b5838d" text-anchor="middle" font-weight="600">окрестности</text>
+                            <text x="125" y="160" font-family="Montserrat, sans-serif" font-size="16" fill="#b5838d" text-anchor="middle" font-weight="600">Петербурга</text>
+                            <text x="125" y="200" font-family="Open Sans, sans-serif" font-size="14" fill="#4a4a4a" text-anchor="middle">Е. Александрова</text>
+                            <text x="125" y="280" font-family="Open Sans, sans-serif" font-size="12" fill="#e5989b" text-anchor="middle">Есть в фонде</text>
+                        </svg>
+                    </div>
+                    <h3>Северные окрестности Петербурга. Историческое прошлое</h3>
+                    <div class="author">Елена Александрова</div>
+                    <div class="description">Геологическое прошлое, стоянки каменного века, петровские преобразования, Парголовское имение Шуваловых, Каменный нос, Лесное и другие окрестности. СПб: Лики России, 2008.</div>
+                    <div style="margin-top:0.5rem;"><span style="color:#b5838d;"><i class="fas fa-check-circle"></i> Есть в фонде</span></div>
+                </div>
+
+                <!-- 4. Альбом-каталог фотооткрыток т.4 -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <svg width="100%" height="200" viewBox="0 0 250 350" preserveAspectRatio="xMidYMid meet" style="background: #f9f0e7; border-radius: 8px;">
+                            <rect width="250" height="350" fill="#f9f0e7" rx="8" ry="8"/>
+                            <text x="125" y="100" font-family="Montserrat, sans-serif" font-size="14" fill="#b5838d" text-anchor="middle" font-weight="600">Петербург -</text>
+                            <text x="125" y="125" font-family="Montserrat, sans-serif" font-size="14" fill="#b5838d" text-anchor="middle" font-weight="600">Петроград -</text>
+                            <text x="125" y="150" font-family="Montserrat, sans-serif" font-size="14" fill="#b5838d" text-anchor="middle" font-weight="600">Ленинград</text>
+                            <text x="125" y="185" font-family="Open Sans, sans-serif" font-size="12" fill="#4a4a4a" text-anchor="middle">Т.4: Выборгская</text>
+                            <text x="125" y="210" font-family="Open Sans, sans-serif" font-size="12" fill="#4a4a4a" text-anchor="middle">сторона</text>
+                            <text x="125" y="280" font-family="Open Sans, sans-serif" font-size="12" fill="#e5989b" text-anchor="middle">Есть в фонде</text>
+                        </svg>
+                    </div>
+                    <h3>Петербург - Петроград - Ленинград</h3>
+                    <div class="author">Альбом-каталог фотооткрыток. Т.4: Выборгская сторона. Озерки-Шувалово-Парголово</div>
+                    <div class="description">Наиболее полное собрание фотооткрыток за 1895–1941 гг. Уникальные виды Озерков, Шувалово, Парголово. Текст Е.В. Анисимова. СПб: Сад искусств, 2013.</div>
+                    <div style="margin-top:0.5rem;"><span style="color:#b5838d;"><i class="fas fa-check-circle"></i> Есть в фонде</span></div>
+                </div>
+
+                <!-- 5. Шкаровский – Храм Иоасафа Белгородского -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <svg width="100%" height="200" viewBox="0 0 250 350" preserveAspectRatio="xMidYMid meet" style="background: #f9f0e7; border-radius: 8px;">
+                            <rect width="250" height="350" fill="#f9f0e7" rx="8" ry="8"/>
+                            <text x="125" y="110" font-family="Montserrat, sans-serif" font-size="16" fill="#b5838d" text-anchor="middle" font-weight="600">Храм</text>
+                            <text x="125" y="140" font-family="Montserrat, sans-serif" font-size="14" fill="#b5838d" text-anchor="middle" font-weight="600">Иоасафа</text>
+                            <text x="125" y="170" font-family="Montserrat, sans-serif" font-size="14" fill="#b5838d" text-anchor="middle" font-weight="600">Белгородского</text>
+                            <text x="125" y="200" font-family="Open Sans, sans-serif" font-size="14" fill="#4a4a4a" text-anchor="middle">М. Шкаровский</text>
+                            <text x="125" y="280" font-family="Open Sans, sans-serif" font-size="12" fill="#e5989b" text-anchor="middle">Есть в фонде</text>
+                        </svg>
+                    </div>
+                    <h3>Храм во имя Святителя Иоасафа Белгородского в поселке Парголово</h3>
+                    <div class="author">М.В. Шкаровский</div>
+                    <div class="description">История храма в Парголово, его строительство и судьба. Издание содержит иллюстрации и библиографию. СПб, 2015. По благословению митрополита Варсонофия.</div>
+                    <div style="margin-top:0.5rem;"><span style="color:#b5838d;"><i class="fas fa-check-circle"></i> Есть в фонде</span></div>
+                </div>
+
+                <!-- 6. Глезеров – Парголово. Шуваловский парк -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <svg width="100%" height="200" viewBox="0 0 250 350" preserveAspectRatio="xMidYMid meet" style="background: #f9f0e7; border-radius: 8px;">
+                            <rect width="250" height="350" fill="#f9f0e7" rx="8" ry="8"/>
+                            <text x="125" y="110" font-family="Montserrat, sans-serif" font-size="18" fill="#b5838d" text-anchor="middle" font-weight="600">Парголово</text>
+                            <text x="125" y="145" font-family="Montserrat, sans-serif" font-size="14" fill="#b5838d" text-anchor="middle" font-weight="600">Шуваловский</text>
+                            <text x="125" y="170" font-family="Montserrat, sans-serif" font-size="14" fill="#b5838d" text-anchor="middle" font-weight="600">парк</text>
+                            <text x="125" y="200" font-family="Open Sans, sans-serif" font-size="14" fill="#4a4a4a" text-anchor="middle">С. Глезеров</text>
+                            <text x="125" y="280" font-family="Open Sans, sans-serif" font-size="12" fill="#e5989b" text-anchor="middle">Есть в фонде</text>
+                        </svg>
+                    </div>
+                    <h3>Парголово. Шуваловский парк: очерки истории</h3>
+                    <div class="author">Сергей Глезеров</div>
+                    <div class="description">Подробный исторический очерк о Парголово и Шуваловском парке. Включает множество иллюстраций, карт и факсимиле. СПб: Минаков, 2016.</div>
+                    <div style="margin-top:0.5rem;"><span style="color:#b5838d;"><i class="fas fa-check-circle"></i> Есть в фонде</span></div>
+                </div>
+
+                <!-- 7. Сыров, Мягких – Карельский перешеек для детей -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <svg width="100%" height="200" viewBox="0 0 250 350" preserveAspectRatio="xMidYMid meet" style="background: #f9f0e7; border-radius: 8px;">
+                            <rect width="250" height="350" fill="#f9f0e7" rx="8" ry="8"/>
+                            <text x="125" y="100" font-family="Montserrat, sans-serif" font-size="14" fill="#b5838d" text-anchor="middle" font-weight="600">Карельский</text>
+                            <text x="125" y="125" font-family="Montserrat, sans-serif" font-size="14" fill="#b5838d" text-anchor="middle" font-weight="600">перешеек:</text>
+                            <text x="125" y="150" font-family="Montserrat, sans-serif" font-size="14" fill="#b5838d" text-anchor="middle" font-weight="600">путешествия</text>
+                            <text x="125" y="175" font-family="Montserrat, sans-serif" font-size="14" fill="#b5838d" text-anchor="middle" font-weight="600">для детей</text>
+                            <text x="125" y="210" font-family="Open Sans, sans-serif" font-size="12" fill="#4a4a4a" text-anchor="middle">Сыров, Мягких</text>
+                            <text x="125" y="280" font-family="Open Sans, sans-serif" font-size="12" fill="#e5989b" text-anchor="middle">Есть в фонде</text>
+                        </svg>
+                    </div>
+                    <h3>Карельский перешеек: путешествия для детей</h3>
+                    <div class="author">А.А. Сыров, М.А. Мягких</div>
+                    <div class="description">Книга для детей с крупным шрифтом и цветными иллюстрациями. Рассказывает об истории Карельского перешейка, станциях и достопримечательностях, включая Парголово. СПб: Инкери, 2016.</div>
+                    <div style="margin-top:0.5rem;"><span style="color:#b5838d;"><i class="fas fa-check-circle"></i> Есть в фонде</span></div>
+                </div>
+
+                <!-- 8. Александрова – От земских школ до образовательных учреждений -->
+                <div class="book-card">
+                    <div class="book-cover">
+                        <svg width="100%" height="200" viewBox="0 0 250 350" preserveAspectRatio="xMidYMid meet" style="background: #f9f0e7; border-radius: 8px;">
+                            <rect width="250" height="350" fill="#f9f0e7" rx="8" ry="8"/>
+                            <text x="125" y="100" font-family="Montserrat, sans-serif" font-size="16" fill="#b5838d" text-anchor="middle" font-weight="600">От земских</text>
+                            <text x="125" y="130" font-family="Montserrat, sans-serif" font-size="16" fill="#b5838d" text-anchor="middle" font-weight="600">школ до</text>
+                            <text x="125" y="160" font-family="Montserrat, sans-serif" font-size="16" fill="#b5838d" text-anchor="middle" font-weight="600">образования</text>
+                            <text x="125" y="200" font-family="Open Sans, sans-serif" font-size="14" fill="#4a4a4a" text-anchor="middle">Е. Александрова</text>
+                            <text x="125" y="280" font-family="Open Sans, sans-serif" font-size="12" fill="#e5989b" text-anchor="middle">Есть в фонде</text>
+                        </svg>
+                    </div>
+                    <h3>Парголово: от земских школ до образовательных учреждений</h3>
+                    <div class="author">Е.Л. Александрова</div>
+                    <div class="description">История образования в Парголово: земские школы, первые советские школы, спортивные кружки. Вклад А.П. Шувалова. СПб, 2019.</div>
+                    <div style="margin-top:0.5rem;"><span style="color:#b5838d;"><i class="fas fa-check-circle"></i> Есть в фонде</span></div>
+                </div>
+            </div>
+
             <!-- Викторина по краеведению -->
             <h2 class="section-title">Викторина «Знаешь ли ты Парголово?»</h2>
             <div class="quiz-container">
@@ -257,7 +440,7 @@
         </div>
     </section>
 
-    <!-- Подвал -->
+    <!-- Подвал (как в других страницах) -->
     <footer class="footer-content">
         <div class="container">
             <div class="footer-grid">
@@ -267,7 +450,6 @@
                     <p><i class="fas fa-phone-alt"></i> +7 (812) 246-93-05</p>
                     <p><i class="fas fa-envelope"></i> pargolovo@cbsvib.ru</p>
                 </div>
-
                 <div class="footer-col footer-accordion">
                     <h3 class="accordion-header">Карта сайта</h3>
                     <div class="accordion-content">
@@ -293,31 +475,25 @@
                         <p><a href="privacy.html">Политика конфиденциальности</a></p>
                     </div>
                 </div>
-
                 <div class="footer-col">
                     <h3>Мы в соцсетях</h3>
                     <div class="footer-social">
                         <a href="https://vk.com/pargolovskaya_library" target="_blank"><i class="fab fa-vk"></i></a>
                     </div>
-                    <p style="margin-top: 1.5rem;">Подпишитесь на новости!</p>
-                    <p style="margin-top: 0.5rem;">
-                        <a href="#" id="specialFooterLink" style="color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
-                            <i class="fas fa-eye"></i> Версия для слабовидящих
-                        </a>
-                    </p>
+                    <p style="margin-top:1.5rem;">Подпишитесь на новости!</p>
+                    <p><a href="#" id="specialFooterLink" style="color:#fff;"><i class="fas fa-eye"></i> Версия для слабовидящих</a></p>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <div class="footer-actions">
                     <div class="share-buttons">
-                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/kraevedenie.html" target="_blank" title="Поделиться ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="https://vk.com/share.php?url=https://parglbibl.ru/kraevedenie.html" target="_blank"><i class="fab fa-vk"></i></a>
                     </div>
                     <div class="print-button">
-                        <a href="javascript:window.print()" title="Распечатать страницу"><i class="fas fa-print"></i> <span>Печать</span></a>
+                        <a href="javascript:window.print()"><i class="fas fa-print"></i> Печать</a>
                     </div>
                 </div>
-                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color: #fff; text-decoration: underline;">Политика конфиденциальности</a></p>
+                <p>© 2026 Библиотека «Парголовская» | ЦБС Выборгского района | <a href="privacy.html" style="color:#fff; text-decoration:underline;">Политика конфиденциальности</a></p>
             </div>
         </div>
     </footer>
@@ -334,18 +510,18 @@
     <script src="common.js"></script>
     <!-- Яндекс.Карты API с вашим ключом -->
     <script src="https://api-maps.yandex.ru/2.1/?apikey=0c586c14-20f3-4be5-b7f7-a618b25ccfa8&lang=ru_RU" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
         // Инициализация карты
         ymaps.ready(init);
 
         function init() {
             var map = new ymaps.Map('map', {
-                center: [60.075, 30.28], // центр Парголово (примерно)
+                center: [60.075, 30.28],
                 zoom: 13,
                 controls: ['zoomControl', 'fullscreenControl']
             });
 
-            // Массив достопримечательностей с точными координатами
             var places = [
                 {
                     coords: [60.078611, 30.297500],
@@ -406,9 +582,8 @@
             });
         }
 
-        // ВИКТОРИНА С БАНКОМ ВОПРОСОВ И СЛУЧАЙНОЙ ВЫБОРКОЙ 10
+        // Викторина (тот же код, что и раньше)
         (function() {
-            // Большой банк вопросов (18 штук)
             const allQuestions = [
                 {
                     question: "Как называлась усадьба в Верхнем Парголово?",
@@ -520,7 +695,6 @@
                 }
             ];
 
-            // Функция перемешивания массива (алгоритм Фишера-Йейтса)
             function shuffleArray(arr) {
                 for (let i = arr.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
@@ -529,7 +703,6 @@
                 return arr;
             }
 
-            // Выбираем 10 случайных вопросов
             const shuffled = shuffleArray([...allQuestions]);
             const questions = shuffled.slice(0, 10);
 
