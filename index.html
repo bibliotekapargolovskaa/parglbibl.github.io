@@ -65,6 +65,42 @@
     <!-- Open API ВК -->
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
     
+    <!-- ГАРАНТИРОВАННО РАБОТАЮЩАЯ КНОПКА «НАВЕРХ» (В HEAD) -->
+    <script>
+    (function() {
+        // Функция поиска кнопки и управления
+        function setupBackToTop() {
+            var btn = document.getElementById('backToTop');
+            if (!btn) {
+                // Если кнопки ещё нет, пробуем через 100 мс
+                setTimeout(setupBackToTop, 100);
+                return;
+            }
+            function toggleButton() {
+                if (window.scrollY > 300) {
+                    btn.style.opacity = '1';
+                    btn.style.visibility = 'visible';
+                } else {
+                    btn.style.opacity = '0';
+                    btn.style.visibility = 'hidden';
+                }
+            }
+            window.addEventListener('scroll', toggleButton);
+            toggleButton(); // проверяем сразу
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+        // Запускаем после загрузки DOM
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupBackToTop);
+        } else {
+            setupBackToTop();
+        }
+    })();
+    </script>
+    
     <style>
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('logo2.png') center/cover no-repeat;
@@ -596,35 +632,6 @@
         window.addEventListener('load', () => {
             setTimeout(updateShareLinks, 100);
         });
-    </script>
-
-    <!-- ГАРАНТИРОВАННО РАБОТАЮЩАЯ КНОПКА «НАВЕРХ» -->
-    <script>
-    (function() {
-        function initBackToTop() {
-            var btn = document.getElementById('backToTop');
-            if (!btn) {
-                setTimeout(initBackToTop, 100); // ждём, пока кнопка появится
-                return;
-            }
-            function toggleBtn() {
-                if (window.scrollY > 300) {
-                    btn.style.opacity = '1';
-                    btn.style.visibility = 'visible';
-                } else {
-                    btn.style.opacity = '0';
-                    btn.style.visibility = 'hidden';
-                }
-            }
-            window.addEventListener('scroll', toggleBtn);
-            toggleBtn(); // сразу проверяем
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-        initBackToTop();
-    })();
     </script>
 </body>
 </html>
