@@ -20,25 +20,108 @@
     
     <style>
         .section { padding: 4rem 0; }
-        .back-link { margin-bottom: 2rem; }
-        .back-link a { display: inline-flex; align-items: center; gap: 8px; border: 2px solid #e5989b; color: #e5989b; padding: 6px 18px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s; }
-        .back-link a:hover { background-color: #e5989b; color: white; }
+        .back-link {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .back-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid #e5989b;
+            color: #e5989b;
+            padding: 6px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .back-link a:hover {
+            background-color: #e5989b;
+            color: white;
+        }
 
-        .info-block { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 2rem; }
-        .info-block h3 { color: #b5838d; margin-bottom: 1rem; }
+        .info-block {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        .info-block h3 {
+            color: #b5838d;
+            margin-bottom: 1rem;
+        }
 
-        .photo-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem; }
-        .photo-gallery a { display: block; text-decoration: none; position: relative; overflow: hidden; border-radius: 8px; }
-        .photo-gallery img { width: 100%; height: 200px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.5s; }
-        .photo-gallery a:hover img { transform: scale(1.05); }
-        .empty-gallery { grid-column: 1/-1; text-align: center; padding: 2rem; background: #fff; border-radius: 16px; color: #888; }
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .photo-gallery a {
+            display: block;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .photo-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.5s;
+        }
+        .photo-gallery a:hover img {
+            transform: scale(1.05);
+        }
+        .empty-gallery {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 16px;
+            color: #888;
+        }
 
-        .voices-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .voice-card { background: #fff; padding: 1.5rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-        .voice-card h3 { margin-bottom: 0.5rem; color: #b5838d; }
+        .voices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .voice-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .voice-card h3 {
+            margin-bottom: 0.5rem;
+            color: #b5838d;
+        }
+        .voice-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .voice-card small {
+            color: #aaa;
+            font-size: 0.85rem;
+        }
 
-        .btn-large { font-size: 1.2rem; padding: 1rem 3rem; margin: 1rem 0; }
-        .stats { font-size: 1.2rem; color: #b5838d; font-weight: 600; margin: 1rem 0; }
+        .btn-large {
+            font-size: 1.2rem;
+            padding: 1rem 3rem;
+            margin: 1rem 0;
+        }
+        .stats {
+            font-size: 1.2rem;
+            color: #b5838d;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
     </style>
 </head>
 <body class="page-transition">
@@ -61,22 +144,30 @@
 
             <div class="info-block fade-in" style="background-color: #fff9f0; border: 2px solid #e5989b;">
                 <h3><i class="fas fa-trophy" style="color: #e5989b;"></i> О конкурсе</h3>
-                <p>Мы участвуем в городском конкурсе краеведческих выставок <strong>«История одной улицы»</strong>, посвящённом улице Торфяной. Главное условие — сотворчество.</p>
-                <p><strong>Сроки:</strong> февраль – ноябрь 2026.</p>
-                <div class="stats"><i class="fas fa-users"></i> Уже <span id="participant-counter">12</span> человек поделились историями. Спасибо!</div>
-                <div style="text-align: center;"><a href="torfyanaya.html#form" class="btn btn-large">📤 Поделиться историей</a></div>
+                <p>Мы участвуем в городском конкурсе краеведческих выставок <strong>«История одной улицы»</strong>, посвящённом улице Торфяной. Главное условие конкурса — <strong>сотворчество</strong>: вы можете стать соавторами нашей инсталляции, поделившись старыми фотографиями, документами, воспоминаниями.</p>
+                <p><strong>Сроки проведения:</strong> февраль – ноябрь 2026.</p>
+                <p><strong>Как участвовать:</strong> заполните форму на странице проекта «Улица Торфяная» (кнопка ниже) или принесите материалы лично в библиотеку. Все участники будут отмечены в нашей галерее и на странице конкурса.</p>
+                <div class="stats">
+                    <i class="fas fa-users"></i> Уже <span id="participant-counter">0</span> человек поделились историями и фотографиями. Спасибо!
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="torfyanaya.html#form" class="btn btn-large">📤 Поделиться историей</a>
+                </div>
             </div>
 
             <h2 class="section-title">Народный альбом</h2>
             <div class="photo-gallery fade-in" id="folkAlbum">
-                <div class="empty-gallery"><i class="fas fa-images" style="font-size: 3rem; color: #e5989b;"></i><p>Здесь появятся ваши фотографии!</p></div>
+                <div class="empty-gallery">
+                    <i class="fas fa-images" style="font-size: 3rem; color: #e5989b; margin-bottom: 1rem;"></i>
+                    <p>Здесь появятся фотографии, присланные вами. Присылайте свои снимки Торфяной улицы разных лет — и они попадут в этот альбом!</p>
+                </div>
             </div>
 
             <h2 class="section-title">Голоса улицы</h2>
-            <div class="voices-grid fade-in">
-                <div class="voice-card" style="background: #f8f8f8; border: 2px dashed #ccc; text-align: center;">
-                    <i class="fas fa-microphone-alt" style="font-size: 3rem; color: #aaa;"></i>
-                    <p>Здесь будут ваши воспоминания.</p>
+            <div class="voices-grid fade-in" id="voicesGrid">
+                <div class="voice-card" style="background: #f8f8f8; border: 2px dashed #ccc; text-align: center; color: #aaa;">
+                    <i class="fas fa-microphone-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p>Здесь будут ваши воспоминания. Делитесь историями о Торфяной улице!</p>
                 </div>
             </div>
 
@@ -87,10 +178,13 @@
     </section>
 
     <footer class="footer-content">...</footer>
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></a>
+    <div id="cookie-banner">...</div>
+    <script src="common.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
         Fancybox.bind("[data-fancybox]");
-        // адаптивное меню и пр.
+        document.getElementById('participant-counter').innerText = '12'; // пример
     </script>
 </body>
 </html>
